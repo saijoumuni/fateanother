@@ -26,7 +26,7 @@
     margin-left: 5.4%;
 }
 
-// 16x10
+/* 16x10 */
 .AspectRatio16x10 .BuffBar {
     position: 31.6% 80% 0px;
 }
@@ -40,17 +40,17 @@
     width: 6.5%;
 }
 
-// 1280x768
+/* 1280x768 */
 .BuffBar.r1280x768 {
     position: 31.75% 79.3% 0px;
 }
 
-// 720x480
+/* 720x480 */
 .BuffBar.r720x480 {
     position: 31.75% 81.0% 0px;
 }
 
-// 4x3
+/* 4x3 */
 .AspectRatio4x3 .BuffBar {
     position: 33.50% 80% 0px;
 }
