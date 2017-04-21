@@ -65,179 +65,95 @@ var buffCooldown = {
     modifier_story_for_someones_sake_cooldown: 450,
 };
 
-function BuffPanel(buffBar, index) {
-    this.buffBar = buffBar;
-    var parent = this.buffBar.panel;
-    var panel = $.CreatePanel("Panel", parent, "");
-    panel.BLoadLayout("file://{resources}/layout/custom_game/fateanother_buff.xml", false, false);
-    this.panel = panel;
-    this.index = index;
+function AltClickBuffs() {
     var that = this;
 
-    this.panel.SetPanelEvent(
-        "onactivate",
-        function() {
-            that.OnActivate();
+    var buffPanels = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('buffs').Children();
+    var debuffPanels = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('debuffs').Children();
+    this.BindOnActivate(buffPanels, false);
+    this.BindOnActivate(debuffPanels, true);
+}
+
+AltClickBuffs.prototype.BindOnActivate = function(panels, isDebuff) {
+    var that = this;
+
+    $.Each(panels, function(panel, index) {
+        panel.GetChild(0).SetPanelEvent(
+            "onactivate",
+            function() {
+                that.OnActivate(index, isDebuff);
+            }
+        )
+    });
+}
+
+AltClickBuffs.prototype.GetVisibleBuffs = function(unit, isDebuff) {
+    var visibleBuffs = [];
+    var nBuffs = Entities.GetNumBuffs(unit)
+    for (var i = 0; i < nBuffs; i++)  {
+        var buff = Entities.GetBuff(unit, i)
+        if (Buffs.IsDebuff(unit, buff) !== isDebuff
+            || Buffs.IsHidden(unit, buff)
+            || !Buffs.GetName(unit, buff)) {
+            continue;
         }
-    )
+        visibleBuffs.push(buff);
+    }
+    return visibleBuffs;
 }
 
-BuffPanel.prototype.SetBuff = function(unit, buff) {
-    this.buff = buff;
-    this.unit = unit;
-    this.name = Buffs.GetName(unit, buff);
-    this.image = Buffs.GetTexture(unit, buff);
-    this.duration = Buffs.GetDuration(unit, buff);
-    this.remainingTime = Buffs.GetRemainingTime(unit, buff);
-    this.stackCount = Buffs.GetStackCount(unit, buff);
-    this.isDebuff = Buffs.IsDebuff(unit, buff);
-    this.hasStacks = !!buffHasStacks[this.name];
-}
+AltClickBuffs.prototype.OnActivate = function(index, isDebuff) {
+    var unit = Players.GetLocalPlayerPortraitUnit();
 
-BuffPanel.prototype.OnActivate = function() {
-    if (!Entities.IsHero(this.buffBar.unit) || !GameUI.IsAltDown()) {
+    if (!Entities.IsHero(unit) || !GameUI.IsAltDown()) {
         return;
     }
 
-    var visibleBuffs = this.buffBar.GetVisibleBuffs();
-    var buff = visibleBuffs[this.index];
+    var visibleBuffs = this.GetVisibleBuffs(unit, isDebuff);
+    var buff = visibleBuffs[index];
     if (!buff) {
         return;
     }
 
-    this.SetBuff(this.buffBar.unit, buff);
+    var name = Buffs.GetName(unit, buff);
+    var duration = Buffs.GetDuration(unit, buff);
+    var remainingTime = Buffs.GetRemainingTime(unit, buff);
+    var stackCount = Buffs.GetStackCount(unit, buff);
+    var hasStacks = !!buffHasStacks[name];
 
-    var localName = $.Localize("DOTA_Tooltip_" + this.name);
-    var colour = this.isDebuff ? "_red_" : "_green_";
+    var localName = $.Localize("DOTA_Tooltip_" + name);
+    var colour = isDebuff ? "_red_" : "_green_";
 
     var localPlayerId = Game.GetLocalPlayerID();
-    var sameTeam = Entities.GetTeamNumber(this.unit) == Players.GetTeam(localPlayerId);;
+    var sameTeam = Entities.GetTeamNumber(unit) == Players.GetTeam(localPlayerId);;
 
-    if (sameTeam && this.unit != Players.GetPlayerHeroEntityIndex(localPlayerId)) {
+    if (sameTeam && unit != Players.GetPlayerHeroEntityIndex(localPlayerId)) {
         return;
     }
 
     var message = sameTeam
         ? ""
-        : "Enemy _gold_" + Entities.GetUnitName(this.unit) + " ";
+        : "Enemy _gold_" + Entities.GetUnitName(unit) + " ";
 
     message += "_gray__arrow_ ";
 
-    if (buffCooldown[this.name]) {
+    if (buffCooldown[name]) {
         message += colour + localName + "_default_";
         if (sameTeam) {
-            var remainingTime = Math.ceil(this.remainingTime);
+            var remainingTime = Math.ceil(remainingTime);
             message += " ( _gold_" + remainingTime + "_default_ second" + (remainingTime == 1 ? "" : "s") + " remain )";
         }
     } else {
         message += "_default_Affected by " + colour + localName + "_default_";
-        if (this.hasStacks) {
-            message += " ( _gold_" + this.stackCount + "_default_ stack" + (this.stackCount == 1 ? "" : "s") + " )"
+        if (hasStacks) {
+            message += " ( _gold_" + stackCount + "_default_ stack" + (stackCount == 1 ? "" : "s") + " )"
         }
     }
     GameEvents.SendCustomGameEventToServer("player_alt_click", {
         message: message,
         ability: this.name,
-        unit: this.unit
+        unit: unit
     });
 }
 
-var BuffBar = function(panel, numBuffs) {
-    this.panel = panel;
-    this.buffPanels = [];
-    this.unit = Players.GetLocalPlayerPortraitUnit();
-    this.resolutionClass = null;
-    this.numBuffs = numBuffs || 8;
-    this.enabled = true;
-    this.visible = true;
-
-    for (var i = 0; i < this.numBuffs; i++) {
-        var buffPanel = new BuffPanel(this, i);
-        this.buffPanels.push(buffPanel);
-    }
-}
-
-BuffBar.prototype.UpdateSelectedUnit = function() {
-    this.unit = Players.GetLocalPlayerPortraitUnit();
-}
-
-BuffBar.prototype.UpdateQueryUnit = function() {
-    var queryUnit = Players.GetQueryUnit(Players.GetLocalPlayer());
-    if (queryUnit != -1) {
-        this.unit = queryUnit;
-    }
-}
-
-BuffBar.prototype.Update = function() {
-    var hud = GameUI.CustomUIConfig().hud;
-    var resolutionHeight = hud.actuallayoutheight;
-    var resolutionWidth = hud.actuallayoutwidth;
-
-    if (resolutionHeight <= 576 || resolutionWidth <= 720) {
-        this.visible = false;
-        this.panel.visible = false;
-        return;
-    }
-
-    var resolutionClass = "r" + resolutionWidth + "x" + resolutionHeight;
-
-    if (resolutionClass != this.resolutionClass) {
-        this.panel.SetHasClass(this.resolutionClass, false);
-        this.panel.SetHasClass(resolutionClass, true);
-        this.resolutionClass = resolutionClass;
-    }
-
-    this.visible = true;
-    this.panel.visible = this.enabled;
-}
-
-BuffBar.prototype.Enable = function() {
-    this.enabled = true;
-    this.panel.SetHasClass("Disabled", false);
-    this.Update();
-}
-
-BuffBar.prototype.Disable = function() {
-    this.enabled = false;
-    this.panel.SetHasClass("Disabled", true);
-    this.Update();
-}
-
-BuffBar.prototype.GetVisibleBuffs = function() {
-    var visibleBuffs = [];
-    var nBuffs = Entities.GetNumBuffs(this.unit)
-    for (var i = 0; i < nBuffs; i++)  {
-        var buff = Entities.GetBuff(this.unit, i)
-        if (Buffs.IsHidden(this.unit, buff)
-            || !Buffs.GetName(this.unit, buff)) {
-            continue;
-        }
-        visibleBuffs.push(buff);
-        if (visibleBuffs.length >= this.numBuffs) {
-            break;
-        }
-    }
-    return visibleBuffs;
-}
-
-function EndsWith(string, suffix) {
-    return string.slice(string.length - suffix.length) == suffix;
-}
-
-
-var buffBar = new BuffBar($.GetContextPanel(), 8);
-GameUI.CustomUIConfig().buffBar = buffBar;
-
-GameEvents.Subscribe("dota_player_update_selected_unit", function() {
-    buffBar.UpdateSelectedUnit();
-});
-GameEvents.Subscribe("dota_player_update_query_unit", function() {
-    buffBar.UpdateQueryUnit();
-});
-
-function UpdateBuffBar() {
-    buffBar.Update();
-    $.Schedule(1, UpdateBuffBar);
-}
-
-UpdateBuffBar();
+var altClickBuffs = new AltClickBuffs();
