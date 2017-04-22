@@ -29,6 +29,7 @@
                  <Image src="file://{images}/custom_game/selection/npc_dota_hero_ember_spirit.png"/>
                  <Image src="file://{images}/custom_game/selection/npc_dota_hero_spectre.png"/>
                  <Image src="file://{images}/custom_game/selection/npc_dota_hero_lina.png"/>
+                 <Image src="file://{images}/custom_game/selection/npc_dota_hero_chen.png"/>
          </Panel>
          <Panel id="container" class="container">
              <Panel id="timePanel" class="timePanel">

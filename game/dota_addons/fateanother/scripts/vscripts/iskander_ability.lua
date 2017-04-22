@@ -745,6 +745,7 @@ function EndAOTK(caster)
 
 	StopSoundEvent("Ability.SandKing_SandStorm.loop", caster)
 
+	CleanUpHammer(caster)
 
 	-- Remove soldiers 
 	for i=1, #caster.AOTKSoldiers do
@@ -928,9 +929,34 @@ function OnBattleHornStart(keys)
     end
 end
 
+function CleanUpHammer(hero)
+    local hammerTimers = hero.HammerTimers
+    if hammerTimers ~= nil then
+        for i=1,hammerTimers do
+            Timers:RemoveTimer("hammer_charge" .. i)
+        end
+    end
+    local oldCavalryTable = hero.CavalryTable
+    if oldCavalryTable ~= nil then
+        for i=1,#oldCavalryTable do
+	    local unit = oldCavalryTable[i]
+            unit:PreventDI(false)
+            unit:SetPhysicsVelocity(Vector(0,0,0))
+            unit:OnPhysicsFrame(nil)
+            unit:RemoveModifierByName("round_pause")
+        end
+    end
+
+    hero.CavalryTable = nil
+    hero.HammerTimers= nil
+end
+
 function OnHammerStart(keys)
 	local caster = keys.caster
 	local hero = caster:GetPlayerOwner():GetAssignedHero()
+
+	CleanUpHammer(hero)
+
 	local cavalryTable = {}
 	table.insert(cavalryTable, caster)
 	caster:EmitSound("Hero_Centaur.Stampede.Cast")
@@ -939,7 +965,7 @@ function OnHammerStart(keys)
 		keys.ability:StartCooldown(3.0)
 	end
 
-	if hero.IsAOTKDominant then
+	if hero.IsAOTKDominant then	
 		caster:SetAbsOrigin(aotkCenter + Vector(-1400, 0, 0)) 
 	else
 		caster:SetAbsOrigin(ubwCenter + Vector(-1100, 0, 0)) 
@@ -959,6 +985,8 @@ function OnHammerStart(keys)
 			end
 		end
 	end
+
+	hero.hammerTimers = #cavalryTable
 
 	for i=1,#cavalryTable do
 		local counter = 0
@@ -1012,6 +1040,7 @@ function OnHammerStart(keys)
 			end
 		end)
 	end
+        hero.CavalryTable = cavalryTable
 end
 
 function OnBrillianceStart(keys)
