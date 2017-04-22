@@ -60,15 +60,14 @@ HeroSelection.prototype.BindOnActivate = function(panel, hero) {
 HeroSelection.prototype.Update = function() {
     var that = this;
 
-    this.Render();
-
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     var name = Entities.GetUnitName(hero);
-    if (hero !== -1 && name !== "npc_dota_hero_wisp") {
-        $.Msg("end");
+    if (Players.IsSpectator(this.playerId) || hero !== -1 && name !== "npc_dota_hero_wisp") {
         this.End();
         return;
     }
+
+    this.Render();
 
     $.Schedule(0.1, function() {
        that.Update();
