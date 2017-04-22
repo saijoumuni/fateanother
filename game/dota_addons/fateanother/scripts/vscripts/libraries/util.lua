@@ -1,4 +1,6 @@
--- where the misc functios gather
+﻿-- where the misc functios gather
+
+heroList = LoadKeyValues("scripts/npc/herolist.txt")
 
 softdispellable = {
     "modifier_aspd_increase",

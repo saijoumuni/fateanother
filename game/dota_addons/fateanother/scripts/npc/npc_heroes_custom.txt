@@ -3,6 +3,25 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 "DOTAHeroes"
 {
+
+        "npc_dota_hero_dummy"
+        {
+		"override_hero"				"npc_dota_hero_wisp"
+		"DrawParticlesWhileHidden" "1"
+		"DisableWearables" 			"1"
+
+		"AbilityLayout"				"1"
+		"Ability1"				"dummy_pause"
+                "Ability2"				""
+                "Ability3"				""
+                "Ability4"				""
+                "Ability5"				""
+                "Ability6"				""
+                "Ability7"				""
+                "Ability8"				""
+                
+	}
+
 	//=================================================================================================================
 	//	Saber - Arthuria
 	//=================================================================================================================

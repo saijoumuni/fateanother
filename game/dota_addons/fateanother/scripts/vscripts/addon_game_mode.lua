@@ -15,6 +15,7 @@ require('libraries/crowdcontrol')
 require('libraries/physics')
 require('libraries/attachments')
 --require('libraries/vector_target')
+require('hero_selection')
 
 
 _G.IsPickPhase = true
@@ -744,6 +745,11 @@ function FateGameMode:OnPlayerChat(keys)
         --GameRules:SendCustomMessage("<font color='#58ACFA'>" .. hero.name .. "</font> is requesting gold. Type <font color='#58ACFA'>-" .. plyID .. " (gold amount) </font>to help him out!" , hero:GetTeamNumber(), hero:GetPlayerOwnerID())
         Notifications:RightToTeamGold(hero:GetTeam(), "<font color='#FF5050'>" .. FindName(hero:GetName()) .. "</font> at <font color='#FFD700'>" .. hero:GetGold() .. "g</font> is requesting gold. Type <font color='#58ACFA'>-" .. plyID .. " (goldamount)</font> to send gold!", 5, nil, {color="rgb(255,255,255)", ["font-size"]="20px"}, false)
     end
+
+    local heroText = string.match(text, "^-pick (.+)")
+    if heroText ~= nil then
+        Selection:RemoveHero(heroText)
+    end
 end
 
 function DoRoll(playerId, num)
@@ -857,13 +863,14 @@ function FateGameMode:OnGameRulesStateChange(keys)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
         self.bSeenWaitForPlayers = true
-    elseif newState == DOTA_GAMERULES_STATE_INIT then
-        --Timers:RemoveTimer("alljointimer")
+    elseif newState == DOTA_GAMERULES_STATE_INIT then 
     elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         print("hero selection phase")
-        Timers:CreateTimer(2.0, function()
-            FateGameMode:OnAllPlayersLoaded()
-        end)
+        --Timers:CreateTimer(2.0, function()
+        --    FateGameMode:OnAllPlayersLoaded()
+        --end)
+        Selection = HeroSelection()
+        Selection:UpdateTime()
     elseif newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
         -- screw 7.00
     elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -896,6 +903,19 @@ function FateGameMode:OnHeroInGame(hero)
     if self.vBots[hero:GetPlayerID()] == 1 then
         print((hero:GetPlayerID()) .." is a bot!")
         self.vPlayerList[hero:GetPlayerID()] = hero:GetPlayerID()
+    end
+    local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+    if hero:GetName() == "npc_dota_hero_wisp" then
+        local dummyPause = hero:GetAbilityByIndex(0)
+        dummyPause:SetLevel(1)
+        dummyPause:ApplyDataDrivenModifier(hero, hero, "modifier_dummy_pause", {duration=9999})
+        player.dummyHero = hero
+        return
+    end
+    if player.dummyHero then
+        player.dummyHero:SetRespawnsDisabled(true)
+        UTIL_Remove(player.dummyHero)
+        player.dummyHero = nil
     end
     -- Initialize stuffs
     hero:SetCustomDeathXP(0)
@@ -1034,20 +1054,18 @@ function FateGameMode:OnHeroInGame(hero)
 
     if _G.GameMap == "fate_elim_6v6" then
         if self.nCurrentRound == 0 then
-            giveUnitDataDrivenModifier(hero, hero, "round_pause", 60)
+            giveUnitDataDrivenModifier(hero, hero, "round_pause", 70)
         elseif self.nCurrentRound >= 1 then
-            hero:ModifyGold(3000, true, 0)
             giveUnitDataDrivenModifier(hero, hero, "round_pause", 10)
         end
     else
-        hero:ModifyGold(3000, true, 0)
         if _G.CurrentGameState == "FATE_PRE_GAME" then
-            giveUnitDataDrivenModifier(hero, hero, "round_pause", 60)
+            giveUnitDataDrivenModifier(hero, hero, "round_pause", 70)
         end
     end
 
     if Convars:GetBool("sv_cheats") then
-        hero:RemoveModifierByName("round_pause")
+        -- hero:RemoveModifierByName("round_pause")
         hero.MasterUnit:SetMana(hero.MasterUnit:GetMaxMana())
         hero.MasterUnit2:SetMana(hero.MasterUnit2:GetMaxMana())
 
@@ -1585,7 +1603,7 @@ function FateGameMode:OnEntityKilled( keys )
             local alliedHeroes = FindUnitsInRadius(killerEntity:GetTeamNumber(), killedUnit:GetAbsOrigin(), nil, 5000, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_CLOSEST, false)
             local realHeroCount = 0
             for i=1, #alliedHeroes do
-                if alliedHeroes[i]:IsHero() then
+                if alliedHeroes[i]:IsHero() and alliedHeroes[i]:GetName() ~= "npc_dota_hero_wisp" then
                     realHeroCount = realHeroCount + 1
                 end
             end
@@ -1862,9 +1880,10 @@ function FateGameMode:InitGameMode()
     end
     -- Set game rules
     GameRules:SetUseUniversalShopMode(true)
-    GameRules:SetSameHeroSelectionEnabled(false)
-    GameRules:SetHeroSelectionTime(9999)
-    GameRules:SetPreGameTime(0)
+    GameRules:SetSameHeroSelectionEnabled(true)
+    GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
+    GameRules:SetHeroSelectionTime(0)
+    GameRules:SetPreGameTime(60)
     GameRules:SetShowcaseTime(0)
     GameRules:SetStrategyTime(0)
     GameRules:SetUseCustomHeroXPValues(true)
@@ -2033,6 +2052,11 @@ end
 function FateGameMode:TakeDamageFilter(filterTable)
     local damage = filterTable.damage
     local damageType = filterTable.damagetype_const
+
+    if not filterTable.entindex_attacker_const then
+        return
+    end
+
     local attacker = EntIndexToHScript(filterTable.entindex_attacker_const)
     local inflictor = nil
     if filterTable.entindex_inflictor_const then
@@ -2275,16 +2299,16 @@ function FateGameMode:InitializeRound()
         end
 
         -- Grant gold
-        if hero:GetGold() < 5000 then --
-            --print("[FateGameMode] " .. hero:GetName() .. " gained 3000 gold at the start of round")
-            if hero.AvariceCount ~= nil then
-                hero:ModifyGold(3000 + hero.AvariceCount * 1500, true, 0)
-            else
-                hero:ModifyGold(3000, true, 0)
+        if self.nCurrentRound > 1 then
+            if hero:GetGold() < 5000 then --
+                --print("[FateGameMode] " .. hero:GetName() .. " gained 3000 gold at the start of round")
+                if hero.AvariceCount ~= nil then
+                    hero:ModifyGold(3000 + hero.AvariceCount * 1500, true, 0)
+                else
+                    hero:ModifyGold(3000, true, 0)
+                end
             end
-        end
 
-        if self.nCurrentRound ~= 1 then
             local multiplier = (0.5+0.01*(hero:GetDeaths()-hero:GetKills()))
             --print("[FateGameMode]" .. hero:GetName() .. " of player " .. hero:GetPlayerID() .. " gained " .. (_G.XP_PER_LEVEL_TABLE[hero:GetLevel()] * multiplier) .. " experience at the start of round")
             hero:AddExperience(_G.XP_PER_LEVEL_TABLE[hero:GetLevel()] * multiplier , false, false)
@@ -2556,7 +2580,7 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
                 playerHero:SetRespawnPosition(respawnPos)
                 playerHero:RespawnHero(false, false, false)
                 ProjectileManager:ProjectileDodge(playerHero)
-            end)
+            end, true)
             self:InitializeRound()
             _G.CurrentGameState = "FATE_PRE_ROUND"
         end
@@ -2590,12 +2614,12 @@ function GetRespawnPos(playerHero, currentRound, index)
     return defaultRespawnPos + vRow * row + vColumn * column
 end
 
-function FateGameMode:LoopOverPlayers(callback)
+function FateGameMode:LoopOverPlayers(callback, withDummy)
     for i=0, 11 do
         local playerID = i
         local player = PlayerResource:GetPlayer(i)
         local playerHero = PlayerResource:GetSelectedHeroEntity(playerID)
-        if playerHero then
+        if playerHero and (playerHero:GetName() ~= "npc_dota_hero_wisp" or withDummy) then
             --print("Looping through hero " .. playerHero:GetName())
             if callback(player, playerID, playerHero) then
                 break
