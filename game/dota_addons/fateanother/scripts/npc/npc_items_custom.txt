@@ -5,7 +5,7 @@
 	{
 	    "ID"           "1998"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items1"
+	    "AbilityTextureName" "custom/master_transfer_items1"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -48,7 +48,7 @@
 	{
 	    "ID"           "1997"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items2"
+	    "AbilityTextureName" "custom/master_transfer_items2"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -89,7 +89,7 @@
 	{
 	    "ID"           "1996"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items3"
+	    "AbilityTextureName" "custom/master_transfer_items3"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -130,7 +130,7 @@
 	{
 	    "ID"           "1995"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items4"
+	    "AbilityTextureName" "custom/master_transfer_items4"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -171,7 +171,7 @@
 	{
 	    "ID"           "1994"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items5"
+	    "AbilityTextureName" "custom/master_transfer_items5"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -212,7 +212,7 @@
 	{
 	    "ID"           "1993"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "master_transfer_items6"
+	    "AbilityTextureName" "custom/master_transfer_items6"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -411,7 +411,7 @@
 		//-------------------------------------
 	    "ID"           			"1100"
 	    "BaseClass"    			"item_datadriven"
-	    "AbilityTextureName" 	"mana_essence"
+	    "AbilityTextureName" 	"custom/mana_essence"
 	    "AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"	
 	    
 	    "AbilityCooldown"		"10"
@@ -514,7 +514,7 @@
 	{
 	    "ID"           "1102"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_bottle_haste"
+	    "AbilityTextureName" "custom/bottle_haste"
 	    "Model"        "models/props_gameplay/salve_red.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "common"
@@ -575,7 +575,7 @@
 	{
 	    "ID"           "1103"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_tpscroll"
+	    "AbilityTextureName" "custom/teleport_scroll"
 	    "Model"        "models/props_gameplay/recipe.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -651,7 +651,7 @@
 	{
 	    "ID"           "1104"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_sphere"
+	    "AbilityTextureName" "custom/gem_of_speed"
 	    "Model"        "models/props_gameplay/crystal_ring01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -708,7 +708,7 @@
 	{
 	    "ID"           "1105"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_flying_courier"
+	    "AbilityTextureName" "custom/scout_familiar"
 	    "Model"        "models/props_gameplay/roquelaire/roquelaire.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -780,7 +780,7 @@
 	{
 	    "ID"           "1106"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "berserk_scroll"
+	    "AbilityTextureName" "custom/berserk_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -853,7 +853,7 @@
 	    "BaseClass"    "item_datadriven"
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"Model"							"models/props_gameplay/observer_ward_bundle.mdl"
-		"AbilityTextureName" "item_observer_ward"
+		"AbilityTextureName" "custom/observer_ward"
 		"AbilityCastAnimation" 			"ACT_DOTA_ITEM_PICKUP"
 
 		// Stats
@@ -919,7 +919,7 @@
 	{
 	    "ID"           "1108"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "spirit_link"
+	    "AbilityTextureName" "custom/spirit_link"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1010,7 +1010,7 @@
 	{
 	    "ID"           "1109"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_recipe_scroll"
+	    "AbilityTextureName" "custom/item_recipe_scroll"
 	    "Model"        "models/props_gameplay/recipe.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1072,7 +1072,7 @@
 	{
 	    "ID"           "1110"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_talisman_of_evasion"
+	    "AbilityTextureName" "custom/gem_of_resonance"
 	    "Model"        "models/props_gameplay/gem01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1114,7 +1114,7 @@
 	{
 	    "ID"           "1112"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_healing_scroll"
+	    "AbilityTextureName" "custom/healing_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1203,7 +1203,7 @@
 	{
 	    "ID"           "1113"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "blink_scroll"
+	    "AbilityTextureName" "custom/blink_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1258,7 +1258,7 @@
 	{
 	    "ID"           "1114"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_c_scroll"
+	    "AbilityTextureName" "custom/c_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1341,7 +1341,7 @@
 	{
 	    "ID"           "1116"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_b_scroll"
+	    "AbilityTextureName" "custom/b_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1431,7 +1431,7 @@
 	{
 	    "ID"           "1118"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_a_scroll"
+	    "AbilityTextureName" "custom/a_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1530,7 +1530,7 @@
 	{
 	    "ID"           "1122"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_s_scroll"
+	    "AbilityTextureName" "custom/s_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1654,7 +1654,7 @@
 	{
 	    "ID"           "1124"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "item_ex_scroll"
+	    "AbilityTextureName" "custom/ex_scroll"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1768,7 +1768,7 @@
 	{
 	    "ID"           "1125"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "summon_skeleton_warrior"
+	    "AbilityTextureName" "custom/summon_skeleton_warrior"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1844,7 +1844,7 @@
 	{
 	    "ID"           "1126"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "summon_skeleton_archer"
+	    "AbilityTextureName" "custom/summon_skeleton_archer"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -1921,7 +1921,7 @@
 	{
 	    "ID"           "1127"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "summon_ancient_dragon"
+	    "AbilityTextureName" "custom/summon_ancient_dragon"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2002,7 +2002,7 @@
 	{
 	    "ID"           "1128"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "all_seeing_orb"
+	    "AbilityTextureName" "custom/all_seeing_orb"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2065,7 +2065,7 @@
 	{
 	    "ID"           "1099"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "caster_5th_mount"
+	    "AbilityTextureName" "custom/caster_5th_mount"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2167,7 +2167,7 @@
 	{
 	    "ID"           "1129"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "shard_of_anti_magic"
+	    "AbilityTextureName" "custom/shard_of_anti_magic"
 	    "Model"        "models/props_gameplay/gem01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2243,7 +2243,7 @@
 	{
 	    "ID"           "1130"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "shard_of_replenishment"
+	    "AbilityTextureName" "custom/shard_of_replenishment"
 	    "Model"        "models/props_gameplay/gem01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2302,7 +2302,7 @@
 	{
 	    "ID"           "1131"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "zc_contaminate"
+	    "AbilityTextureName" "custom/gille_contaminate"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2397,7 +2397,7 @@
 	{
 	    "ID"           "1132"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "zc_integrate"
+	    "AbilityTextureName" "custom/gille_integrate"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"
@@ -2503,7 +2503,7 @@
 	{
 	    "ID"           "1133"
 	    "BaseClass"    "item_datadriven"
-	    "AbilityTextureName" "zc_integrate"
+	    "AbilityTextureName" "custom/gille_integrate"
 	    "Model"        "models/props_gameplay/tpscroll01.vmdl" 
 	    "Effect"       "particles/generic_gameplay/dropped_item.vpcf"
 	    "ItemQuality"  "consumable"

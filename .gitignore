@@ -238,3 +238,16 @@ content/dota_addons/fateanother/particles/*
 content/dota_addons/fateanother/materials/*
 settings.kv
 patch draft.txt
+
+content/*
+!content/dota_addons/
+content/dota_addons/*
+!content/dota_addons/fateanother/
+
+game/*
+!game/dota_addons/
+game/dota_addons/*
+!game/dota_addons/fateanother/
+
+_CommonRedist/
+steam_appid.txt

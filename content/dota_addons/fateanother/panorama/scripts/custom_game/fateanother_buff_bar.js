@@ -157,3 +157,39 @@ AltClickBuffs.prototype.OnActivate = function(index, isDebuff) {
 }
 
 var altClickBuffs = new AltClickBuffs();
+
+/*
+function ChatModifier() {
+    this.chatPanel = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('ChatLinesPanel');
+    this.lastLine = null;
+}
+
+ChatModifier.prototype.UpdateChat = function() {
+    var that = this;
+    $.Schedule(0.1, function() {
+        that.UpdateChat();
+    });
+    if (this.lastLine !== null && this.chatPanel.GetChildCount() === this.chatPanel.GetChildIndex(this.lastLine)) {
+        return;
+    }
+    var nextLine;
+    if (this.lastLine === null || this.chatPanel.GetChildIndex(this.lastLine) === null) {
+        nextLine = this.chatPanel.GetChild(0);
+    } else {
+       nextLine = this.chatPanel.GetChild(this.chatPanel.GetChildIndex(this.lastLine) + 1);
+    }
+    while (nextLine !== null) {
+        this.lastLine = nextLine;
+        this.ModifyLine(this.lastLine);
+        nextLine = this.chatPanel.GetChild(this.chatPanel.GetChildIndex(this.lastLine) + 1);
+    }
+}
+
+ChatModifier.prototype.ModifyLine = function(line) {
+    var text = line.text;
+    $.Msg(line.Children());
+}
+
+var chat = new ChatModifier();
+chat.UpdateChat();
+*/
