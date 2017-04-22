@@ -102,7 +102,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			if ( playerInfo.player_selected_hero !== "" )
 			{
 				//$.Msg(playerInfo.player_selected_hero);
-				playerPortrait.SetImage( "file://{images}/heroes/" + playerInfo.player_selected_hero + ".png" );
+                                playerPortrait.SetImage("s2r://panorama/images/heroes/" + playerInfo.player_selected_hero + "_png.vtex");
 			}
 			else
 			{
