@@ -248,9 +248,9 @@ function OnChariotRide(keys)
 	local duration = keys.Duration
 
 	if caster.IsVEAcquired then
-		caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "iskander_via_expugnatio", true, true) 
+		caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "iskander_via_expugnatio", false, true) 
 	else
-		caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "fate_empty3", true, true)
+		caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "fate_empty3", false, true)
 	end
 
 	local counter = 0
@@ -333,9 +333,9 @@ function OnChariotEnd(keys)
 	local caster = keys.caster
 
 	if caster:HasModifier("modifier_army_of_the_king_death_checker") then
-		caster:SwapAbilities("fate_empty3", caster:GetAbilityByIndex(5):GetName(), true, true) 
+		caster:SwapAbilities("fate_empty3", caster:GetAbilityByIndex(5):GetName(), true, false) 
 	else
-		caster:SwapAbilities("iskander_army_of_the_king", caster:GetAbilityByIndex(5):GetName(), true, true) 
+		caster:SwapAbilities("iskander_army_of_the_king", caster:GetAbilityByIndex(5):GetName(), true, false) 
 	end
 
 	caster.OriginalModel = "models/iskander/iskander.vmdl"
@@ -556,12 +556,12 @@ function OnAOTKStart(keys)
 	--aotkQuest = StartQuestTimer("aotkTimerQuest", "Army of the King", 12) -- Start timer
 
 	-- Swap abilities
-	caster:SwapAbilities("iskander_army_of_the_king", "fate_empty3", true, true)
-	caster:SwapAbilities("fate_empty1", "iskander_summon_hephaestion", true, true) 
+	caster:SwapAbilities("iskander_army_of_the_king", "fate_empty3", false, true)
+	caster:SwapAbilities("fate_empty1", "iskander_summon_hephaestion", false, true) 
 	if caster.IsBeyondTimeAcquired then
-		caster:SwapAbilities("iskander_charisma", "iskander_summon_waver", true, true) 
+		caster:SwapAbilities("iskander_charisma", "iskander_summon_waver", false, true) 
 	else 
-		caster:SwapAbilities("iskander_charisma", "fate_empty4", true, true) 
+		caster:SwapAbilities("iskander_charisma", "fate_empty4", false, true) 
 	end
 
 	-- Find eligible targets
