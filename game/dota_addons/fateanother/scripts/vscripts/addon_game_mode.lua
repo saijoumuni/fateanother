@@ -778,7 +778,9 @@ function FateGameMode:OnPlayerChat(keys)
 
     local heroText = string.match(text, "^-pick (.+)")
     if heroText ~= nil then
-        Selection:RemoveHero(heroText)
+        if GameRules:IsCheatMode() then
+            Selection:RemoveHero(heroText)
+	end
     end
 end
 
