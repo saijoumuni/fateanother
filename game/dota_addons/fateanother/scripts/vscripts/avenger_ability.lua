@@ -44,7 +44,7 @@ function OnDPStart(keys)
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_dark_passage", {}) 
 	caster:SetModifierStackCount("modifier_dark_passage", keys.ability, currentStack + 1)
 
-	if caster:GetHealth() < currentHealthCost then
+	if caster:GetHealth() <= currentHealthCost then
 		caster:SetHealth(1)
 		keys.ability:StartCooldown(45)
 	else
