@@ -1963,7 +1963,7 @@
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"			"custom/keeper_of_the_light_blinding_light"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
 		"AbilityManaCost"				"100"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"30"
@@ -1984,7 +1984,7 @@
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"			"custom/huskar_burning_spear"
+		"AbilityTextureName"			"huskar_burning_spear"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilitySpecial"
 		{
@@ -17805,7 +17805,7 @@
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"			"custom/keeper_of_the_light_illuminate"
+		"AbilityTextureName"			"keeper_of_the_light_illuminate"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastPoint"				"0.3"
@@ -23018,7 +23018,7 @@
 		"BaseClass"						"ability_datadriven"
 		"MaxLevel"						"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"			"custom/wisp_tether"
+		"AbilityTextureName"			"wisp_tether"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 		"precache"
 		{
@@ -23123,7 +23123,7 @@
 		"BaseClass"						"ability_datadriven"
 		"MaxLevel"						"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"			"custom/wisp_tether"
+		"AbilityTextureName"			"wisp_tether"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 		"precache"
 		{
@@ -23597,7 +23597,7 @@
 		"BaseClass"						"ability_datadriven"
 		"MaxLevel"						"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityTextureName"			"custom/wisp_tether"
+		"AbilityTextureName"			"wisp_tether"
 		
 		
 		"AbilityCastPoint"				"0.0"
@@ -23646,7 +23646,7 @@
 		"BaseClass"						"ability_datadriven"
 		"MaxLevel"						"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityTextureName"			"custom/wisp_tether"
+		"AbilityTextureName"			"wisp_tether"
 		
 		
 		"AbilityCastPoint"				"0.0"
