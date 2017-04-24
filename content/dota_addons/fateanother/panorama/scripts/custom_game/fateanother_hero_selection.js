@@ -1,7 +1,7 @@
 function HeroSelection() {
     var that = this;
     this.playerId = Game.GetLocalPlayerID();
-    
+
     this.timeListener = CustomNetTables.SubscribeNetTableListener("selection", function(table, tableKey, data) {
         if (tableKey == "time") {
             that.time = data.time;
@@ -14,8 +14,14 @@ function HeroSelection() {
         }
     });
 
-    this.allHeroes = CustomNetTables.GetTableValue("selection", "all");
-    this.availableHeroes = CustomNetTables.GetTableValue("selection", "available");
+    this.allListener = CustomNetTables.SubscribeNetTableListener("selection", function(table, tableKey, data) {
+        if (tableKey == "all") {
+            that.allHeroes = data;
+        }
+    });
+
+    this.allHeroes = CustomNetTables.GetTableValue("selection", "all") || {};
+    this.availableHeroes = CustomNetTables.GetTableValue("selection", "available") || {};
 
     var timeTable = CustomNetTables.GetTableValue("selection", "time");
     this.time = timeTable && timeTable.time;
@@ -42,15 +48,19 @@ HeroSelection.prototype.Render = function() {
         }
         heroPanel.SetHasClass("grayscale", !this.availableHeroes[heroName]);
     }
-   
+
+    var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
+    this.container.SetHasClass("Hidden", this.time === undefined || hero === -1);
 }
 
 HeroSelection.prototype.BindOnActivate = function(panel, hero) {
+    var that = this;
+
     panel.SetPanelEvent(
         "onactivate",
         function() {
             GameEvents.SendCustomGameEventToServer("selection_hero_click", {
-                playerId: this.playerId,
+                playerId: that.playerId,
                 hero: hero,
             });
         }
@@ -62,6 +72,7 @@ HeroSelection.prototype.Update = function() {
 
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     var name = Entities.GetUnitName(hero);
+
     if (Players.IsSpectator(this.playerId) || hero !== -1 && name !== "npc_dota_hero_wisp") {
         this.End();
         return;
@@ -77,7 +88,7 @@ HeroSelection.prototype.Update = function() {
 HeroSelection.prototype.End = function() {
     CustomNetTables.UnsubscribeNetTableListener(this.timeListener);
     CustomNetTables.UnsubscribeNetTableListener(this.availableListener);
-    // CustomNetTables.UnsubscribeNetTableListener(this.hoverListener);
+    CustomNetTables.UnsubscribeNetTableListener(this.allListener);
 
     this.container.AddClass("Hidden");
 }

@@ -1,6 +1,8 @@
 ﻿HeroSelection = HeroSelection or class({})
 
 function HeroSelection:constructor()
+    self.Picked = {}
+
     local heroList = LoadKeyValues("scripts/npc/herolist.txt")
     heroList["npc_dota_hero_wisp"] = nil
     self.AvailableHeroes = heroList
@@ -46,12 +48,21 @@ function HeroSelection:OnClick(args)
     local playerId = args.playerId
     local hero = args.hero
 
-    if not self.AvailableHeroes[hero] then
+    local player = PlayerResource:GetPlayer(playerId)
+    local currentHero = player:GetAssignedHero()
+
+    if currentHero == nil or currentHero:GetName() ~= "npc_dota_hero_wisp" or self.Picked[playerId] or not self.AvailableHeroes[hero] then
         return
     end
 
     self.AvailableHeroes[hero] = nil
     self.HoveredHeroes[playerId] = nil
+
+    self.Picked[playerId] = true
+
+    local oldHero = PlayerResource:GetSelectedHeroEntity(playerId)
+    oldHero:SetRespawnsDisabled(true)
+    UTIL_Remove(oldHero)
 
     PlayerResource:ReplaceHeroWith(playerId, hero, 3000, 0)
 
