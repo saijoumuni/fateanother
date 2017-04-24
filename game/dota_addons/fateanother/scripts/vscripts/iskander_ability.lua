@@ -940,10 +940,12 @@ function CleanUpHammer(hero)
     if oldCavalryTable ~= nil then
         for i=1,#oldCavalryTable do
 	    local unit = oldCavalryTable[i]
-            unit:PreventDI(false)
-            unit:SetPhysicsVelocity(Vector(0,0,0))
-            unit:OnPhysicsFrame(nil)
-            unit:RemoveModifierByName("round_pause")
+	    if unit ~= nil then
+                unit:PreventDI(false)
+                unit:SetPhysicsVelocity(Vector(0,0,0))
+                unit:OnPhysicsFrame(nil)
+                unit:RemoveModifierByName("round_pause")
+	    end
         end
     end
 
