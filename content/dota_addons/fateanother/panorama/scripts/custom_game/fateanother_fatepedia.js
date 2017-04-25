@@ -51,7 +51,7 @@ function SetFatepediaHeroButtons()
 		var heroButton = $.CreatePanel("Panel", $("#FatepediaHeroesPanel"), "");
 		heroButton.BLoadLayout("file://{resources}/layout/custom_game/fateanother_fatepedia_herobutton.xml", false, false );
 		heroButton.SetAttributeString("heroname", heroes[i]);
-                heroButton.style["background-image"] = "url('s2r://panorama/images/heroes/" + heroes[i] + "_png.vtex')"
+                heroButton.style["background-image"] = "url('s2r://panorama/images/custom_game/portrait/" + heroes[i] + "_png.vtex')"
 	}
 }
 

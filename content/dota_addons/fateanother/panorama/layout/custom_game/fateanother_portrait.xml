@@ -8,7 +8,7 @@
     </scripts>
     <Panel class="PortraitDisplayRoot" hittest="true">
         <Panel id="HeroPortraitPanel" hittest="false">
-            <Image id="ServantPortraitImage" class="Portrait" src="file://{images}/heroes/npc_dota_hero_legion_commander.png" hittest="true"                          
+            <Image id="ServantPortraitImage" class="Portrait" hittest="true"                          
                             onmouseover="PortraitShowTooltip()"
                             onmouseout="PortraitHideTooltip()"
                             onactivate="PortraitClick()"/>
