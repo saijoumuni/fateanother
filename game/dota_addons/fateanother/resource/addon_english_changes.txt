@@ -253,3 +253,15 @@
     "DOTA_Tooltip_ability_attribute_bonus_custom"   "Acquire All Stats"
     "DOTA_Tooltip_ability_attribute_bonus_custom_Description"       "Increases your STR, AGI, and INT."
     "DOTA_Tooltip_ability_attribute_bonus_custom_stats"         "STAT BONUS:"
+
+    //====================================
+    // Empty Abilities
+    //====================================
+    "DOTA_Tooltip_ability_fate_empty1"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty2"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty3"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty4"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty5"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty6"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty7"			"Empty"
+    "DOTA_Tooltip_ability_fate_empty8"			"Empty"
