@@ -13,7 +13,10 @@ function HeroSelection:constructor()
        Dynamic_Wrap(self, "OnHover")(self, ...) 
     end)
     self.ClickListener = CustomGameEventManager:RegisterListener("selection_hero_click", function(id, ...)
-       Dynamic_Wrap(self, "OnClick")(self, ...) 
+       Dynamic_Wrap(self, "OnSelect")(self, ...) 
+    end)
+    self.RandomListener = CustomGameEventManager:RegisterListener("selection_hero_random", function(id, ...)
+       Dynamic_Wrap(self, "OnRandom")(self, ...) 
     end)
 
     self.Time = 60
@@ -35,6 +38,13 @@ function HeroSelection:UpdateTime()
     end
 end
 
+function HeroSelection:CanPick(playerId)
+    local player = PlayerResource:GetPlayer(playerId)
+    local currentHero = player:GetAssignedHero()
+
+    return currentHero ~= nil and currentHero:GetName() == "npc_dota_hero_wisp" and  not self.Picked[playerId]
+end
+
 function HeroSelection:OnHover(args)
     local playerId = args.playerId
     local hero = args.hero
@@ -44,30 +54,64 @@ function HeroSelection:OnHover(args)
     CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
 end
 
-function HeroSelection:OnClick(args)
+function HeroSelection:OnSelect(args)
     local playerId = args.playerId
     local hero = args.hero
 
-    local player = PlayerResource:GetPlayer(playerId)
-    local currentHero = player:GetAssignedHero()
-
-    if currentHero == nil or currentHero:GetName() ~= "npc_dota_hero_wisp" or self.Picked[playerId] or not self.AvailableHeroes[hero] then
+    if not self:CanPick(playerId) or not self.AvailableHeroes[hero] then
         return
     end
 
-    self.AvailableHeroes[hero] = nil
-    self.HoveredHeroes[playerId] = nil
+    self:AssignHero(playerId, hero)
 
+    self.HoveredHeroes[playerId] = nil
     self.Picked[playerId] = true
 
+    CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
+
+end
+
+function HeroSelection:OnRandom(args)
+    local playerId = args.playerId
+
+    if not self:CanPick(playerId) then
+        return
+    end
+
+    local availableHeroesNumber = 0
+    for _,_ in pairs(self.AvailableHeroes) do
+        availableHeroesNumber = availableHeroesNumber + 1
+    end
+
+    local randomIndex = RandomInt(1, availableHeroesNumber)
+
+    local index = 1
+    for hero,_ in pairs(self.AvailableHeroes) do
+        if index == randomIndex then
+
+            self:AssignHero(playerId, hero)
+
+            self.HoveredHeroes[playerId] = nil
+            self.Picked[playerId] = true
+
+            CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
+
+	    return
+	end
+	index = index + 1
+    end
+end
+
+function HeroSelection:AssignHero(playerId, hero)
     local oldHero = PlayerResource:GetSelectedHeroEntity(playerId)
     oldHero:SetRespawnsDisabled(true)
     UTIL_Remove(oldHero)
 
     PlayerResource:ReplaceHeroWith(playerId, hero, 3000, 0)
 
+    self.AvailableHeroes[hero] = nil
+
     CustomNetTables:SetTableValue("selection", "available", self.AvailableHeroes)
-    CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
 end
 
 function HeroSelection:RemoveHero(hero)

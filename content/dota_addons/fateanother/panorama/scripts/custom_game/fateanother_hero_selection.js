@@ -36,6 +36,7 @@ HeroSelection.prototype.OnHover = function() {
 }
 
 HeroSelection.prototype.Render = function() {
+    var that = this;
     this.timeLabel.text = this.time;
 
     for (var heroName in this.allHeroes) {
@@ -48,6 +49,22 @@ HeroSelection.prototype.Render = function() {
         }
         heroPanel.SetHasClass("grayscale", !this.availableHeroes[heroName]);
     }
+
+    var randomPanel = this.heroesPanel.FindChild("random");
+    if (randomPanel == null) {
+        randomPanel = $.CreatePanel("Image", this.heroesPanel, "random");
+        randomPanel.SetImage("s2r://panorama/images/custom_game/selection/random_png.vtex");
+        randomPanel.AddClass("hero");
+        randomPanel.SetPanelEvent(
+            "onactivate",
+            function() {
+                GameEvents.SendCustomGameEventToServer("selection_hero_random", {
+                    playerId: that.playerId,
+                });
+            }
+        );
+    }
+
 
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     this.container.SetHasClass("Hidden", this.time === undefined || hero === -1);
@@ -73,7 +90,7 @@ HeroSelection.prototype.Update = function() {
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     var name = Entities.GetUnitName(hero);
 
-    if (Players.IsSpectator(this.playerId) || hero !== -1 && name !== "npc_dota_hero_wisp") {
+    if (this.time <= 0 && (Players.IsSpectator(this.playerId) || hero !== -1 && name !== "npc_dota_hero_wisp")) {
         this.End();
         return;
     }
