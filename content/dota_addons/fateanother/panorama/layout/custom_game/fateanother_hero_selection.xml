@@ -57,9 +57,12 @@
                  <Image src="file://{images}/custom_game/portrait/npc_dota_hero_chen.png"/>
          </Panel>
          <Panel id="container" class="container">
-             <Panel id="timePanel" class="timePanel">
-                 <Label id="time" class="timeLabel"></Label>
-                 <Image class="timeRing" src="file://{images}/status_icons/timer_ring.psd"/>
+             <Panel class="pickStatus">
+                 <Label id="status" class="statusLabel"></Label>
+                 <Panel id="timePanel" class="timePanel">
+                     <Label id="time" class="timeLabel"></Label>
+                     <Image class="timeRing" src="file://{images}/status_icons/timer_ring.psd"/>
+                 </Panel>
              </Panel>
              <Panel id="heroes" class="heroes">
              </Panel>

@@ -19,7 +19,7 @@ function HeroSelection:constructor()
        Dynamic_Wrap(self, "OnRandom")(self, ...) 
     end)
 
-    self.Time = 60
+    self.Time = 65 
 
     CustomNetTables:SetTableValue("selection", "all", self.AvailableHeroes)
     CustomNetTables:SetTableValue("selection", "available", self.AvailableHeroes)
@@ -42,7 +42,7 @@ function HeroSelection:CanPick(playerId)
     local player = PlayerResource:GetPlayer(playerId)
     local currentHero = player:GetAssignedHero()
 
-    return currentHero ~= nil and currentHero:GetName() == "npc_dota_hero_wisp" and  not self.Picked[playerId]
+    return self.Time <= 60 and currentHero ~= nil and currentHero:GetName() == "npc_dota_hero_wisp" and  not self.Picked[playerId]
 end
 
 function HeroSelection:OnHover(args)
@@ -105,9 +105,10 @@ end
 function HeroSelection:AssignHero(playerId, hero)
     local oldHero = PlayerResource:GetSelectedHeroEntity(playerId)
     oldHero:SetRespawnsDisabled(true)
-    UTIL_Remove(oldHero)
 
     PlayerResource:ReplaceHeroWith(playerId, hero, 3000, 0)
+
+    UTIL_Remove(oldHero)
 
     self.AvailableHeroes[hero] = nil
 

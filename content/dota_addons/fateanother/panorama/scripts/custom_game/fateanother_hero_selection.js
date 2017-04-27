@@ -27,6 +27,7 @@ function HeroSelection() {
     this.time = timeTable && timeTable.time;
 
     this.container = $.GetContextPanel().FindChild("container");
+    this.statusLabel = this.container.FindChildTraverse("status");
     this.timeLabel = this.container.FindChildTraverse("time");
     this.heroesPanel = this.container.FindChild("heroes");
 }
@@ -37,7 +38,14 @@ HeroSelection.prototype.OnHover = function() {
 
 HeroSelection.prototype.Render = function() {
     var that = this;
-    this.timeLabel.text = this.time;
+    if (this.time !== undefined) {
+        this.timeLabel.text = this.time > 60 ? (this.time - 60) : this.time;
+        this.statusLabel.text = this.time > 60 ? "PICK PHASE BEGINS IN" : "GAME STARTS IN";
+    }
+
+    var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
+    var name = Entities.GetUnitName(hero);
+    var heroPicked = hero !== -1 && name !== "npc_dota_hero_wisp";
 
     for (var heroName in this.allHeroes) {
         var heroPanel = this.heroesPanel.FindChild(heroName);
@@ -47,7 +55,9 @@ HeroSelection.prototype.Render = function() {
             heroPanel.AddClass("hero");
             this.BindOnActivate(heroPanel, heroName);
         }
-        heroPanel.SetHasClass("grayscale", !this.availableHeroes[heroName]);
+        heroPanel.SetHasClass("grayscale", this.time > 60 || !this.availableHeroes[heroName]);
+
+        heroPanel.SetHasClass("picked", heroPicked);
     }
 
     var randomPanel = this.heroesPanel.FindChild("random");
@@ -64,6 +74,8 @@ HeroSelection.prototype.Render = function() {
             }
         );
     }
+    randomPanel.SetHasClass("grayscale", this.time > 60);
+    randomPanel.SetHasClass("picked", heroPicked);
 
 
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
