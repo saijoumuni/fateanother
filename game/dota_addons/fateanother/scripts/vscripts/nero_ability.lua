@@ -470,7 +470,7 @@ end
 function OnTheatreApplyDamage(keys)
 	local target = keys.target
 	local caster = keys.caster
-	DoDamage(caster, target, keys.Damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+	DoDamage(caster, target, keys.Damage / 4, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 end
 
 function CreateBannerInCircle(handle, center, multiplier)

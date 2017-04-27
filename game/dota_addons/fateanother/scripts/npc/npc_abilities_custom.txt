@@ -20450,7 +20450,7 @@
 					{
 						"ScriptFile"			"nero_ability"
 						"Function"				"OnTheatreApplyDamage"
-						"Damage"				"%damage/4"
+						"Damage"				"%damage"
 					}
 				}
 			}
@@ -26717,7 +26717,7 @@
 			"modifier_down_with_a_touch_slow"
 			{
 				"IsDebuff"	"1"
-				"Duration"	"%slow_duration/3"
+				"Duration"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%slow"
@@ -26734,7 +26734,7 @@
 			"modifier_down_with_a_touch_slow_2"
 			{
 				"IsDebuff"	"1"
-				"Duration"	"%slow_duration/3"
+				"Duration"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%slow_tier2"
@@ -26751,7 +26751,7 @@
 			"modifier_down_with_a_touch_slow_3"
 			{
 				"IsDebuff"	"1"
-				"Duration"	"%slow_duration/3"
+				"Duration"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%slow_tier3"
