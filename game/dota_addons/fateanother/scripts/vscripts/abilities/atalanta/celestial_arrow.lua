@@ -112,7 +112,6 @@ function atalanta_celestial_arrow:OnProjectileHit(target, location)
 end
 
 function atalanta_celestial_arrow:ArrowHit(target, onHit)
-	print(target:GetName())
     local caster = self:GetCaster()
 
     caster:AddHuntStack(target, 1)
