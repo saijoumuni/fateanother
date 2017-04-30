@@ -29058,11 +29058,11 @@
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"abilities/atalanta/last_spurt"
 		"MaxLevel"						"1"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityTextureName"			"custom/atalanta_last_spurt"
 
-		"AbilityCastPoint"				"0.1"
-		"AbilityCooldown"				"60"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"25"
 		"AbilityManaCost"				"0"
 		
 		"precache"
@@ -29208,7 +29208,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"barrage_arrows"	"40"
+				"barrage_arrows"	"50"
 			}
 			"05"
 			{
@@ -29274,7 +29274,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"arrows"			"60"
+				"arrows"			"50"
 			}
 			"05"
 			{
