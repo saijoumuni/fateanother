@@ -940,7 +940,7 @@ function CleanUpHammer(hero)
     if oldCavalryTable ~= nil then
         for i=1,#oldCavalryTable do
 	    local unit = oldCavalryTable[i]
-	    if unit ~= nil then
+	    if unit ~= nil and not unit:IsNull() then
                 unit:PreventDI(false)
                 unit:SetPhysicsVelocity(Vector(0,0,0))
                 unit:OnPhysicsFrame(nil)
