@@ -305,11 +305,11 @@
         "DOTA_Tooltip_ability_atalanta_celestial_arrow_bonus_damage"                      "BONUS DAMAGE:"
 
         "DOTA_Tooltip_ability_atalanta_calydonian_hunt"                                   "Calydonian Hunt"
-        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_Description"                       "<font color='#58ACFA'>PASSIVE:</font> Enemies wounded by Archer's arrows have a stacking debuff applied on them, while dealing damage based on the number of stacks present. Stacks are applied before damage. <font color='#58ACFA'>ACTIVE:</font> Applies a <font color='#FF3399'>root</font> on each enemy with the Calydonian Hunt debuff on them. Also grants Fog of War vision on them."
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_Description"                       "<font color='#58ACFA'>PASSIVE:</font> Enemies wounded by Archer's arrows have a stacking debuff applied on them, while dealing extra physical damage based on the number of stacks present. Stacks are applied before damage. <font color='#58ACFA'>ACTIVE:</font> Applies a <font color='#FF3399'>root</font> on each enemy with the Calydonian Hunt debuff on them. Also grants Fog of War vision on them."
         "DOTA_Tooltip_ability_atalanta_calydonian_hunt_max_stacks"                        "MAX STACKS:"
         "DOTA_Tooltip_ability_atalanta_calydonian_hunt_debuff_duration"                   "DEBUFF DURATION:"
         "DOTA_Tooltip_ability_atalanta_calydonian_hunt_root_duration"                     "ROOT DURATION:"
-        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_damage_per_stack"                  "DAMAGE PER STACK:"
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_damage_per_stack"                  "DAMAGE % PER STACK:"
 
         "DOTA_Tooltip_ability_atalanta_golden_apple"                                      "Golden Apple"
         "DOTA_Tooltip_ability_atalanta_golden_apple_Description"                          "Fires an irresistable Golden Apple at a location. Enemies within the radius will be forced to move towards it in an attempt to pick it up."
@@ -329,20 +329,20 @@
         "DOTA_Tooltip_ability_atalanta_last_spurt"                                        "Last Spurt"
         "DOTA_Tooltip_ability_atalanta_last_spurt_Description"                            "Grants bonus movement speed. Movement speed bonus increases for each unit in the area of effect not facing Archer."
         "DOTA_Tooltip_ability_atalanta_last_spurt_Lore"                                   "Go ahead. I shall pass in front of you afterward like a squall."
-        "DOTA_Tooltip_ability_atalanta_last_spurt_base_ms"                                "BASE MS%%:"
-        "DOTA_Tooltip_ability_atalanta_last_spurt_ms_per_unit"                            "MS%% PER UNIT:"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_base_ms"                                "BASE MS%:"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_ms_per_unit"                            "MS% PER UNIT:"
         "DOTA_Tooltip_ability_atalanta_last_spurt_duration"                               "DURATION:"
         "DOTA_Tooltip_ability_atalanta_last_spurt_aoe"                                    "AOE:"
 
         "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt"                             "Priestess Of The Hunt"
-        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_Description"                 "In exchange for the inability to autoattack, Archer fires her arrows with great range and power. Her spells use charges of arrows which replenish over time. Arrows apply damage equal to her physical attack. Arrows replenish based on her attack time (e.g. 1 attack per 3 seconds equates to 1 arrow every 3 seconds). Arrows do not pierce spell immunity."
+        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_Description"                 "In exchange for the ability to autoattack, Archer fires her arrows with great range and power. Her spells use charges of arrows which replenish over time. Arrows apply damage equal to her physical attack. Arrows replenish based on her attack time (e.g. 1 attack per 3 seconds equates to 1 arrow every 3 seconds). Arrows do not pierce spell immunity."
         "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_arrows"                      "ARROW CHARGES:"
 
         "DOTA_Tooltip_ability_atalanta_tauropolos"                                        "Tauropolos - Bow of Heaven"
         "DOTA_Tooltip_ability_atalanta_tauropolos_Description"                            "For a short duration, Archer draws upon the might of Artemis. Grants arrow charges which can exceed the maximum arrow charge count. Reduces the cast time of Archer's abilities and for each point of agility, increases the range of Celestial Arrows and radius of AoE arrows."
         "DOTA_Tooltip_ability_atalanta_tauropolos_duration"                               "DURATION:"
         "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_arrows"                           "BONUS ARROWS:"
-        "DOTA_Tooltip_ability_atalanta_tauropolos_cast_time_reduction"                    "CAST TIME %% REDUCTION:"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_cast_time_reduction"                    "CAST TIME % REDUCTION:"
         "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_range_per_agi"                    "BONUS RANGE PER AGI:"
         "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_aoe_per_agi"                      "BONUS AOE PER AGI:"
 
