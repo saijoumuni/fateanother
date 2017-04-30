@@ -20,7 +20,8 @@ var heroes = [
 	"npc_dota_hero_bloodseeker",
 	"npc_dota_hero_mirana",
 	"npc_dota_hero_queenofpain",
-	"npc_dota_hero_windrunner"
+	"npc_dota_hero_windrunner",
+	"npc_dota_hero_drow_ranger"
 ]
 
 var names = [
@@ -45,7 +46,8 @@ var names = [
 	"Assassin(Extra)",
 	"Ruler(Apocrypha)",
 	"Rider of Black(Apocrypha)",
-	"Caster(Extra), N.R"
+	"Caster(Extra), N.R",
+	"Archer of Red(Apocrypha)",
 ]
 
 
@@ -71,7 +73,8 @@ var abilities = [
 	["lishuwen_concealment", "lishuwen_cosmic_orbit", "lishuwen_fierce_tiger_strike", "lishuwen_martial_arts", "fate_empty1", "lishuwen_no_second_strike"],
 	["jeanne_charisma", "jeanne_purge_the_unjust", "jeanne_gods_resolution", "jeanne_magic_resistance_ex", "jeanne_saint", "jeanne_luminosite_eternelle"],
 	["astolfo_hippogriff_vanish", "astolfo_down_with_a_touch", "astolfo_la_black_luna", "fate_empty1", "astolfo_casa_di_logistilla", "astolfo_hippogriff_raid"],
-	["nursery_rhyme_white_queens_enigma", "nursery_rhyme_the_plains_of_water", "nursery_rhyme_doppelganger", "nursery_rhyme_shapeshift", "nursery_rhyme_nameless_forest", "nursery_rhyme_queens_glass_game"]
+	["nursery_rhyme_white_queens_enigma", "nursery_rhyme_the_plains_of_water", "nursery_rhyme_doppelganger", "nursery_rhyme_shapeshift", "nursery_rhyme_nameless_forest", "nursery_rhyme_queens_glass_game"],
+	["atalanta_celestial_arrow", "atalanta_calydonian_hunt", "atalanta_crossing_arcadia", "atalanta_last_spurt", "atalanta_priestess_of_the_hunt", "atalanta_tauropolos"],
 ]
 
 var attributes = [
@@ -96,7 +99,8 @@ var attributes = [
 	["lishuwen_attribute_circulatory_shock", "lishuwen_attribute_improve_martial_arts", "lishuwen_attribute_dual_class", "lishuwen_attribute_furious_chain"],
 	["jeanne_attribute_identity_discernment", "jeanne_attribute_improve_saint", "jeanne_attribute_punishment", "jeanne_attribute_divine_symbol"],
 	["astolfo_attribute_riding", "astolfo_attribute_monstrous_strength", "astolfo_attribute_independent_action", "astolfo_attribute_sanity"],
-	["nursery_rhyme_attribute_forever_together","nursery_rhyme_attribute_nightmare","nursery_rhyme_attribute_reminiscence","nursery_rhyme_attribute_improve_queens_glass_game"]
+	["nursery_rhyme_attribute_forever_together","nursery_rhyme_attribute_nightmare","nursery_rhyme_attribute_reminiscence","nursery_rhyme_attribute_improve_queens_glass_game"],
+	["atalanta_attribute_arrows_of_the_big_dipper", "atalanta_attribute_hunters_mark", "atalanta_attribute_golden_apple", "atalanta_attribute_crossing_arcadia_plus"],
 ]
 
 var comboes = [
@@ -121,7 +125,8 @@ var comboes = [
 	"lishuwen_raging_dragon_strike",
 	"jeanne_combo_la_pucelle",
 	"astolfo_hippogriff_ride",
-	"nursery_rhyme_story_for_somebodys_sake"
+	"nursery_rhyme_story_for_somebodys_sake",
+	"atalanta_phoebus_catastrophe_proxy",
 ]
 
 var guidelinks = [
@@ -147,7 +152,8 @@ var guidelinks = [
 	"http://fa-d2.wikia.com/wiki/Jeanne_d%27Arc#Gameplay",
 	"http://fa-d2.wikia.com/wiki/Jeanne_d%27Arc#Gameplay",
 	"http://fa-d2.wikia.com/wiki/Rider_of_Black#Gameplay",
-	"http://fa-d2.wikia.com/wiki/Rider_of_Black#Gameplay"   //placeholder for nursery rhyme's page
+	"http://fa-d2.wikia.com/wiki/Rider_of_Black#Gameplay",   //placeholder for nursery rhyme's page
+	"http://fa-d2.wikia.com/wiki/Rider_of_Black#Gameplay",   //placeholder for atalanta's page
 ]
 
 function CreateContextAbilityPanel(panel, abilityname)
