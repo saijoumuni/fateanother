@@ -39,7 +39,7 @@ function atalanta_crossing_arcadia:GetCustomCastErrorLocation(location)
         end
     end
 
-    return "Recharging arrows..."
+    return "Not enough arrows..."
 end
 
 function atalanta_crossing_arcadia:OnSpellStart()
