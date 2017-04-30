@@ -1,0 +1,94 @@
+function atalanta_phoebus_catastrophe_wrapper(ability)
+    function ability:OnAbilityPhaseStart()
+        local caster = self:GetCaster()
+        StartSoundEvent("Atalanta.PhoebusCast", caster)
+    
+        local casterFX = ParticleManager:CreateParticle("particles/econ/items/monkey_king/arcana/death/mk_spring_arcana_death_ground_impact.vpcf", PATTACH_POINT_FOLLOW, caster)
+        ParticleManager:SetParticleControl(casterFX, 0, caster:GetOrigin())
+    
+        local casterFX2 = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_rings_gold.vpcf", PATTACH_POINT_FOLLOW, caster)
+        ParticleManager:SetParticleControl(casterFX2, 0, caster:GetOrigin())
+    
+        local casterFX3 = ParticleManager:CreateParticle("particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_d_gold.vpcf", PATTACH_POINT_FOLLOW, caster)
+        ParticleManager:SetParticleControl(casterFX3, 0, caster:GetOrigin())
+    
+        Timers:CreateTimer(1, function()
+            ParticleManager:ReleaseParticleIndex(casterFX)
+            ParticleManager:ReleaseParticleIndex(casterFX2)
+            ParticleManager:ReleaseParticleIndex(casterFX3)
+        end)
+    
+        return true
+    end
+    
+    function ability:ShootAirArrows()
+        local caster = self:GetCaster()
+        local position = self:GetCursorPosition()
+        local origin = caster:GetOrigin()
+        local aoe = self:GetSpecialValueFor("aoe")
+    
+        StartSoundEvent("Atalanta.PhoebusRelease", caster)
+    
+        local midpoint = (origin + position) / 2
+        local targetLocation = midpoint + Vector(0, 0, 1000)
+
+        local dummy = CreateUnitByName("dummy_unit", targetLocation, false, caster, caster, caster:GetTeamNumber())
+        dummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
+	dummy:SetOrigin(targetLocation + Vector(100, 0, 0))
+
+        local dummy2 = CreateUnitByName("dummy_unit", targetLocation, false, caster, caster, caster:GetTeamNumber())
+        dummy2:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
+	dummy2:SetOrigin(targetLocation + Vector(-100, 0, 0))
+    
+        caster:ShootArrow({
+            Target = dummy,
+            AoE = aoe,
+            Delay = 0.6,
+            Effect = effect,
+            Facing = facing,
+            NoHit = true,
+            DontCountArrow = true
+        })
+    
+        caster:ShootArrow({
+            Target = dummy2,
+            AoE = aoe,
+            Delay = 0.6,
+            Effect = effect,
+            Facing = facing,
+            NoHit = true,
+            DontCountArrow = true
+        })
+    end
+
+    function ability:AfterSpell()
+        local caster = self:GetCaster()
+        local cooldown = self:GetCooldown(1)
+
+        local snipe = caster:FindAbilityByName("atalanta_phoebus_catastrophe_snipe")
+        snipe:EndCooldown()
+        snipe:StartCooldown(cooldown)
+
+        local barrage = caster:FindAbilityByName("atalanta_phoebus_catastrophe_barrage")
+        barrage:EndCooldown()
+        barrage:StartCooldown(cooldown)
+
+        local masterCombo = caster.MasterUnit2:FindAbilityByName("atalanta_phoebus_catastrophe_proxy")
+        masterCombo:EndCooldown()
+        masterCombo:StartCooldown(cooldown)
+
+        caster:AddNewModifier(caster, self, "modifier_phoebus_catastrophe_cooldown", {
+            duration = cooldown
+        })
+    end
+
+    function ability:GetPlaybackRateOverride()
+        return 0.75
+    end
+    
+    function ability:GetCastAnimation()
+        return ACT_DOTA_CAST_ABILITY_4
+    end
+end
+
+

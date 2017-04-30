@@ -199,6 +199,14 @@ NRAttribute = {
 	"nursery_rhyme_story_for_somebodys_sake",
 	attrCount = 4
 }
+AtalantaAttribute = {
+	"atalanta_attribute_arrows_of_the_big_dipper",
+	"atalanta_attribute_hunters_mark",
+	"atalanta_attribute_golden_apple",
+	"atalanta_attribute_crossing_arcadia_plus",
+	"atalanta_phoebus_catastrophe_proxy",
+	attrCount = 4
+}
 --[[LiAttribute = {
 	attrCount = 4
 }]]
@@ -530,6 +538,8 @@ function FindAttribute(name)
     	attributes = AstolfoAttribute
     elseif name == "npc_dota_hero_windrunner" then
     	attributes = NRAttribute
+    elseif name == "npc_dota_hero_drow_ranger" then
+    	attributes = AtalantaAttribute
     end
     return attributes
 end 

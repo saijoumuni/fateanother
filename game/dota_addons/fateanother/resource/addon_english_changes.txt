@@ -265,3 +265,133 @@
     "DOTA_Tooltip_ability_fate_empty6"			"Empty"
     "DOTA_Tooltip_ability_fate_empty7"			"Empty"
     "DOTA_Tooltip_ability_fate_empty8"			"Empty"
+
+    //====================================
+    // Atalanta
+    //====================================
+    "DOTA_Tooltip_modifier_arrows_of_the_big_dipper"                                  "Arrows of the Big Dipper"
+    "DOTA_Tooltip_modifier_arrows_of_the_big_dipper_Description"                      ""
+
+    "DOTA_Tooltip_modifier_calydonian_hunt"                                           "Calydonian Hunt"
+    "DOTA_Tooltip_modifier_calydonian_hunt_Description"                               ""
+
+    "DOTA_Tooltip_modifier_calydonian_hunt_root"                                      "Calydonian Hunt Root"
+    "DOTA_Tooltip_modifier_calydonian_hunt_root_Description"                          ""
+
+    "DOTA_Tooltip_modifier_celestial_arrow"                                           "Celestial Arrow"
+    "DOTA_Tooltip_modifier_celestial_arrow_Description"                               ""
+
+    "DOTA_Tooltip_modifier_last_spurt"                                                "Last Spurt"
+    "DOTA_Tooltip_modifier_last_spurt_Description"                                    ""
+
+    "DOTA_Tooltip_modifier_priestess_of_the_hunt"                                     "Priestess of the Hunt"
+    "DOTA_Tooltip_modifier_priestess_of_the_hunt_Description"                         ""
+
+    "DOTA_Tooltip_modifier_tauropolos"                                                "Tauropolos - Bow of Heaven"
+    "DOTA_Tooltip_modifier_tauropolos_Description"                                    ""
+
+    "DOTA_Tooltip_modifier_phoebus_catastrophe_cooldown"                              "Phoebus Catastrophe Cooldown"
+    "DOTA_Tooltip_modifier_phoebus_catastrophe_cooldown_Description"                  ""
+
+    "DOTA_Tooltip_modifier_golden_apple_cooldown"                                     "Golden Apple Cooldown"
+    "DOTA_Tooltip_modifier_golden_apple_cooldown_Description"                         ""
+
+        "npc_dota_hero_drow_ranger"             "Archer of Red(Apocrypha)"
+
+        "DOTA_Tooltip_ability_atalanta_celestial_arrow"                                   "Celestial Arrow"
+        "DOTA_Tooltip_ability_atalanta_celestial_arrow_Description"                       "<font color='#FF6600'>Arrows Used: 1</font>\nFires an single powerful shot, damaging all enemies in a straight line. Grants bonus max arrow charges and damage."
+        "DOTA_Tooltip_ability_atalanta_celestial_arrow_range"                             "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_celestial_arrow_bonus_arrows"                      "BONUS ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_celestial_arrow_bonus_damage"                      "BONUS DAMAGE:"
+
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt"                                   "Calydonian Hunt"
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_Description"                       "<font color='#58ACFA'>PASSIVE:</font> Enemies wounded by Archer's arrows have a stacking debuff applied on them, while dealing damage based on the number of stacks present. Stacks are applied before damage. <font color='#58ACFA'>ACTIVE:</font> Applies a <font color='#FF3399'>root</font> on each enemy with the Calydonian Hunt debuff on them. Also grants Fog of War vision on them."
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_max_stacks"                        "MAX STACKS:"
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_debuff_duration"                   "DEBUFF DURATION:"
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_root_duration"                     "ROOT DURATION:"
+        "DOTA_Tooltip_ability_atalanta_calydonian_hunt_damage_per_stack"                  "DAMAGE PER STACK:"
+
+        "DOTA_Tooltip_ability_atalanta_golden_apple"                                      "Golden Apple"
+        "DOTA_Tooltip_ability_atalanta_golden_apple_Description"                          "Fires an irresistable Golden Apple at a location. Enemies within the radius will be forced to move towards it in an attempt to pick it up."
+	"DOTA_Tooltip_ability_atalanta_golden_apple_Lore"                                 "Look, this is the fruit of fate. This glorious treasure once sparked the burning of Troy. Come closer if you wish for it." 
+        "DOTA_Tooltip_ability_atalanta_golden_apple_range"                                "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_golden_apple_lure_duration"                        "LURE DURATION:"
+        "DOTA_Tooltip_ability_atalanta_golden_apple_aoe"                                  "AOE:"
+
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia"                                  "Crossing Arcadia"
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_Description"                      "<font color='#FF6600'>Arrows Used: 1</font>\nArcher leaps into the air over the target location and fires an arrow downwards. The arrow applies a mininstun upon impact."
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_Lore"                             "Arcadia, my far-away homeland, I shall jump stone by stone across the steep mountain range that lead to you."
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_range"                            "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_jump_time"                        "JUMP DELAY:"
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_aoe"                              "AOE:"
+        "DOTA_Tooltip_ability_atalanta_crossing_arcadia_stun_duration"                    "STUN DURATION:"
+
+        "DOTA_Tooltip_ability_atalanta_last_spurt"                                        "Last Spurt"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_Description"                            "Grants bonus movement speed. Movement speed bonus increases for each unit in the area of effect not facing Archer."
+        "DOTA_Tooltip_ability_atalanta_last_spurt_Lore"                                   "Go ahead. I shall pass in front of you afterward like a squall."
+        "DOTA_Tooltip_ability_atalanta_last_spurt_base_ms"                                "BASE MS%%:"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_ms_per_unit"                            "MS%% PER UNIT:"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_duration"                               "DURATION:"
+        "DOTA_Tooltip_ability_atalanta_last_spurt_aoe"                                    "AOE:"
+
+        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt"                             "Priestess Of The Hunt"
+        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_Description"                 "In exchange for the inability to autoattack, Archer fires her arrows with great range and power. Her spells use charges of arrows which replenish over time. Arrows apply damage equal to her physical attack. Arrows replenish based on her attack time (e.g. 1 attack per 3 seconds equates to 1 arrow every 3 seconds). Arrows do not pierce spell immunity."
+        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_arrows"                      "ARROW CHARGES:"
+
+        "DOTA_Tooltip_ability_atalanta_tauropolos"                                        "Tauropolos - Bow of Heaven"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_Description"                            "For a short duration, Archer draws upon the might of Artemis. Grants arrow charges which can exceed the maximum arrow charge count. Reduces the cast time of Archer's abilities and for each point of agility, increases the range of Celestial Arrows and radius of AoE arrows."
+        "DOTA_Tooltip_ability_atalanta_tauropolos_duration"                               "DURATION:"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_arrows"                           "BONUS ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_cast_time_reduction"                    "CAST TIME %% REDUCTION:"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_range_per_agi"                    "BONUS RANGE PER AGI:"
+        "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_aoe_per_agi"                      "BONUS AOE PER AGI:"
+
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy"                         "Phoebus Catastrophe - Complaint Message on an Arrow"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nShe is able to choose between raining arrows over an area or snipe a target with precise strikes."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_Lore"                    "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_range"                   "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_aoe"                     "AOE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_arrow_aoe"               "ARROW AOE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_barrage_arrows"          "BARRAGE ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_snipe_arrows"            "SNIPE ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_delay"                   "DELAY TO FIRST ARROW:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_cast_time_delay"               "CAST TIME:"
+
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage"                       "Phoebus Catastrophe: Barrage"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_Description"           "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nA barrage of arrows rains on the area after a delay."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_Lore"                  "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_range"                 "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_aoe"                   "AOE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_arrow_aoe"             "ARROW AOE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_arrows"                "ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_delay"                   "DELAY TO FIRST ARROW:"
+
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe"                         "Phoebus Catastrophe: Snipe"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nArrows strike the target with deadly precision after a delay. Snipe arrows pierce spell immunity."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Lore"                    "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_range"                   "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_arrow_aoe"               "ARROW AOE:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_arrows"                  "ARROWS:"
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_delay"                   "DELAY TO FIRST ARROW:"
+
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper"                "Arrows Of The Big Dipper"
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper_Description"    "Archer imbues her arrows with the blessing of Artemis. Celestial Arrows have increased range and provides vision.\nAfter firing a number of arrows, a copy of the last one will be fired again. Combo arrows do not count towards this number. The extra arrow fired does not use an arrow charge."
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper_attribute_bonus_range"                "BONUS RANGE:"
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper_attribute_vision_radius"                "VISION RADIUS:"
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper_attribute_vision_duration"                "VISION DURATION:"
+        "DOTA_Tooltip_ability_atalanta_attribute_arrows_of_the_big_dipper_attribute_arrows_needed"                "ARROWS NEEDED:"
+
+        "DOTA_Tooltip_ability_atalanta_attribute_hunters_mark"                            "Hunters Mark"
+        "DOTA_Tooltip_ability_atalanta_attribute_hunters_mark_Description"                "Damage applied by Calydonian Hunt has 100%% armor penetration. Also increases maximum stack count and duration of the debuff."
+        "DOTA_Tooltip_ability_atalanta_attribute_hunters_mark_attribute_stack_bonus"      "STACK BONUS:"
+        "DOTA_Tooltip_ability_atalanta_attribute_hunters_mark_attribute_bonus_duration"   "BONUS DURATION:"
+
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple"                            "Golden Apple"
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_Description"                "Golden Apple can be used within 6 seconds after casting Calydonian Hunt.\n<font color='#58ACFA'>Golden Apple :</font> Fires an irresistable Golden Apple at a location. Enemies within the radius will be forced to move towards it in an attempt to pick it up."
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_range"                      "RANGE:"
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_lure_duration"              "LURE DURATION:"
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_aoe"                        "AOE:"
+
+        "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus"                   "Crossing Arcadia Plus"
+        "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus_Description"       "Fires extra arrows during Crossing Arcadia. The arrows are spread in such a way that targets directly under Archer will be hit by all of them. Extra arrows do not consume arrow charges, but count towards Arrows of the Big Dipper.\nUpon landing, applies a free cast of Last Spurt."
+        "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus_extra_arrows"      "EXTRA ARROWS:"

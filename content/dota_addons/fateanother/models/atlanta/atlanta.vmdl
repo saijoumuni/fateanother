@@ -57,12 +57,272 @@
 						m_HitBoxes = 
 						[
 							{
+								m_name = "Bone01"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone01"
+								m_vMinBounds = [ -11.598922, -11.265918, -21.381638 ]
+								m_vMaxBounds = [ 11.610131, 36.552113, 15.668411 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone02"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone02"
+								m_vMinBounds = [ -16.792978, -6.904884, -9.815041 ]
+								m_vMaxBounds = [ 16.804018, 101.889671, 9.976593 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
 								m_name = "Bone03"
 								m_sSurfaceProperty = ""
 								m_nGroupId = 0
 								m_sBoneName = "Bone03"
-								m_vMinBounds = [ 65.0, 55.0, 35.0 ]
-								m_vMaxBounds = [ -65.0, -55.0, -70.0 ]
+								m_vMinBounds = [ -11.250588, -7.403978, -0.106583 ]
+								m_vMaxBounds = [ 11.261802, 13.348591, 18.239914 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone12"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone12"
+								m_vMinBounds = [ -8.408428, -6.961946, -39.00124 ]
+								m_vMaxBounds = [ 6.50314, 11.79957, 5.671097 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone04"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone04"
+								m_vMinBounds = [ -11.022672, -12.483784, -6.98555 ]
+								m_vMaxBounds = [ 11.432897, 13.574503, 24.121094 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone28"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone28"
+								m_vMinBounds = [ -2.591476, -8.55645, -16.599785 ]
+								m_vMaxBounds = [ 19.237061, 7.50365, 5.475235 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone06"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone06"
+								m_vMinBounds = [ -19.101717, -8.55645, -16.112892 ]
+								m_vMaxBounds = [ 2.863314, 7.50365, 5.475235 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone44"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone44"
+								m_vMinBounds = [ -6.40933, -6.961946, -39.00124 ]
+								m_vMaxBounds = [ 8.502243, 11.79957, 5.671097 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone13"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone13"
+								m_vMinBounds = [ -7.41872, -4.747323, -38.417645 ]
+								m_vMaxBounds = [ 4.453733, 6.669709, -2.447998 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point14"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point14"
+								m_vMinBounds = [ -3.152489, -4.728889, -8.812073 ]
+								m_vMaxBounds = [ 1.807294, 9.442031, 4.214905 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point17"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point17"
+								m_vMinBounds = [ -17.596207, -4.728891, -8.812027 ]
+								m_vMaxBounds = [ 3.854624, 10.219604, 4.214905 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point18"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point18"
+								m_vMinBounds = [ -10.949309, -8.664417, -7.030212 ]
+								m_vMaxBounds = [ 11.709216, 6.355425, -3.328781 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone27"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone27"
+								m_vMinBounds = [ -0.568274, -3.539181, -22.908096 ]
+								m_vMaxBounds = [ 25.809443, 5.509417, 0.708893 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone07"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone07"
+								m_vMinBounds = [ -25.674101, -3.539184, -22.42128 ]
+								m_vMaxBounds = [ 0.703602, 5.509414, 1.19577 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone45"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone45"
+								m_vMinBounds = [ -4.359942, -4.74731, -38.417645 ]
+								m_vMaxBounds = [ 7.512515, 6.669721, -2.447998 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone17"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone17"
+								m_vMinBounds = [ -5.372436, -9.869237, -10.773613 ]
+								m_vMaxBounds = [ 6.126954, 3.227905, -0.712302 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point15"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point15"
+								m_vMinBounds = [ -3.16109, -1.827499, -0.619858 ]
+								m_vMaxBounds = [ 0.280467, 5.129431, 5.147049 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point16"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point16"
+								m_vMinBounds = [ 0.421139, -1.827501, -0.619827 ]
+								m_vMaxBounds = [ 3.862694, 5.129433, 5.147064 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point19"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point19"
+								m_vMinBounds = [ -26.649097, 24.021652, -73.098999 ]
+								m_vMaxBounds = [ 27.408993, 36.721481, -70.64212 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone29"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone29"
+								m_vMinBounds = [ 4.157768, -96.683136, -19.605309 ]
+								m_vMaxBounds = [ 21.177273, 95.976898, -5.687149 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone08"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone08"
+								m_vMinBounds = [ -21.051567, -7.067371, -19.12661 ]
+								m_vMaxBounds = [ -4.029709, 3.887975, -5.206429 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone46"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone46"
+								m_vMinBounds = [ -6.597771, -21.890436, -10.913556 ]
+								m_vMaxBounds = [ 5.538193, 3.227924, -0.712321 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Bone21"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Bone21"
+								m_vMinBounds = [ -4.38139, -15.247025, -3.007209 ]
+								m_vMaxBounds = [ 7.754568, -3.863356, 4.591142 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point08"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point08"
+								m_vMinBounds = [ -8.05757, -5.652419, -37.98251 ]
+								m_vMaxBounds = [ 32.070251, 13.777587, 4.364372 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point07"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point07"
+								m_vMinBounds = [ -8.677365, 3.164734, -28.39045 ]
+								m_vMaxBounds = [ 25.645306, 23.523312, 3.099281 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point05"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point05"
+								m_vMinBounds = [ -25.225365, 3.164734, -30.270645 ]
+								m_vMaxBounds = [ 9.097656, 28.960266, 3.099297 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "Point06"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "Point06"
+								m_vMinBounds = [ -31.65036, -5.652417, -37.98251 ]
+								m_vMaxBounds = [ 8.477859, 13.777589, 4.364372 ]
 								m_bTranslationOnly = false
 								m_cRenderColor = [ 0, 0, 0, 0 ]
 							},
@@ -385,7 +645,7 @@
 					m_Activities = 
 					[
 						{
-							m_Name = "ACT_DOTA_CAST_ABILITY_1"
+							m_Name = "ACT_DOTA_CAST_ABILITY_4"
 							m_nWeight = 1
 						},
 					]
@@ -431,7 +691,7 @@
 					m_Activities = 
 					[
 						{
-							m_Name = "ACT_DOTA_CAST_ABILITY_2"
+							m_Name = "ACT_DOTA_CAST_ABILITY_3"
 							m_nWeight = 1
 						},
 					]
@@ -474,7 +734,13 @@
 					}
 					m_bHidden = false
 					m_bDisable = false
-					m_Activities = [  ]
+					m_Activities = 
+					[
+						{
+							m_Name = "ACT_DOTA_CAST_ABILITY_1"
+							m_nWeight = 1
+						},
+					]
 					m_AnimationEvents = [  ]
 					m_MotionFrames = [  ]
 					m_pIkRules = [  ]
@@ -514,7 +780,13 @@
 					}
 					m_bHidden = false
 					m_bDisable = false
-					m_Activities = [  ]
+					m_Activities = 
+					[
+						{
+							m_Name = "ACT_DOTA_CAST_ABILITY_2"
+							m_nWeight = 1
+						},
+					]
 					m_AnimationEvents = [  ]
 					m_MotionFrames = [  ]
 					m_pIkRules = [  ]

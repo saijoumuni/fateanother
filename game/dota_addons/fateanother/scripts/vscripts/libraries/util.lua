@@ -1538,6 +1538,7 @@ local heroNames = {
     ["npc_dota_hero_mirana"] = "Ruler(Apocrypha)",
     ["npc_dota_hero_queenofpain"] = "Rider of Black(Apocrypha)",
     ["npc_dota_hero_windrunner"] = "Caster(Extra), N.R",
+    ["npc_dota_hero_drow_ranger"] = "Archer of Red(Apocrypha)",
 }
 
 

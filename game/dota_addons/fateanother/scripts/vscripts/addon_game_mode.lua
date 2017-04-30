@@ -237,6 +237,7 @@ function Precache( context )
     PrecacheResource("soundfile", "soundevents/hero_ruler.vsndevts", context)
     PrecacheResource( "soundfile", "soundevents/hero_astolfo.vsndevts", context )
     PrecacheResource( "soundfile", "soundevents/hero_nursery_rhyme.vsndevts", context )
+    PrecacheResource( "soundfile", "soundevents/hero_atalanta.vsndevts", context )
     PrecacheResource("soundfile", "soundevents/sounds_test.vsndevts", context)
     PrecacheResource( "soundfile", "soundevents/soundevents_conquest.vsndevts", context )
 
@@ -264,6 +265,7 @@ function Precache( context )
     PrecacheUnitByNameSync("npc_dota_hero_mirana", context)
     PrecacheUnitByNameSync("npc_dota_hero_queenofpain", context)
     PrecacheUnitByNameSync("npc_dota_hero_windrunner", context)
+    PrecacheUnitByNameSync("npc_dota_hero_drow_ranger", context)
     PrecacheUnitByNameSync("npc_dota_hero_wisp", context)
 
     -- Items
