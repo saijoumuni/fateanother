@@ -395,3 +395,9 @@
         "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus"                   "Crossing Arcadia Plus"
         "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus_Description"       "Fires extra arrows during Crossing Arcadia. The arrows are spread in such a way that targets directly under Archer will be hit by all of them. Extra arrows do not consume arrow charges, but count towards Arrows of the Big Dipper.\nUpon landing, applies a free cast of Last Spurt."
         "DOTA_Tooltip_ability_atalanta_attribute_crossing_arcadia_plus_extra_arrows"      "EXTRA ARROWS:"
+
+    //==================================
+    //  NEW VERSION
+    //==================================
+
+    EA's combo requirement from Q-W-E to W-E
