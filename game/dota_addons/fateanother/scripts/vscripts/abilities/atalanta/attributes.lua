@@ -12,6 +12,10 @@ function WrapAttributes(ability, attributeName, callback)
         local hero = caster:GetPlayerOwner():GetAssignedHero()
 
         hero[attributeName] = true
+
+	local master = hero.MasterUnit
+	master:SetMana(master:GetMana() - self:GetManaCost(1))
+
         if callback then
             callback(self, hero)
         end
