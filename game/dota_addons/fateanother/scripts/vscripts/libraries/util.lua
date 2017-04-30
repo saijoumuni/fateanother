@@ -32,7 +32,8 @@ softdispellable = {
     "modifier_lishuwen_concealment",
     "modifier_jeanne_charisma_str",
     "modifier_jeanne_charisma_agi",
-    "modifier_jeanne_charisma_int"
+    "modifier_jeanne_charisma_int",
+    "modifier_atalanta_last_spurt",
 }
 
 strongdispellable = {
@@ -67,6 +68,7 @@ strongdispellable = {
     "modifier_jeanne_charisma_str",
     "modifier_jeanne_charisma_agi",
     "modifier_jeanne_charisma_int",
+    "modifier_atalanta_last_spurt",
 
     -- Strong Dispelable
     "modifier_b_scroll",
@@ -259,7 +261,11 @@ CannotReset = {
     "nursery_rhyme_shapeshift_swap",
     "nursery_rhyme_nameless_forest",
     "nursery_rhyme_reminiscence",
-    "nursery_rhyme_story_for_somebodys_sake"
+    "nursery_rhyme_story_for_somebodys_sake",
+    "atalanta_golden_apple",
+    "atalanta_last_spurt",
+    "atalanta_phoebus_catastrophe_barrage",
+    "atalanta_phoebus_catastrophe_snipe",
 }
 
 femaleservant = {
@@ -270,7 +276,8 @@ femaleservant = {
     "npc_dota_hero_lina",
     "npc_dota_hero_enchantress",
     "npc_dota_hero_mirana",
-    "npc_dota_hero_windrunner"
+    "npc_dota_hero_windrunner",
+    "npc_dota_hero_drow_ranger",
 }
 
 itemComp = {
