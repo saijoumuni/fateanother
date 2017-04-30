@@ -347,7 +347,7 @@
         "DOTA_Tooltip_ability_atalanta_tauropolos_bonus_aoe_per_agi"                      "BONUS AOE PER AGI:"
 
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy"                         "Phoebus Catastrophe - Complaint Message on an Arrow"
-        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nShe is able to choose between raining arrows over an area or snipe a target with precise strikes."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W-D or F in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nShe is able to choose between raining arrows over an area or snipe a target with precise strikes."
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_Lore"                    "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_range"                   "RANGE:"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_aoe"                     "AOE:"
@@ -358,7 +358,7 @@
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_cast_time_delay"               "CAST TIME:"
 
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage"                       "Phoebus Catastrophe: Barrage"
-        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_Description"           "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nA barrage of arrows rains on the area after a delay."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_Description"           "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W-D in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nA barrage of arrows rains on the area after a delay."
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_Lore"                  "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_range"                 "RANGE:"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_barrage_aoe"                   "AOE:"
@@ -367,7 +367,7 @@
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_delay"                   "DELAY TO FIRST ARROW:"
 
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe"                         "Phoebus Catastrophe: Snipe"
-        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nArrows strike the target with deadly precision after a delay."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W-F in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nArrows strike the target with deadly precision after a delay."
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Lore"                    "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_range"                   "RANGE:"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_arrow_aoe"               "ARROW AOE:"
