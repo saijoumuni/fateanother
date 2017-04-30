@@ -282,7 +282,7 @@ function atalanta_celestial_arrow:ShootAoEArrow(keys)
         end
 
         if not keys.NoHit then
-            local targets = FindUnitsInRadius(caster:GetTeam(), position, nil, keys.AoE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+            local targets = FindUnitsInRadius(caster:GetTeam(), position, nil, keys.AoE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
             for _,v in pairs(targets) do
                 if not keys.Target or v ~= keys.Target then
                     ability:ArrowHit(v, keys.OnHit)

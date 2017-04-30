@@ -335,7 +335,7 @@
         "DOTA_Tooltip_ability_atalanta_last_spurt_aoe"                                    "AOE:"
 
         "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt"                             "Priestess Of The Hunt"
-        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_Description"                 "In exchange for the ability to autoattack, Archer fires her arrows with great range and power. Her spells use charges of arrows which replenish over time. Arrows apply damage equal to her physical attack. Arrows replenish based on her attack time (e.g. 1 attack per 3 seconds equates to 1 arrow every 3 seconds). Arrows do not pierce spell immunity."
+        "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_Description"                 "In exchange for the ability to autoattack, Archer fires her arrows with great range and power. Her spells use charges of arrows which replenish over time. Arrows apply damage equal to her physical attack. Arrows replenish based on her attack time (e.g. 1 attack per 3 seconds equates to 1 arrow every 3 seconds). Arrows pierce spell immunity."
         "DOTA_Tooltip_ability_atalanta_priestess_of_the_hunt_arrows"                      "ARROW CHARGES:"
 
         "DOTA_Tooltip_ability_atalanta_tauropolos"                                        "Tauropolos - Bow of Heaven"
@@ -367,7 +367,7 @@
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_proxy_delay"                   "DELAY TO FIRST ARROW:"
 
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe"                         "Phoebus Catastrophe: Snipe"
-        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nArrows strike the target with deadly precision after a delay. Snipe arrows pierce spell immunity."
+        "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Description"             "<font color='#58ACFA'>Combo Requirement: 20 in all stats</font>\n<font color='#58ACFA'>Combo Sequence: R-W in 6 seconds</font>\n<font color='#FF6600'>Arrows Used: 2</font>\n\nArcher fires 2 arrows seeking divine protection from Apollo the Sun God and Artemis the Goddess of the Hunt.\nArrows strike the target with deadly precision after a delay."
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_Lore"                    "Very well, it's the time to hunt then. This is an offering to the two Gods. Phoebus Catastrophe!"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_range"                   "RANGE:"
         "DOTA_Tooltip_ability_atalanta_phoebus_catastrophe_snipe_arrow_aoe"               "ARROW AOE:"
