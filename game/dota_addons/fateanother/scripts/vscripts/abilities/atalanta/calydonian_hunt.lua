@@ -76,6 +76,7 @@ function atalanta_calydonian_hunt:OnSpellStart()
         and caster:GetAgility() >= 19.1
         and caster:GetIntellect() >= 19.1
         and caster:HasModifier("modifier_r_used")
+        and caster:FindAbilityByName("atalanta_phoebus_catastrophe_barrage"):IsCooldownReady()
     then
         local modifier = caster:FindModifierByName("modifier_r_used")
 	local timeLeft = modifier:GetRemainingTime()
