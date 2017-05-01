@@ -87,10 +87,10 @@ function OnAutoAssignPressed()
 //--------------------------------------------------------------------------------------------------
 function OnShufflePlayersPressed()
 {
-	// if set up time is 0 or less
+	// if set up time less than 2
 	var gameTime = Game.GetGameTime();
 	var transitionTime = Game.GetStateTransitionTime();
-	if (Math.floor(transitionTime - gameTime) <= 0) {
+	if (Math.floor(transitionTime - gameTime) <= 1) {
 		return;
 	}
 	// Shuffle the team assignments of any players which are assigned to a team, 
