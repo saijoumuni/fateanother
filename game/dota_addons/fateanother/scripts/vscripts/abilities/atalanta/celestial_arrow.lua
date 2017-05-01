@@ -17,6 +17,12 @@ function atalanta_celestial_arrow:OnUpgrade()
                 ability:ShootArrow(...)
             end
         end
+
+        if not caster.ShootLinearArrow then
+            function caster:ShootLinearArrow(...)
+                ability:ShootLinearArrow(...)
+            end
+        end
     end
 end
 
@@ -119,16 +125,16 @@ function atalanta_celestial_arrow:OnProjectileThink(location)
     end
 end
 
-function atalanta_celestial_arrow:OnProjectileHit(target, location)
+function atalanta_celestial_arrow:OnProjectileHit_ExtraData(target, location, data)
     if target == nil then
         return
     end
 
     local caster = self:GetCaster()
-    caster:ArrowHit(target)
+    caster:ArrowHit(target, data["1"])
 end
 
-function atalanta_celestial_arrow:ArrowHit(target, onHit)
+function atalanta_celestial_arrow:ArrowHit(target, stun)
     local caster = self:GetCaster()
 
     caster:AddHuntStack(target, 1)
@@ -147,8 +153,8 @@ function atalanta_celestial_arrow:ArrowHit(target, onHit)
 
     DoDamage(caster, target, damage + huntDamage, DAMAGE_TYPE_PHYSICAL, 0, self, false)
 
-    if onHit then
-        onHit(target)
+    if stun > 0 then
+        target:AddNewModifier(caster, target, "modifier_stunned", {Duration = stun})
     end
 end
 
@@ -172,9 +178,9 @@ function atalanta_celestial_arrow:ShootArrow(keys)
     end
 
     if keys.Linear then
-        self:ShootLinearArrow(keys)
+        caster:ShootLinearArrow(keys)
     else
-        self:ShootAoEArrow(keys)
+        caster:ShootAoEArrow(keys)
     end
 
     if caster.ArrowsOfTheBigDipperAcquired and not keys.DontCountArrow then
@@ -218,78 +224,6 @@ function atalanta_celestial_arrow:ShootLinearArrow(keys)
         bProvidesVision = false,
     }
     ProjectileManager:CreateLinearProjectile(projectileTable)
-end
-
-function atalanta_celestial_arrow:ShootAoEArrow(keys)
-    local caster = self:GetCaster()
-    local ability = self
-
-    local source
-    local origin
-    local target
-    local dummy
-    local position
-
-    if keys.Origin then
-        local originDummy = CreateUnitByName("dummy_unit", keys.Origin, false, caster, caster, caster:GetTeamNumber())
-        originDummy:SetOrigin(keys.Origin)
-        originDummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
-
-        Timers:CreateTimer(1, function()
-            originDummy:RemoveSelf()
-        end)
-
-        source = originDummy
-        origin = keys.Origin
-    else
-        source = caster
-        origin = caster:GetOrigin()
-    end
-
-    if not keys.Target then
-        dummy = CreateUnitByName("dummy_unit", keys.Position, false, caster, caster, caster:GetTeamNumber())
-        dummy:SetOrigin(keys.Position)
-        dummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
-
-        target = dummy
-        position = keys.Position
-    else
-        target = keys.Target
-        position = target:GetOrigin()
-    end
-
-    local displacement = position - origin
-    if displacement == Vector(0, 0, 0) then
-        displacement = Vector(1, 1, 0)
-    end
-    local velocity = displacement / keys.Delay
-
-    local projectile = {
-        Target = target,
-        Source = source,
-        Ability = self,
-        EffectName = keys.Effect,
-        bDodgable = false,
-        bProvidesVision = false,
-        iMoveSpeed = velocity:Length(),
-        iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION,
-    }
-    ProjectileManager:CreateTrackingProjectile(projectile)
-
-    Timers:CreateTimer(keys.Delay, function()
-        if dummy then
-            dummy:RemoveSelf()
-        end
-
-        if not keys.NoHit then
-            local targets = FindUnitsInRadius(caster:GetTeam(), position, nil, keys.AoE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
-            for _,v in pairs(targets) do
-                if not keys.Target or v ~= keys.Target then
-                    ability:ArrowHit(v, keys.OnHit)
-	        end
-            end
-        end
-    end)
 end
 
 function atalanta_celestial_arrow:GetCastAnimation()

@@ -25,7 +25,6 @@ function atalanta_phoebus_catastrophe_wrapper(ability)
         local caster = self:GetCaster()
         local position = self:GetCursorPosition()
         local origin = caster:GetOrigin()
-        local aoe = self:GetSpecialValueFor("aoe")
     
         EmitGlobalSound("Atalanta.PhoebusRelease")
     
@@ -42,21 +41,19 @@ function atalanta_phoebus_catastrophe_wrapper(ability)
     
         caster:ShootArrow({
             Target = dummy,
-            AoE = aoe,
+            AoE = 0,
             Delay = 0.6,
             Effect = effect,
             Facing = facing,
-            NoHit = true,
             DontCountArrow = true
         })
     
         caster:ShootArrow({
             Target = dummy2,
-            AoE = aoe,
+            AoE = 0,
             Delay = 0.6,
             Effect = effect,
             Facing = facing,
-            NoHit = true,
             DontCountArrow = true
         })
     end

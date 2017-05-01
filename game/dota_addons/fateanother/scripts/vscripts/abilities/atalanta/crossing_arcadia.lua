@@ -1,5 +1,18 @@
 atalanta_crossing_arcadia = class({})
 
+function atalanta_crossing_arcadia:OnUpgrade()
+    local caster = self:GetCaster()
+    local ability = self
+
+    if IsServer() then
+        if not caster.ShootAoEArrow then
+            function caster:ShootAoEArrow(...)
+                ability:ShootAoEArrow(...)
+            end
+        end
+    end
+end
+
 function atalanta_crossing_arcadia:GetCastRange()
     return self:GetSpecialValueFor("range")
 end
@@ -42,6 +55,84 @@ function atalanta_crossing_arcadia:GetCustomCastErrorLocation(location)
     return "Not enough arrows..."
 end
 
+function atalanta_crossing_arcadia:OnProjectileHit_ExtraData(target, location, data)
+    local caster = self:GetCaster()
+
+    if not target then
+        return
+    end
+
+    local targets = FindUnitsInRadius(caster:GetTeam(), target:GetOrigin(), nil, data["1"], DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+    for _,v in pairs(targets) do
+        caster:ArrowHit(v, data["2"])
+    end
+end
+
+function atalanta_crossing_arcadia:ShootAoEArrow(keys)
+    local caster = self:GetCaster()
+    local ability = self
+
+    local source
+    local origin
+    local target
+    local dummy
+    local position
+
+    if keys.Origin then
+        local originDummy = CreateUnitByName("dummy_unit", keys.Origin, false, caster, caster, caster:GetTeamNumber())
+        originDummy:SetOrigin(keys.Origin)
+        originDummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
+
+        Timers:CreateTimer(1, function()
+            originDummy:RemoveSelf()
+        end)
+
+        source = originDummy
+        origin = keys.Origin
+    else
+        source = caster
+        origin = caster:GetOrigin()
+    end
+
+    if not keys.Target then
+        dummy = CreateUnitByName("dummy_unit", keys.Position, false, caster, caster, caster:GetTeamNumber())
+        dummy:SetOrigin(keys.Position)
+        dummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
+
+        target = dummy
+        position = keys.Position
+    else
+        target = keys.Target
+        position = target:GetOrigin()
+    end
+
+    local displacement = position - origin
+    if displacement == Vector(0, 0, 0) then
+        displacement = Vector(1, 1, 0)
+    end
+    local velocity = displacement / keys.Delay
+
+    local projectile = {
+        Target = target,
+        Source = source,
+        Ability = self,
+        EffectName = keys.Effect,
+        bDodgable = false,
+        bProvidesVision = false,
+        iMoveSpeed = velocity:Length(),
+        iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION,
+	ExtraData = {keys.AoE or 0, keys.Stun or 0}
+    }
+    ProjectileManager:CreateTrackingProjectile(projectile)
+
+    Timers:CreateTimer(keys.Delay, function()
+        if dummy then
+            dummy:RemoveSelf()
+        end
+
+    end)
+end
+
 function atalanta_crossing_arcadia:OnSpellStart()
     local caster = self:GetCaster()
     local ability = self
@@ -77,10 +168,6 @@ function atalanta_crossing_arcadia:OnSpellStart()
     return tickInterval
     end)
 
-    function OnHit(target)
-        target:AddNewModifier(caster, target, "modifier_stunned", {Duration = stunDuration})
-    end
-
     local aoe = self:GetAOERadius()
     local effect = "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
     local facing = caster:GetForwardVector() + Vector(0, 0, -2)
@@ -93,7 +180,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                OnHit = OnHit,
+                Stun = stunDuration,
             })
         end)
 
@@ -104,7 +191,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                OnHit = OnHit,
+                Stun = stunDuration,
                 DontUseArrow = true
             })
         end)
@@ -116,7 +203,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                OnHit = OnHit,
+                Stun = stunDuration,
                 DontUseArrow = true
             })
         end)
@@ -128,7 +215,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                OnHit = OnHit
+                Stun = stunDuration,
             })
         end)
     end
