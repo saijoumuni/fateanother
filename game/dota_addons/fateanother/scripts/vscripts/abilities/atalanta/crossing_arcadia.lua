@@ -138,6 +138,13 @@ function atalanta_crossing_arcadia:OnSpellStart()
     local ability = self
     local position = self:GetCursorPosition()
     local origin = caster:GetOrigin()
+
+    if not IsInSameRealm(origin, position) then
+        self:RefundManaCost()
+        self:EndCooldown()
+	return
+    end
+
     local forwardVector = caster:GetForwardVector()
     local duration = self:GetSpecialValueFor("jump_time")
     local landDuration = self:GetSpecialValueFor("land_time")
