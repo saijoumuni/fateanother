@@ -164,7 +164,7 @@ function atalanta_celestial_arrow:ShootArrow(keys)
     end
 
     if not keys.NoSound then
-        StartSoundEvent(keys.Sound, caster)
+        caster:EmitSound(keys.Sound)
     end
 
     if not keys.NoShock then

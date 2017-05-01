@@ -45,7 +45,7 @@ end
 function atalanta_calydonian_hunt:OnSpellStart()
     local caster = self:GetCaster()
 
-    StartSoundEvent("Hero_NagaSiren.Ensnare.Cast", caster)
+    caster:EmitSound("Hero_NagaSiren.Ensnare.Cast")
 
     local casterFX = ParticleManager:CreateParticle("particles/econ/items/enchantress/enchantress_lodestar/ench_lodestar_death.vpcf", PATTACH_POINT_FOLLOW, caster)
     ParticleManager:SetParticleControl(casterFX, 0, caster:GetOrigin())

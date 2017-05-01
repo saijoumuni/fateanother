@@ -5,7 +5,7 @@ LinkLuaModifier("modifier_r_used", "abilities/atalanta/modifier_r_used", LUA_MOD
 function atalanta_tauropolos:OnSpellStart()
     local caster = self:GetCaster()
 
-    StartSoundEvent("Hero_LegionCommander.PressTheAttack", caster)
+    caster:EmitSound("Hero_LegionCommander.PressTheAttack")
 
     caster:AddNewModifier(caster, self, "modifier_tauropolos", {
         duration = self:GetSpecialValueFor("duration")

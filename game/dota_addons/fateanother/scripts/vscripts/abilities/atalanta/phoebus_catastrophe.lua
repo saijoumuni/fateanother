@@ -1,7 +1,7 @@
 function atalanta_phoebus_catastrophe_wrapper(ability)
     function ability:OnAbilityPhaseStart()
         local caster = self:GetCaster()
-        StartSoundEvent("Atalanta.PhoebusCast", caster)
+        EmitGlobalSound("Atalanta.PhoebusCast")
     
         local casterFX = ParticleManager:CreateParticle("particles/econ/items/monkey_king/arcana/death/mk_spring_arcana_death_ground_impact.vpcf", PATTACH_POINT_FOLLOW, caster)
         ParticleManager:SetParticleControl(casterFX, 0, caster:GetOrigin())
@@ -27,7 +27,7 @@ function atalanta_phoebus_catastrophe_wrapper(ability)
         local origin = caster:GetOrigin()
         local aoe = self:GetSpecialValueFor("aoe")
     
-        StartSoundEvent("Atalanta.PhoebusRelease", caster)
+        EmitGlobalSound("Atalanta.PhoebusRelease")
     
         local midpoint = (origin + position) / 2
         local targetLocation = midpoint + Vector(0, 0, 1000)

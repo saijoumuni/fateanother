@@ -17,7 +17,7 @@ function atalanta_last_spurt:OnSpellStart()
     local aoe = self:GetSpecialValueFor("aoe")
     local duration = self:GetSpecialValueFor("duration")
 
-    StartSoundEvent("Ability.Windrun", caster)
+    caster:EmitSound("Ability.Windrun")
 
     local stacks = 0
     local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetOrigin(), nil, aoe, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, FIND_ANY_ORDER, false)

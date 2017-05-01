@@ -43,7 +43,7 @@ function atalanta_golden_apple:OnSpellStart()
     dummy:SetDayTimeVisionRange(0)
     dummy:SetNightTimeVisionRange(0)
 
-    StartSoundEvent("Atalanta.GoldenApple", dummy)
+    dummy:EmitSound("Atalanta.GoldenApple")
 	
     AddFOWViewer(caster:GetTeamNumber(), position, aoe, duration, false)
 
@@ -98,7 +98,7 @@ function atalanta_golden_apple:OnSpellStart()
     Timers:CreateTimer(delay + duration + 2, function()
         ParticleManager:ReleaseParticleIndex(appleFX)
 
-	StopSoundEvent("Atalanta.GoldenApple", dummy)
+	dummy:StopSound("Atalanta.GoldenApple")
         dummy:RemoveSelf()
     end)
 
