@@ -29208,7 +29208,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"barrage_arrows"	"50"
+				"barrage_arrows"	"60"
 			}
 			"05"
 			{
@@ -29274,7 +29274,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"arrows"			"50"
+				"arrows"			"60"
 			}
 			"05"
 			{
