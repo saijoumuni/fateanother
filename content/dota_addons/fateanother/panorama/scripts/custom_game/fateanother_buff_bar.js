@@ -23,6 +23,10 @@ var buffHasStacks = {
     modifier_magic_resistance_ex_shield: true,
     modifier_plains_of_water_int_debuff: true,
     modifier_plains_of_water_int_buff: true,
+    modifier_priestess_of_the_hunt: true,
+    modifier_calydonian_hunt: true,
+    modifier_last_spurt: true,
+    modifier_arrows_of_the_big_dipper: true,
 };
 
 var buffCooldown = {
@@ -63,6 +67,8 @@ var buffCooldown = {
     modifier_la_pucelle_cooldown: 135,
     modifier_hippogriff_ride_cooldown: 150,
     modifier_story_for_someones_sake_cooldown: 450,
+    modifier_phoebus_catastrophe_cooldown: 450,
+    modifier_golden_apple_cooldown: 450,
 };
 
 function AltClickBuffs() {
