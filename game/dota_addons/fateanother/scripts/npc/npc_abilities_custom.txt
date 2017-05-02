@@ -28830,7 +28830,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityTextureName"			"windrunner_powershot"
 		
-		"AbilityCastPoint"				"0.20"
+		"AbilityCastPoint"				"0.30"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"40"
 		"LevelsBetweenUpgrades"				"1"
@@ -28916,12 +28916,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"debuff_duration"		"7"
+				"debuff_duration"		"3 3.5 4 4.5 5"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"root_duration"			"0.6 1.0 1.4 1.8 2.2"
+				"root_duration"			"0.6 0.8 1.0 1.2 1.4"
 			}
 			"04"
 			{
@@ -28936,7 +28936,7 @@
 			"07"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"attribute_bonus_duration"		"7"
+				"attribute_bonus_duration"		"2"
 			}
 			"04"
 			{
@@ -28957,7 +28957,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityTextureName"			"custom/atalanta_golden_apple"
 		
-		"AbilityCastPoint"				"0.6"
+		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"70"
 		"AbilityManaCost"				"200"
 
@@ -29349,7 +29349,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"8"
+		"AbilityManaCost"				"12"
 
 		"precache"
 		{
@@ -29402,16 +29402,6 @@
 
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"attribute_stack_bonus"			"2"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"attribute_bonus_duration"		"7"
-			}
 		}
 	}
 
@@ -29457,6 +29447,16 @@
 				"var_type"					"FIELD_FLOAT"
 				"attribute_swap_duration"	"6"
 			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attribute_stack_bonus"			"2"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"attribute_bonus_duration"		"2"
+			}
 		}
 	}
 
@@ -29474,7 +29474,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"11"
+		"AbilityManaCost"				"10"
 
 		"precache"
 		{

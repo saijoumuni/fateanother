@@ -20,7 +20,7 @@ function atalanta_calydonian_hunt:AddStack(target, count)
     local currentStack = modifier and modifier:GetStackCount() or 0
     local maxStacks = self:GetSpecialValueFor("max_stacks")
 
-    if caster.HuntersMarkAcquired then
+    if caster.GoldenAppleAcquired then
         maxStacks = maxStacks + self:GetSpecialValueFor("attribute_stack_bonus")
     end
 
@@ -57,7 +57,7 @@ function atalanta_calydonian_hunt:OnSpellStart()
     local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetOrigin(), nil, 99999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, FIND_ANY_ORDER, false)
     local duration = self:GetSpecialValueFor("root_duration")
     for _,v in pairs(targets) do
-        if v:HasModifier("modifier_calydonian_hunt") then
+        if v:HasModifier("modifier_calydonian_hunt") and (caster:CanEntityBeSeenByMyTeam(v) or caster.GoldenAppleAcquired) then
             v:AddNewModifier(caster, self, "modifier_calydonian_hunt_root", {
                 duration = duration
             })
