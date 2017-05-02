@@ -385,7 +385,7 @@
         "DOTA_Tooltip_ability_atalanta_attribute_hunters_mark_Description"                "Damage applied by Calydonian Hunt has 100%% armor penetration."
 
         "DOTA_Tooltip_ability_atalanta_attribute_golden_apple"                            "Golden Apple"
-        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_Description"                "Increases max stack and debuff duration of Calydonian Hunt.\nGolden Apple can be used within 6 seconds after casting Calydonian Hunt.\n<font color='#58ACFA'>Golden Apple :</font> Fires an irresistable Golden Apple at a location. Enemies within the radius will be forced to move towards it in an attempt to pick it up."
+        "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_Description"                "Increases max stack and debuff duration of Calydonian Hunt. Calydonian Hunt active will now apply to enemies in fog.\nGolden Apple can be used within 6 seconds after casting Calydonian Hunt.\n<font color='#58ACFA'>Golden Apple :</font> Fires an irresistable Golden Apple at a location. Enemies within the radius will be forced to move towards it in an attempt to pick it up."
         "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_range"                      "RANGE:"
         "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_lure_duration"              "LURE DURATION:"
         "DOTA_Tooltip_ability_atalanta_attribute_golden_apple_aoe"                        "AOE:"
