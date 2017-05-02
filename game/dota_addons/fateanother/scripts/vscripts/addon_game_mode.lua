@@ -2312,7 +2312,6 @@ function FateGameMode:InitializeRound()
         hero:RemoveModifierByName("round_pause")
         giveUnitDataDrivenModifier(hero, hero, "round_pause", PRE_ROUND_DURATION) -- Pause all heroes
         hero:SetGold(0, false)
-        hero.CStock = 10
 
         if hero.AvariceCount ~= nil then
             hero.MasterUnit:SetMana(hero.MasterUnit:GetMana() + 1 * hero.AvariceCount)
@@ -2322,6 +2321,7 @@ function FateGameMode:InitializeRound()
 
         -- Grant gold
         if self.nCurrentRound > 1 then
+            hero.CStock = 10
             if hero:GetGold() < 5000 then --
                 --print("[FateGameMode] " .. hero:GetName() .. " gained 3000 gold at the start of round")
                 if hero.AvariceCount ~= nil then
