@@ -12,6 +12,10 @@ end
 function atalanta_phoebus_catastrophe_snipe:CastFilterResultTarget(target)
     local caster = self:GetCaster()
 
+    if IsServer() and not IsInSameRealm(target:GetOrigin(), caster:GetOrigin()) then
+        return UF_FAIL_CUSTOM
+    end
+
     if caster:GetArrowCount() < 2 then
         return UF_FAIL_CUSTOM
     end
@@ -25,6 +29,12 @@ function atalanta_phoebus_catastrophe_snipe:CastFilterResultTarget(target)
 end
 
 function atalanta_phoebus_catastrophe_snipe:GetCustomCastErrorTarget(target)
+    local caster = self:GetCaster()
+
+    if IsServer() and not IsInSameRealm(target:GetOrigin(), caster:GetOrigin()) then
+        return "#Cannot_Be_Cast_Now"
+    end
+
     return "Not enough arrows..."
 end
 
