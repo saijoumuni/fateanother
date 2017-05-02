@@ -153,7 +153,7 @@ function atalanta_celestial_arrow:ArrowHit(target, stun)
 
     DoDamage(caster, target, damage + huntDamage, DAMAGE_TYPE_PHYSICAL, 0, self, false)
 
-    if stun > 0 then
+    if stun and stun > 0 then
         target:AddNewModifier(caster, target, "modifier_stunned", {Duration = stun})
     end
 end
@@ -184,25 +184,7 @@ function atalanta_celestial_arrow:ShootArrow(keys)
     end
 
     if caster.ArrowsOfTheBigDipperAcquired and not keys.DontCountArrow then
-        local arrowsUsed = caster:GetModifierStackCount("modifier_arrows_of_the_big_dipper", caster)
-	arrowsUsed = arrowsUsed + 1
-
-        if arrowsUsed >= self:GetSpecialValueFor("attribute_arrows_needed") then
-            local copyKeys = {}
-            for k,v in pairs(keys) do
-                copyKeys[k] = v
-            end
-            copyKeys.DontCountArrow = true 
-            copyKeys.DontUseArrow = true 
-
-	    Timers:CreateTimer(0.1, function()
-	        ability:ShootArrow(copyKeys)
-            end)
-
-	    arrowsUsed = 0
-        end
-
-	caster:SetModifierStackCount("modifier_arrows_of_the_big_dipper", caster, arrowsUsed)
+        caster:CheckBonusArrow(keys)
     end
 end
 

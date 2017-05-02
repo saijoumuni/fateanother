@@ -15,3 +15,7 @@ end
 function modifier_arrows_of_the_big_dipper:RemoveOnDeath()
     return false
 end
+
+function modifier_arrows_of_the_big_dipper:GetTexture()
+    return "custom/atalanta_arrows_of_the_big_dipper"
+end
