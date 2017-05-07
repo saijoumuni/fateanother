@@ -167,8 +167,14 @@ function OnBuidheStart(keys)
 
 	currentStack = target:GetModifierStackCount("modifier_gae_buidhe", keys.ability) --refresh currentstack after debuff
 
+  	if target:GetMaxHealth() < currentStack * unitReduction then -- for heroes that modifies maxHp like avenger with E
+		target:Kill(keys.ability, caster)
+	elseif target:GetHealth() > (target:GetMaxHealth() - currentStack * unitReduction) then
+		target:SetHealth(target:GetMaxHealth() - currentStack * unitReduction)
+	end
+
 	Timers:CreateTimer(function()
-		if target:HasModifier("modifier_gae_buidhe") == false then return end
+		if not target:HasModifier("modifier_gae_buidhe") then return end
 		-- local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_symbol.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
   --   	ParticleManager:SetParticleControl(particle, 1, caster:GetAbsOrigin() )
   		if target:GetMaxHealth() < currentStack * unitReduction then -- for heroes that modifies maxHp like avenger with E
