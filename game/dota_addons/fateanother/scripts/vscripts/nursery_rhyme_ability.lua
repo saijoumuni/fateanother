@@ -701,6 +701,8 @@ function OnNRComboDeath(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 
+	caster:StopSound("NR.Tick")
+
     --[[LoopOverPlayers(function(player, playerID, playerHero)
     	if playerHero ~= caster then
     		playerHero:RemoveModifierByName("modifier_story_for_someones_sake_enemy")
