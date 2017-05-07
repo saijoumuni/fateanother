@@ -610,11 +610,11 @@ function OnUpstreamProc(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	if not caster.bIsUpstreamReady then return end
+	if caster.UpstreamHitCooldown or caster.UpstreamProcCooldown then return end
 	if keys.target:GetName() == "npc_dota_hero_bounty_hunter" and keys.target.IsPFWAcquired then return end
-	caster.bIsUpstreamReady = false
+	caster.UpstreamProcCooldown = true
 	Timers:CreateTimer(4.0, function()
-		caster.bIsUpstreamReady = true
+		caster.UpstreamProcCooldown = false
 	end)
 	-- particle
 
@@ -644,6 +644,11 @@ function OnUpstreamHit(keys)
 	if sound == 1 then caster:EmitSound("Saber.StrikeAir_Release1") else caster:EmitSound("Saber.StrikeAir_Release2") end
 	local upstreamFx = ParticleManager:CreateParticle( "particles/custom/saber/strike_air_upstream/strike_air_upstream.vpcf", PATTACH_CUSTOMORIGIN, nil )
 	ParticleManager:SetParticleControl( upstreamFx, 0, target:GetAbsOrigin() )
+
+	caster.UpstreamHitCooldown = true
+	Timers:CreateTimer(0.1, function()
+		caster.UpstreamHitCooldown = false
+	end)
 end
 
 function SaberCheckCombo(caster, ability)
@@ -715,7 +720,6 @@ function OnSAUpstreamAcquired(keys)
 	local hero = PlayerResource:GetSelectedHeroEntity(pid)
 
 	hero.bIsUpstreamAcquired = true
-	hero.bIsUpstreamReady = true
 	local upstreamAbil = hero:AddAbility("saber_strike_air_upstream")
 	upstreamAbil:SetLevel(1)
 	upstreamAbil:SetHidden(true)
