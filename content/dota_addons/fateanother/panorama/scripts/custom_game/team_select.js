@@ -90,7 +90,7 @@ function OnShufflePlayersPressed()
 	// if set up time less than 2
 	var gameTime = Game.GetGameTime();
 	var transitionTime = Game.GetStateTransitionTime();
-	if (Math.floor(transitionTime - gameTime) <= 1) {
+	if (Game.GetState() !== 2 || Math.floor(transitionTime - gameTime) <= 1) {
 		return;
 	}
 	// Shuffle the team assignments of any players which are assigned to a team, 
@@ -312,13 +312,14 @@ function UpdateTimer()
 	$.GetContextPanel().SetHasClass( "teams_locked", Game.GetTeamSelectionLocked() );
 	$.GetContextPanel().SetHasClass( "teams_unlocked", Game.GetTeamSelectionLocked() == false );
 		
-	if (Game.GetState() == 3)
+	if (Game.GetState() > 2)
 	{
 		if (transitionHappened == false) {
 			SendVotes()
 		};		
+	} else {
+		$.Schedule( 0.1, UpdateTimer );
 	}
-	$.Schedule( 0.1, UpdateTimer );
 }
 
 function SendVotes( )
