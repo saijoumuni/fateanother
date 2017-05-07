@@ -103,15 +103,16 @@ function HeroSelection:OnRandom(args)
 end
 
 function HeroSelection:AssignHero(playerId, hero)
-    local oldHero = PlayerResource:GetSelectedHeroEntity(playerId)
-    oldHero:SetRespawnsDisabled(true)
+    PrecacheUnitByNameAsync(hero, function()
+        local oldHero = PlayerResource:GetSelectedHeroEntity(playerId)
+        oldHero:SetRespawnsDisabled(true)
 
-    PlayerResource:ReplaceHeroWith(playerId, hero, 3000, 0)
+        PlayerResource:ReplaceHeroWith(playerId, hero, 3000, 0)
 
-    UTIL_Remove(oldHero)
+        UTIL_Remove(oldHero)
+    end)
 
     self.AvailableHeroes[hero] = nil
-
     CustomNetTables:SetTableValue("selection", "available", self.AvailableHeroes)
 end
 
