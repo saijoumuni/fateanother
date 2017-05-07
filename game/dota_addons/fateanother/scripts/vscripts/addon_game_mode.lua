@@ -894,9 +894,9 @@ function FateGameMode:OnGameRulesStateChange(keys)
     elseif newState == DOTA_GAMERULES_STATE_INIT then 
     elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         print("hero selection phase")
-        --Timers:CreateTimer(2.0, function()
-        --    FateGameMode:OnAllPlayersLoaded()
-        --end)
+        Timers:CreateTimer(2, function()
+            FateGameMode:OnAllPlayersLoaded()
+        end)
         Selection = HeroSelection()
         Selection:UpdateTime()
     elseif newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
