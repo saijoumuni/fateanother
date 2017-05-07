@@ -952,6 +952,7 @@
 	    {
 	    	"particle"			"particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
 	    	"particle"			"particles/units/heroes/hero_warlock/warlock_fatal_bonds_pulse.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
 	    }
 	    "AbilitySpecial"
 		{
