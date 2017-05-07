@@ -477,7 +477,7 @@ function OnWBStart(keys)
 		else
 			giveUnitDataDrivenModifier(caster, v, "drag_pause", 0.5)
 			DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-			caster:PerformAttack( target, true, true, true, true, false, false, true )
+			caster:PerformAttack(v, true, true, true, true, false, false, true )
 			local slashIndex = ParticleManager:CreateParticle( "particles/custom/false_assassin/tsubame_gaeshi/tsubame_gaeshi_windup_indicator_flare.vpcf", PATTACH_CUSTOMORIGIN, nil )
 		    ParticleManager:SetParticleControl(slashIndex, 0, v:GetAbsOrigin())
 		    ParticleManager:SetParticleControl(slashIndex, 1, Vector(500,0,150))
