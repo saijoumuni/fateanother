@@ -188,12 +188,24 @@ function SpringTrap(trap, caster, stunduration, targetpoint, radius)
 		endTime = 1,
 		callback = function()
 		if trap:IsAlive() then
-			trap:EmitSound("Hero_Techies.StasisTrap.Stun")
+			trap:EmitSound("Hero_TemplarAssassin.Trap.Explode")
 			local targets = FindUnitsInRadius(caster:GetTeam(), targetpoint, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 			for k,v in pairs(targets) do
 				v:AddNewModifier(caster, v, "modifier_stunned", {Duration = stunduration})
 			end
 			trap:ForceKill(true) 
+			trap:AddEffects(EF_NODRAW)
+
+			local fxDummy = CreateUnitByName("dummy_unit", trap:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+			fxDummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1)
+
+			local trapFX = ParticleManager:CreateParticle("particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf", PATTACH_ABSORIGIN_FOLLOW, fxDummy)
+			ParticleManager:SetParticleControl(trapFX, 0, fxDummy:GetAbsOrigin())
+
+			Timers:CreateTimer(5, function()
+				ParticleManager:DestroyParticle(trapFX, false )
+				fxDummy:RemoveSelf()
+			end)
 		end
 	end
 	})

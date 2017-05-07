@@ -1885,6 +1885,7 @@
 
 		"precache"
 		{
+			"particle"				"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
 			"model"					"models/props_gameplay/rune_haste01.vmdl"
 		}
