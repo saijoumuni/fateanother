@@ -403,7 +403,6 @@ function OnSummonDragon(keys)
 	LevelAllAbility(drag)
 	FindClearSpaceForUnit(drag, drag:GetAbsOrigin(), true)
 	drag:AddItem(CreateItem("item_caster_5th_mount" , nil, nil))
-	FillInventory(drag)
 	drag:AddNewModifier(caster, nil, "modifier_kill", {duration = 60})
 
 	drag:SetMaxHealth(keys.Health)

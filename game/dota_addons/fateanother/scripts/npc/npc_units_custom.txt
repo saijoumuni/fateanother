@@ -667,7 +667,7 @@
 		"BaseClass"			"npc_dota_creature"
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"	
 		"ConsideredHero"			"1"
-		"HasInventory"				"1"
+		"HasInventory"				"0"
 		
 		"AbilityLayout"				"4"
 		"Ability1"					"caster_5th_dragon_chilling_breath"			// Ability 1
@@ -1545,7 +1545,7 @@
 		"Level"						"1"
 		"HealthBarOffset"			"500"
 		"ConsideredHero"			"1"
-		"HasInventory"				"1"
+		"HasInventory"				"0"
 
 		
 		"AbilityLayout"				"6"
