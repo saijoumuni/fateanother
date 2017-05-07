@@ -89,7 +89,7 @@
 
         // Glyph, Scan
         var glyphScanUI = UIRoot.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("GlyphScanContainer");
-        glyphScanUI.style.visibility = "collapse";
+	// glyphScanUI.style.visibility = "collapse";
 
         // Common item search
         var commonItemSearchUI = UIRoot.FindChildTraverse("HUDElements").FindChildTraverse("shop").FindChildTraverse("Main").FindChildTraverse("HeightLimiter").FindChildTraverse("SearchContainer");
