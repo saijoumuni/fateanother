@@ -335,7 +335,7 @@ function OnChariotEnd(keys)
 	if caster:HasModifier("modifier_army_of_the_king_death_checker") then
 		caster:SwapAbilities("fate_empty3", caster:GetAbilityByIndex(5):GetName(), true, false) 
 	else
-		caster:SwapAbilities("iskander_army_of_the_king", caster:GetAbilityByIndex(5):GetName(), true, false) 
+		caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "iskander_army_of_the_king", false, true) 
 	end
 
 	caster.OriginalModel = "models/iskander/iskander.vmdl"
