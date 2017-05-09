@@ -79,14 +79,6 @@ function UpdateHealthAndMana()
 
 function SetupPortrait(data)
 {
-
-	//$.Msg("panels present. linking abilities...")
-	//var queryUnit = data.masterUnit; //Players.GetLocalPlayerPortraitUnit();
-	var heroPortrait = $("#ServantPortraitImage");
-	var playerID = Players.GetLocalPlayer();
-	var hero = Players.GetPlayerHeroEntityIndex( playerID );
-        var imageDir = "s2r://panorama/images/custom_game/portrait/" + Entities.GetUnitName(hero) + "_png.vtex"
-	heroPortrait.SetImage(imageDir) ;
 	masterUnit = data.shardUnit;
 	UpdateHealthAndMana();
 

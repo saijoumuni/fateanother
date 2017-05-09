@@ -7,18 +7,6 @@
         <include src="file://{resources}/scripts/custom_game/fateanother_portrait.js" /> 
     </scripts>
     <Panel class="PortraitDisplayRoot" hittest="true">
-        <Panel id="HeroPortraitPanel" hittest="false">
-            <Image id="ServantPortraitImage" class="Portrait" hittest="true"                          
-                            onmouseover="PortraitShowTooltip()"
-                            onmouseout="PortraitHideTooltip()"
-                            onactivate="PortraitClick()"/>
-        </Panel>
-        <Panel id="MasterPortraitPanel" hittest="false">
-            <Image id="MasterPortraitImage" class="Portrait" src="file://{images}/heroes/npc_dota_hero_master.png" hittest="true"
-                onmouseover="MasterShowTooltip()"
-                onmouseout="MasterHideTooltip()"
-                onactivate="MasterPortraitClick()"/>
-        </Panel>
         <Panel id="MasterStatusPanel"   hittest="true">
             <Panel id="MasterHealthPanel"   hittest="false">
                 <Label id="MasterHealthText" class="MasterHealth" text="#Fateanother_Master_Health" hittest="true" 

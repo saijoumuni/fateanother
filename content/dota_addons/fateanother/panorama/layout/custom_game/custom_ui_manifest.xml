@@ -80,8 +80,7 @@
         // KDA
         var KDAUI = UIRoot.FindChildTraverse("HUDElements").FindChildTraverse("quickstats").FindChildTraverse("QuickStatsContainer");
         UIRoot.FindChildTraverse("HUDElements").FindChildTraverse("quickstats").style.width = "400px";
-        KDAUI.style.marginTop = "5px";
-        KDAUI.style.marginLeft = "150px";
+        KDAUI.style.visibility = "collapse";
 
         // backpack
         var backpackUI = UIRoot.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block").FindChildTraverse("inventory").FindChildTraverse("inventory_items").FindChildTraverse("InventoryContainer").FindChildTraverse("inventory_backpack_list");
