@@ -76,7 +76,7 @@ function atalanta_phoebus_catastrophe_snipe:OnSpellStart()
 
         if caster:HasModifier("modifier_tauropolos") then
             local tauropolos = caster:FindAbilityByName("atalanta_tauropolos")
-            arrowAoE = arrowAoE + tauropolos:GetSpecialValueFor("bonus_range_per_agi") * caster:GetAgility()
+            arrowAoE = arrowAoE + tauropolos:GetSpecialValueFor("bonus_aoe_per_agi") * caster:GetAgility()
         end
 
         for i=1,arrows do
