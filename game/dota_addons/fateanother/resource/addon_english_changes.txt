@@ -401,3 +401,11 @@
     //==================================
 
     EA's combo requirement from Q-W-E to W-E
+
+
+    //====================================
+    //	Scout Familiar
+    //====================================
+    
+    "DOTA_Tooltip_ability_ward_conversion"                                  "Ward Conversion"
+    "DOTA_Tooltip_ability_ward_conversion_Description"                      "Turns the scout familiar into a ward."
