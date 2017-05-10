@@ -539,6 +539,7 @@ function OnReincarnationDamageTaken(keys)
 	if caster.ReincarnationDamageTaken > 20000 and caster.IsGodHandAcquired then
 		caster.ReincarnationDamageTaken = 0
 		caster.GodHandStock = caster.GodHandStock + 1
+		caster:RemoveModifierByName("modifier_god_hand_stock")
 		caster:FindAbilityByName("berserker_5th_god_hand"):ApplyDataDrivenModifier(caster, caster, "modifier_god_hand_stock", {})
 		caster:SetModifierStackCount("modifier_god_hand_stock", caster, caster.GodHandStock)
 	end
