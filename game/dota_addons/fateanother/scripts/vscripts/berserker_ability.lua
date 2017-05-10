@@ -483,7 +483,7 @@ function OnGodHandDeath(keys)
 		endTime = 1,
 		callback = function()
 		print(caster.bIsGHReady)
-		if IsTeamWiped(caster) == false and caster.GodHandStock > 0 and caster.bIsGHReady then
+		if IsTeamWiped(caster) == false and caster.GodHandStock > 0 and caster.bIsGHReady and _G.CurrentGameState == "FATE_ROUND_ONGOING" then
 			caster.bIsGHReady = false
 			Timers:CreateTimer(7.0, function() caster.bIsGHReady = true end)
 			EmitGlobalSound("Berserker.Roar") 
