@@ -64,9 +64,14 @@
     transform: scale3d(1, 1, 1);
 }
 
+.selectedByPlayer {
+    box-shadow: fill green -4px -4px 8px 8px;
+}
+
 .hero.picked {
     transform: scale3d(1, 1, 1);
 }
+
 
 .Hidden {
     visibility: collapse;

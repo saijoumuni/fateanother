@@ -20,8 +20,15 @@ function HeroSelection() {
         }
     });
 
+    this.pickedListener = CustomNetTables.SubscribeNetTableListener("selection", function(table, tableKey, data) {
+        if (tableKey == "picked") {
+            that.picked = data;
+        }
+    });
+
     this.allHeroes = CustomNetTables.GetTableValue("selection", "all") || {};
     this.availableHeroes = CustomNetTables.GetTableValue("selection", "available") || {};
+    this.picked = CustomNetTables.GetTableValue("selection", "picked") || {};
 
     var timeTable = CustomNetTables.GetTableValue("selection", "time");
     this.time = timeTable && timeTable.time;
@@ -45,7 +52,7 @@ HeroSelection.prototype.Render = function() {
 
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     var name = Entities.GetUnitName(hero);
-    var heroPicked = hero !== -1 && name !== "npc_dota_hero_wisp";
+    var playerHasPicked = !!this.picked[this.playerId];
 
     for (var heroName in this.allHeroes) {
         var heroPanel = this.heroesPanel.FindChild(heroName);
@@ -55,9 +62,11 @@ HeroSelection.prototype.Render = function() {
             heroPanel.AddClass("hero");
             this.BindOnActivate(heroPanel, heroName);
         }
-        heroPanel.SetHasClass("grayscale", this.time > 60 || !this.availableHeroes[heroName]);
 
-        heroPanel.SetHasClass("picked", heroPicked);
+        var pickedByPlayer = !!this.picked[this.playerId] && this.picked[this.playerId] === heroName;
+        heroPanel.SetHasClass("picked", playerHasPicked);
+        heroPanel.SetHasClass("selectedByPlayer", pickedByPlayer);
+        heroPanel.SetHasClass("grayscale", this.time > 60 || !this.availableHeroes[heroName] && !pickedByPlayer);
     }
 
     var randomPanel = this.heroesPanel.FindChild("random");
@@ -75,8 +84,7 @@ HeroSelection.prototype.Render = function() {
         );
     }
     randomPanel.SetHasClass("grayscale", this.time > 60);
-    randomPanel.SetHasClass("picked", heroPicked);
-
+    randomPanel.SetHasClass("picked", playerHasPicked);
 
     var hero = Players.GetPlayerHeroEntityIndex(this.playerId);
     this.container.SetHasClass("Hidden", this.time === undefined || hero === -1);
@@ -118,6 +126,7 @@ HeroSelection.prototype.End = function() {
     CustomNetTables.UnsubscribeNetTableListener(this.timeListener);
     CustomNetTables.UnsubscribeNetTableListener(this.availableListener);
     CustomNetTables.UnsubscribeNetTableListener(this.allListener);
+    CustomNetTables.UnsubscribeNetTableListener(this.pickedListener);
 
     this.container.AddClass("Hidden");
 }

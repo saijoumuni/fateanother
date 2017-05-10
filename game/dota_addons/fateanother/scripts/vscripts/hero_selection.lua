@@ -24,6 +24,7 @@ function HeroSelection:constructor()
     CustomNetTables:SetTableValue("selection", "all", self.AvailableHeroes)
     CustomNetTables:SetTableValue("selection", "available", self.AvailableHeroes)
     CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
+    CustomNetTables:SetTableValue("selection", "picked", self.Picked)
     CustomNetTables:SetTableValue("selection", "time", {time = self.Time})
 end
 
@@ -62,10 +63,10 @@ function HeroSelection:OnSelect(args)
         return
     end
 
-    self:AssignHero(playerId, hero)
-
     self.HoveredHeroes[playerId] = nil
-    self.Picked[playerId] = true
+    self.Picked[playerId] = hero
+
+    self:AssignHero(playerId, hero, false)
 
     CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
 
@@ -89,10 +90,10 @@ function HeroSelection:OnRandom(args)
     for hero,_ in pairs(self.AvailableHeroes) do
         if index == randomIndex then
 
-            self:AssignHero(playerId, hero)
-
+            self.Picked[playerId] = hero
             self.HoveredHeroes[playerId] = nil
-            self.Picked[playerId] = true
+
+            self:AssignHero(playerId, hero, true)
 
             CustomNetTables:SetTableValue("selection", "hovered", self.HoveredHeroes)
 
@@ -114,6 +115,7 @@ function HeroSelection:AssignHero(playerId, hero)
 
     self.AvailableHeroes[hero] = nil
     CustomNetTables:SetTableValue("selection", "available", self.AvailableHeroes)
+    CustomNetTables:SetTableValue("selection", "picked", self.Picked)
 end
 
 function HeroSelection:RemoveHero(hero)
