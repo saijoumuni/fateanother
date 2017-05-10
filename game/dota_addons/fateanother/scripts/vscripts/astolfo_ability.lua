@@ -195,7 +195,7 @@ function OnHornCast(keys)
 		caster:Stop()
 		return 
 	end 
-	caster:EmitSound("Ability.Powershot.Alt")
+	caster:EmitSound("Hero_Venomancer.Plague_Ward")
 end
 
 function OnHornStart(keys)

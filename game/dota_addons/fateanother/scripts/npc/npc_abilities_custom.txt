@@ -26802,7 +26802,7 @@
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
 			"particle"			"particles/custom/astolfo/la_black_luna/la_black_luna_shockwave.vpcf"
 		}
 
