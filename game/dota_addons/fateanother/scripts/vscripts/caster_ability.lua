@@ -534,7 +534,7 @@ function OnTerritoryRecall(keys)
 
 		caster.IsRecallCanceled = false
 		Timers:CreateTimer(3.0, function()  
-		if not caster.IsRecallCanceled and caster:IsAlive()  then 
+		if not caster.IsRecallCanceled and caster:IsAlive() and IsInSameRealm(target:GetAbsOrigin(), caster:GetAbsOrigin()) then 
 			target:SetAbsOrigin(caster:GetAbsOrigin())
 			FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
 		end
