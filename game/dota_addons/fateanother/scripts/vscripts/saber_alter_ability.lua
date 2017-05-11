@@ -234,10 +234,11 @@ function OnVortigernStart(keys)
 	local increment_factor = 30
 	local origin = caster:GetAbsOrigin()
 	local destination = origin + forward
+	vortigernCount = 0
 	Timers:CreateTimer( function()
 			-- Finish spell, need to include the last angle as well
 			-- Note that the projectile limit is currently at 9, to increment this, need to create either dummy or thinker to store them
-			if vortigernCount == 9 then vortigernCount = 0 return end
+			if vortigernCount == 9 then return end
 			
 			-- Start rotating
 			local theta = ( angle - vortigernCount * increment_factor ) * math.pi / 180
