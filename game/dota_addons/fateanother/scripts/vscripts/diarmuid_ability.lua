@@ -119,19 +119,21 @@ end
 
 function OnGaeCastStart(keys)
 	local caster = keys.caster
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_chaos_knight/chaos_knight_reality_rift.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	local particleName
+	if keys.ability == caster:FindAbilityByName("diarmuid_gae_buidhe") then
+		caster:EmitSound("ZL.Buidhe_Cast")
+		particleName = "particles/custom/diarmuid/diarmuid_gae_cast.vpcf"
+	elseif keys.ability == caster:FindAbilityByName("diarmuid_gae_dearg") then 
+		caster:EmitSound("ZL.Dearg_Cast")
+		particleName = "particles/units/heroes/hero_chaos_knight/chaos_knight_reality_rift.vpcf"
+	end
+	local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:SetParticleControl(particle, 1, caster:GetAbsOrigin()) -- target effect location
 	ParticleManager:SetParticleControl(particle, 2, caster:GetAbsOrigin()) -- circle effect location
 	Timers:CreateTimer( 2.0, function()
 		ParticleManager:DestroyParticle( particle, false )
 		ParticleManager:ReleaseParticleIndex( particle )
 	end)
-
-	if keys.ability == caster:FindAbilityByName("diarmuid_gae_buidhe") then
-		caster:EmitSound("ZL.Buidhe_Cast")
-	elseif keys.ability == caster:FindAbilityByName("diarmuid_gae_dearg") then 
-		caster:EmitSound("ZL.Dearg_Cast")
-	end
 end
 
 function OnBuidheStart(keys)
@@ -191,7 +193,7 @@ function OnBuidheStart(keys)
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_diarmuid_gae_buidhe_anim", {})
 	PlayGaeEffect(target)
 	-- Add dagon particle
-	local dagon_particle = ParticleManager:CreateParticle("particles/items_fx/dagon.vpcf",  PATTACH_ABSORIGIN_FOLLOW, keys.caster)
+	local dagon_particle = ParticleManager:CreateParticle("particles/custom/diarmuid/diarmuid_gae_buidhe.vpcf",  PATTACH_ABSORIGIN_FOLLOW, keys.caster)
 	ParticleManager:SetParticleControlEnt(dagon_particle, 1, keys.target, PATTACH_POINT_FOLLOW, "attach_hitloc", keys.target:GetAbsOrigin(), false)
 	local particle_effect_intensity = 600
 	ParticleManager:SetParticleControl(dagon_particle, 2, Vector(particle_effect_intensity))
