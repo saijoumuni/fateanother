@@ -1467,10 +1467,10 @@
 
 		"Combo"					""
 		"AttributeNumber"			"4"
-		"Attribute1"				"atalanta_attribute_hunters_mark"
-		"Attribute2"				"atalanta_attribute_gift_of_artemis"
-		"Attribute3"				"atalanta_attribute_crossing_arcadia_plus"
-		"Attribute4"				"atalanta_attribute_arrows_of_the_goddess"
+		"Attribute1"				"atalanta_attribute_arrows_of_the_goddess"
+		"Attribute2"				"atalanta_attribute_hunters_mark"
+		"Attribute3"				"atalanta_attribute_golden_apple"
+		"Attribute4"				"atalanta_attribute_crossing_arcadia_plus"
 
 
 		"StatusHealth"					"1000"
