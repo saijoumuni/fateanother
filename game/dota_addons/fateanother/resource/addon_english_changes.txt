@@ -409,3 +409,25 @@
     
     "DOTA_Tooltip_ability_ward_conversion"                                  "Ward Conversion"
     "DOTA_Tooltip_ability_ward_conversion_Description"                      "Turns the scout familiar into a ward."
+
+    //====================================
+    //	Master 3 
+    //====================================
+
+    "DOTA_Tooltip_ability_master_transfer_1"	"Transfer Item 1"
+    "DOTA_Tooltip_ability_master_transfer_1_Description"	"Transfer the item in Stash slot 1 to your Servant."	
+    
+    "DOTA_Tooltip_ability_master_transfer_2"	"Transfer Item 2"
+    "DOTA_Tooltip_ability_master_transfer_2_Description"	"Transfer the item in Stash slot 2 to your Servant."
+    
+    "DOTA_Tooltip_ability_master_transfer_3"	"Transfer Item 3"
+    "DOTA_Tooltip_ability_master_transfer_3_Description"	"Transfer the item in Stash slot 3 to your Servant."	
+    
+    "DOTA_Tooltip_ability_master_transfer_4"	"Transfer Item 4"
+    "DOTA_Tooltip_ability_master_transfer_4_Description"	"Transfer the item in Stash slot 4 to your Servant."
+    
+    "DOTA_Tooltip_ability_master_transfer_5"	"Transfer Item 5"
+    "DOTA_Tooltip_ability_master_transfer_5_Description"	"Transfer the item in Stash slot 5 to your Servant."
+    
+    "DOTA_Tooltip_ability_master_transfer_6"	"Transfer Item 6"
+    "DOTA_Tooltip_ability_master_transfer_6_Description"	"Transfer the item in Stash slot 6 to your Servant."
