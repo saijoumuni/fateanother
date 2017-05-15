@@ -5,6 +5,10 @@ function OnBarrageStart(keys)
 	local targetPoint = keys.target_points[1]
 	local dot = keys.Damage
 
+	if caster.IsRainAcquired then
+		dot = dot + 5
+	end
+
 	local rainCount = 0
 	caster:EmitSound("Archer.UBWAmbient")
     Timers:CreateTimer(function()
@@ -202,11 +206,12 @@ function OnGramHit(keys)
 	if IsSpellBlocked(keys.target) then return end -- Linken effect checker
 	local caster = keys.caster
 	local target = keys.target
-
+	local damage = keys.Damage
+	
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot_cast_c.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin())
 
-	DoDamage(caster, target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+	DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	if not target:IsMagicImmune() then
 		target:AddNewModifier(caster, target, "modifier_stunned", {Duration = keys.StunDuration})
 	end
@@ -224,9 +229,8 @@ function OnGOBStart(keys)
 	{
 		Ability = ability,
         EffectName = "particles/custom/gilgamesh/gilgamesh_gob_model.vpcf",
-        iMoveSpeed = 1350,
         vSpawnOrigin = Vector(0,0,0),
-        fDistance = 1350,
+        fDistance = 1000,
         fStartRadius = 100,
         fEndRadius = 100,
         Source = caster,
@@ -266,7 +270,7 @@ function CreateGOB(keys, proj)
 	local portalFxIndex = ParticleManager:CreateParticle( "particles/custom/gilgamesh/gilgamesh_gob.vpcf", PATTACH_CUSTOMORIGIN, dummy )
 	ParticleManager:SetParticleControlEnt( portalFxIndex, 0, dummy, PATTACH_ABSORIGIN, nil, dummy:GetAbsOrigin(), false )
 	--ParticleManager:SetParticleControl( portalFxIndex, 0, dummy:GetAbsOrigin() )
-	ParticleManager:SetParticleControl( portalFxIndex, 1, Vector( 400, 400, 400 ) )
+	ParticleManager:SetParticleControl( portalFxIndex, 1, Vector( 300, 300, 300 ) )
 
 	dummy.GOBProjectile = proj
 	dummy.GOBParticle = portalFxIndex
@@ -312,7 +316,7 @@ function OnGOBThink(keys)
 		local rightvec = Vector(frontward.y, -frontward.x, 0)
 		local gobCount = 0
 
-		local random1 = RandomInt(0, 400) -- position of weapon spawn
+		local random1 = RandomInt(0, 300) -- position of weapon spawn
 		local random2 = RandomInt(0,1) -- whether weapon will spawn on left or right side of hero
 
 		if random2 == 0 then 
@@ -320,7 +324,7 @@ function OnGOBThink(keys)
 		else 
 			projectile.vSpawnOrigin = origin + rightvec*random1
 		end
-		projectile.vVelocity = frontward * 1000
+		projectile.vVelocity = frontward * 1200
 		ProjectileManager:CreateLinearProjectile(projectile)
 
 		ParticleManager:SetParticleControlEnt( caster.LatestGOBParticle, 0, caster.LatestGOB, PATTACH_ABSORIGIN, nil, caster.LatestGOB:GetAbsOrigin(), false )
@@ -332,7 +336,7 @@ function OnGOBHit(keys)
 	local caster = keys.caster
 	local damage = keys.Damage
 	if caster.IsSumerAcquired then
-		damage = damage + caster:GetAttackDamage()*0.65
+		damage = damage + caster:GetAttackDamage()*0.5
 	end
 	if target:GetUnitName() == "gille_gigantic_horror" then damage = damage*2.5 end
 	DoDamage(keys.caster, keys.target, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)

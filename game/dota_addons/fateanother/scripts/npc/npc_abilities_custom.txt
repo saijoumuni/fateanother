@@ -10048,7 +10048,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1350"
+		"AbilityCastRange"				"1000"
 		"AbilityCastPoint"				"0.3"
 
 		// Time		
@@ -10205,7 +10205,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"dmg_ratio"			"0.35"
+				"dmg_ratio"			"0.5"
 			}
 		}
 
@@ -10539,7 +10539,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"dmg_ratio"			"0.65"
+				"dmg_ratio"			"0.5"
 			}
 		}
 		
@@ -10579,6 +10579,11 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"barrage_radius"				"500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"barrage_damage"				"30"
 			}
 		}
 		
