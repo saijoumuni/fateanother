@@ -29909,6 +29909,7 @@
 			}
 			"pause_sealenabled"
 			{
+				"TextureName"	"custom/stunned"
 				"IsDebuff"		"1"
 				"States"
 				{
@@ -29918,6 +29919,7 @@
 			
 			"drag_pause"
 			{
+				"TextureName"	"custom/stunned"
 				"IsDebuff"		"1"
 				"States"
 				{
@@ -29926,6 +29928,7 @@
 			}
 			"pause_sealdisabled"
 			{
+				"TextureName"	"custom/revoked"
 				"IsDebuff"		"1"
 				"States"
 				{
@@ -29934,10 +29937,12 @@
 			}
 			"rb_sealdisabled"
 			{
+				"TextureName"	"custom/revoked"
 				"IsDebuff"		"1"
 			}
 			"silenced"
 			{
+				"TextureName"	"silencer_last_word"
 				"IsDebuff"		"1"
 				"EffectName"			"particles/generic_gameplay/generic_silence.vpcf"
 				"EffectAttachType"		"follow_overhead"
@@ -29948,6 +29953,7 @@
 			}
 			"stunned"
 			{
+				"TextureName"	"custom/stunned"
 				"IsDebuff"		"1"
 				"EffectName"			"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"		"follow_overhead"
@@ -29958,18 +29964,21 @@
 			}
 			"revoked"
 			{
+				"TextureName"	"custom/revoked"
 				"IsDebuff"		"1"
 				"EffectName"			"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield_mark.vpcf"
 				"EffectAttachType"		"follow_overhead"
 			}
 			"locked"
 			{
+				"TextureName"	"shadow_shaman_shackles"
 				"IsDebuff"		"1"
 				"EffectName"			"particles/units/heroes/hero_oracle/oracle_fortune_purge.vpcf"
 				"EffectAttachType"		"follow_origin"
 			}
 			"rooted"
 			{
+				"TextureName"	"lone_druid_spirit_bear_entangle"
 				"IsDebuff"		"1"
 				"EffectName"	"particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_borealis.vpcf"
 				"EffectAttachType"		"follow_origin"
@@ -29980,6 +29989,7 @@
 			}
 			"disarmed"
 			{
+				"TextureName"	"troll_warlord_berserkers_rage"
 				"IsDebuff"		"1"
 				"EffectName"	"particles/generic_gameplay/generic_disarm.vpcf"
 				"EffectAttachType"		"follow_origin"
@@ -30030,6 +30040,7 @@
 			}
 			"jump_pause"
 			{
+				"TextureName"	"faceless_void_time_lock"
 				"States"
 				{
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -30039,6 +30050,7 @@
 			}
 			"jump_pause_nosilence"
 			{
+				"TextureName"	"faceless_void_time_lock"
 				"States"
 				{
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -30049,6 +30061,7 @@
 			}
 			"jump_pause_postdelay"
 			{
+				"TextureName"	"faceless_void_time_lock"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -30056,6 +30069,7 @@
 			}
 			"round_pause"
 			{
+				"TextureName"	"faceless_void_time_lock"
 				"IsDebuff"		"1"
 				"States"
 				{
