@@ -25973,7 +25973,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"damage_reduction"			"-35"
+				"damage_reduction"			"-50"
 			}
 			"05"
 			{
@@ -26119,7 +26119,7 @@
 		"MaxLevel"						"1"
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
-		"AbilityCooldown"				"135"
+		"AbilityCooldown"				"270"
 		"precache"
 		{
 			"particle"				"particles/custom/ruler/la_pucelle/ruler_la_pucelle.vpcf"

@@ -162,7 +162,7 @@ function OnPurgeStart(keys)
 		for k,v in pairs(targets) do
 			local targetDamage = damage
 			if (v:HasModifier("modifier_saint_debuff") or v:HasModifier("modifier_saint_debuff_attr")) and  (v:GetKills() - v:GetDeaths()) > 0 then
-				DoDamage(caster, v, damagePerKill * (v:GetKills() - v:GetDeaths()), DAMAGE_TYPE_PURE, 0, ability, false)
+				DoDamage(caster, v, damagePerKill * (v:GetKills() - v:GetDeaths()), DAMAGE_TYPE_MAGICAL, 0, ability, false)
 			end
 	        DoDamage(caster, v, targetDamage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	        giveUnitDataDrivenModifier(caster, v, "silenced", silenceDuration)
@@ -188,7 +188,6 @@ function OnGodResolutionProc(keys)
 	end
 
 	DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
-	giveUnitDataDrivenModifier(caster, target, "revoked", duration)
 	if target:HasModifier("modifier_saint_debuff") or target:HasModifier("modifier_saint_debuff_attr") then
 		 giveUnitDataDrivenModifier(caster, target, "stunned", 0.1)
 	end
