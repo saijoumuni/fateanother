@@ -1219,7 +1219,7 @@
 		
 		"StatusHealth"					"1150"
 		"StatusHealthRegen"				"4.0"
-		"StatusMana"					"1000"
+		"StatusMana"					"1100"
 		"StatusManaRegen"				"3"
 		
 		"ArmorPhysical"					"4"

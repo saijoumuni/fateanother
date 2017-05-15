@@ -436,6 +436,7 @@ function OnDragonStrike1Start(keys)
 		local endpoint = nil
 		for k,v in pairs(caster.targetTable) do
 			DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+			ApplyMarkOfFatality(caster, v)
 			endpoint = v:GetAbsOrigin()
 			local trailFx = ParticleManager:CreateParticle( "particles/units/heroes/hero_ember_spirit/ember_spirit_sleightoffist_trail.vpcf", PATTACH_CUSTOMORIGIN, v )
 			ParticleManager:SetParticleControl( trailFx, 1, startpoint )

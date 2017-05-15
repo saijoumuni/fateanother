@@ -1020,12 +1020,12 @@ function OnPresenceDetectionThink(keys)
 	-- Do the ping for everyone with IsPresenceDetected marked as true
 	for i=1, #newEnemyTable do
 		local enemy = newEnemyTable[i]
-		if enemy:IsRealHero() and not enemy:IsIllusion() then
-
+		if enemy:IsRealHero() and not enemy:IsIllusion()
 			-- Filter TA from ping if he has improved presence concealment attribute
-			if enemy:GetName() == "npc_dota_hero_bounty_hunter" and enemy.IsPCImproved  then 
-				if enemy:HasModifier("modifier_ta_invis") or enemy:HasModifier("modifier_ambush") then break end
-			end
+			and not (enemy:GetName() == "npc_dota_hero_bounty_hunter" and enemy.IsPCImproved and (enemy:HasModifier("modifier_ta_invis") or enemy:HasModifier("modifier_ambush")))
+			-- Filter EA from ping
+			and not (enemy:GetName() == "npc_dota_hero_bloodseeker" and enemy:HasModifier("modifier_lishuwen_concealment"))
+		then
 
 			if enemy.IsPresenceDetected == true or enemy.IsPresenceDetected == nil then
 				--print("Pinged " .. enemy:GetPlayerOwnerID() .. " by player " .. caster:GetPlayerOwnerID())

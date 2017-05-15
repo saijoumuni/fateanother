@@ -431,3 +431,10 @@
     
     "DOTA_Tooltip_ability_master_transfer_6"	"Transfer Item 6"
     "DOTA_Tooltip_ability_master_transfer_6_Description"	"Transfer the item in Stash slot 6 to your Servant."
+
+
+    //====================================
+    //	Balance
+    //====================================
+
+        "DOTA_Tooltip_Ability_lishuwen_raging_dragon_strike_Description"	"<font color='#58ACFA'>Combo Requirement : 20 all stats</font>\n<font color='#58ACFA'>Combo Sequence : W-E in 3 seconds</font>\nAssassin chains together 3 fearful moves.\n<font color='#58ACFA'>1st:</font> Dashes to target, striking all enemies in his path for magic damage, applying Mark of Fatality and <font color='#FF3399'>slowing</font> them.\n<font color='#58ACFA'>2nd:</font> Stomps the ground, dealing physical damage to nearby enemies and stunning them if they are affected by Mark of Fatality.\n<font color='#58ACFA'>3rd:</font> Ascends into the sky with a powerful roundhouse, <font color='#FF3399'>launching enemies into the air</font>. Assassin then rapidly teleports around airborne enemies, delivering multiple hits each dealing composite damage and applying Mark of Fatality.\nIf Assassin fails to activate the 3rd strike, cooldown is significantly reduced."
