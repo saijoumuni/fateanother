@@ -472,3 +472,10 @@ REMOVE        "DOTA_Tooltip_Ability_nero_attribute_pari_tenu_blauserum_stun_radi
 
         "DOTA_Tooltip_Ability_tamamo_attribute_mystic_shackle"		"Mystic Shackle"
         "DOTA_Tooltip_Ability_tamamo_attribute_mystic_shackle_Description"	"Casting Mantra grants bonus magic resistance to an allied target, or reduces magic resistance of an enemy. In addition, Mystic Shackle can be used within 3 seconds after casting Mantra.\n<font color='#58ACFA'>Mystic Shackle :</font> Sews the target's spirit with Caster's, forcing it to stay within certain distance. Caster is dimensionally <font color='#FF3399'>locked</font> while Mystic Shackle lasts. Caster must be no further than 500 distance away from where she initially casted Mantra and ***the target must be no further than 1000 range away to cast this ability. Applies dimensional <font color='#FF3399'>lock</font> on enemy targets.***"
+
+
+        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Description"      "Launches an enigmatic force in a line. When hit, it deals magic damage based on target's current health, <font color='#FF3399'>stuns</font> briefly, and causes victim to suffer <font color='#FF3399'>number of randomly chosen Crowd Control effects.</font> ***Effects already on the target will not be chosen and if the target has all possible effects, the target will be revoked.***"
+REARRANGE        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_revoke_duration"	"REVOKE DURATION:"
+        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note0"			"The pool of Crowd Control effects are Stun, Silence, *** ****Lock, Root, and Disarm."
+        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note1"			"If there are no more effects to choose from, a random one will be chosen."
+	"DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note2"			"Applying revoke has a cooldown of 1.4s on the same target."

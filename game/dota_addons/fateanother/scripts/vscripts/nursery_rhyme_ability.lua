@@ -244,24 +244,45 @@ function OnEnigmaHit(keys)
 	local BaseStunDuration = keys.DefaultStunDuration
 	local NumOfCC = keys.CCNum
 	local damage = keys.Damage
-	local tempCCTable = {
+	local allEffects = {
 		"silenced",
 		"stunned",
-		"revoked",
 		"locked",
 		"rooted",
 		"disarmed"
 	}
 
+	local effects = {
+		"silenced",
+		"stunned",
+		"locked",
+		"rooted",
+		"disarmed"
+	}
+
+	for i=#effects, 1, -1 do
+		print(target:HasModifier(effects[i]))
+		if target:HasModifier(effects[i]) then
+			table.remove(effects, i)
+		end
+	end
+
 	giveUnitDataDrivenModifier(caster, target, "stunned", BaseStunDuration)
 	DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 
+	local tableToUse = effects
 	for i=1, NumOfCC do
-		local CCChoice = math.random(#tempCCTable)
-		local CC = tempCCTable[CCChoice]
-		--print("applying CC " .. CC)
-		giveUnitDataDrivenModifier(caster, target, CC, keys[CC])
-		table.remove(tempCCTable, CCChoice)
+		if #tableToUse == 0 then
+			tableToUse = allEffects
+			if not target:HasModifier("modifier_white_queens_enigma_checker") then
+				giveUnitDataDrivenModifier(caster, target, "revoked", keys.revoked)
+				ability:ApplyDataDrivenModifier(caster, target, "modifier_white_queens_enigma_checker", {})
+			end
+		end
+		local index = math.random(#tableToUse)
+		local effect = tableToUse[index]
+		giveUnitDataDrivenModifier(caster, target, effect, keys[effect])
+		table.remove(tableToUse, index)
 	end
 
 	local iceFx = ParticleManager:CreateParticle( "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_model.vpcf", PATTACH_CUSTOMORIGIN, nil )

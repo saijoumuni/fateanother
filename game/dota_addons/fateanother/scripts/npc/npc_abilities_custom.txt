@@ -27994,6 +27994,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"disarm_duration"				"2 2.5 3 3.5 4"
 			}
+			"10"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"revoke_cooldown"		"1.4"
+			}
 		}
 		
 
@@ -28047,6 +28052,12 @@
 
 		"Modifiers"
 		{
+			"modifier_white_queens_enigma_checker"
+			{
+				"Duration"		"%revoke_cooldown"
+				"IsDebuff"		"1"
+				"IsHidden"		"1"
+			}
 		}
 	}
 
