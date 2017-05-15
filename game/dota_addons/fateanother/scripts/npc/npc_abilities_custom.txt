@@ -15771,7 +15771,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"proc_chance_combo"				"20 40 60 80 100"
+				"proc_chance_combo"				"40 60 80 100 100"
 			}
 		}
 		
@@ -15909,7 +15909,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"crit_damage"			"250.0"
+				"crit_damage"			"150.0"
 			}
 		}
 		

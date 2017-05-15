@@ -459,3 +459,6 @@ REMOVE		"DOTA_Tooltip_modifier_ta_agi_bonus_Description"                        
 
 		"DOTA_Tooltip_ability_gilgamesh_attribute_rain_of_swords_Description"	"Increases Sword Barrage's radius ***and damage***. Archer automatically casts Sword Barrage when casting Enkidu."
 		"DOTA_Tooltip_Ability_gilgamesh_attribute_rain_of_swords_barrage_damage"				"INCREASED DAMAGE:"
+
+
+        "DOTA_Tooltip_ability_diarmuid_rampant_warrior_Description"     "<font color='#58ACFA'>Combo Requirement : 20 all stats</font>\n<font color='#58ACFA'>Combo Sequence : D-W in 3 seconds</font>\nLancer puts everything he's got into battle. ***Lancer gains Double Spearsmanship's effect with double the chance***, and his base attack always critically strikes."
