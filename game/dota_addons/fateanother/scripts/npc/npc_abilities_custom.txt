@@ -14272,7 +14272,7 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"crit_multiplier"	"180 195 210 225 240"
+				"crit_multiplier"	"160 170 180 190 200"
 			}
 			"02"
 			{
@@ -14358,7 +14358,7 @@
 			}
 			"modifier_murderous_instinct_bash_checker"
 			{
-				"Duration"		"3.0"
+				"Duration"		"4.0"
 				"IsDebuff"		"1"
 				"IsHidden"		"0"
 			}
@@ -14466,7 +14466,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"130 150 170 190 210"
+				"damage"			"140 170 200 230 260"
 			}
 			"03"
 			{
@@ -14695,7 +14695,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"400 460 520 580 640"
+				"damage"				"450 525 600 675 750"
 			}
 			"02"
 			{
@@ -14766,7 +14766,7 @@
 		"AbilityTextureName"			"custom/avenger_blood_mark"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
 		
-		"AbilityCastPoint"				"0.6"
+		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"300"
 		"AbilityCastRangeBuffer"		"100"
 		"AbilityCooldown"				"50"
@@ -14870,12 +14870,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage"			"10 14 18 22 26"
+				"bonus_damage_percentage"			"7 11 14 17 20"
 			}
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"			"8 10 12 14 16"
+				"duration"			"9 11 13 15 17"
 			}
 		}
 		
