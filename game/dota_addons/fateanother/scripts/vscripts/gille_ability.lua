@@ -426,6 +426,8 @@ function OnContractStart(keys)
 				tentacle:SetBaseDamageMin(50 + keys.ability:GetLevel() * 50) 
 				tentacle:AddNewModifier(caster, nil, "modifier_kill", {duration = 90.0})
 				EmitGlobalSound("ZC.Ravage")
+
+				tentacle:SetDeathXP(skillLevel * 50 + 100)
 			    local playerData = {
                     transport = tentacle:entindex()
                 }
