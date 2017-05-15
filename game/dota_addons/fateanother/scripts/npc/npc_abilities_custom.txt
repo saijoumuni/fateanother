@@ -2180,7 +2180,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"delay"				"1.3"
+				"delay"				"1.2"
 			}
 			"02"
 			{
@@ -5201,7 +5201,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"tooltip_weapon_drop_delay"	"0.06"
+				"tooltip_weapon_drop_delay"	"0.055"
 			}
 			"04"
 			{
@@ -8088,7 +8088,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"delay"					"1.0"
+				"delay"					"0.9"
 			}
 			"02"
 			{
@@ -11062,7 +11062,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"			"custom/phantom_assassin_phantom_strike"
+		"AbilityTextureName"			"phantom_assassin_phantom_strike"
 		"MaxLevel"						"1"
 
 		"precache"
@@ -24642,7 +24642,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"cast_delay"		"1.0"
+				"cast_delay"		"0.9"
 			}
 			"02"
 			{
