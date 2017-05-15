@@ -23089,7 +23089,7 @@
 			{
 				"IsDebuff"		"1"
 				"Duration"			"3.0"
-				"ThinkInterval" 		"0.033"
+				"ThinkInterval" 		"0.01"
 				"OnIntervalThink"
 				{
 					"RunScript"
