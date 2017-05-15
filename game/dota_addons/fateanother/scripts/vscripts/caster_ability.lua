@@ -77,8 +77,8 @@ function OnTerritoryCreated(keys)
 		end)
 
 
-		caster.Territory:SetMaxHealth(2000) 
-		caster.Territory:SetBaseMaxHealth(2000)
+		caster.Territory:SetMaxHealth(1500) 
+		caster.Territory:SetBaseMaxHealth(1500)
 		-- Give out mana regen for nearby allies
 		Timers:CreateTimer(function()
 			if not caster.Territory:IsAlive() then return end
@@ -195,32 +195,46 @@ function OnTerritoryExplosion(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
 	local hero = ply:GetAssignedHero()
-	local damage = 300 + 10 * hero:GetIntellect() + caster:GetMana()/2
-
 
 	giveUnitDataDrivenModifier(caster, caster, "pause_sealdisabled", 1.0)
+
+	local fx = ParticleManager:CreateParticle("particles/custom/caster/workshop_explosion.vpcf", PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(fx, 0, caster:GetAbsOrigin())
+
 	Timers:CreateTimer(1.0, function()
 		if caster:IsAlive() then
 			caster:EmitSound("Hero_ObsidianDestroyer.SanityEclipse.Cast")
-			local damage = 300 + caster:GetMana()/2 + hero:GetIntellect()*(8+12*caster:GetMana()/caster:GetMaxMana())
+			local damage = 300 + caster:GetMana() + hero:GetIntellect() * 8 
 			if hero.IsTerritoryImproved then damage = damage + 300 end
-		    local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetOrigin(), nil, 1000, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+			local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetOrigin(), nil, 1000, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 			for k,v in pairs(targets) do
-		         DoDamage(hero, v, damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-		    end
-		    -- particle
-	  	  	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_sanity_eclipse_area.vpcf", PATTACH_CUSTOMORIGIN, caster)
-	  	  	ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin()) -- height of the bolt
-		    ParticleManager:SetParticleControl(particle, 1, Vector(1000, 0, 0)) -- height of the bolt
+				local distance = (caster:GetAbsOrigin() - v:GetAbsOrigin()):Length2D()
+				local multiplier = 1
+				if distance > 300 then
+					-- 1/2 damage at max distance
+					multiplier = 1 - (distance - 300) / 1000 * 5 / 7
+				end
+				print(damage)
+				print(multiplier)
+				print(damage * multiplier)
+				DoDamage(hero, v, damage * multiplier, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+			end
+			-- particle
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_sanity_eclipse_area.vpcf", PATTACH_CUSTOMORIGIN, caster)
+			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin()) -- height of the bolt
+			ParticleManager:SetParticleControl(particle, 1, Vector(1000, 0, 0)) -- height of the bolt
 			-- Destroy particle after delay
 			Timers:CreateTimer( 2.0, function()
-				ParticleManager:DestroyParticle( particle, false )
-				ParticleManager:ReleaseParticleIndex( particle )
+				ParticleManager:DestroyParticle(fx, false)
+				ParticleManager:ReleaseParticleIndex(fx)
+				ParticleManager:DestroyParticle(particle, false)
+				ParticleManager:ReleaseParticleIndex(particle)
 				return nil
 			end)
 			caster:Kill(keys.ability, caster)
 		end
-	return end)
+		return
+	end)
 end
 
 function OnManaDrainCast(keys)
@@ -1127,7 +1141,7 @@ function OnRBStart(keys)
 	if caster.IsRBImproved then
 		keys.ability:EndCooldown()
 		keys.ability:StartCooldown(25)
-		giveUnitDataDrivenModifier(caster, target, "revoked", 7.5)
+		giveUnitDataDrivenModifier(caster, target, "revoked", 3)
 		keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_dagger_of_treachery", {}) 
 	end
 

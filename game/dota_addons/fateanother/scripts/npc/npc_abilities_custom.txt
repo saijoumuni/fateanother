@@ -10938,6 +10938,8 @@
 		"precache"
 		{
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+			"particle"				"particles/units/heroes/hero_skywrath_mage/skywrath_mage_ancient_seal_debuff.vpcf"
+			"particle"				"particles/custom/caster/workshop_explosion.vpcf"
 		}
 
 		"AbilitySpecial"
@@ -12154,7 +12156,7 @@
 			}
 			"modifier_dagger_of_treachery"
 			{
-				"Duration"	"7.5"
+				"Duration"	"3"
 				"IsDebuff"			"1"
 				"EffectName"		"particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -12401,7 +12403,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"workshop_health"		"2000"
+				"workshop_health"		"1500"
 			}
 			"02"
 			{

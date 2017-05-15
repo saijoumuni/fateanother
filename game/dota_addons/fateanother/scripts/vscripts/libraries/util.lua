@@ -266,6 +266,7 @@ CannotReset = {
     "atalanta_last_spurt",
     "atalanta_phoebus_catastrophe_barrage",
     "atalanta_phoebus_catastrophe_snipe",
+    "caster_5th_sacrifice",
 }
 
 femaleservant = {
