@@ -273,7 +273,7 @@ function OnAmbushStart(keys)
 			team = DOTA_TEAM_GOODGUYS
 		end]]
 		--local units = FindUnitsInRadius(enemyTeamNumber, caster:GetAbsOrigin(), nil, 2500, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, FIND_CLOSEST, false)
-		local units = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 2500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
+		local units = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 1600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
 		for i=1, #units do
 			print(units[i]:GetUnitName())
 			if units[i]:GetUnitName() == "ward_familiar" then
@@ -353,9 +353,9 @@ end
 
 function SelfModRefresh(keys)
 	local caster = keys.caster
-	caster:RemoveModifierByName("modifier_ta_agi_bonus")
-	caster:FindAbilityByName("true_assassin_self_modification"):ApplyDataDrivenModifier(caster, caster, "modifier_ta_agi_bonus", {}) 
-	caster:SetModifierStackCount("modifier_ta_agi_bonus", caster, caster:GetKills())
+	caster:RemoveModifierByName("modifier_ta_damage_bonus")
+	caster:FindAbilityByName("true_assassin_self_modification"):ApplyDataDrivenModifier(caster, caster, "modifier_ta_damage_bonus", {}) 
+	caster:SetModifierStackCount("modifier_ta_damage_bonus", caster, caster:GetKills())
 end
 
 function OnStealStart(keys)

@@ -8530,7 +8530,7 @@
 		"AnimationPlaybackRate" 		"1.0"
 		"AbilityUnitTargetFlag"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastPoint"				"0.1"
-		"AbilityCastRange"				"700 1100"
+		"AbilityCastRange"				"700"
 		"AbilityCooldown"				"8 4"
 		"AbilityManaCost"				"100"
 
@@ -8572,7 +8572,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"range"					"700 1100"
+				"range"					"700"
 			}
 		}
 
@@ -9113,7 +9113,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"agi_increase"			"1 1.5 2 2.5 3"
+				"damage_increase"			"1 1.5 2 2.5 3"
 			}
 			"04"
 			{
@@ -9189,13 +9189,13 @@
 					}					
 				}
 			}
-			"modifier_ta_agi_bonus"
+			"modifier_ta_damage_bonus"
 			{
 				"IsHidden"		"0"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%agi_increase"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%damage_increase"
 				}
 			}
 		}
@@ -9397,8 +9397,8 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"str_reduction"			"-1"
+				"var_type"				"FIELD_FLOAT"
+				"str_reduction"			"-0.75"
 			}
 			"02"
 			{
@@ -9490,7 +9490,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"search_radius"			"2500"
+				"search_radius"			"1600"
 			}
 			"02"
 			{
@@ -9562,7 +9562,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"8"
+		"AbilityManaCost"				"15"
 
 		"precache"
 		{
@@ -9578,32 +9578,27 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"bonus_range"			"400"
+				"cdr"			"50"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cdr"			"50"
+				"str_reduction_dirk"			"12"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"str_reduction_dirk"			"12"
+				"duration"			"10"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"			"10"
+				"baseattack_slow"			"5.0"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"baseattack_slow"			"5.0"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"baseattack_str_reduction"			"1"
+				"baseattack_str_reduction"			"0.75"
 			}
 		}
 		
