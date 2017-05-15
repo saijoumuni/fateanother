@@ -2180,6 +2180,23 @@ function FateGameMode:ExecuteOrderFilter(filterTable)
         SaveStashState(caster)
         return false
     end
+
+    if orderType == DOTA_UNIT_ORDER_CAST_POSITION then
+        if ability:GetName() == "astolfo_hippogriff_raid" then
+            local location = Vector(xPos, yPos, zPos)
+            local origin = caster:GetAbsOrigin()
+            
+            if (location - origin):Length2D() <= ability:GetCastRange() then
+                local facing = caster:GetForwardVector()
+                local offset = origin + facing * 10
+
+                filterTable.position_x = tostring(offset.x)
+                filterTable.position_y = tostring(offset.y)
+                filterTable.position_z = tostring(offset.z)
+            end
+            caster.HippogriffCastLocation = location
+	end
+    end
     return true
 end
 

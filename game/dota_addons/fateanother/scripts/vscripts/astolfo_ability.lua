@@ -337,7 +337,7 @@ function CreateBeaconForEnemies(caster, targetPoint)
 end
 function OnRaidStart(keys)
 	local caster = keys.caster
-	local targetPoint = keys.target_points[1]
+	local targetPoint = caster.HippogriffCastLocation
 	local ability = keys.ability
 	local firstDmgPct = keys.FirstDamagePct
 	if caster.bIsRidingAcquired then firstDmgPct = firstDmgPct + 10 end
