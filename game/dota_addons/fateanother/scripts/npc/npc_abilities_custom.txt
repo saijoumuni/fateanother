@@ -20074,6 +20074,11 @@
 				}
 				"OnAttackLanded"
 				{
+					"RunScript"
+					{
+						"ScriptFile"		"nero_ability"
+						"Function"			"OnGBStrike"
+					}
 					"RemoveModifier"
 					{
 						"ModifierName"		"modifier_gladiusanus_blauserum"
@@ -20082,11 +20087,6 @@
  							"Center"	"CASTER"
  							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
  						}
-					}
-					"RunScript"
-					{
-						"ScriptFile"		"nero_ability"
-						"Function"			"OnGBStrike"
 					}
 				}
 				"OnDestroy"
@@ -20648,7 +20648,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"8"
+		"AbilityManaCost"				"12"
 
 		"precache"
 		{
@@ -20659,22 +20659,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"str_ratio"					"0"
+				"str_ratio"					"0.01"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"agi_ratio"					"5"
+				"agi_ratio"					"6"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"stun_radius"					"400"
+				"radius"					"400"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_duration"					"0.75"
+				"stun_duration"					"0.35"
 			}
 		}
 		

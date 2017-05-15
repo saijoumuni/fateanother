@@ -217,9 +217,12 @@ function OnGBStrike(keys)
 	caster:EmitSound("Hero_Clinkz.DeathPact")
 	if caster.IsPTBAcquired then
 		local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 400, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_CLOSEST, false)
+		local multiplier = caster:GetModifierStackCount("modifier_gladiusanus_blauserum", caster) / 5 + 1 / 5
+		local damage = caster:GetAgility() * 6 * multiplier
+		local stun = caster:GetStrength() * 0.01 * multiplier + 0.35
 		for k,v in pairs(targets) do
-			DoDamage(caster, v, caster:GetAgility() * 5, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-			target:AddNewModifier(caster, v, "modifier_stunned", {Duration = 0.75})
+			DoDamage(caster, v, damage * multiplier, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+			target:AddNewModifier(caster, v, "modifier_stunned", {Duration = stun})
 		end
 	end
 
