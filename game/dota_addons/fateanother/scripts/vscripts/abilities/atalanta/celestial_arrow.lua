@@ -140,6 +140,9 @@ function atalanta_celestial_arrow:ArrowHit(target, stun)
     caster:AddHuntStack(target, 1)
 
     local damage = caster:GetAverageTrueAttackDamage(caster)
+    if target:HasModifier("modifier_a_scroll") then
+        damage = damage / 2
+    end
 
     local stacks = target:GetModifierStackCount("modifier_calydonian_hunt", caster)
     local ability = caster:FindAbilityByName("atalanta_calydonian_hunt")

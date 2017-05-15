@@ -1483,8 +1483,8 @@
 		
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackRange"					"700"
-		"AttackDamageMin"				"150"
-		"AttackDamageMax"				"150"
+		"AttackDamageMin"				"200"
+		"AttackDamageMax"				"200"
 		"AttackRate"					"7"
 		"AttackAcquisitionRange"		"1000"
 		"AttackAnimationPoint"			"0.3"
@@ -1503,8 +1503,8 @@
 		"MovementSpeed"					"340"
 		"MovementTurnRate"				"0.8"
 		
-		"VisionDaytimeRange"			"1300"
-		"VisionNighttimeRange"			"1300"
+		"VisionDaytimeRange"			"1100"
+		"VisionNighttimeRange"			"1100"
 
 	}
 	

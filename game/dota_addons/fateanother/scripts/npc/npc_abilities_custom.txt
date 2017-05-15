@@ -28835,7 +28835,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityTextureName"			"windrunner_powershot"
 		
-		"AbilityCastPoint"				"0.30"
+		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"40"
 		"LevelsBetweenUpgrades"				"1"
@@ -28864,7 +28864,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"20 40 60 80 100"
+				"bonus_damage"			"10 20 30 40 50"
 			}
 			"04"
 			{
@@ -29010,7 +29010,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityTextureName"			"custom/atalanta_crossing_arcadia"
 		
-		"AbilityCastPoint"				"0.7"
+		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"27"
 		"AbilityManaCost"				"400"
 		"LevelsBetweenUpgrades"			"2"

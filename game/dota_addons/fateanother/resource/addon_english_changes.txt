@@ -463,7 +463,7 @@ REMOVE		"DOTA_Tooltip_modifier_ta_agi_bonus_Description"                        
 
         "DOTA_Tooltip_ability_diarmuid_rampant_warrior_Description"     "<font color='#58ACFA'>Combo Requirement : 20 all stats</font>\n<font color='#58ACFA'>Combo Sequence : D-W in 3 seconds</font>\nLancer puts everything he's got into battle. ***Lancer gains Double Spearsmanship's effect with double the chance***, and his base attack always critically strikes."
 
-        "DOTA_Tooltip_ability_nero_attribute_pari_tenu_blauserum_Description"       "Gladiusanus Blauserum inflicts bonus magic damage based on AGI, and <font color='#FF3399'>stuns</font> enemies in small radius. ***Stun duration increases based on STR.\nBonus damage and stun scales according to the number of stacks of Gladiusanus Blauserum, with 0 stacks applying 1/5 of the effect.***"  
+        "DOTA_Tooltip_ability_nero_attribute_pari_tenu_blauserum_Description"       "Gladiusanus Blauserum inflicts bonus magic damage based on AGI, and <font color='#FF3399'>stuns</font> enemies in small radius. ***Stun duration increases based on STR.\nBonus stun duration and damage scales according to the number of stacks of Gladiusanus Blauserum, with 0 stacks applying 1/5 of the effect.***"  
         "DOTA_Tooltip_Ability_nero_attribute_pari_tenu_blauserum_stun_duration"          "***BASE STUN DURATION:***"
 REMOVE        "DOTA_Tooltip_Ability_nero_attribute_pari_tenu_blauserum_stun_radius"          "RADIUS:"
         "DOTA_Tooltip_Ability_nero_attribute_pari_tenu_blauserum_radius"          "RADIUS:"
