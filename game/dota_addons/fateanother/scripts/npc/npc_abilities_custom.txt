@@ -9191,7 +9191,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%damage_increase"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%damage_increase"
 				}
 			}
 		}
@@ -20654,7 +20654,7 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
+				"var_type"				"FIELD_FLOAT"
 				"str_ratio"					"0.01"
 			}
 			"02"
