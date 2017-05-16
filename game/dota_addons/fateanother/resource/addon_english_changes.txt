@@ -479,3 +479,12 @@ REARRANGE        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_revoke_
         "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note0"			"The pool of Crowd Control effects are Stun, Silence, *** ****Lock, Root, and Disarm."
         "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note1"			"If there are no more effects to choose from, a random one will be chosen."
 	"DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_Note2"			"Applying revoke has a cooldown of 1.4s on the same target."
+
+        "DOTA_Tooltip_Ability_jeanne_attribute_divine_symbol_Description"	"***Increases Luminosite Eternelle's damage reduction***, and causes it to apply Charisma to all allied Servants within sacred zone at cast. In addition, Ruler automatically casts Charisma on herself when La Pucelle activates."
+        "DOTA_Tooltip_Ability_jeanne_attribute_divine_symbol_bonus_reduction"	"%BONUS REDUCTION:"
+
+		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura"                   "Luminosite Eternelle Flag Improved Aura"
+		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura_Description"       ""
+
+		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura_buff"              "Luminosite Eternelle Flag Improved Aura Buff"
+		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura_buff_Description"  ""

@@ -276,9 +276,6 @@ function OnLEStart(keys)
 	local delay = keys.Delay
 	local range = keys.Range
 	local duration = keys.FlagDuration
-	if caster.IsDivineSymbolAcquired then
-		duration = duration+0.7
-	end
 	local health = keys.FlagHealth
 	local travelTime = 1/3
 
@@ -343,7 +340,11 @@ function OnLEStart(keys)
 		flag:SetBaseMaxHealth(health)
 		caster.CurrentFlag = flag
 		caster.CurrentFlagHealth = health
-		ability:ApplyDataDrivenModifier(caster, flag, "modifier_luminosite_eternelle_flag_aura", {})
+		if caster.IsDivineSymbolAcquired then
+			ability:ApplyDataDrivenModifier(caster, flag, "modifier_luminosite_eternelle_flag_improved_aura", {})
+		else
+			ability:ApplyDataDrivenModifier(caster, flag, "modifier_luminosite_eternelle_flag_aura", {})
+		end
 
 		if caster.IsDivineSymbolAcquired then
 			local targets = FindUnitsInRadius(caster:GetTeam(), flag:GetAbsOrigin(), nil, range, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
