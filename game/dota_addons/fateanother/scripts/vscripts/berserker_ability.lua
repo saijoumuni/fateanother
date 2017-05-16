@@ -130,7 +130,7 @@ function OnRoarStart(keys)
 		local dist = (v:GetAbsOrigin() - casterloc):Length2D() 
 		if dist <= 300 then
 			finaldmg = keys.Damage1
-			v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 3.0})
+		        giveUnitDataDrivenModifier(caster, v, "stunned", 3.0)
 			giveUnitDataDrivenModifier(caster, v, "rb_sealdisabled", 3.0)
 		elseif dist > 300 and dist <= 1000 then
 			finaldmg = keys.Damage2
@@ -377,7 +377,7 @@ function OnNineLanded(caster, ability)
 				local lasthitTargets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, lasthitradius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 1, false)
 				for k,v in pairs(lasthitTargets) do
 					DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
-					v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 1.0})
+					giveUnitDataDrivenModifier(caster, v, "stunned", 1.0)
 					giveUnitDataDrivenModifier(caster, v, "revoked", 1.0)
 					-- push enemies back
 					local pushback = Physics:Unit(v)
@@ -417,7 +417,7 @@ function OnNineLanded(caster, ability)
 				local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, 1, false)
 				for k,v in pairs(targets) do
 					DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
-					v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 1.0})
+					giveUnitDataDrivenModifier(caster, v, "stunned", 1.0)
 					giveUnitDataDrivenModifier(caster, v, "revoked", 1.0)
 				end
 

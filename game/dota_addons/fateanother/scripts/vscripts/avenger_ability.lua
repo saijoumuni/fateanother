@@ -267,8 +267,8 @@ function OnTZStart(keys)
 		return 0.10
 	end)
 
-	target:AddNewModifier(caster, target, "modifier_disarmed", {Duration = keys.Duration})
-	target:AddNewModifier(caster, target, "modifier_silence", {Duration = keys.Duration})
+        giveUnitDataDrivenModifier(caster, target, "disarmed", keys.Duration)
+        giveUnitDataDrivenModifier(caster, target, "silenced", keys.Duration)
 end
 
 function OnTZLevelUp(keys)
