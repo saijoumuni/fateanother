@@ -105,9 +105,10 @@ for i=1, MAX_LEVEL do
     BOUNTY_PER_LEVEL_TABLE[i] = 1025 + i * 75
 end
 
-XP_BOUNTY_PER_LEVEL_TABLE[1] = 120
-for i=2, MAX_LEVEL do
-    XP_BOUNTY_PER_LEVEL_TABLE[i] = XP_BOUNTY_PER_LEVEL_TABLE[i-1]*0.95 + i*4 + 100 -- Bounty XP formula : Previous level XP + Current Level * 4 + 120(constant)
+XP_BOUNTY_PER_LEVEL_TABLE[1] = 80
+XP_BOUNTY_PER_LEVEL_TABLE[2] = 120 * 0.8 + 8 + 100
+for i=3, MAX_LEVEL do
+    XP_BOUNTY_PER_LEVEL_TABLE[i] = XP_BOUNTY_PER_LEVEL_TABLE[i-1]*0.8 + i*4 + 100 -- Bounty XP formula : Previous level XP + Current Level * 4 + 120(constant)
 end
 
 -- Client to Server message data tables
@@ -822,10 +823,10 @@ function FateGameMode:OnGameRulesStateChange(keys)
         self.bSeenWaitForPlayers = true
     elseif newState == DOTA_GAMERULES_STATE_INIT then 
     elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-        print("hero selection phase")
         Timers:CreateTimer(2, function()
             FateGameMode:OnAllPlayersLoaded()
         end)
+
         Selection = HeroSelection()
         Selection:UpdateTime()
     elseif newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
@@ -1560,7 +1561,7 @@ function FateGameMode:OnEntityKilled( keys )
             end
 
             for i=1, #alliedHeroes do
-                if alliedHeroes[i]:IsHero() then
+                if alliedHeroes[i]:IsHero() and alliedHeroes[i]:GetName() ~= "npc_dota_hero_wisp" then
                     alliedHeroes[i]:AddExperience(XP_BOUNTY_PER_LEVEL_TABLE[killedUnit:GetLevel()]/realHeroCount, false, false)
                 end
             end
@@ -1663,13 +1664,6 @@ function FateGameMode:OnEntityKilled( keys )
                 if nRadiantAlive == 0 then
                     --print("All Radiant heroes eliminated, removing existing timers and declaring winner...")
 
-                    self:LoopOverPlayers(function(player, playerID, playerHero)
-                        if playerHero:GetTeam() == DOTA_TEAM_BADGUYS then
-                            -- give 15% XP
-                            playerHero:AddExperience(_G.XP_PER_LEVEL_TABLE[playerHero:GetLevel()] * 0.15 , false, false)
-                        end
-                    end)
-
                     Timers:RemoveTimer('round_timer')
                     Timers:RemoveTimer('alertmsg')
                     Timers:RemoveTimer('alertmsg2')
@@ -1678,13 +1672,6 @@ function FateGameMode:OnEntityKilled( keys )
                     self:FinishRound(false, 1)
                 elseif nDireAlive == 0 then
                     --print("All Dire heroes eliminated, removing existing timers and declaring winner...")
-
-                    self:LoopOverPlayers(function(player, playerID, playerHero)
-                        if playerHero:GetTeam() == DOTA_TEAM_GOODGUYS then
-                            -- give 15% XP
-                            playerHero:AddExperience(_G.XP_PER_LEVEL_TABLE[playerHero:GetLevel()] * 0.15 , false, false)
-                        end
-                    end)
 
                     Timers:RemoveTimer('round_timer')
                     Timers:RemoveTimer('alertmsg')
@@ -2277,9 +2264,7 @@ function FateGameMode:InitializeRound()
                 end
             end
 
-            local multiplier = (0.5+0.01*(hero:GetDeaths()-hero:GetKills()))
-            --print("[FateGameMode]" .. hero:GetName() .. " of player " .. hero:GetPlayerID() .. " gained " .. (_G.XP_PER_LEVEL_TABLE[hero:GetLevel()] * multiplier) .. " experience at the start of round")
-            hero:AddExperience(_G.XP_PER_LEVEL_TABLE[hero:GetLevel()] * multiplier , false, false)
+            hero:AddExperience(self.nCurrentRound * 50, false, false)
         end
     end)
 

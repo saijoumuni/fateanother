@@ -961,7 +961,7 @@ function OnProsperityAcquired(keys)
 	local master = hero.MasterUnit 
 	local master2 = hero.MasterUnit2
 
-	for i=1,6 do
+	for i=1,4 do
 		local level = hero:GetLevel()
 		if level ~= 24 then
 			hero:AddExperience(_G.XP_PER_LEVEL_TABLE[level], false, false)
