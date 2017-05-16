@@ -220,7 +220,7 @@ function OnGBStrike(keys)
 		local damage = caster:GetAgility() * 5
 		local stun = caster:GetStrength() * 0.01 + 0.25
 		for k,v in pairs(targets) do
-			DoDamage(caster, v, damage * multiplier, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+			DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 			target:AddNewModifier(caster, v, "modifier_stunned", {Duration = stun})
 		end
 	end
