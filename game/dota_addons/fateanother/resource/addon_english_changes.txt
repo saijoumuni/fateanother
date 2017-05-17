@@ -443,19 +443,13 @@
 		"DOTA_Tooltip_ability_true_assassin_attribute_weakening_venom_Description"	"Dagger Throw deals bonus damage based on AGI ***and has reduced cooldown***. In addition, its poison effect reduces target's STR and lasts longer.\nAlso, Assassin's base attack applies stackable poison effect that slows and reduces target's STR."	
 REMOVE		"DOTA_Tooltip_Ability_true_assassin_attribute_weakening_venom_bonus_range"				"DAGGER THROW BONUS RANGE:"
 
-REMOVE		"DOTA_Tooltip_modifier_ta_agi_bonus"                                              "Ta Agi Bonus"
-REMOVE		"DOTA_Tooltip_modifier_ta_agi_bonus_Description"                                  ""
-
-		"DOTA_Tooltip_modifier_ta_damage_bonus"                                              "Ta Damage Bonus"
-		"DOTA_Tooltip_modifier_ta_damage_bonus_Description"                                  ""
+		"DOTA_Tooltip_modifier_ta_agi_bonus"                                              "Ta Agi Bonus"
+		"DOTA_Tooltip_modifier_ta_agi_bonus_Description"                                  ""
 
 		"DOTA_Tooltip_ability_true_assassin_self_modification_Description"	"Passively grants bonus ***damage*** for each kill. When activated, Assassin reconstructs his own flesh, instantly healing himself and then smaller amount over time. "
 		"DOTA_Tooltip_ability_true_assassin_self_modification_damage_increase"	"BONUS DAMAGE PER KILL:"
 
         "DOTA_Tooltip_Ability_jeanne_purge_the_unjust_Description"		"Ruler marks the ground with a holy symbol. After a delay, heavenly light strikes the area, damaging enemies and <font color='#FF3399'>silencing</font> them.\n<font color='#ff9900'>UNJUST BONUS:</font> Deals additional ***magic*** damage based on the difference between Kill and Death counts(K-D)."
-
-		"DOTA_Tooltip_ability_caster_5th_territory_explosion_Description"	"Causes stored mana to run amok, self-destructing and dealing damage based on the Workshop's current mana to all nearby enemies.\n***Damage dealt scales with distance from center, with full damage below 300 range and half damage at max range.\n\nDamage increases with Caster's INT.\nDAMAGE : 300 + Workshop's current mana + INT*8 ***"
-
 
 		"DOTA_Tooltip_ability_gilgamesh_attribute_rain_of_swords_Description"	"Increases Sword Barrage's radius ***and damage***. Archer automatically casts Sword Barrage when casting Enkidu."
 		"DOTA_Tooltip_Ability_gilgamesh_attribute_rain_of_swords_barrage_damage"				"INCREASED DAMAGE:"
@@ -489,3 +483,9 @@ REARRANGE        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_revoke_
 
 		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura_buff"              "Luminosite Eternelle Flag Improved Aura Buff"
 		"DOTA_Tooltip_modifier_luminosite_eternelle_flag_improved_aura_buff_Description"  ""
+
+		"DOTA_Tooltip_ability_caster_5th_attribute_improve_territory_creation_Description"	"Increases Workshop's health, mana, mana regen and Workshop Explosion's damage. Also enables All-Seeing Orb, True Sight, and Brilliance Aura."
+		"caster_5th_territory_improved"                                                   "Caster 5th Territory"
+		"DOTA_Tooltip_ability_caster_5th_attribute_improve_territory_creation_workshop_mana"	"WORKSHOP MANA:"
+
+		"DOTA_Tooltip_ability_caster_5th_territory_explosion_Description"	"Causes stored mana to run amok, self-destructing and dealing damage based on the Workshop's current mana to all nearby enemies.\nDamage dealt scales with distance from center, with full damage below 300 range and half damage at max range.\n\nDamage increases with Caster's INT.\nDAMAGE : 300 + Workshop's current mana + INT*8"

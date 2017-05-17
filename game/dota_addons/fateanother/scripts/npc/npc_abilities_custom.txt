@@ -12404,7 +12404,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"workshop_health"		"1500"
+				"workshop_health"		"2000"
 			}
 			"02"
 			{
@@ -12415,6 +12415,11 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"explosion_bonus_damage"		"300"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"workshop_mana"			"1500"
 			}
 		}
 		

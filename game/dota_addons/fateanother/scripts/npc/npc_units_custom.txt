@@ -580,6 +580,51 @@
 		"RingRadius"				"220"
 	}
 
+	"caster_5th_territory_improved"
+	{
+		"BaseClass"				 "npc_dota_creature"
+		"Model"					"models/props_structures/tower_good.vmdl"
+		"ModelScale"			"2.0"
+		"MinimapIcon"				"minimap_racks90"
+
+		"AbilityLayout"				"6"
+		"Ability1"					"caster_5th_mana_drain"			// Ability 1
+		"Ability2"					"caster_5th_territory_explosion"			// Ability 2
+		"Ability3"					"caster_5th_mobilize"			// Ability 4
+		"Ability4"					"caster_5th_recall"
+		"Ability5"					"fate_empty1"
+		"Ability6"					"fate_empty_nothidden"
+		"Ability7"					"caster_5th_immobilize"
+		"Ability8"					"caster_5th_dimensional_jump"
+		"Ability9"					"fate_empty3"
+		"Ability10"					"fate_empty4"
+		"Ability11"					"fate_empty2"
+		"ArmorPhysical"				"0"			// Physical protection.
+
+		"BountyXP"					"200"	// Experience earn.
+		"BountyGoldMin"				"2000"		// Gold earned min.
+		"BountyGoldMax"				"2000"		// Gold earned max.
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed"				"200"		// Speed.
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"2000"		// Base health.
+		"StatusHealthRegen"			"0"		// Health regeneration rate.
+		"StatusMana"				"1500"			// Base mana.
+		"StatusManaRegen"			"3"			// Mana regeneration rate.	
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"700"		// Range of vision during day light.
+		"VisionNighttimeRange"		"700"		// Range of vision at night time.
+
+		"BoundsHullName"		"DOTA_HULL_SIZE_BARRACKS"
+		"RingRadius"				"220"
+	}
+
 	"caster_5th_skeleton_warrior"
 	{
 		"Model"				"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"

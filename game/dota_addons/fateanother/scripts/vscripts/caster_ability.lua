@@ -29,7 +29,8 @@ function OnTerritoryCreated(keys)
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_caster_death_checker", {})
 
 	-- Create Workshop at location
-	caster.Territory = CreateUnitByName("caster_5th_territory", targetPoint, true, caster, caster, caster:GetTeamNumber()) 
+	local unitName = hero.IsTerritoryImproved and "caster_5th_territory_improved" or "caster_5th_territory"
+	caster.Territory = CreateUnitByName(unitName, targetPoint, true, caster, caster, caster:GetTeamNumber()) 
 	caster.Territory:SetControllableByPlayer(pid, true)
 	LevelAllAbility(caster.Territory)
 	keys.ability:ApplyDataDrivenModifier(caster, caster.Territory, "modifier_territory_death_checker", {}) 
@@ -76,9 +77,6 @@ function OnTerritoryCreated(keys)
 			end
 		end)
 
-
-		caster.Territory:SetMaxHealth(1500) 
-		caster.Territory:SetBaseMaxHealth(1500)
 		-- Give out mana regen for nearby allies
 		Timers:CreateTimer(function()
 			if not caster.Territory:IsAlive() then return end
