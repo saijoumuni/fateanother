@@ -209,12 +209,9 @@ function OnTerritoryExplosion(keys)
 				local distance = (caster:GetAbsOrigin() - v:GetAbsOrigin()):Length2D()
 				local multiplier = 1
 				if distance > 300 then
-					-- 1/2 damage at max distance
-					multiplier = 1 - (distance - 300) / 1000 * 5 / 7
+					-- 2/3 damage at max distance
+					multiplier = 1 - (distance - 300) / 700 / 3
 				end
-				print(damage)
-				print(multiplier)
-				print(damage * multiplier)
 				DoDamage(hero, v, damage * multiplier, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 			end
 			-- particle
