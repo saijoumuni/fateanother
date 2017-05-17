@@ -106,9 +106,9 @@ for i=1, MAX_LEVEL do
 end
 
 XP_BOUNTY_PER_LEVEL_TABLE[1] = 80
-XP_BOUNTY_PER_LEVEL_TABLE[2] = 120 * 0.8 + 8 + 100
+XP_BOUNTY_PER_LEVEL_TABLE[2] = 120 * 0.85 + 8 + 100
 for i=3, MAX_LEVEL do
-    XP_BOUNTY_PER_LEVEL_TABLE[i] = XP_BOUNTY_PER_LEVEL_TABLE[i-1]*0.8 + i*4 + 100 -- Bounty XP formula : Previous level XP + Current Level * 4 + 120(constant)
+    XP_BOUNTY_PER_LEVEL_TABLE[i] = XP_BOUNTY_PER_LEVEL_TABLE[i-1]*0.85 + i*4 + 100 -- Bounty XP formula : Previous level XP + Current Level * 4 + 120(constant)
 end
 
 -- Client to Server message data tables
