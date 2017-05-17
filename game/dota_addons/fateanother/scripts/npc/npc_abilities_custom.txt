@@ -14237,6 +14237,15 @@
 				"IsDebuff"		"1"
 				"Duration"		"15.0"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnRespawn"
+				{
+					 "RunScript"
+					 {
+					 	"ScriptFile"	"avenger_ability"
+					 	"Function"	"OnDarkPassageRespawn"
+					 }
+				}
 			}
 		}
 	}

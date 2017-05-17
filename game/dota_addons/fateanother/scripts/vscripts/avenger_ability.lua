@@ -91,6 +91,11 @@ function OnDPStart(keys)
 	)
 end
 
+function OnDarkPassageRespawn(keys)
+	local caster = keys.caster
+	caster:RemoveModifierByName("modifier_dark_passage")
+end
+
 function OnMurderStart(keys)
 	local caster = keys.caster
 	local ability = keys.ability
