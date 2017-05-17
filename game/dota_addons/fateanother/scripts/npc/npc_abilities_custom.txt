@@ -24643,7 +24643,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"150"
 		"AbilityCastRangeBuffer"		"225"
-		"AbilityCastPoint"				"0.7"
+		"AbilityCastPoint"				"0.8"
 		"AbilityCooldown"				"30"
 		"AbilityManaCost"				"800"
 		
