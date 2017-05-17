@@ -218,7 +218,7 @@ function OnGBStrike(keys)
 	if caster.IsPTBAcquired then
 		local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 400, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_CLOSEST, false)
 		local damage = caster:GetAgility() * 5
-		local stun = caster:GetStrength() * 0.01 + 0.25
+		local stun = caster:GetStrength() * 0.01 + 0.35
 		for k,v in pairs(targets) do
 			DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 			target:AddNewModifier(caster, v, "modifier_stunned", {Duration = stun})
