@@ -248,7 +248,7 @@ function OnChariotRide(keys)
 	local duration = keys.Duration
 
 	if caster.IsVEAcquired then
-		if not caster:FindAbilityByName("iskander_via_expugnatio"):IsHidden() then
+		if caster:FindAbilityByName("iskander_via_expugnatio"):IsHidden() then
 			caster:SwapAbilities(caster:GetAbilityByIndex(5):GetName(), "iskander_via_expugnatio", false, true) 
 		end
 	else
