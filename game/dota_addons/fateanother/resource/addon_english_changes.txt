@@ -483,3 +483,7 @@ REARRANGE        "DOTA_Tooltip_Ability_nursery_rhyme_white_queens_enigma_revoke_
 		"DOTA_Tooltip_ability_caster_5th_attribute_improve_territory_creation_workshop_mana"	"WORKSHOP MANA:"
 
 		"DOTA_Tooltip_ability_caster_5th_territory_explosion_Description"	"Causes stored mana to run amok, self-destructing and dealing damage based on the Workshop's current mana to all nearby enemies.\nDamage dealt scales with distance from center, with full damage below 300 range and half damage at max range.\n\nDamage increases with Caster's INT.\nDAMAGE : 300 + Workshop's current mana + INT*8"
+
+        "DOTA_Tooltip_Ability_jeanne_gods_resolution_Description"	"<font color='#58ACFA'>PASSIVE:</font> Ruler's attacks have a chance to *** *** deal bonus magic damage based on the target's current health.\n<font color='#58ACFA'>ACTIVE:</font> Channels the wrath of god around her, continously dealing damage to nearby enemies and <font color='#FF3399'>slowing</font> their movement and attack speeds. Ruler gains bonus armor and magic resistance while channeling.\n<font color='#ff9900'>UNJUST BONUS:</font> Also ministuns."
+REMOVE        "DOTA_Tooltip_Ability_jeanne_gods_resolution_passive_chance"		"%PASSIVE CHANCE:"
+REMOVE        "DOTA_Tooltip_Ability_jeanne_gods_resolution_passive_revoke_duration"		"%REVOKE DURATION:"
