@@ -9109,7 +9109,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"damage_increase"			"1 1.5 2 2.5 3"
+				"agi_increase"				"1 1.25 1.5 1.75 2"
 			}
 			"04"
 			{
@@ -9185,13 +9185,13 @@
 					}					
 				}
 			}
-			"modifier_ta_damage_bonus"
+			"modifier_ta_agi_bonus"
 			{
 				"IsHidden"		"0"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%damage_increase"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%agi_increase"
 				}
 			}
 		}
@@ -9475,7 +9475,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"17"
+		"AbilityManaCost"				"13"
 
 		"precache"
 		{
@@ -9558,7 +9558,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"15"
+		"AbilityManaCost"				"12"
 
 		"precache"
 		{

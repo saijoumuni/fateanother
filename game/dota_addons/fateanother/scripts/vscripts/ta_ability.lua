@@ -353,9 +353,9 @@ end
 
 function SelfModRefresh(keys)
 	local caster = keys.caster
-	caster:RemoveModifierByName("modifier_ta_damage_bonus")
-	caster:FindAbilityByName("true_assassin_self_modification"):ApplyDataDrivenModifier(caster, caster, "modifier_ta_damage_bonus", {}) 
-	caster:SetModifierStackCount("modifier_ta_damage_bonus", caster, caster:GetKills())
+	caster:RemoveModifierByName("modifier_ta_agi_bonus")
+	caster:FindAbilityByName("true_assassin_self_modification"):ApplyDataDrivenModifier(caster, caster, "modifier_ta_agi_bonus", {}) 
+	caster:SetModifierStackCount("modifier_ta_agi_bonus", caster, caster:GetKills())
 end
 
 function OnStealStart(keys)
