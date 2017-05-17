@@ -15919,7 +15919,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"crit_damage"			"150.0"
+				"crit_damage"			"200.0"
 			}
 		}
 		
