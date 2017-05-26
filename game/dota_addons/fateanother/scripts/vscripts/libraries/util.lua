@@ -1586,6 +1586,7 @@ local heroCombos = {
     ["npc_dota_hero_mirana"] = "jeanne_combo_la_pucelle",
     ["npc_dota_hero_queenofpain"] = "astolfo_hippogriff_ride",
     ["npc_dota_hero_windrunner"] = "nursery_rhyme_story_for_somebodys_sake",
+    ["npc_dota_hero_drow_ranger"] = "atalanta_phoebus_catastrophe_barrage",
 }
 
 function GetHeroCombo(hero)
