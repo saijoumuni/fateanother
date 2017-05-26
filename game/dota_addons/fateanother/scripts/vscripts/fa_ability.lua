@@ -204,6 +204,11 @@ function OnTMLanded(keys)
 	local target = keys.target
 	local ability = keys.ability
 
+	local dummy = CreateUnitByName("godhand_res_locator", caster:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+	dummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1) 
+	dummy:AddNewModifier(caster, nil, "modifier_phased", {duration=4})
+	dummy:AddNewModifier(caster, nil, "modifier_kill", {duration=4})
+
 	local tgabil = caster:FindAbilityByName("false_assassin_tsubame_gaeshi")
 	keys.Damage = tgabil:GetLevelSpecialValueFor("damage", tgabil:GetLevel()-1)
 	keys.LastDamage = tgabil:GetLevelSpecialValueFor("lasthit_damage", tgabil:GetLevel()-1)
@@ -250,6 +255,7 @@ function OnTMLanded(keys)
 	Timers:CreateTimer(2.8, function()
 		if caster:IsAlive() then
 			keys.IsCounter = true
+			keys.Locator = dummy
 			OnTGStart(keys)
 		end
 	end)
@@ -673,10 +679,17 @@ function OnTGStart(keys)
 			    ParticleManager:SetParticleControl(slashIndex, 1, Vector(500,0,150))
 			    ParticleManager:SetParticleControl(slashIndex, 2, Vector(0.2,0,0))
 			end
-			FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 		else
 			ParticleManager:DestroyParticle(particle, true)
 		end
+		local position = caster:GetAbsOrigin()
+		if keys.Locator then
+			local dummyPosition = keys.Locator:GetAbsOrigin()
+			if not IsInSameRealm(position, dummyPosition) then
+				position = dummyPosition
+			end
+		end
+		FindClearSpaceForUnit(caster, position, true)
 
 	return end)
 end

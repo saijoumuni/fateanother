@@ -571,9 +571,19 @@ function OnDragonStrike3Start(keys)
 
 	giveUnitDataDrivenModifier(keys.caster, keys.caster, "jump_pause", keys.KnockupDuration)
 
+	local dummy = CreateUnitByName("godhand_res_locator", caster:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+	dummy:FindAbilityByName("dummy_unit_passive"):SetLevel(1) 
+	dummy:AddNewModifier(caster, nil, "modifier_phased", {duration=2})
+	dummy:AddNewModifier(caster, nil, "modifier_kill", {duration=2})
+
 	Timers:CreateTimer(0.2, function()
 		if counter == 15 then 
-			FindClearSpaceForUnit( caster, caster:GetAbsOrigin(), true )
+			local position = caster:GetAbsOrigin()
+			local dummyPosition = dummy:GetAbsOrigin()
+			if not IsInSameRealm(position, dummyPosition) then
+				position = dummyPosition
+			end
+			FindClearSpaceForUnit(caster, position, true)
 			return 
 		end
 
