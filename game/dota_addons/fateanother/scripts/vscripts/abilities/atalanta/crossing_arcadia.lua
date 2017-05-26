@@ -181,6 +181,9 @@ function atalanta_crossing_arcadia:OnSpellStart()
     if caster.CrossingArcadiaPlusAcquired then
         local offset = 0.7071 * aoe - 50
         Timers:CreateTimer(duration + 0.1, function()
+            if not caster:IsAlive() then
+                return
+            end
             caster:ShootArrow({
                 Position = position + Vector(-offset, -offset, 0),
                 AoE = aoe,
@@ -192,6 +195,9 @@ function atalanta_crossing_arcadia:OnSpellStart()
         end)
 
         Timers:CreateTimer(duration + 0.2, function()
+            if not caster:IsAlive() then
+                return
+            end
             caster:ShootArrow({
                 Position = position + Vector(offset, -offset, 0),
                 AoE = aoe,
@@ -204,6 +210,9 @@ function atalanta_crossing_arcadia:OnSpellStart()
         end)
 
         Timers:CreateTimer(duration + 0.3, function()
+            if not caster:IsAlive() then
+                return
+            end
             caster:ShootArrow({
                 Position = position + Vector(0, aoe - 50, 0),
                 AoE = aoe,
@@ -216,6 +225,9 @@ function atalanta_crossing_arcadia:OnSpellStart()
         end)
     else
         Timers:CreateTimer(duration + 0.1, function()
+            if not caster:IsAlive() then
+                return
+            end
             caster:ShootArrow({
                 Position = position,
                 AoE = aoe,
