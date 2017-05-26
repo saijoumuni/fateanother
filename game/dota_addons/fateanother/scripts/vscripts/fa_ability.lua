@@ -131,7 +131,7 @@ function OnHeartDamageTaken(keys)
 
 		local counter = 0
 		Timers:CreateTimer(function()
-			if counter == keys.AttackCount then return end 
+			if counter == keys.AttackCount or not caster:IsAlive() then return end 
 			caster:PerformAttack( target, true, true, true, true, false, false, false )
 			CreateSlashFx(caster, target:GetAbsOrigin()+RandomVector(500), target:GetAbsOrigin()+RandomVector(500))
 			counter = counter+1
