@@ -101,64 +101,16 @@ function OnChainStart(keys)
 	ParticleManager:SetParticleControl( caster.enkiduBind, 1, targetloc )
 
 	if caster.IsRainAcquired then
-		local rainCount = 0
-	    Timers:CreateTimer(function()
-	    	if rainCount == 15 then return end
-	       	local targets = FindUnitsInRadius(caster:GetTeam(), targetloc, nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false) 
-	        for k,v in pairs(targets) do
-				if v:GetUnitName() == "gille_gigantic_horror" then  
-					DoDamage(caster, v, 25*2.5, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-				else 
-					DoDamage(caster, v, 25, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-				end
-			end
-			-- Create sword particles
-			-- Main variables
-			local delay = 0.5				-- Delay before damage
-			local speed = 3000				-- Movespeed of the sword
-				
-			-- Side variables
-			local distance = delay * speed
-			local height = distance * math.tan( 60 / 180 * math.pi )
-			local spawn_location = targetloc - ( distance * caster:GetForwardVector() )
-			spawn_location = spawn_location + Vector( 0, 0, height )
-			local target_location = targetloc
-			local newForwardVec = ( target_location - spawn_location ):Normalized()
-			target_location = target_location + 100 * newForwardVec
-				
-			local swordFxIndex = ParticleManager:CreateParticle( "particles/custom/gilgamesh/gilgamesh_sword_barrage_model.vpcf", PATTACH_CUSTOMORIGIN, caster )
-			ParticleManager:SetParticleControl( swordFxIndex, 0, spawn_location )
-			ParticleManager:SetParticleControl( swordFxIndex, 1, newForwardVec * speed )
-			
-			-- Delay
-			Timers:CreateTimer( delay, function()
-					-- Destroy particles
-					ParticleManager:DestroyParticle( swordFxIndex, false )
-					ParticleManager:ReleaseParticleIndex( swordFxIndex )
-	    	
-					
-					-- Particles on impact
-					local explosionFxIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_gyrocopter/gyro_guided_missile_explosion.vpcf", PATTACH_CUSTOMORIGIN, caster )
-					ParticleManager:SetParticleControl( explosionFxIndex, 0, targetloc )
-						
-					local impactFxIndex = ParticleManager:CreateParticle( "particles/custom/archer/archer_sword_barrage_impact_circle.vpcf", PATTACH_CUSTOMORIGIN, caster )
-					ParticleManager:SetParticleControl( impactFxIndex, 0, targetloc )
-					ParticleManager:SetParticleControl( impactFxIndex, 1, Vector(500,500,500) )
-						
-					-- Destroy Particle
-					Timers:CreateTimer( 0.5, function()
-							ParticleManager:DestroyParticle( explosionFxIndex, false )
-							ParticleManager:DestroyParticle( impactFxIndex, false )
-							ParticleManager:ReleaseParticleIndex( explosionFxIndex )
-							ParticleManager:ReleaseParticleIndex( impactFxIndex )
-						end
-					)
-				end
-			)
-			rainCount = rainCount + 1
-	      	return 0.15
-	    end
-	    )
+		local targetPoint = { target:GetAbsOrigin() }
+		local barrageKeys = {
+			target_points = targetPoint,
+			Damage = 25,
+			caster = caster,
+			Radius = 500,
+			ability = caster:FindAbilityByName("gilgamesh_sword_barrage_improved"),
+		}
+
+		OnBarrageStart(barrageKeys)
 	end
 
 	--print(caster.IsGOBUp)
