@@ -376,7 +376,11 @@ function OnNineLanded(caster, ability)
 				end 
 				local lasthitTargets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, lasthitradius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 1, false)
 				for k,v in pairs(lasthitTargets) do
-					DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					if caster.IsProjectionImproved then 
+						DoDamage(caster, v, damage + v:GetHealth() * 0.05, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					else
+						DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					end
 					giveUnitDataDrivenModifier(caster, v, "stunned", 1.0)
 					giveUnitDataDrivenModifier(caster, v, "revoked", 1.0)
 					-- push enemies back
@@ -416,7 +420,11 @@ function OnNineLanded(caster, ability)
 				end 
 				local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, 1, false)
 				for k,v in pairs(targets) do
-					DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					if caster.IsProjectionImproved then 
+						DoDamage(caster, v, damage + v:GetHealth() * 0.05, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					else
+						DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					end
 					giveUnitDataDrivenModifier(caster, v, "stunned", 1.0)
 					giveUnitDataDrivenModifier(caster, v, "revoked", 1.0)
 				end
