@@ -106,5 +106,36 @@
 		"Fateanother_Master_Mana"						"御主魔力值"
 		"Fateanother_Master_Health_Tooltip"				"御主的当前生命值限制了你能够使用令咒的次数。使用一个令咒将消耗御主1点生命值，当生命值不足时，使用令咒的命令无效。\n每隔10分钟，御主的生命值回满一次。"
 		"Fateanother_Master_Mana_Tooltip"				"御主的当前魔力值可以用来强化从者或者使用令咒。\n每次从者升级时，御主将回复4点魔力值。每隔10分钟，御主将回复10点魔力值。"
+
+		//==================================
+		//	ERROR MESSAGES
+		//==================================
+	    "test_msg"                      "测试消息"
+	    "Not_Enough_Gold_Item"          "你太穷(物品比基地贵50%)"
+	    "Out_Of_Stock_C_Scroll"         "每回合C卷最多只能以基础价格买十张"
+	    "Not_Enough_Master_Mana"        "御主魔力不够"
+	    "Already_In_Marble"             "已经在Reality Marble内"
+	    "Cannot_Travel"                 "不能移至指定位置"
+	    "Out_Of_Range"                  "超出射程"
+	    "Cannot_Be_Cast_Now"            "现在不能施展"
+	    "Cannot_Blink"                  "不能闪现"
+	    "Workshop_Exists"               "已经有工房了"
+	    "Cannot_Target_Self"            "不能指定自己"
+	    "Caster_Out_Of_Radius"          "C妈必须在工房500范围内"
+	    "Cannot_Unmount"                "只能在移动可达到的位置使用"
+	    "Not_Enough_Madness"            "疯狂值不够"
+	    "Cannot_Summon"                 "现在不能召唤"
+	    "Tentacle_Out_Of_Radius"        "必须指定距离caster500范围内的地方"
+	    "Cannot_Use_While_Integrated"   "合体时不能使用"
+	    "Entered_Base"                  "进入了基地(价格恢复正常)"
+	    "Left_Base"                     "离开了基地(物品价格提升50%)"
+	    "No_Items_Found"                "这一格没有物品"
+	    "Invalid_Location"              "不允许的位置"
+	    "Attribute_Not_Earned"          "属性未获得"
+	    "Revoked_Error"                 "令咒被封"
+	    "Master_Not_Enough_Health"      "御主生命不够(等圣杯发点吧)"
+	    "Cannot_Get_Over_50_Stats"      "不能超过50点"
+	    "Cannot_Acquire_Shard"          "还没死够7次"
+	    "Presence_Detected"             "侦测到敌方从者"
 	}
 }
