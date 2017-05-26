@@ -571,15 +571,17 @@ function OnAOTKStart(keys)
             , DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
 	caster.IsAOTKDominant = true
 
-	-- Remove any dummy or hero in jump from table 
-	for i=1, #aotkTargets do
+	-- Remove any dummy or hero in jump
+	i = 1
+	while i <= #aotkTargets do
 		if IsValidEntity(aotkTargets[i]) and not aotkTargets[i]:IsNull() then
 			ProjectileManager:ProjectileDodge(aotkTargets[i]) -- Disjoint particles
-			if aotkTargets[i]:HasModifier("jump_pause") or aotkTargets[i]:HasModifier("spawn_invulnerable") or aotkTargets[i]:HasModifier("jump_pause_nosilence") or string.match(aotkTargets[i]:GetUnitName(),"dummy") then 
-				print("dummy or a hero with jump state detected. Removing current index")
+			if aotkTargets[i]:HasModifier("jump_pause") or string.match(aotkTargets[i]:GetUnitName(),"dummy") or aotkTargets[i]:HasModifier("spawn_invulnerable") and aotkTargets[i] ~= caster then 
 				table.remove(aotkTargets, i)
+				i = i - 1
 			end
 		end
+		i = i + 1
 	end
 
 	if caster:GetAbsOrigin().x > 3000 and caster:GetAbsOrigin().y < -2000 then
