@@ -125,7 +125,7 @@ function atalanta_crossing_arcadia:ShootAoEArrow(keys)
     }
     ProjectileManager:CreateTrackingProjectile(projectile)
 
-    Timers:CreateTimer(keys.Delay, function()
+    Timers:CreateTimer(keys.Delay + 0.1, function()
         if dummy then
             dummy:RemoveSelf()
         end
