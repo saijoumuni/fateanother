@@ -1,6 +1,6 @@
 modifier_priestess_of_the_hunt = class({})
 
-local THINK_INTERVAL = 0.05
+local THINK_INTERVAL = 0.1
 function modifier_priestess_of_the_hunt:OnCreated()
     local hero = self:GetParent()
     if IsServer() then
@@ -28,6 +28,11 @@ function modifier_priestess_of_the_hunt:OnCreated()
     function hero:AddArrows(number)
         local count = modifier:GetStackCount()
         modifier:SetStackCount(count + number)
+
+        if (count + number) >= modifier:GetMaxStackCount() then
+            hero.NextArrow = 0
+            modifier:UpdateProgress()
+        end
     end
 
     function hero:CapArrows()
@@ -48,6 +53,9 @@ end
 
 function modifier_priestess_of_the_hunt:OnRespawn()
     self:SetStackCount(self:GetMaxStackCount())
+    local hero = self:GetParent()
+    hero.NextArrow = 0
+    self:UpdateProgress()
 end
 
 function modifier_priestess_of_the_hunt:GetMaxStackCount()
@@ -79,9 +87,14 @@ function modifier_priestess_of_the_hunt:OnIntervalThink()
 
         hero.NextArrow = nextArrow
 
-        local progress = hero:FindModifierByName("modifier_priestess_of_the_hunt_progress")
-        progress:SetStackCount(nextArrow * 100)
+        self:UpdateProgress()
     end
+end
+
+function modifier_priestess_of_the_hunt:UpdateProgress() 
+    local hero = self:GetParent()
+    local progress = hero:FindModifierByName("modifier_priestess_of_the_hunt_progress")
+    progress:SetStackCount(hero.NextArrow * 100)
 end
 
 function modifier_priestess_of_the_hunt:GetAttributes() 
