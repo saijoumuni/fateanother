@@ -1,17 +1,40 @@
 function OnMadnessStart(keys)
 	local caster = keys.caster
 	caster.MadnessStackCount = 0
-	caster:RemoveModifierByName("modifier_madness_stack")
+
+	if not caster:HasModifier("modifier_madness_stack") then
+		caster:FindAbilityByName("gille_spellbook_of_prelati"):ApplyDataDrivenModifier(caster, caster, "modifier_madness_stack", {})
+	end
+	if not caster:HasModifier("modifier_madness_progress") then
+		caster:FindAbilityByName("gille_spellbook_of_prelati"):ApplyDataDrivenModifier(caster, caster, "modifier_madness_progress", {})
+	end
+	caster:SetModifierStackCount("modifier_madness_stack", caster, 0) 
+	caster.MadnessProgress = 0
+	UpdateMadnessProgress(caster)
 end
 
 function OnMadnessThink(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
 
-	AdjustMadnessStack(caster, 1)
+	local progress = 0.05 * 0.05
+	local maxMadness = 10
 	if caster.IsMentalPolluted then
-		AdjustMadnessStack(caster, 1)
+		progress = progress * 2
+		maxMadness = maxMadness + 5
 	end
+
+	if caster:GetModifierStackCount("modifier_madness_stack", caster) >= maxMadness then
+		caster.MadnessProgress = 0
+	else
+		caster.MadnessProgress = caster.MadnessProgress + progress
+		if caster.MadnessProgress > 1 then
+			caster.MadnessProgress = caster.MadnessProgress - 1
+			AdjustMadnessStack(caster, 1)
+		end
+	end
+
+	UpdateMadnessProgress(caster)
 end
 
 function AdjustMadnessStack(caster, adjustValue)
@@ -27,6 +50,11 @@ function AdjustMadnessStack(caster, adjustValue)
 	caster:RemoveModifierByName("modifier_madness_stack")
 	caster:FindAbilityByName("gille_spellbook_of_prelati"):ApplyDataDrivenModifier(caster, caster, "modifier_madness_stack", {})
 	caster:SetModifierStackCount("modifier_madness_stack", caster, caster.MadnessStackCount) 
+end
+
+function UpdateMadnessProgress(caster)
+	local progress = caster.MadnessProgress * 100
+	caster:SetModifierStackCount("modifier_madness_progress", caster, progress)
 end
 
 function OnSelfishStart(keys)

@@ -74,6 +74,7 @@ var buffCooldown = {
 var buffProgress = {
     modifier_priestess_of_the_hunt: "modifier_priestess_of_the_hunt_progress",
     modifier_god_hand_stock: "modifier_reincarnation_progress",
+    modifier_madness_stack: "modifier_madness_progress",
 };
 
 function AltClickBuffs() {
@@ -177,22 +178,23 @@ AltClickBuffs.prototype.OnUpdate = function(isDebuff) {
     // get debuffs
     var visibleBuffs = this.GetVisibleBuffs(unit, false);
     var panels = isDebuff ? this.debuffPanels : this.buffPanels;
-    var length = Math.min(panels.length, visibleBuffs.length);
 
-    for (var i = 0; i < length; i++) {
-        var buff = visibleBuffs[i];
-        var name = Buffs.GetName(unit, buff);
+    for (var i = 0; i < panels.length; i++) {
         var circlePanel = panels[i].FindChildTraverse("CircularDuration");
         var clip;
-        if (buffProgress[name]) {
-            var progressBuff = this.FindModifier(unit, buffProgress[name]);
-            if (progressBuff) {
-                var stackCount = Buffs.GetStackCount(unit, progressBuff);
-                var progress = stackCount / 100 * 360;
-                
-                clip = "radial(50% 50%, 0deg, " + progress + "deg)";
-                circlePanel.style.clip = clip;
-                circlePanel.hasClip = true;
+        if (visibleBuffs[i]) {
+            var buff = visibleBuffs[i];
+            var name = Buffs.GetName(unit, buff);
+            if (buffProgress[name]) {
+                var progressBuff = this.FindModifier(unit, buffProgress[name]);
+                if (progressBuff) {
+                    var stackCount = Buffs.GetStackCount(unit, progressBuff);
+                    var progress = stackCount / 100 * 360;
+                    
+                    clip = "radial(50% 50%, 0deg, " + progress + "deg)";
+                    circlePanel.style.clip = clip;
+                    circlePanel.hasClip = true;
+                }
             }
         }
         if (!clip && circlePanel.hasClip) {
@@ -220,7 +222,7 @@ AltClickBuffs.prototype.FindModifier = function(unit, modifierName) {
 
 var altClickBuffs = new AltClickBuffs();
 
-altClickBuffs.OnUpdate();
+altClickBuffs.OnUpdate(false);
 
 
 
