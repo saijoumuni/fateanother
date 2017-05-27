@@ -73,6 +73,7 @@ var buffCooldown = {
 
 var buffProgress = {
     modifier_priestess_of_the_hunt: "modifier_priestess_of_the_hunt_progress",
+    modifier_god_hand_stock: "modifier_reincarnation_progress",
 };
 
 function AltClickBuffs() {
@@ -176,20 +177,27 @@ AltClickBuffs.prototype.OnUpdate = function(isDebuff) {
     // get debuffs
     var visibleBuffs = this.GetVisibleBuffs(unit, false);
     var panels = isDebuff ? this.debuffPanels : this.buffPanels;
-    var length = Math.min(visibleBuffs.length, panels.length);
+    var length = Math.min(panels.length, visibleBuffs.length);
 
     for (var i = 0; i < length; i++) {
         var buff = visibleBuffs[i];
         var name = Buffs.GetName(unit, buff);
+        var circlePanel = panels[i].FindChildTraverse("CircularDuration");
+        var clip;
         if (buffProgress[name]) {
             var progressBuff = this.FindModifier(unit, buffProgress[name]);
-            if (!progressBuff) {
-                continue;
+            if (progressBuff) {
+                var stackCount = Buffs.GetStackCount(unit, progressBuff);
+                var progress = stackCount / 100 * 360;
+                
+                clip = "radial(50% 50%, 0deg, " + progress + "deg)";
+                circlePanel.style.clip = clip;
+                circlePanel.hasClip = true;
             }
-            var stackCount = Buffs.GetStackCount(unit, progressBuff);
-            var progress = stackCount / 100 * 360;
-            
-            panels[i].FindChildTraverse("CircularDuration").style.clip = "radial(50% 50%, 0deg, " + progress + "deg)";
+        }
+        if (!clip && circlePanel.hasClip) {
+            circlePanel.style.clip = null;
+            circlePanel.hasClip = false;
         }
     }
 

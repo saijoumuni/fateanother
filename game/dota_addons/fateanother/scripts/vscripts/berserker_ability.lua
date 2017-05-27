@@ -523,6 +523,7 @@ function OnGodHandDeath(keys)
 			caster:RemoveModifierByName("modifier_gae_buidhe")
 			-- Reset godhand stock
 			caster.ReincarnationDamageTaken = 0
+			UpdateGodhandProgress(caster)
 		else
 			caster:SetRespawnPosition(caster.RespawnPos)
 		end
@@ -536,6 +537,7 @@ function OnReincarnationDamageTaken(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local damageTaken = keys.DamageTaken
+	local damageThreshold = 20000
 
 	if damageTaken > 100 then
 		GainReincarnationRegenStack(caster, ability)
@@ -546,13 +548,23 @@ function OnReincarnationDamageTaken(keys)
 	else
 		caster.ReincarnationDamageTaken = caster.ReincarnationDamageTaken+damageTaken
 	end
-	if caster.ReincarnationDamageTaken > 20000 and caster.IsGodHandAcquired then
+	if caster.ReincarnationDamageTaken > damageThreshold and caster.IsGodHandAcquired then
 		caster.ReincarnationDamageTaken = 0
 		caster.GodHandStock = caster.GodHandStock + 1
 		caster:RemoveModifierByName("modifier_god_hand_stock")
 		caster:FindAbilityByName("berserker_5th_god_hand"):ApplyDataDrivenModifier(caster, caster, "modifier_god_hand_stock", {})
 		caster:SetModifierStackCount("modifier_god_hand_stock", caster, caster.GodHandStock)
 	end
+
+	UpdateGodhandProgress(caster)
+end
+
+function UpdateGodhandProgress(caster)
+	local damageTaken = caster.ReincarnationDamageTaken
+	if not caster:HasModifier("modifier_reincarnation_progress") then
+		caster:FindAbilityByName("berserker_5th_reincarnation"):ApplyDataDrivenModifier(caster, caster, "modifier_reincarnation_progress", {})
+	end
+	caster:SetModifierStackCount("modifier_reincarnation_progress", caster, damageTaken / 200)
 end
 
 function GainReincarnationRegenStack(caster, ability)
@@ -617,6 +629,7 @@ function OnReincarnationAcquired(keys)
 	hero.IsReincarnationAcquired = true
 	hero:FindAbilityByName("berserker_5th_reincarnation"):SetLevel(1)
 	hero.ReincarnationDamageTaken = 0
+	UpdateGodhandProgress(hero)
 	-- Set master 1's mana 
 	local master = hero.MasterUnit
 	master:SetMana(master:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
