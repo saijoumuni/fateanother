@@ -1,6 +1,6 @@
 modifier_priestess_of_the_hunt = class({})
 
-local THINK_INTERVAL = 0.1
+local THINK_INTERVAL = 0.05
 function modifier_priestess_of_the_hunt:OnCreated()
     local hero = self:GetParent()
     if IsServer() then
