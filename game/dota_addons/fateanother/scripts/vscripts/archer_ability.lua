@@ -1003,6 +1003,7 @@ function OnUBWBarrageConfineStart(keys)
 			end
 		end)
 	end
+	FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 	target:EmitSound("FA.Quickdraw")
 end
 

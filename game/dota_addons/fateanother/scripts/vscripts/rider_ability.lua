@@ -41,6 +41,7 @@ function NailPull(keys)
 			v:PreventDI(false)
 			v:SetPhysicsVelocity(Vector(0,0,0))
 			v:OnPhysicsFrame(nil)
+			FindClearSpaceForUnit(v, v:GetAbsOrigin(), true)
 		end)
 
 		v:OnPhysicsFrame(function(unit)

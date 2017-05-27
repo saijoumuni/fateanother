@@ -498,6 +498,7 @@ function OnWBStart(keys)
 				v:PreventDI(false)
 				v:SetPhysicsVelocity(Vector(0,0,0))
 				v:OnPhysicsFrame(nil)
+				FindClearSpaceForUnit(v, v:GetAbsOrigin(), true)
 			return end)
 		end
 	end

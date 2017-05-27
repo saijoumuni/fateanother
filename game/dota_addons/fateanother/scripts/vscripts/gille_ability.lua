@@ -593,6 +593,7 @@ function OnTentacleHookHit(keys)
 		target:SetPhysicsVelocity(Vector(0,0,0))
 		target:OnPhysicsFrame(nil)
 		target:SetAutoUnstuck(true)
+		FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
 
 	end)
   	Timers:CreateTimer(1.0, function()
