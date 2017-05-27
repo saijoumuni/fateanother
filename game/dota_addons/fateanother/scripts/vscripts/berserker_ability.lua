@@ -262,7 +262,6 @@ function OnNineStart(keys)
 	local distance = (targetPoint - origin):Length2D()
 	local forward = (targetPoint - origin):Normalized() * distance
 
-	caster.NineLanded = false
 	caster:SetPhysicsFriction(0)
 	caster:SetPhysicsVelocity(caster:GetForwardVector()*distance)
 	caster:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
@@ -283,14 +282,16 @@ function OnNineStart(keys)
 		caster:PreventDI(false)
 		caster:SetPhysicsVelocity(Vector(0,0,0))
 		FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
-		if caster:IsAlive() and not caster.NineLanded then
+		Timers:RemoveTimer(caster.NineTimer)
+		caster.NineTimer = nil
+		if caster:IsAlive() then
 			OnNineLanded(caster, keys.ability)
 			return 
 		end
 		return
 	end
 
-	Timers:CreateTimer(1.0, function()
+	caster.NineTimer = Timers:CreateTimer(1.0, function()
 		DoNineLanded(caster)
 	end)
 
@@ -339,7 +340,6 @@ function OnNineLanded(caster, ability)
 	local stun = ability:GetSpecialValueFor("stun_duration")
 	local nineCounter = 0
 	local casterInitOrigin = caster:GetAbsOrigin() 
-	caster.NineLanded = true
 
 	-- swap animation
 	if caster:GetName() == "npc_dota_hero_doom_bringer" then 
