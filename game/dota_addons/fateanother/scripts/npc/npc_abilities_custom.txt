@@ -25402,17 +25402,26 @@
 
 		"Modifiers"
 		{
-			"modifier_magic_resistance_ex"
+			"modifier_magic_resistance_ex_progress"
 			{
 				"Passive"		"1"
-				"IsHidden"		"0"
-				"Duration"		"%regen_duration"
-				"OnDestroy"
+				"IsHidden"		"1"
+				"ThinkInterval"	"0.05"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"jeanne_ability"
-						"Function"		"OnMREXRecharge"
+						"Function"		"OnMREXStart"
+					}
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"jeanne_ability"
+						"Function"		"OnMREXThink"
 						"MaxStack"		"%max_stack"
 					}
 				}

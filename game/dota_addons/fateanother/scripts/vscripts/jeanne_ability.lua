@@ -1,26 +1,42 @@
+function OnMREXStart(keys)
+	local caster = keys.caster
+	caster.nMREXStack = 0
+	if not caster:HasModifier("modifier_magic_resistance_ex_progress") then
+		caster:FindAbilityByName("jeanne_magic_resistance_ex"):ApplyDataDrivenModifier(caster, caster, "modifier_magic_resistance_ex_progress", {})
+	end
+	caster.MREXProgress = 0
+	UpdateMREXProgress(caster)
+end
 
 function OnMREXDamageTaken(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local attacker = keys.attacker
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_magic_resistance_ex", {})
 	if caster.IsSaintImproved and (PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()):HasModifier("modifier_saint_debuff") or PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()):HasModifier("modifier_saint_debuff_attr")) then return end
 	--print("asdasd")
 	ChangeMREXStack(keys, -1)
 end
 
-
-function OnMREXRecharge(keys)
+function OnMREXThink(keys)
 	local caster = keys.caster
-	local ability = keys.ability
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_magic_resistance_ex", {})
-	ChangeMREXStack(keys, 1)
+	local progress = 1 / 5 * 0.05
+
+	if caster:GetModifierStackCount("modifier_magic_resistance_ex_shield", caster) >= 4 then
+		caster.MREXProgress = 0
+	else
+		caster.MREXProgress = caster.MREXProgress + progress
+		if caster.MREXProgress > 1 then
+			caster.MREXProgress = caster.MREXProgress - 1
+			ChangeMREXStack(keys, 1)
+		end
+	end
+
+	UpdateMREXProgress(caster)
 end
 
 function OnMREXRespawn(keys)
 	local caster = keys.caster
 	local ability = keys.ability
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_magic_resistance_ex", {})
 	ChangeMREXStack(keys, 4)
 	caster.bIsLaPucelleActivatedThisRound = false
 end
@@ -46,6 +62,11 @@ function ChangeMREXStack(keys, modifier)
 		caster:SetModifierStackCount("modifier_magic_resistance_ex_shield", caster, newStack)
 	end
 	caster.nMREXStack = newStack
+end
+
+function UpdateMREXProgress(caster)
+	local progress = caster.MREXProgress * 100
+	caster:SetModifierStackCount("modifier_magic_resistance_ex_progress", caster, progress)
 end
 
 function OnSaintRespawn(keys)

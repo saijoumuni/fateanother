@@ -75,6 +75,7 @@ var buffProgress = {
     modifier_priestess_of_the_hunt: "modifier_priestess_of_the_hunt_progress",
     modifier_god_hand_stock: "modifier_reincarnation_progress",
     modifier_madness_stack: "modifier_madness_progress",
+    modifier_magic_resistance_ex_shield: "modifier_magic_resistance_ex_progress",
 };
 
 function AltClickBuffs() {
@@ -203,7 +204,7 @@ AltClickBuffs.prototype.OnUpdate = function(isDebuff) {
         }
     }
 
-    $.Schedule(0.01, function() {
+    $.Schedule(0.05, function() {
         that.OnUpdate(isDebuff);
     });
 
