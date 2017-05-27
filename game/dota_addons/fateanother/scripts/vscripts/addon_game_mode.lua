@@ -2034,7 +2034,7 @@ function FateGameMode:TakeDamageFilter(filterTable)
         local returnDamage = damage * multiplier / 100
         if attacker:IsMagicImmune() then
             returnDamage = returnDamage * (100 - attacker:GetMagicalArmorValue())/100
-            DoDamage(victim, attacker, returnDamage, DAMAGE_TYPE_PURE, {DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY, DOTA_DAMAGE_FLAG_BYPASSES_MAGIC_IMMUNITY}, vergHandle, false)
+            DoDamage(victim, attacker, returnDamage, DAMAGE_TYPE_PURE, DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY, vergHandle, false)
         else
             DoDamage(victim, attacker, returnDamage, DAMAGE_TYPE_MAGICAL, DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY, vergHandle, false)
         end
