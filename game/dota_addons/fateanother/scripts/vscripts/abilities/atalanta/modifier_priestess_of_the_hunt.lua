@@ -1,6 +1,6 @@
 modifier_priestess_of_the_hunt = class({})
 
-local THINK_INTERVAL = 0.2
+local THINK_INTERVAL = 0.05
 function modifier_priestess_of_the_hunt:OnCreated()
     local hero = self:GetParent()
     if IsServer() then
@@ -78,6 +78,9 @@ function modifier_priestess_of_the_hunt:OnIntervalThink()
         end
 
         hero.NextArrow = nextArrow
+
+        local progress = hero:FindModifierByName("modifier_priestess_of_the_hunt_progress")
+        progress:SetStackCount(nextArrow * 100)
     end
 end
 

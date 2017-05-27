@@ -71,11 +71,18 @@ var buffCooldown = {
     modifier_golden_apple_cooldown: 450,
 };
 
+var buffProgress = {
+    modifier_priestess_of_the_hunt: "modifier_priestess_of_the_hunt_progress",
+};
+
 function AltClickBuffs() {
     var that = this;
 
     var buffPanels = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('buffs').Children();
     var debuffPanels = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('debuffs').Children();
+    this.buffPanels = buffPanels;
+    this.debuffPanels = debuffPanels;
+
     this.BindOnActivate(buffPanels, false);
     this.BindOnActivate(debuffPanels, true);
 }
@@ -162,7 +169,52 @@ AltClickBuffs.prototype.OnActivate = function(index, isDebuff) {
     });
 }
 
+AltClickBuffs.prototype.OnUpdate = function(isDebuff) {
+    var that = this;
+    var unit = Players.GetLocalPlayerPortraitUnit();
+
+    // get debuffs
+    var visibleBuffs = this.GetVisibleBuffs(unit, false);
+    var panels = isDebuff ? this.debuffPanels : this.buffPanels;
+    var length = Math.min(visibleBuffs.length, panels.length);
+
+    for (var i = 0; i < length; i++) {
+        var buff = visibleBuffs[i];
+        var name = Buffs.GetName(unit, buff);
+        if (buffProgress[name]) {
+            var progressBuff = this.FindModifier(unit, buffProgress[name]);
+            if (!progressBuff) {
+                continue;
+            }
+            var stackCount = Buffs.GetStackCount(unit, progressBuff);
+            var progress = stackCount / 100 * 360;
+            
+            panels[i].FindChildTraverse("CircularDuration").style.clip = "radial(50% 50%, 0deg, " + progress + "deg)";
+        }
+    }
+
+    $.Schedule(0.01, function() {
+        that.OnUpdate(isDebuff);
+    });
+
+}
+
+AltClickBuffs.prototype.FindModifier = function(unit, modifierName) {
+    var nBuffs = Entities.GetNumBuffs(unit)
+    for (var i = 0; i < nBuffs; i++) {
+        var buff = Entities.GetBuff(unit, i)
+        if (Buffs.GetName(unit, buff) == modifierName) {
+            return buff;
+        }
+    };
+    return null;
+}
+
 var altClickBuffs = new AltClickBuffs();
+
+altClickBuffs.OnUpdate();
+
+
 
 /*
 function ChatModifier() {
