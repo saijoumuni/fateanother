@@ -1498,6 +1498,17 @@ function LoadStashState(hero)
     end
 end
 
+function CheckDummyCollide(unit)
+	local origin = unit:GetAbsOrigin()
+	local targets = Entities:FindAllByNameWithin("npc_dota_creature", origin, 500)
+	for k,v in pairs(targets) do
+		if v:GetUnitName() == "ubw_sword_confine_dummy" and IsFacingUnit(unit, v, 180) and (origin - v:GetAbsOrigin()):Length2D() < 80 then
+			return true
+		end
+	end
+	return false
+end
+
 local substitutions = {
     -- colours
     ["_gray_"] = "",

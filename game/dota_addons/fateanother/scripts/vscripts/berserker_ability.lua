@@ -295,14 +295,8 @@ function OnNineStart(keys)
 	end)
 
 	caster:OnPhysicsFrame(function(unit)
-		local facing = unit:GetForwardVector()
-		local origin = unit:GetAbsOrigin()
-		local targets = Entities:FindAllByNameWithin("npc_dota_creature", origin, 500)
-		for k,v in pairs(targets) do
-			if v:GetUnitName() == "ubw_sword_confine_dummy" and IsFacingUnit(unit, v, 180) and (origin - v:GetAbsOrigin()):Length2D() < 80 then
-				DoNineLanded(unit)
-				break
-			end
+		if CheckDummyCollide(unit) then
+			DoNineLanded(unit)
 		end
 	end)
 
