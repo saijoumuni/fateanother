@@ -277,7 +277,7 @@ function OnNineStart(keys)
 		StartAnimation(caster, {duration=1, activity=ACT_DOTA_RUN, rate=0.8})
 	end
 
-	Timers:CreateTimer(1.0, function()
+	function DoNineLanded(caster)
 		caster:OnPreBounce(nil)
 		caster:SetBounceMultiplier(0)
 		caster:PreventDI(false)
@@ -288,18 +288,26 @@ function OnNineStart(keys)
 			return 
 		end
 		return
+	end
+
+	Timers:CreateTimer(1.0, function()
+		DoNineLanded(caster)
+	end)
+
+	caster:OnPhysicsFrame(function(unit)
+		local facing = unit:GetForwardVector()
+		local origin = unit:GetAbsOrigin()
+		local targets = Entities:FindAllByNameWithin("npc_dota_creature", origin, 500)
+		for k,v in pairs(targets) do
+			if v:GetUnitName() == "ubw_sword_confine_dummy" and IsFacingUnit(unit, v, 180) and (origin - v:GetAbsOrigin()):Length2D() < 80 then
+				DoNineLanded(unit)
+				break
+			end
+		end
 	end)
 
 	caster:OnPreBounce(function(unit, normal) -- stop the pushback when unit hits wall
-		unit:OnPreBounce(nil)
-		unit:OnPhysicsFrame(nil)
-		unit:SetBounceMultiplier(0)
-		unit:PreventDI(false)
-		unit:SetPhysicsVelocity(Vector(0,0,0))
-		FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
-		if caster:IsAlive() and not caster.NineLanded then
-			OnNineLanded(caster, keys.ability)
-		end
+		DoNineLanded(unit)
 	end)
 
 	if caster:GetName() == "npc_dota_hero_ember_spirit" then
