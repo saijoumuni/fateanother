@@ -172,11 +172,10 @@ AltClickBuffs.prototype.OnActivate = function(index, isDebuff) {
     });
 }
 
-AltClickBuffs.prototype.OnUpdate = function(isDebuff) {
+AltClickBuffs.prototype.OnUpdate = function() {
     var that = this;
     var unit = Players.GetLocalPlayerPortraitUnit();
 
-    // get debuffs
     var visibleBuffs = this.GetVisibleBuffs(unit, false);
     var panels = isDebuff ? this.debuffPanels : this.buffPanels;
 
@@ -223,7 +222,7 @@ AltClickBuffs.prototype.FindModifier = function(unit, modifierName) {
 
 var altClickBuffs = new AltClickBuffs();
 
-altClickBuffs.OnUpdate(false);
+altClickBuffs.OnUpdate();
 
 
 
