@@ -267,9 +267,6 @@ function OnEnigmaHit(keys)
 		end
 	end
 
-	giveUnitDataDrivenModifier(caster, target, "stunned", BaseStunDuration)
-	DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
-
 	local tableToUse = effects
 	for i=1, NumOfCC do
 		if #tableToUse == 0 then
@@ -284,6 +281,9 @@ function OnEnigmaHit(keys)
 		giveUnitDataDrivenModifier(caster, target, effect, keys[effect])
 		table.remove(tableToUse, index)
 	end
+
+	giveUnitDataDrivenModifier(caster, target, "stunned", BaseStunDuration)
+	DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 
 	local iceFx = ParticleManager:CreateParticle( "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_model.vpcf", PATTACH_CUSTOMORIGIN, nil )
 	ParticleManager:SetParticleControl( iceFx, 0, target:GetAbsOrigin()+Vector(0,0,100) )
