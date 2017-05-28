@@ -393,8 +393,11 @@ function OnDragonStrike1Start(keys)
 	local masterCombo = caster.MasterUnit2:FindAbilityByName(keys.ability:GetAbilityName())
 	masterCombo:EndCooldown()
 	masterCombo:StartCooldown(keys.ability:GetCooldown(1))
-	caster:FindAbilityByName("lishuwen_fierce_tiger_strike"):StartCooldown(29)
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_raging_dragon_strike_cooldown", {duration = ability:GetCooldown(ability:GetLevel())})
+
+	local tigerStrikeAbility = caster:FindAbilityByName("lishuwen_fierce_tiger_strike")
+	local tigerStrikeCooldown = tigerStrikeAbility:GetCooldown(tigerStrikeAbility:GetLevel())
+	tigerStrikeAbility:StartCooldown(tigerStrikeCooldown)
 
 	if IsSpellBlocked(keys.target) then return end
 
@@ -544,12 +547,12 @@ function OnDragonStrike3Start(keys)
 	caster:SwapAbilities("lishuwen_fierce_tiger_strike","lishuwen_raging_dragon_strike_3", true, false) 
 	local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 500
             , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
-	if #targets == 0 then 
 
-    	local abil = caster:FindAbilityByName("lishuwen_raging_dragon_strike")
-    	ReduceCooldown(abil, abil:GetCooldown(1)*0.75)
-    	caster:RemoveModifierByName("modifier_raging_dragon_strike_cooldown")
-    	abil:ApplyDataDrivenModifier(caster, caster, "modifier_raging_dragon_strike_cooldown", {duration = abil:GetCooldown(abil:GetLevel())*0.25})
+	if #targets == 0 then 
+    		local abil = caster:FindAbilityByName("lishuwen_raging_dragon_strike")
+    		ReduceCooldown(abil, abil:GetCooldown(1)*0.75)
+    		caster:RemoveModifierByName("modifier_raging_dragon_strike_cooldown")
+    		abil:ApplyDataDrivenModifier(caster, caster, "modifier_raging_dragon_strike_cooldown", {duration = abil:GetCooldown(abil:GetLevel())*0.25})
 		local masterabil = caster.MasterUnit2:FindAbilityByName("lishuwen_raging_dragon_strike")
 		masterabil:EndCooldown()
 		masterabil:StartCooldown(masterabil:GetCooldown(1)*0.25)    

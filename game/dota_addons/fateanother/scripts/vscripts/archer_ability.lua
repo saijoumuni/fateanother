@@ -668,7 +668,11 @@ function OnRainStart(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	if not caster.IsUBWActive then return end
-	caster:FindAbilityByName("archer_5th_rho_aias"):StartCooldown(27.0)
+
+	local rhoAiasAbility = caster:FindAbilityByName("archer_5th_rho_aias")
+	local rhoAiasCooldown = rhoAiasAbility:GetCooldown(rhoAiasAbility:GetLevel())
+	rhoAiasAbility:StartCooldown(rhoAiasCooldown)
+
 	local ascendCount = 0
 	local descendCount = 0
 	local radius = 1000

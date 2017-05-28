@@ -521,7 +521,9 @@ function OnNeroComboStart(keys)
 	masterCombo:StartCooldown(keys.ability:GetCooldown(1))
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_fiery_finale_cooldown", {duration = ability:GetCooldown(ability:GetLevel())})
 
-	caster:FindAbilityByName("nero_tres_fontaine_ardent"):StartCooldown(21.0)
+	local tresAbility = caster:FindAbilityByName("nero_tres_fontaine_ardent")
+	local tresCooldown = tresAbility:GetCooldown(tresAbility:GetLevel())
+	tresAbility:StartCooldown(tresCooldown)
 
 	caster.ScreenOverlay = ParticleManager:CreateParticle("particles/custom/screen_lightred_splash.vpcf", PATTACH_EYES_FOLLOW, caster)
 

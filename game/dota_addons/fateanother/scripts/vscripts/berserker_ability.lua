@@ -109,7 +109,11 @@ function OnRoarStart(keys)
 	local ability = keys.ability
 	giveUnitDataDrivenModifier(caster, caster, "rb_sealdisabled", 10.0)
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_madmans_roar_silence", {})
-	caster:FindAbilityByName("berserker_5th_courage"):StartCooldown(27)
+
+	local courageAbility = caster:FindAbilityByName("berserker_5th_courage")
+	local courageCooldown = courageAbility:GetCooldown(courageAbility:GetLevel())
+	courageAbility:StartCooldown(courageCooldown)
+
 	-- Set master's combo cooldown
 	local masterCombo = caster.MasterUnit2:FindAbilityByName(keys.ability:GetAbilityName())
 	masterCombo:EndCooldown()
