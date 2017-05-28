@@ -288,6 +288,7 @@ function OnNineStart(keys)
 
 	function DoNineLanded(caster)
 		caster:OnPreBounce(nil)
+		caster:OnPhysicsFrame(nil)
 		caster:SetBounceMultiplier(0)
 		caster:PreventDI(false)
 		caster:SetPhysicsVelocity(Vector(0,0,0))
