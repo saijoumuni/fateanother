@@ -329,6 +329,8 @@ function OnBelleStart(keys)
 				caster:SetAbsOrigin(currentPosition)
 				FindClearSpaceForUnit(caster, currentPosition, true)
 			end
+		else
+			FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 		end
 		caster:EmitSound("Misc.Crash")
 	end)
