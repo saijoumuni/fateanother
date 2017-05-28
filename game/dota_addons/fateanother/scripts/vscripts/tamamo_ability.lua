@@ -382,7 +382,10 @@ function OnSoulstreamProjectileTick(keys)
 						v:EmitSound("Ability.FrostBlast")
 					else
 						v:AddNewModifier(caster, v, "modifier_disarmed", {Duration = ccDuration})
-						target.LoadedCharmHandle:ApplyDataDrivenModifier(caster, v, "modifier_frigid_heaven_slow", {})
+						
+						if not IsImmuneToSlow(v) then
+							target.LoadedCharmHandle:ApplyDataDrivenModifier(caster, v, "modifier_frigid_heaven_slow", {})
+						end
 					end
 				elseif target.LoadedCharm == "modifier_gust_heaven_indicator" then
 					-- 6 stacks

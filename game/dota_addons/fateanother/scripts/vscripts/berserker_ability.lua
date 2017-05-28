@@ -138,13 +138,19 @@ function OnRoarStart(keys)
 			giveUnitDataDrivenModifier(caster, v, "rb_sealdisabled", 3.0)
 		elseif dist > 300 and dist <= 1000 then
 			finaldmg = keys.Damage2
-			ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_strong", {}) 
+			if not IsImmuneToSlow(v) then 
+				ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_strong", {}) 
+			end
 		elseif dist > 1000 and dist <= 2000 then
 			finaldmg = keys.Damage3
-			ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_moderate", {}) 
+			if not IsImmuneToSlow(v) then 
+				ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_moderate", {}) 
+			end
 		elseif dist > 2000 and dist <= 3000 then
 			finaldmg = 0
-			ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_moderate", {}) 
+			if not IsImmuneToSlow(v) then 
+				ability:ApplyDataDrivenModifier(caster, v, "modifier_madmans_roar_slow_moderate", {}) 
+			end
 		end
 
 	    DoDamage(caster, v, finaldmg , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)

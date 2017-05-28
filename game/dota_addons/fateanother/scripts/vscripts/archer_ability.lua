@@ -967,7 +967,7 @@ function OnUBWBarrageRetreatStart(keys)
 			for k,v in pairs(targets) do
 				DoDamage(caster, v, damage , DAMAGE_TYPE_MAGICAL, 0, ability, false)
 				giveUnitDataDrivenModifier(caster, v, "stunned", 0.1)
-				if caster.IsProjectionImproved then 
+				if caster.IsProjectionImproved and not IsImmuneToSlow(v) then 
 					ability:ApplyDataDrivenModifier(caster, v, "modifier_barrage_retreat_shot_slow", {})
 				end
 			end

@@ -8645,8 +8645,18 @@
 				}			
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%poison_slow"
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"-12"
+				}
+			}
+			"modifier_dirk_poison_empowered_slow"
+			{
+				"EffectName"		"particles/units/heroes/hero_dazzle/dazzle_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"			
+				"IsDebuff"		"1"
+				"Duration"		"%duration"		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%poison_slow"
 				}
 			}
 		}
@@ -15725,11 +15735,6 @@
 			 	"Function"		"OnChargeStart"
 			 	"Damage"		"%damage"
 			 	"Radius"		"%radius"
-			 }
-			 "ApplyModifier"
-			 {
-			 	"ModifierName"	"modifier_warriors_charge_slow"
-			 	"Target"		"TARGET"
 			 }
 		}
 

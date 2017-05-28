@@ -290,7 +290,10 @@ function OnChariotRide(keys)
 		        	print(thunderTarget:GetUnitName())
 		        	DoDamage(caster, thunderTarget, thunderTarget:GetHealth() * 12/100, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 		        	--thunderTarget:AddNewModifier(caster, thunderTarget, "modifier_stunned", {Duration = 0.1})
-		       		keys.ability:ApplyDataDrivenModifier(caster, thunderTarget, "modifier_gordius_wheel_thunder_slow", {}) 
+				
+				if not IsImmuneToSlow(thunderTarget) then 
+		       			keys.ability:ApplyDataDrivenModifier(caster, thunderTarget, "modifier_gordius_wheel_thunder_slow", {}) 
+				end
 
 		       		thunderTarget:EmitSound("Hero_Zuus.LightningBolt")
 		        	local thunderFx = ParticleManager:CreateParticle("particles/units/heroes/hero_razor/razor_storm_lightning_strike.vpcf", PATTACH_CUSTOMORIGIN, thunderTarget)

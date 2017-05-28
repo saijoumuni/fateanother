@@ -48,17 +48,20 @@ function OnChargeStart(keys)
 	FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 
 	if caster:HasModifier("modifier_double_spearsmanship") then keys.Damage = keys.Damage * 2 end
-	local targets = FindUnitsInRadius(caster:GetTeam(), target:GetOrigin(), nil, keys.Radius
-            , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+	local targets = FindUnitsInRadius(caster:GetTeam(), target:GetOrigin(), nil, keys.Radius , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 	for k,v in pairs(targets) do
-         DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-         v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 0.5})
-    end
+        	DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+        	v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 0.5})
+    	end
 
-    --particle
-    caster:EmitSound("Hero_Huskar.Life_Break")
-    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-    ParticleManager:SetParticleControl(particle, 3, caster:GetAbsOrigin())
+	if not IsImmuneToSlow(target) then
+		keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_warriors_charge_slow", {})
+	end
+
+	--particle
+	caster:EmitSound("Hero_Huskar.Life_Break")
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControl(particle, 3, caster:GetAbsOrigin())
 	Timers:CreateTimer( 2.0, function()
 		ParticleManager:DestroyParticle( particle, false )
 		ParticleManager:ReleaseParticleIndex( particle )

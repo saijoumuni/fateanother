@@ -35,13 +35,18 @@ function OnDirkHit(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
 	if IsSpellBlocked(keys.target) then return end -- Linken effect checker
-	if not IsImmuneToSlow(keys.target) then 
-		if not caster.IsWeakeningVenomAcquired then
+
+	if caster.IsWeakeningVenomAcquired then
+		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_dirk_poison_empowered", {}) 
+		if not IsImmuneToSlow(keys.target) then 
+			keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_dirk_poison_empowered_slow", {}) 
+		end
+	else
+		if not IsImmuneToSlow(keys.target) then 
 			keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_dirk_poison", {}) 
-		else
-			keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_dirk_poison_empowered", {}) 
-		end 
-	end
+		end
+	end 
+
 	if caster.IsWeakeningVenomAcquired then
 		DoDamage(keys.caster, keys.target, keys.Damage + caster:GetAgility() * 2.25, DAMAGE_TYPE_PHYSICAL, 0, keys.ability, false)
 	else
@@ -60,7 +65,6 @@ function OnVenomHit(keys)
 	local caster = keys.caster
 	local target = keys.target 
 
-	if IsImmuneToSlow(target) then return end
 	keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_weakening_venom_debuff", {}) 
 
 	--[[local currentStack = target:GetModifierStackCount("modifier_weakening_venom_debuff", keys.ability)
