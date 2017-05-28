@@ -68,7 +68,7 @@ function atalanta_calydonian_hunt:OnSpellStart()
     if caster.GoldenAppleAcquired and caster:FindAbilityByName("atalanta_golden_apple"):IsCooldownReady() then
         caster:SwapAbilities("atalanta_calydonian_hunt", "atalanta_golden_apple", false, true)
         Timers:CreateTimer(self:GetSpecialValueFor("attribute_swap_duration"), function()
-            caster:SwapAbilities("atalanta_calydonian_hunt", "atalanta_golden_apple", true, false)
+            caster:SwapAbilities("atalanta_golden_apple", "atalanta_calydonian_hunt", false, true)
         end)
     end
 
@@ -81,21 +81,23 @@ function atalanta_calydonian_hunt:OnSpellStart()
         local modifier = caster:FindModifierByName("modifier_r_used")
 	local timeLeft = modifier:GetRemainingTime()
 
-        if not caster.ComboTimer then
-            caster:SwapAbilities("atalanta_last_spurt", "atalanta_phoebus_catastrophe_barrage", false, true)
-            caster:SwapAbilities("atalanta_priestess_of_the_hunt", "atalanta_phoebus_catastrophe_snipe", false, true)
-            caster.ComboTimer = Timers:CreateTimer(timeLeft, function()
-                caster.ComboTimer = nil
-                caster:SwapAbilities("atalanta_last_spurt", "atalanta_phoebus_catastrophe_barrage", true, false)
-                caster:SwapAbilities("atalanta_priestess_of_the_hunt", "atalanta_phoebus_catastrophe_snipe", true, false)
-            end)
-        else
-            Timers:RemoveTimer(caster.ComboTimer)
-            caster.ComboTimer = Timers:CreateTimer(timeLeft, function()
-                caster.ComboTimer = nil
-                caster:SwapAbilities("atalanta_last_spurt", "atalanta_phoebus_catastrophe_barrage", true, false)
-                caster:SwapAbilities("atalanta_priestess_of_the_hunt", "atalanta_phoebus_catastrophe_snipe", true, false)
-            end)
+	if timeLeft > 0 then
+            if not caster.ComboTimer then
+                caster:SwapAbilities("atalanta_last_spurt", "atalanta_phoebus_catastrophe_barrage", false, true)
+                caster:SwapAbilities("atalanta_priestess_of_the_hunt", "atalanta_phoebus_catastrophe_snipe", false, true)
+                caster.ComboTimer = Timers:CreateTimer(timeLeft, function()
+                    caster.ComboTimer = nil
+                    caster:SwapAbilities("atalanta_phoebus_catastrophe_barrage", "atalanta_last_spurt", false, true)
+                    caster:SwapAbilities("atalanta_phoebus_catastrophe_snipe", "atalanta_priestess_of_the_hunt", false, true)
+                end)
+            else
+                Timers:RemoveTimer(caster.ComboTimer)
+                caster.ComboTimer = Timers:CreateTimer(timeLeft, function()
+                    caster.ComboTimer = nil
+                    caster:SwapAbilities("atalanta_phoebus_catastrophe_barrage", "atalanta_last_spurt", false, true)
+                    caster:SwapAbilities("atalanta_phoebus_catastrophe_snipe", "atalanta_priestess_of_the_hunt", false, true)
+                end)
+            end
         end
     end
 end
