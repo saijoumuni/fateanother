@@ -88,6 +88,13 @@ function AltClickBuffs() {
 
     this.BindOnActivate(buffPanels, false);
     this.BindOnActivate(debuffPanels, true);
+
+    GameEvents.Subscribe("dota_player_update_selected_unit", function() {
+        that.OnUpdate();
+    });
+
+
+
 }
 
 AltClickBuffs.prototype.BindOnActivate = function(panels, isDebuff) {
@@ -223,7 +230,6 @@ AltClickBuffs.prototype.FindModifier = function(unit, modifierName) {
 var altClickBuffs = new AltClickBuffs();
 
 altClickBuffs.OnUpdate();
-
 
 
 /*
