@@ -843,7 +843,7 @@ function FateGameMode:OnNPCSpawned(keys)
     --PrintTable(keys)
     local hero = EntIndexToHScript(keys.entindex)
 
-    if hero:IsRealHero() and hero.bFirstSpawned == nil and hero:GetPlayerOwner() ~= nil then
+    if hero:IsRealHero() and hero.bFirstSpawned == nil then
         FateGameMode:OnHeroInGame(hero)
     end
 end
@@ -863,7 +863,6 @@ function FateGameMode:OnHeroInGame(hero)
         print((hero:GetPlayerID()) .." is a bot!")
         self.vPlayerList[hero:GetPlayerID()] = hero:GetPlayerID()
     end
-    local player = PlayerResource:GetPlayer(hero:GetPlayerID())
     if hero:GetName() == "npc_dota_hero_wisp" then
         local dummyPause = hero:GetAbilityByIndex(0)
         dummyPause:SetLevel(1)
@@ -1048,14 +1047,14 @@ function FateGameMode:OnHeroInGame(hero)
         self:InitialiseMissingPanoramaData(hero:GetPlayerOwner())
     end)
 
-    -- Set music off
-    local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-    SendToServerConsole("dota_music_battle_enable 0")
-    SendToConsole("dota_music_battle_enable 0")  
-    player:SetMusicStatus(DOTA_MUSIC_STATUS_NONE, 100000)
-
     CustomGameEventManager:Send_ServerToPlayer(hero:GetPlayerOwner(), "player_selected_hero", playerData)
     CustomGameEventManager:Send_ServerToAllClients("player_register_master_unit", playerData)
+
+    -- Set music off
+    SendToServerConsole("dota_music_battle_enable 0")
+    SendToConsole("dota_music_battle_enable 0")  
+    local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+    player:SetMusicStatus(DOTA_MUSIC_STATUS_NONE, 100000)
 end
 
 -- This is for swapping hero models in
