@@ -177,7 +177,7 @@ AltClickBuffs.prototype.OnUpdate = function() {
     var unit = Players.GetLocalPlayerPortraitUnit();
 
     var visibleBuffs = this.GetVisibleBuffs(unit, false);
-    var panels = isDebuff ? this.debuffPanels : this.buffPanels;
+    var panels = this.buffPanels;
 
     for (var i = 0; i < panels.length; i++) {
         var circlePanel = panels[i].FindChildTraverse("CircularDuration");
@@ -204,7 +204,7 @@ AltClickBuffs.prototype.OnUpdate = function() {
     }
 
     $.Schedule(0.05, function() {
-        that.OnUpdate(isDebuff);
+        that.OnUpdate();
     });
 
 }
