@@ -90,7 +90,7 @@ function AltClickBuffs() {
     this.BindOnActivate(debuffPanels, true);
 
     GameEvents.Subscribe("dota_player_update_selected_unit", function() {
-        that.OnUpdate();
+        that.OnUpdate(true);
     });
 
 
@@ -179,7 +179,7 @@ AltClickBuffs.prototype.OnActivate = function(index, isDebuff) {
     });
 }
 
-AltClickBuffs.prototype.OnUpdate = function() {
+AltClickBuffs.prototype.OnUpdate = function(dontSchedule) {
     var that = this;
     var unit = Players.GetLocalPlayerPortraitUnit();
 
@@ -210,10 +210,11 @@ AltClickBuffs.prototype.OnUpdate = function() {
         }
     }
 
-    $.Schedule(0.05, function() {
-        that.OnUpdate();
-    });
-
+    if (!dontSchedule) {
+        $.Schedule(0.05, function() {
+            that.OnUpdate();
+        });
+    }
 }
 
 AltClickBuffs.prototype.FindModifier = function(unit, modifierName) {
