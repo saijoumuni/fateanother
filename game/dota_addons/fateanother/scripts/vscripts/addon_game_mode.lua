@@ -840,11 +840,13 @@ end
 -- An NPC has spawned somewhere in game. This includes heroes
 function FateGameMode:OnNPCSpawned(keys)
     --print("[BAREBONES] NPC Spawned")
-    --PrintTable(keys)
     local hero = EntIndexToHScript(keys.entindex)
 
     if hero:IsRealHero() and hero.bFirstSpawned == nil then
-        FateGameMode:OnHeroInGame(hero)
+        local playerID = hero:GetPlayerID()
+        if playerID ~= nil and playerID ~= -1 then
+            FateGameMode:OnHeroInGame(hero)
+        end
     end
 end
 
