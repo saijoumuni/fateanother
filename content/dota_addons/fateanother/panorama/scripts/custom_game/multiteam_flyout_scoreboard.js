@@ -22,6 +22,19 @@ function UpdateRoundScore( data )
 	g_DireScore = data.direScore;
 }
 
+function HideDotaOriginalScoreboard(){
+	var rootUI = $.GetContextPanel();
+	while(rootUI.id != "Hud" && rootUI.GetParent() != null){
+		rootUI = rootUI.GetParent();
+	}
+
+	//Do not delete original scoreboard, it will cause unwanted crashes
+	var originalScoreboard = rootUI.FindChildTraverse("scoreboard");
+	var children = originalScoreboard.Children();
+	$.Each(children, function(child){
+		child.style.visibility = "collapse";
+	});
+}
 
 (function()
 {
@@ -39,4 +52,6 @@ function UpdateRoundScore( data )
 	
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 	GameEvents.Subscribe( "winner_decided", UpdateRoundScore );
+
+	HideDotaOriginalScoreboard();
 })();
