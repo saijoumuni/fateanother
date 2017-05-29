@@ -620,8 +620,8 @@ function SScroll(keys)
 	DoDamage(caster, target, 400, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	ApplyPurge(target)
 
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_purge", {})
 	if not IsImmuneToSlow(target) then
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_purge", {})
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_slow_tier1", {})
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_slow_tier2", {})
 	end
@@ -661,8 +661,8 @@ function EXScroll(keys)
 	DoDamage(caster, target, 600, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	ApplyPurge(target)
 
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_purge", {})
 	if not IsImmuneToSlow(target) then
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_purge", {})
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_slow_tier1", {})
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_slow_tier2", {})
 	end
