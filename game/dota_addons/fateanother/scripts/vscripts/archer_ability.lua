@@ -4,7 +4,7 @@ ubwTargetLoc = nil
 ubwCasterPos = nil
 ubwCenter = Vector(5600, -4398, 200)
 aotkCenter = Vector(500, -4800, 208)
-ATTR_PROJECTION_PASSIVE_WEAPON_DAMAGE = 50
+ATTR_PROJECTION_PASSIVE_WEAPON_DAMAGE = 75
 
 function FarSightVision(keys)
 	local caster = keys.caster
