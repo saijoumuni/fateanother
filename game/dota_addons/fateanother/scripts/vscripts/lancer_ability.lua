@@ -395,17 +395,51 @@ function OnGBComboHit(keys)
 	giveUnitDataDrivenModifier(caster, caster, "pause_sealdisabled", 3.0)
 	giveUnitDataDrivenModifier(caster, target, "silenced", silenceDuration)
 	StartAnimation(caster, {duration=1.2, activity=ACT_DOTA_CAST_ABILITY_1, rate=0.5})
+
+	--Apply chrono "aura" to lancer which affects all entities except lancer and target
+	ParticleManager:CreateParticle("particles/custom/screen_scarlet_splash.vpcf", PATTACH_EYES_FOLLOW, caster) --Screen turns red as a prompt for chrono
+ 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_chrono_aura", {})
+ 	caster.WesenTarget = target --Logs down who is wesen target to be excluded for OnGBComboChronoThink()
+
 	Timers:CreateTimer(1.6, function()
 		StartAnimation(caster, {duration=3, activity=ACT_DOTA_RUN, rate=3})
 	end)
 	caster:EmitSound("Lancer.Heartbreak")
 	target:EmitSound("Lancer.Heartbreak")
 	caster:FindAbilityByName("lancer_5th_gae_bolg"):StartCooldown(27.0)
+
+	-- Remove chrono state a) instantly if lancer dies from other source b) instantly if 5seconds passed c) 0.5 second later if target dies from some other source
+	local timeCounter = 0
+	Timers:CreateTimer( function()
+		if timeCounter == 5 then
+			print("Backup chrono removal") 
+			caster:RemoveModifierByName("modifier_chrono_aura")
+			return 
+		end
+		if caster:IsAlive() == false then
+			print("Lancer dies")
+			caster:RemoveModifierByName("modifier_chrono_aura")
+			return 
+		end
+		if target:IsAlive() == false then
+			print("Target dies")
+			Timers:CreateTimer(0.5, function()
+				caster:RemoveModifierByName("modifier_chrono_aura")
+				return
+			end)
+			return
+		end
+		timeCounter = timeCounter + 0.2
+		return 0.2
+	end)
+
 	if target:IsAlive() then
 	  	Timers:CreateTimer(1.8, function() 
 			if (caster:GetAbsOrigin().y < -2000 and target:GetAbsOrigin().y > -2000) or (caster:GetAbsOrigin().y > -2000 and target:GetAbsOrigin().y < -2000) then 
 				StopSoundEvent("Lancer.Heartbreak", caster)
 				StopSoundEvent("Lancer.Heartbreak", target)
+				print("Target enter marble")
+				caster:RemoveModifierByName("modifier_chrono_aura") --Remove chrono state immediately if lancer and enemy separated by marble.
 				return 
 			end
 		    local lancer = Physics:Unit(caster)
@@ -445,6 +479,13 @@ function OnGBComboHit(keys)
 							giveUnitDataDrivenModifier(caster, target, "can_be_executed", 0.033)
 				    		DoDamage(caster, target, keys.Damage + target:GetHealth() * healthDamagePct/100, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 							target:AddNewModifier(caster, target, "modifier_stunned", {Duration = 1.0})
+							
+							--Remove chrono state 0.5 second later when wesen hits enemy.
+							print("Target gets hit by Wesen")
+							Timers:CreateTimer(0.5, function()
+								caster:RemoveModifierByName("modifier_chrono_aura")
+								return
+							end)
 
 							PlayNormalGBEffect(target)
 							if target:GetHealth() < HBThreshold then 
@@ -460,6 +501,24 @@ function OnGBComboHit(keys)
 		end)
 	end
 end
+
+function OnGBComboChronoThink(keys)
+	--Apply chrono state to all entities, think interval 0.2
+	local caster = keys.caster
+	local target = caster.WesenTarget
+	local ability = keys.ability
+	if IsValidEntity(target) and not target:IsNull() then
+		local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 99999, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+		for k,v in pairs(targets) do
+			if v ~= target and v ~= caster then 
+				ability:ApplyDataDrivenModifier(caster, v, "modifier_chronosphere", {})
+				giveUnitDataDrivenModifier(caster, v, "revoked", 0.2)
+			end
+		end
+	end
+end
+
+
 
 function OnGBAOEStart(keys)
 	local caster = keys.caster
