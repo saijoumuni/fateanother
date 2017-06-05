@@ -2321,33 +2321,6 @@
 		}
 		"Modifiers"
 		{
-			"modifier_chronosphere"
-			{
-				"Duration"		"0.2"
-				"IsDebuff"		"1"
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_FROZEN"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_chrono_aura"
-			{
-				"IsHidden"						"1"
-				"IsPurgable"					"0"
-				"Duration"						"5.0"		
-				"ThinkInterval"					"0.2"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"lancer_ability"
-						"Function"		"OnGBComboChronoThink"
-					}
-				}
-			}
 			"modifier_wesen_gae_bolg_anim"
 			{
 				"Duration"	"1.0"

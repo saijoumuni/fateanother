@@ -230,6 +230,22 @@ function OnTigerStrike2Start(keys)
 	-- do damage and apply CC
 	DoDamage(caster, target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	keys.target:AddNewModifier(caster, target, "modifier_stunned", {Duration = 0.1})
+
+	local modifierKnockback =
+	{
+		center_x = caster:GetAbsOrigin().x,
+		center_y = caster:GetAbsOrigin().y,
+		center_z = caster:GetAbsOrigin().z,
+		duration = 0.1,
+		knockback_duration = 0.1,
+		knockback_distance = 30,
+		knockback_height = 0,
+	}
+	target:AddNewModifier(target, nil, "modifier_knockback", modifierKnockback )
+	--caster:SetAbsOrigin(target:GetAbsOrigin() - target:GetForwardVector():Normalized()*100)
+	caster:SetAbsOrigin(target:GetAbsOrigin()-(caster:GetAbsOrigin() - target:GetAbsOrigin()):Normalized()*130)
+	FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
+
 	-- switch strike 1 with 2
 	caster:SwapAbilities("lishuwen_fierce_tiger_strike_2", "lishuwen_fierce_tiger_strike_3", false, true) 
 	caster:EmitSound("Hero_EarthShaker.Fissure")

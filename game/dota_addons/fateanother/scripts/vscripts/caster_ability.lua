@@ -1167,7 +1167,7 @@ function OnHGStart(keys)
 	local maxBolt = keys.BoltAmount
 	local travelTime = 0.7
 	local ascendTime = travelTime+2.0
-	local descendTime = ascendTime+1.0
+	local descendTime = ascendTime+0.75
 	local diff = (targetPoint - caster:GetAbsOrigin()) * 1/travelTime
 	if caster.IsHGImproved then
 		maxBolt = maxBolt + 3
@@ -1203,7 +1203,7 @@ function OnHGStart(keys)
 		--caster:SetAbsOrigin(caster:GetGroundPosition(caster:GetAbsOrigin(), caster)+Vector(0,0,1000))
 	return end) 
 	Timers:CreateTimer(ascendTime, function()  
-		caster:SetPhysicsVelocity( Vector( 0, 0, -650) )
+		caster:SetPhysicsVelocity( Vector( 0, 0, -950) )
 	return end) 
 
 	--[[local floatCounter = 0
@@ -1291,7 +1291,7 @@ function OnHGPStart(keys)
 	local barrageRadius = keys.Radius
 	local travelTime = 0.7
 	local ascendTime = travelTime+4.0
-	local descendTime = ascendTime+1.0
+	local descendTime = ascendTime+0.75
 	if caster.IsHGImproved then keys.Damage = keys.Damage + caster:GetIntellect()*ATTRIBUTE_HG_INT_MULTIPLIER end
 
 	-- Set master's combo cooldown
@@ -1328,7 +1328,7 @@ function OnHGPStart(keys)
 	return end) 
 	Timers:CreateTimer(ascendTime, function()  
 		local dummy = CreateUnitByName( "sight_dummy_unit", caster:GetAbsOrigin(), false, keys.caster, keys.caster, keys.caster:GetTeamNumber() );
-		caster:SetPhysicsVelocity( Vector( 0, 0, dummy:GetAbsOrigin().z - caster:GetAbsOrigin().z ) )
+		caster:SetPhysicsVelocity( Vector( 0, 0, -950 ) )
 		dummy:RemoveSelf()
 	return end) 
 	Timers:CreateTimer(descendTime, function()  

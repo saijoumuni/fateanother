@@ -473,13 +473,13 @@ function AvalonDash(caster, attacker, counterdamage, ability)
 	giveUnitDataDrivenModifier(caster, caster, "pause_sealenabled", 0.6)
     caster:PreventDI()
     caster:SetPhysicsFriction(0)
-    caster:SetPhysicsVelocity(distance:Normalized() * distance:Length2D()*2)
+    caster:SetPhysicsVelocity(distance:Normalized() * distance:Length2D()*2.5)
     caster:SetNavCollisionType(PHYSICS_NAV_NOTHING)
     caster:FollowNavMesh(true)
 	caster:SetAutoUnstuck(false)
 	
 	Timers:CreateTimer({
-		endTime = 0.5,
+		endTime = 0.4,
 		callback = function()
 
 	    --stop the dash
