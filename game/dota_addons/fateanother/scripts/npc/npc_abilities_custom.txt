@@ -29152,6 +29152,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"stun_duration"		"0.15"
 			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"leapback_range"	"500"
+			}
 		}
 	}
 
