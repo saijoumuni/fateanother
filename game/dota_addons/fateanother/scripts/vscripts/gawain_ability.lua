@@ -36,7 +36,7 @@ function OnIRTickAlly(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
 	local target = keys.target
-	target:Heal(keys.Damage/5, caster)
+	target:Heal(keys.Damage/10, caster)
 	--target:SetHealth(target:GetHealth() + keys.Damage/5)
 end
 
@@ -45,9 +45,9 @@ function OnIRTickEnemy(keys)
 	local ply = caster:GetPlayerOwner()
 	local target = keys.target
 	if caster.IsEclipseAcquired then 
-		damage = keys.Damage/5
+		damage = keys.Damage/10
 	else
-		damage = keys.Damage/5 * 0.66
+		damage = keys.Damage/10 * 0.66
 	end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false)
 end
@@ -580,9 +580,9 @@ function OnMeltdownThink(keys)
 	local caster = keys.caster
 	local target = keys.target
 	if target.MeltdownCounter == nil then 
-		target.MeltdownCounter = 15
+		target.MeltdownCounter = 8
 	else
-		target.MeltdownCounter = target.MeltdownCounter - 2
+		target.MeltdownCounter = target.MeltdownCounter - 0.5
 	end
 	print(target.MeltdownCounter)
 	local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 1000, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false) 

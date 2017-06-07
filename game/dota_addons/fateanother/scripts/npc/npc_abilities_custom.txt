@@ -21090,7 +21090,7 @@
 				"EffectName"			"particles/units/heroes/hero_phoenix/phoenix_supernova_radiance.vpcf"
 				"EffectAttachType"		"follow_origin"
 				"Duration"				"%duration"
-				"ThinkInterval" 		"1.0"
+				"ThinkInterval" 		"0.5"
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -21107,7 +21107,7 @@
 				"EffectAttachType"		"follow_origin"
 				"IsDebuff"				"1"
 				"Duration"				"%duration"
-				"ThinkInterval" 		"1.0"
+				"ThinkInterval" 		"0.5"
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -21843,7 +21843,7 @@
 			{
 				"IsHidden"	"1"
 				"Duration"	"5.0"
-				"ThinkInterval"				"1.0"
+				"ThinkInterval"				"0.5"
 				"OnIntervalThink"
 				{
 					"RunScript"
