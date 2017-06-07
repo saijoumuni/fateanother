@@ -690,7 +690,7 @@
 				"OverrideAnimation"     "ACT_DOTA_CAST_ABILITY_3"		
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE"		"1.1"
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE"		"1.5"
 				}		
 				"OnCreated"
 				{

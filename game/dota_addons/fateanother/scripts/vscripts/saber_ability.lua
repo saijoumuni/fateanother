@@ -427,7 +427,7 @@ function AvalonOnTakeDamage(keys)
 	local emitwhichsound = RandomInt(1, 2)
 
 
-	if not caster:HasModifier("pause_sealdisabled") and not caster:HasModifier("modifier_max_excalibur") and caster.IsAvalonProc == true and caster.IsAvalonOnCooldown ~= true and (caster:GetAbsOrigin() - attacker:GetAbsOrigin()):Length2D() < 3000 then 
+	if not caster:HasModifier("pause_sealdisabled") and not caster:HasModifier("modifier_max_excalibur") and caster.IsAvalonProc == true and caster:GetTeam() ~= attacker:GetTeam() and caster.IsAvalonOnCooldown ~= true and (caster:GetAbsOrigin() - attacker:GetAbsOrigin()):Length2D() < 3000 then 
 		if emitwhichsound == 1 then attacker:EmitSound("Saber.Avalon_Counter1") else attacker:EmitSound("Saber.Avalon_Counter2") end
 		AvalonDash(caster, attacker, keys.Damage, keys.ability)
 		caster.IsAvalonOnCooldown = true
@@ -653,7 +653,7 @@ end
 
 function SaberCheckCombo(caster, ability)
 	if caster:GetStrength() >= 19.1 and caster:GetAgility() >= 19.1 and caster:GetIntellect() >= 19.1 then
-		if ability == caster:FindAbilityByName("saber_avalon") and caster:FindAbilityByName("saber_excalibur"):IsCooldownReady() and caster:FindAbilityByName("saber_max_excalibur"):IsCooldownReady() then
+		if ability == caster:FindAbilityByName("saber_avalon") and caster:FindAbilityByName("saber_excalibur"):IsCooldownReady() and caster:FindAbilityByName("saber_max_excalibur"):IsCooldownReady() and caster:GetAbilityByIndex(2):GetAbilityName() ~= "saber_max_excalibur" then
 			caster:SwapAbilities("saber_excalibur", "saber_max_excalibur", false, true) 
 			Timers:CreateTimer({
 				endTime = 3,

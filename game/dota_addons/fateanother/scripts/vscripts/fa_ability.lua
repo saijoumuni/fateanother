@@ -111,7 +111,8 @@ function OnHeartDamageTaken(keys)
 	local target = keys.attacker
 	local ability = keys.ability
 	local damageTaken = keys.DamageTaken
-	if damageTaken > keys.Threshold and caster:GetHealth() ~= 0 and (caster:GetAbsOrigin()-target:GetAbsOrigin()):Length2D() < 3000 and not target:IsInvulnerable() then
+
+	if damageTaken > keys.Threshold and caster:GetHealth() ~= 0 and (caster:GetAbsOrigin()-target:GetAbsOrigin()):Length2D() < 3000 and not target:IsInvulnerable() and caster:GetTeam() ~= target:GetTeam() then
 
 		local diff = (target:GetAbsOrigin() - caster:GetAbsOrigin() ):Normalized() 
 		caster:SetAbsOrigin(target:GetAbsOrigin() - diff*100) 
@@ -267,7 +268,7 @@ function OnTMDamageTaken(keys)
 	local damageTaken = keys.DamageTaken
 
 	-- if caster is alive and damage is above threshold, do something
-	if damageTaken > keys.Threshold and caster:GetHealth() ~= 0 and (caster:GetAbsOrigin()-attacker:GetAbsOrigin()):Length2D() < 3000 and not attacker:IsInvulnerable() then
+	if damageTaken > keys.Threshold and caster:GetHealth() ~= 0 and (caster:GetAbsOrigin()-attacker:GetAbsOrigin()):Length2D() < 3000 and not attacker:IsInvulnerable() and caster:GetTeam() ~= attacker:GetTeam() then
 		keys.target = keys.attacker
 		OnTMLanded(keys)
 	end

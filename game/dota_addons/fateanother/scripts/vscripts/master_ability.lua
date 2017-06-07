@@ -793,7 +793,7 @@ function OnArmorGain(keys)
 		end
 	end 
 
-	hero:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue()+1.5)
+	hero:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue()+1.75) --actually this line is useless, appears to be dependent on scripts/npc/attributes.txt but I am too lazy to understand why
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
 	local master1 = hero.MasterUnit
@@ -817,7 +817,7 @@ function OnHPRegenGain(keys)
 		end
 	end 
 
-	hero:SetBaseHealthRegen(hero:GetBaseHealthRegen()+2)
+	hero:SetBaseHealthRegen(hero:GetBaseHealthRegen()+2.5) --down here attributes.txt is useless, and this line is working.
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
 	local master1 = hero.MasterUnit
@@ -841,7 +841,7 @@ function OnManaRegenGain(keys)
 		end
 	end 
 
-	hero:SetBaseManaRegen(hero:GetManaRegen()+1.5)
+	hero:SetBaseManaRegen(hero:GetManaRegen()+1.3) --down here attributes.txt is useless, and this line is working.
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
 	local master1 = hero.MasterUnit
