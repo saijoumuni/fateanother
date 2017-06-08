@@ -10,6 +10,7 @@ function OnMadnessStart(keys)
 	end
 	caster:SetModifierStackCount("modifier_madness_stack", caster, 0) 
 	caster.MadnessProgress = 0
+	AdjustMadnessStack(caster, 1)
 	UpdateMadnessProgress(caster)
 end
 

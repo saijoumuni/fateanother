@@ -141,9 +141,9 @@ function OnDownStart(keys)
 			vVelocity = forwardVec * range * 5
 		}
 		local projectile = ProjectileManager:CreateLinearProjectile(spearProjectile)
-		if caster:HasModifier("modifier_astolfo_monstrous_strength") and caster.bIsSanityAcquired then
+		--[[if caster:HasModifier("modifier_astolfo_monstrous_strength") and caster.bIsSanityAcquired then
 			DoDamage(caster, caster, 4*caster:GetHealth()/100 , DAMAGE_TYPE_MAGICAL, 0, ability, false)
-		end
+		end]]
 		StartAnimation(caster, {duration=0.2, activity=ACT_DOTA_ATTACK, rate=4.0})
 		caster:EmitSound("Hero_Sniper.AssassinateDamage")
 		counter = counter + 1
@@ -512,10 +512,10 @@ function OnMStrengthHit(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	DoDamage(caster, target, 4*caster:GetMaxHealth()/100 , DAMAGE_TYPE_PURE, 0, ability, false)
-	if not caster:HasModifier("modifier_astolfo_disable_mstrength") then
+	DoDamage(caster, target, 8*caster:GetMaxHealth()/100 , DAMAGE_TYPE_MAGICAL, 0, ability, false)
+	--[[if not caster:HasModifier("modifier_astolfo_disable_mstrength") then
 		DoDamage(caster, caster, 4*caster:GetHealth()/100 , DAMAGE_TYPE_MAGICAL, 0, ability, false)
-	end
+	end]]
 end
 
 function OnDownAttackHit(keys)

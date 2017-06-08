@@ -1317,7 +1317,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"ad_ratio"				"2.5"
+				"ad_ratio"				"1.3"
 			}
 			"03"
 			{
@@ -6057,12 +6057,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_reduction"			"12 24"
+				"damage_reduction"			"15 30"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_mr"				"0 20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"				"0 5"
 			}
 		}
 		
@@ -6076,6 +6081,7 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_reduction"
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_mr"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
 				}
 			}
 		}
@@ -6867,7 +6873,12 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"damage_block"				"24"
+				"damage_block"				"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"				"5"
 			}
 		}
 		
@@ -17490,12 +17501,12 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1500"
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"3000"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"16"
+		"AbilityCooldown"				"4"
 
 		
 		"AbilitySpecial"
@@ -17508,7 +17519,7 @@
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"duration"		"5"
+				"duration"		"8"
 			}
 			"03"
 			{
@@ -17584,7 +17595,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -17727,7 +17738,7 @@
 			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_reality_rift.vpcf"
 		}
 		
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -17787,7 +17798,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -17841,7 +17852,7 @@
 		"AbilityTextureName"			"keeper_of_the_light_illuminate"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.1"
 		"AbilityCooldown"				"15"
 		"AbilityCastRange"				"3000"
 		"AbilityChannelTime"			"2.0"	
@@ -22908,7 +22919,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"orb_amount"				"3 5 5 5 7"
+				"orb_amount"				"4 5 6 7 8"
 			}
 			"04"
 			{
@@ -26796,7 +26807,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"lock_duration"		"0.8 1.2 1.6 2.0 2.4"
+				"lock_duration"		"1.2 1.5 1.8 2.1 2.4"
 			}	
 			"07"
 			{
@@ -27502,7 +27513,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"damage_pct"		"4"
+				"damage_pct"		"8"
 			}
 		}
 		
