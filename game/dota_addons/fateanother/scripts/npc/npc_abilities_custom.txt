@@ -1423,12 +1423,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"range"					"2100"
+				"range"					"2000"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"speed"					"1000"
+				"speed"					"1150"
 			}
 			"04"
 			{
@@ -10440,7 +10440,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"speed"				"750"
+				"speed"				"1050"
 			}
 		}
 		
@@ -24513,6 +24513,17 @@
 		
 		"Modifiers"
 		{
+			"modifier_second_strike_turnrate"
+			{
+				"Duration"			"1"
+				"IsDebuff"			"0"
+				"IsHidden"			"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE"		"500"
+				}
+			}
 		}
 	}
 

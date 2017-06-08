@@ -243,9 +243,10 @@ function OnTigerStrike2Start(keys)
 	}
 	target:AddNewModifier(target, nil, "modifier_knockback", modifierKnockback )
 	--caster:SetAbsOrigin(target:GetAbsOrigin() - target:GetForwardVector():Normalized()*100)
+
 	caster:SetAbsOrigin(target:GetAbsOrigin()-(caster:GetAbsOrigin() - target:GetAbsOrigin()):Normalized()*130)
 	FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
-
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_second_strike_turnrate", {})
 	-- switch strike 1 with 2
 	caster:SwapAbilities("lishuwen_fierce_tiger_strike_2", "lishuwen_fierce_tiger_strike_3", false, true) 
 	caster:EmitSound("Hero_EarthShaker.Fissure")
@@ -276,6 +277,7 @@ function OnTigerStrike3Start(keys)
 		end
 	end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_PURE, 0, keys.ability, false)
+	caster:RemoveModifierByName("modifier_second_strike_turnrate")
 	if not IsImmuneToSlow(target) then ability:ApplyDataDrivenModifier(caster, target, "modifier_fierce_tiger_strike_3_slow", {}) end
 	Timers:RemoveTimer('fierce_tiger_timer')
 	-- switch strike 1 with 2

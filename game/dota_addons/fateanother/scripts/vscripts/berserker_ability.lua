@@ -537,8 +537,6 @@ function OnGodHandDeath(keys)
 			caster.ReincarnationDamageTaken = 0
 			UpdateGodhandProgress(caster)
 		else
-			caster.ReincarnationDamageTaken = 0 --If zerk death results in teamwipe, we reset reincarnation damage counter anyway.
-			UpdateGodhandProgress(caster)
 			caster:SetRespawnPosition(caster.RespawnPos)
 		end
 		--caster:SetRespawnPosition(Vector(7000, 2000, 320)) need to set the respawn base after reviving
