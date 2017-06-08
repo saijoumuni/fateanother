@@ -191,7 +191,7 @@
 		"StatusHealth"					"1500"
 		"StatusHealthRegen"				"20"
 		"StatusMana"					"1000"
-		"StatusManaRegen"				"2"
+		"StatusManaRegen"				"7"
 		"ArmorPhysical"					"8"
 		"MagicalResistance"				"20"
 		
@@ -389,7 +389,7 @@
 		"StatusMana"					"1100"
 		"StatusManaRegen"				"4"
 		
-		"ArmorPhysical"					"1"
+		"ArmorPhysical"					"8"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"

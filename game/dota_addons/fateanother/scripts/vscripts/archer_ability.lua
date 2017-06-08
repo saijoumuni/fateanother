@@ -1090,7 +1090,7 @@ end
 
 function OnHruntHit(keys)
 	if IsSpellBlocked(keys.target) then return end -- Linken effect checker
-	keys.target:EmitSound("Misc.Crash")
+	keys.target:EmitSound("Archer.HruntHit")
 	-- Create Particle
 	local explosionParticleIndex = ParticleManager:CreateParticle( "particles/custom/archer/archer_hrunting_area.vpcf", PATTACH_CUSTOMORIGIN, keys.target )
 	ParticleManager:SetParticleControl( explosionParticleIndex, 0, keys.target:GetAbsOrigin() )

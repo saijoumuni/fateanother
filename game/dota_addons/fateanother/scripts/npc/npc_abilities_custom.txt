@@ -626,7 +626,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"speed"					"1250"
+				"speed"					"1150"
 			}
 			"05"
 			{
@@ -2648,7 +2648,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"mana_regen_bonus"		"7"
+				"mana_regen_bonus"		"15"
 			}
 			"03"
 			{
@@ -2862,7 +2862,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "200"
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "250"
 				}
 				"OnAttackLanded"
 				{
@@ -3413,7 +3413,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"speed"					"1200"
+				"speed"					"1100"
 			}
 			"05"
 			{
@@ -3801,7 +3801,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"crit_damage"		"200"
+				"crit_damage"		"250"
 			}
 			"04"
 			{
@@ -10318,7 +10318,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"speed"				"1150"
+				"speed"				"1050"
 			}
 		}
 		
@@ -10361,6 +10361,10 @@
 				"Duration"	"4.0"
 				"IsHidden"	"1"
 				"OverrideAnimation"     "ACT_DOTA_CAST_ABILITY_6"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE"		"1.3"
+				}	
 			}
 		}
 	}
