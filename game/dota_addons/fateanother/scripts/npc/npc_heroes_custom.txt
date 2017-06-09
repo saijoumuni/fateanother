@@ -130,7 +130,7 @@
 		"StatusMana"					"1000"
 		"StatusManaRegen"				"6"
 		
-		"ArmorPhysical"					"6"
+		"ArmorPhysical"					"5"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -260,9 +260,9 @@
 		"StatusHealth"					"1200"
 		"StatusHealthRegen"				"8"
 		"StatusMana"					"1100"
-		"StatusManaRegen"				"6"
+		"StatusManaRegen"				"6.5"
 		
-		"ArmorPhysical"					"6"
+		"ArmorPhysical"					"4"
 		"MagicalResistance"				"5"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -282,8 +282,8 @@
 		"MovementSpeed"					"360"
 		"MovementTurnRate"				"0.8"
 		
-		"VisionDaytimeRange"			"1400"
-		"VisionNighttimeRange"			"1400"
+		"VisionDaytimeRange"			"1350"
+		"VisionNighttimeRange"			"1350"
 
 	}
 	
@@ -323,7 +323,7 @@
 		"StatusHealth"					"1300"
 		"StatusHealthRegen"				"12"
 		"StatusMana"					"1000"
-		"StatusManaRegen"				"3"
+		"StatusManaRegen"				"3.5"
 		
 		"ArmorPhysical"					"1"
 		"MagicalResistance"				"10"
@@ -387,9 +387,9 @@
 		"StatusHealth"					"1600"
 		"StatusHealthRegen"				"15"
 		"StatusMana"					"1100"
-		"StatusManaRegen"				"4"
+		"StatusManaRegen"				"3.5"
 		
-		"ArmorPhysical"					"8"
+		"ArmorPhysical"					"7"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -453,7 +453,7 @@
 		"StatusMana"					"100"
 		"StatusManaRegen"				"0"
 		
-		"ArmorPhysical"					"5"
+		"ArmorPhysical"					"2"
 		"MagicalResistance"				"0"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -517,7 +517,7 @@
 		"StatusMana"					"1000"
 		"StatusManaRegen"				"4"
 		
-		"ArmorPhysical"					"5"
+		"ArmorPhysical"					"2"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -587,7 +587,7 @@
 		"StatusMana"					"1000"
 		"StatusManaRegen"				"9"
 		
-		"ArmorPhysical"					"1"
+		"ArmorPhysical"					"1.5"
 		"MagicalResistance"				"20"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -650,7 +650,7 @@
 		"StatusMana"					"1000"
 		"StatusManaRegen"				"2"
 		
-		"ArmorPhysical"					"8"
+		"ArmorPhysical"					"4"
 		"MagicalResistance"				"5"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -714,9 +714,9 @@
 		"StatusHealth"					"1400"
 		"StatusHealthRegen"				"10"
 		"StatusMana"					"1000"
-		"StatusManaRegen"				"7"
+		"StatusManaRegen"				"6"
 		
-		"ArmorPhysical"					"5"
+		"ArmorPhysical"					"7"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -782,7 +782,7 @@
 		"StatusMana"					"1050"
 		"StatusManaRegen"				"7"
 		
-		"ArmorPhysical"					"2"
+		"ArmorPhysical"					"1"
 		"MagicalResistance"				"0"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -843,9 +843,9 @@
 		"StatusHealth"					"1150"
 		"StatusHealthRegen"				"9.0"
 		"StatusMana"					"1100"
-		"StatusManaRegen"				"1.5"
+		"StatusManaRegen"				"2.5"
 		
-		"ArmorPhysical"					"3"
+		"ArmorPhysical"					"4"
 		"MagicalResistance"				"15"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -901,12 +901,12 @@
 		"Attribute4"				"gille_attribute_abyssal_connection"
 		"Attribute5"				"gille_attribute_abyssal_connection_2"
 
-		"StatusHealth"					"950"
+		"StatusHealth"					"1000"
 		"StatusHealthRegen"				"1"
 		"StatusMana"					"100"
 		"StatusManaRegen"				"0"
 		
-		"ArmorPhysical"					"2"
+		"ArmorPhysical"					"1.5"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -973,7 +973,7 @@
 		"StatusMana"					"1100"
 		"StatusManaRegen"				"3"
 		
-		"ArmorPhysical"					"2"
+		"ArmorPhysical"					"4"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1037,9 +1037,9 @@
 		"StatusHealth"					"1200"
 		"StatusHealthRegen"				"9.0"
 		"StatusMana"					"1175"
-		"StatusManaRegen"				"1.5"
+		"StatusManaRegen"				"2.5"
 		
-		"ArmorPhysical"					"3"
+		"ArmorPhysical"					"6"
 		"MagicalResistance"				"10"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1101,9 +1101,9 @@
 		"StatusHealth"					"1200"
 		"StatusHealthRegen"				"9.0"
 		"StatusMana"					"1050"
-		"StatusManaRegen"				"2.5"
+		"StatusManaRegen"				"3"
 		
-		"ArmorPhysical"					"3"
+		"ArmorPhysical"					"6"
 		"MagicalResistance"				"20"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1159,9 +1159,9 @@
 		"StatusHealth"					"1150"
 		"StatusHealthRegen"				"4.0"
 		"StatusMana"					"1300"
-		"StatusManaRegen"				"4.5"
+		"StatusManaRegen"				"5.5"
 		
-		"ArmorPhysical"					"1"
+		"ArmorPhysical"					"2"
 		"MagicalResistance"				"20"
 
 
@@ -1222,7 +1222,7 @@
 		"StatusMana"					"1100"
 		"StatusManaRegen"				"3"
 		
-		"ArmorPhysical"					"4"
+		"ArmorPhysical"					"2"
 		"MagicalResistance"				"5"
 
 
@@ -1282,9 +1282,9 @@
 		"StatusHealth"					"1250"
 		"StatusHealthRegen"				"7"
 		"StatusMana"					"1175"
-		"StatusManaRegen"				"5.5"
+		"StatusManaRegen"				"5"
 		
-		"ArmorPhysical"					"4"
+		"ArmorPhysical"					"5"
 		"MagicalResistance"				"25"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1346,7 +1346,7 @@
 		"StatusMana"					"1050"
 		"StatusManaRegen"				"5"
 		
-		"ArmorPhysical"					"4"
+		"ArmorPhysical"					"3"
 		"MagicalResistance"				"0"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1410,7 +1410,7 @@
 		"StatusMana"					"1200"
 		"StatusManaRegen"				"4"
 		
-		"ArmorPhysical"					"1"
+		"ArmorPhysical"					"2"
 		"MagicalResistance"				"15"
 		
 		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -1478,7 +1478,7 @@
 		"StatusMana"					"1200"
 		"StatusManaRegen"				"5"
 		
-		"ArmorPhysical"					"4"
+		"ArmorPhysical"					"3"
 		"MagicalResistance"				"5"
 		
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
