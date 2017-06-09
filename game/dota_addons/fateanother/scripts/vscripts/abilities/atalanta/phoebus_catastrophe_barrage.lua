@@ -87,3 +87,7 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
 
     self:AfterSpell()
 end
+
+function atalanta_phoebus_catastrophe_barrage:GetAbilityTextureName()
+    return "custom/atalanta_phoebus_catastrophe"
+end

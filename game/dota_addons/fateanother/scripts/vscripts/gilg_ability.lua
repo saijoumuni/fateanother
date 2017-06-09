@@ -42,7 +42,7 @@ function OnBarrageStart(keys)
 				local targets = FindUnitsInRadius(caster:GetTeam(), targetPoint, nil, keys.Radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false) 
 				for k,v in pairs(targets) do
 					if v:GetUnitName() == "gille_gigantic_horror" then  
-						DoDamage(caster, v, dot*2.5, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+						DoDamage(caster, v, dot, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 					else 
 						DoDamage(caster, v, dot, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 					end
@@ -290,7 +290,7 @@ function OnGOBHit(keys)
 	if caster.IsSumerAcquired then
 		damage = damage + caster:GetAttackDamage()*0.5
 	end
-	if target:GetUnitName() == "gille_gigantic_horror" then damage = damage*2.5 end
+	--if target:GetUnitName() == "gille_gigantic_horror" then damage = damage*2.5 end
 	DoDamage(keys.caster, keys.target, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	local particle = ParticleManager:CreateParticle("particles/econ/items/sniper/sniper_charlie/sniper_assassinate_impact_blood_charlie.vpcf", PATTACH_ABSORIGIN, keys.target)
 	ParticleManager:SetParticleControl(particle, 1, keys.target:GetAbsOrigin())

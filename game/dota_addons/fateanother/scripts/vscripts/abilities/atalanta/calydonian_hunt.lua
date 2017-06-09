@@ -105,3 +105,7 @@ end
 function atalanta_calydonian_hunt:GetCastAnimation()
     return ACT_DOTA_CAST_ABILITY_2
 end
+
+function atalanta_calydonian_hunt:GetAbilityTextureName()
+    return "custom/atalanta_calydonian_hunt"
+end

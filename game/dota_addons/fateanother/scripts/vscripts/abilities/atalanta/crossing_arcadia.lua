@@ -387,3 +387,7 @@ end
 function atalanta_crossing_arcadia:GetCastAnimation()
     return ACT_DOTA_CAST_ABILITY_1
 end
+
+function atalanta_crossing_arcadia:GetAbilityTextureName()
+    return "custom/atalanta_crossing_arcadia"
+end

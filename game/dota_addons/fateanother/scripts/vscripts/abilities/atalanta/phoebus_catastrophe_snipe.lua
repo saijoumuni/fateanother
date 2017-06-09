@@ -106,3 +106,7 @@ function atalanta_phoebus_catastrophe_snipe:OnSpellStart()
 
     self:AfterSpell()
 end
+
+function atalanta_phoebus_catastrophe_snipe:GetAbilityTextureName()
+    return "custom/atalanta_phoebus_catastrophe"
+end

@@ -6061,8 +6061,8 @@
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_mr"				"0 20"
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mr"				"0 16.7" //why 16.7? because 0.1+(1-0.1)*0.167 = 0.2504.... yeah.
 			}
 			"03"
 			{
@@ -6868,7 +6868,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"bonus_mr"				"20"
+				"bonus_mr"				"15"
 			}
 			"02"
 			{
@@ -29052,7 +29052,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"root_duration"			"0.6 0.8 1.0 1.2 1.4"
+				"root_duration"			"1.4 1.8 2.2 2.6 3.0"
 			}
 			"04"
 			{

@@ -11,3 +11,7 @@ end
 function atalanta_priestess_of_the_hunt:GetIntrinsicModifierName()
     return "modifier_priestess_of_the_hunt"
 end
+
+function atalanta_priestess_of_the_hunt:GetAbilityTextureName()
+    return "custom/atalanta_priestess_of_the_hunt"
+end

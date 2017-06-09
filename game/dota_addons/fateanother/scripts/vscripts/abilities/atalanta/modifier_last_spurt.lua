@@ -38,3 +38,7 @@ end
 function modifier_last_spurt:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
+
+function modifier_last_spurt:GetTexture()
+    return "custom/atalanta_last_spurt"
+end

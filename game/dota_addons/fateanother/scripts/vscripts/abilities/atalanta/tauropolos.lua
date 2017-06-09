@@ -22,3 +22,7 @@ end
 function atalanta_tauropolos:GetCastAnimation()
     return ACT_DOTA_CAST_ABILITY_3
 end
+
+function atalanta_tauropolos:GetAbilityTextureName()
+    return "custom/atalanta_tauropolos"
+end

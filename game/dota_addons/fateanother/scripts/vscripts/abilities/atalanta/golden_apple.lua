@@ -110,3 +110,7 @@ end
 function atalanta_golden_apple:GetCastAnimation()
     return ACT_DOTA_CAST_ABILITY_1
 end
+
+function atalanta_golden_apple:GetAbilityTextureName()
+    return "custom/atalanta_golden_apple"
+end

@@ -5,6 +5,24 @@ atalanta_attribute_hunters_mark = class({})
 atalanta_attribute_golden_apple = class({})
 atalanta_attribute_crossing_arcadia_plus = class({})
 
+function atalanta_attribute_arrows_of_the_big_dipper:GetAbilityTextureName()
+    return "custom/atalanta_arrows_of_the_big_dipper"
+end
+
+function atalanta_attribute_hunters_mark:GetAbilityTextureName()
+    return "custom/atalanta_hunters_mark"
+end
+
+function atalanta_attribute_golden_apple:GetAbilityTextureName()
+    return "custom/atalanta_golden_apple"
+end
+
+function atalanta_attribute_crossing_arcadia_plus:GetAbilityTextureName()
+    return "custom/atalanta_crossing_arcadia"
+end
+
+
+
 function WrapAttributes(ability, attributeName, callback)
     function ability:OnSpellStart()
         local caster = self:GetCaster()

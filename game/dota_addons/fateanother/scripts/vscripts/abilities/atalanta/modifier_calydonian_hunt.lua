@@ -22,3 +22,7 @@ end
 function modifier_calydonian_hunt:RemoveOnDeath()
     return true
 end
+
+function modifier_calydonian_hunt:GetTexture()
+    return "custom/atalanta_calydonian_hunt"
+end

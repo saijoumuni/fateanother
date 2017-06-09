@@ -711,7 +711,7 @@
 		"Attribute4"				"lancelot_attribute_total_assault"
 
 		
-		"StatusHealth"					"1350"
+		"StatusHealth"					"1400"
 		"StatusHealthRegen"				"10"
 		"StatusMana"					"1000"
 		"StatusManaRegen"				"7"
@@ -1473,7 +1473,7 @@
 		"Attribute4"				"atalanta_attribute_crossing_arcadia_plus"
 
 
-		"StatusHealth"					"1000"
+		"StatusHealth"					"1100"
 		"StatusHealthRegen"				"7"
 		"StatusMana"					"1200"
 		"StatusManaRegen"				"5"

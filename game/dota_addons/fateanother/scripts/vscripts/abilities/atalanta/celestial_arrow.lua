@@ -218,3 +218,7 @@ end
 function atalanta_celestial_arrow:GetIntrinsicModifierName()
     return "modifier_celestial_arrow"
 end
+
+function atalanta_celestial_arrow:GetAbilityTextureName()
+    return "windrunner_powershot"
+end

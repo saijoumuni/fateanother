@@ -108,3 +108,7 @@ end
 function modifier_priestess_of_the_hunt:RemoveOnDeath()
     return false
 end
+
+function modifier_priestess_of_the_hunt:GetTexture()
+    return "custom/atalanta_priestess_of_the_hunt"
+end

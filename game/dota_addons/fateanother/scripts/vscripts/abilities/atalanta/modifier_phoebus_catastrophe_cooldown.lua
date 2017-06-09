@@ -15,3 +15,7 @@ end
 function modifier_phoebus_catastrophe_cooldown:RemoveOnDeath()
     return false
 end
+
+function modifier_phoebus_catastrophe_cooldown:GetTexture()
+    return "custom/atalanta_phoebus_catastrophe"
+end

@@ -28,3 +28,7 @@ end
 function modifier_tauropolos:RemoveOnDeath()
     return true
 end
+
+function modifier_tauropolos:GetTexture()
+    return "custom/atalanta_tauropolos"
+end

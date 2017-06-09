@@ -37,3 +37,7 @@ end
 function atalanta_last_spurt:GetCastAnimation()
     return ACT_DOTA_CAST_ABILITY_3
 end
+
+function atalanta_last_spurt:GetAbilityTextureName()
+    return "custom/atalanta_last_spurt"
+end

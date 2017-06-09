@@ -15,3 +15,7 @@ end
 function modifier_golden_apple_cooldown:RemoveOnDeath()
     return false
 end
+
+function modifier_golden_apple_cooldown:GetTexture()
+    return "custom/atalanta_golden_apple"
+end
