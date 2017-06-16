@@ -1374,7 +1374,7 @@ function FateGameMode:OnAbilityUsed(keys)
 
         -- Check if a hero with Martial Arts is nearby
         if hero:HasModifier("modifier_martial_arts_aura_enemy") then
-            local targets = FindUnitsInRadius(hero:GetTeam(), hero:GetOrigin(), nil, 1200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+            local targets = FindUnitsInRadius(hero:GetTeam(), hero:GetOrigin(), nil, 1500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
             for k,v in pairs(targets) do
                 if v:HasAbility("lishuwen_martial_arts") then
                     local abil = v:FindAbilityByName("lishuwen_martial_arts")

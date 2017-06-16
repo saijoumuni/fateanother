@@ -182,7 +182,9 @@ function OnDIStart(keys)
 					local illusion = CreateUnitByName("ta_combo_dummy", origin, false, caster, caster, caster:GetTeamNumber()) 
 					local illusionzab = illusion:FindAbilityByName("true_assassin_combo_zab") 
 					illusionzab:SetLevel(1)
+					illusion:SetForwardVector(v:GetAbsOrigin()-illusion:GetAbsOrigin())
 					illusion:CastAbilityOnTarget(v, illusionzab, 1)
+					StartAnimation(illusion, {duration=5, activity=ACT_DOTA_CAST_ABILITY_6, rate=1}) --maybe take this out
 
 					Timers:CreateTimer(3.0, function() 
 						illusion:RemoveSelf()

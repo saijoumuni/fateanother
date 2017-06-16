@@ -463,7 +463,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"300 400 500 600 700"
+				"damage"			"350 450 550 650 750"
 			}
 			"02"
 			{
@@ -493,7 +493,7 @@
 			"07"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"slow_amount"	"-20 -25 -30 -35 -40"
+				"slow_amount"	"-35 -40 -45 -50 -55"
 			}
 			"08"
 			{
@@ -4335,7 +4335,7 @@
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"stun_duration"			"2.0"
+				"stun_duration"			"1.5"
 			}
 		}
 		
@@ -7329,11 +7329,11 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"750"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"60"
+		"AbilityCooldown"				"45"
 
 		"AbilitySpecial"
 		{
@@ -7355,6 +7355,11 @@
 			{
 			 	"ScriptFile"	"fa_ability"
 			 	"Function"		"OnQuickdrawStart"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_qd_anim"
+				"Target"			"CASTER"
 			}
 		}
 
@@ -7381,6 +7386,17 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"-100"
+				}
+			}
+			"modifier_qd_anim"
+			{
+				"Duration"	"0.5"
+				"IsHidden"	"1"
+				"OverrideAnimation"     "ACT_DOTA_CAST_ABILITY_1"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE"		"1"
 				}
 			}
 		}
@@ -7992,14 +8008,14 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"			"custom/false_assassin_windblade"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
-		"AnimationPlaybackRate" 		"2.0"
+		"AnimationPlaybackRate" 		"3.3"
 		"MaxLevel"						"5"
 		"RequiredLevel"					"1"
 		"LevelsBetweenUpgrades"			"2"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.2"
 		"AbilityCastRange"				"400"
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -8080,7 +8096,7 @@
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate" 		"1.5"
 		
-		"AbilityCastPoint"				"0.9"
+		"AbilityCastPoint"				"0.85"
 		"AbilityCastRange"				"150"
 		"AbilityCastRangeBuffer"		"100"
 		"AbilityCooldown"				"50"
@@ -8103,7 +8119,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"delay"					"0.9"
+				"delay"					"0.85"
 			}
 			"02"
 			{
@@ -9337,7 +9353,7 @@
 		"AbilityTextureName"			"custom/true_assassin_zabaniya"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AnimationPlaybackRate" 		"1.0"
+		"AnimationPlaybackRate" 		"1.5"
 
 		"precache"
 		{
@@ -9348,7 +9364,7 @@
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_night_stalker.vsndevts"
 		}
 		
-		"AbilityCastPoint"				"1.0"
+		"AbilityCastPoint"				"0.95"
 		"AbilityCastRange"				"600"
 		"AbilityCastRangeBuffer"		"250"
 		"AbilityCooldown"				"36"
@@ -9364,7 +9380,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"delay"				"1.0"
+				"delay"				"0.95"
 			}
 			"02"
 			{
@@ -11741,7 +11757,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"750"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.15"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -23270,9 +23286,9 @@
 
 		// Ability stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700 750 800 850 900"
+		"AbilityCastRange"				"700 775 850 875 1000"
 		"AbilityCastRangeBuffer"		"0"
-		"AbilityCastPoint"				"0.7"
+		"AbilityCastPoint"				"0.4"
 		"AbilityCooldown"				"49"
 		"AbilityManaCost"				"800"
 
@@ -23299,7 +23315,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"radius"			"700 750 800 850 900"
+				"radius"			"700 775 850 875 1000"
 			}	
 			"03"
 			{
@@ -23871,7 +23887,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"search_radius"		"700 1050"
+				"search_radius"		"700 1300"
 			}
 			"02"
 			{
@@ -24687,7 +24703,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"150"
 		"AbilityCastRangeBuffer"		"100"
-		"AbilityCastPoint"				"0.8"
+		"AbilityCastPoint"				"0.75"
 		"AbilityCooldown"				"30"
 		"AbilityManaCost"				"800"
 		
@@ -24698,7 +24714,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"cast_delay"		"0.8"
+				"cast_delay"		"0.75"
 			}
 			"02"
 			{
@@ -24713,12 +24729,12 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"open_wound_duration"		"3.5"	
+				"open_wound_duration"		"3.0"	
 			}
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"open_wound_damage"		"25 50 75 100 125"	
+				"open_wound_damage"		"65 80 95 110 125"	
 			}
 			"06"
 			{

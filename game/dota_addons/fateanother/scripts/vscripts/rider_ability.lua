@@ -212,10 +212,10 @@ function OnBelle2Start(keys)
 	local belle2FxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_2_beam_charge.vpcf", PATTACH_ABSORIGIN, caster )
 	ParticleManager:SetParticleControl( belle2FxIndex, 0, caster:GetAbsOrigin() )
 	ParticleManager:SetParticleControl( belle2FxIndex, 1, Vector( keys.Width, keys.Width, keys.Width ) )
-	ParticleManager:SetParticleControl( belle2FxIndex, 2, caster:GetForwardVector() * 2000 )
+	ParticleManager:SetParticleControl( belle2FxIndex, 2, caster:GetForwardVector() * 5000 )
 	ParticleManager:SetParticleControl( belle2FxIndex, 6, Vector( 2, 0, 0 ) )
 			
-	Timers:CreateTimer( 2, function()
+	Timers:CreateTimer( 0.5, function()
 			ParticleManager:DestroyParticle( belle2FxIndex, false )
 			ParticleManager:ReleaseParticleIndex( belle2FxIndex )
 		end

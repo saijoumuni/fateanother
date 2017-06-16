@@ -190,8 +190,21 @@ end
 vortigernCount = 0
 function OnVortigernStart(keys)
 	local caster = keys.caster
+	local ability = keys.ability
 	local ply = caster:GetPlayerOwner()
 	local forward = ( keys.target_points[1] - caster:GetAbsOrigin() ):Normalized() -- caster:GetForwardVector() 
+	local angle = 120
+	local increment_factor = 30
+	local origin = caster:GetAbsOrigin()
+	local destination = origin + forward
+
+	if (destination.x < origin.x) and (destination.y < origin.y) then
+		caster:GiveMana(ability:GetManaCost(1))
+		ability:EndCooldown() 
+		SendErrorMessage(caster:GetPlayerOwnerID(), "#Cannot_Be_Cast_Now")
+		return
+	end
+	
 	giveUnitDataDrivenModifier(keys.caster, keys.caster, "pause_sealdisabled", 0.8)
 	EmitGlobalSound("Saber_Alter.Vortigern")
 
@@ -230,10 +243,8 @@ function OnVortigernStart(keys)
 	)]]
 	
 	-- Base variables
-	local angle = 120
-	local increment_factor = 30
-	local origin = caster:GetAbsOrigin()
-	local destination = origin + forward
+
+
 	vortigernCount = 0
 	Timers:CreateTimer( function()
 			-- Finish spell, need to include the last angle as well
@@ -244,6 +255,7 @@ function OnVortigernStart(keys)
 			local theta = ( angle - vortigernCount * increment_factor ) * math.pi / 180
 			local px = math.cos( theta ) * ( destination.x - origin.x ) - math.sin( theta ) * ( destination.y - origin.y ) + origin.x
 			local py = math.sin( theta ) * ( destination.x - origin.x ) + math.cos( theta ) * ( destination.y - origin.y ) + origin.y
+
 			local new_forward = ( Vector( px, py, origin.z ) - origin ):Normalized()
 			vortigernBeam.vVelocity = new_forward * 3000
 			vortigernBeam.fExpireTime = GameRules:GetGameTime() + 0.4
