@@ -198,7 +198,7 @@ function OnVortigernStart(keys)
 	local origin = caster:GetAbsOrigin()
 	local destination = origin + forward
 
-	if (destination.x < origin.x) and (destination.y < origin.y) then
+	if (destination.x == origin.x) and (destination.y == origin.y) then
 		caster:GiveMana(ability:GetManaCost(1))
 		ability:EndCooldown() 
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#Cannot_Be_Cast_Now")
