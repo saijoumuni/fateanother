@@ -220,6 +220,39 @@ function OnBerserkDamageTaken(keys)
 		print(caster.BerserkDamageTaken)
 		caster:SetMana(caster:GetMana() + damageTaken/5)
 		ParticleManager:CreateParticle("particles/custom/berserker/berserk/mana_conversion.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+
+		--reduce cooldown of skills
+		if caster.IsCDReductionCoolingdown == false then
+			for i=0, 15 do 
+				local ability = caster:GetAbilityByIndex(i)
+				if ability ~= nil then
+					local remainingCD = ability:GetCooldownTimeRemaining()
+					ability:EndCooldown()
+					ability:StartCooldown(remainingCD-1)
+				else 
+					break
+				end
+			end
+
+			--Lower the remaining cooldown duration of the Master 2 (Rin)
+			local masterComboAbility = caster.MasterUnit2:GetAbilityByIndex(5)									--Get the combo ability
+			local masterComboCooldownRemaining = masterComboAbility:GetCooldownTimeRemaining()					--Get the remaining cooldown time
+			masterComboAbility:EndCooldown()	
+			masterComboAbility:StartCooldown(masterComboCooldownRemaining-1)
+
+			--Refreshing the madman roar cooldown modifier
+			if caster:HasModifier("modifier_madmans_roar_cooldown") then
+				local comboCdRemaining = caster:FindModifierByName("modifier_madmans_roar_cooldown"):GetRemainingTime()
+				caster:RemoveModifierByName("modifier_madmans_roar_cooldown")
+				caster:FindAbilityByName("berserker_5th_madmans_roar"):ApplyDataDrivenModifier(caster, caster, "modifier_madmans_roar_cooldown", {duration = comboCdRemaining-1})		
+			end
+
+			--0.25 proc cooldown
+			caster.IsCDReductionCoolingdown = true
+			Timers:CreateTimer(0.25, function()
+				caster.IsCDReductionCoolingdown = false
+			end)
+		end
 	end
 end
 
@@ -612,6 +645,7 @@ function OnBerserkAcquired(keys)
 	hero:FindAbilityByName("berserker_5th_berserk_attribute_passive"):SetLevel(1)
 	hero.IsEternalRageAcquired = true
 	hero.IsRageBashOnCooldown = false
+	hero.IsCDReductionCoolingdown = false
 	-- Set master 1's mana 
 	local master = hero.MasterUnit
 	master:SetMana(master:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))

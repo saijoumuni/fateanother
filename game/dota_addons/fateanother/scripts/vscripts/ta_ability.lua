@@ -380,6 +380,7 @@ function OnStealStart(keys)
 	if caster:HasModifier("modifier_ambush") and caster.IsShadowStrikeAcquired then
 		--print("Shadow Strike activated")
 		damage = damage + 300
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_steal_vision", {})
 	end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 end

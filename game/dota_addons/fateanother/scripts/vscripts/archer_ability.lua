@@ -125,7 +125,13 @@ function KBHit(keys)
 	Timers:CreateTimer(function() 
 		if KBCount == 4 then return end
 		DoDamage(keys.caster, keys.target, keys.DamagePerTick , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-
+		if caster:FindAbilityByName("archer_5th_overedge"):IsCooldownReady() == false then
+			local overedgeCD = caster:FindAbilityByName("archer_5th_overedge"):GetCooldownTimeRemaining()
+			caster:FindAbilityByName("archer_5th_overedge"):EndCooldown()
+			caster:FindAbilityByName("archer_5th_overedge"):StartCooldown(overedgeCD-1)
+			caster:RemoveModifierByName("modifier_overedge_cooldown")
+			caster:FindAbilityByName("archer_5th_overedge"):ApplyDataDrivenModifier(caster, caster, "modifier_overedge_cooldown", {duration = overedgeCD-1})
+		end
 		local KBHitFx = ParticleManager:CreateParticle("particles/econ/courier/courier_mechjaw/mechjaw_death_sparks.vpcf", PATTACH_CUSTOMORIGIN, caster)
 		ParticleManager:SetParticleControl(KBHitFx, 0, target:GetAbsOrigin()) 
 		-- Destroy particle after delay
@@ -712,7 +718,7 @@ function OnRainStart(keys)
 	-- Barrage attack
 	local barrageCount = 0
 	Timers:CreateTimer( 0.3, function()
-		if barrageCount == 30 or not caster:IsAlive() then return end
+		if barrageCount == 100 or not caster:IsAlive() then return end
 		local arrowVector = Vector( RandomFloat( -radius, radius ), RandomFloat( -radius, radius ), 0 )
 		caster:EmitSound("Hero_DrowRanger.FrostArrows")
 		-- Create Arrow particles
@@ -765,7 +771,7 @@ function OnRainStart(keys)
 		)
 		
 	    barrageCount = barrageCount + 1
-		return 0.1
+		return 0.03
     end)
 
 	-- BP Attack

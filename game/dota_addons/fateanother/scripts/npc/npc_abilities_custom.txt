@@ -463,7 +463,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"350 450 550 650 750"
+				"damage"			"380 480 580 680 780"
 			}
 			"02"
 			{
@@ -1253,7 +1253,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"10"
+		"AbilityManaCost"				"14"
 
 		"precache"
 		{
@@ -4713,7 +4713,7 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityChannelTime"			"2.0"		
 		"AbilityCastRange"				"3000"
-		"AbilityCastRangeBuffer"		"0"
+		"AbilityCastRangeBuffer"		"1500"
 		"AbilityCooldown"				"20"
 		"AbilityManaCost"				"200"
 		
@@ -5530,12 +5530,12 @@
 			"01"
 			{
 				"var_type"		"FIELD_FLOAT"
-				"arrow_amount"	"30"
+				"arrow_amount"	"100"
 			}
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"arrow_damage"		"500"
+				"arrow_damage"		"250"
 			}
 			"03"
 			{
@@ -5703,8 +5703,8 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityChannelTime"			"3.5"
 		"AbilityCastRange"				"4000"
-		"AbilityCastRangeBuffer"		"0"
-		"AbilityCooldown"				"80"
+		"AbilityCastRangeBuffer"		"9999"
+		"AbilityCooldown"				"70"
 		"AbilityManaCost"				"0"
 		
 		"AbilitySpecial"
@@ -5713,6 +5713,11 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"cast_delay"			"4.0"
+			}
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"cast_range"			"4000"
 			}
 		}
 
@@ -5837,17 +5842,17 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"mr_bonus"			"10"
+				"cooldown"			"70"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"armor_bonus"			"10"
+				"cast_range"			"4000"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"str_bonus"			"20"
+				"cast_delay"			"4"
 			}
 		}
 		
@@ -6775,7 +6780,7 @@
 				"IsDebuff"		"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"-50"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"-30"
 				}
 
 				"EffectName"		"particles/custom/berserker/god_hand/debuff.vpcf"
@@ -6979,27 +6984,12 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"			"10"	
+				"duration"			"7"	
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"aspd_penalty"				"100"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"ms_penalty"				"30"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"vision_penalty"				"500"
-			}
-			"06"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"str_penalty"				"50"
+				"str_penalty"				"30"
 			}
 
 		}
@@ -9261,7 +9251,7 @@
 		"AnimationPlaybackRate" 		"1.0"
 		
 		"AbilityCastPoint"				"0.3"
-		"AbilityCastRange"				"150"
+		"AbilityCastRange"				"%range"
 		"AbilityCooldown"				"25"
 		"AbilityManaCost"				"400"
 		
@@ -9282,7 +9272,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"str_steal"				"-0 -7 -14 -21 -28"
+				"str_steal"				"-7 -9 -11 -13 -15"
 			}
 			"03"
 			{
@@ -9292,7 +9282,22 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"str_gain"				"0 7 14 21 28"
+				"str_gain"				"7 9 11 13 15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"200 275 350 425 500"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"visionDuration"		"5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"visionReduction"		"-500"
 			}
 		}
 
@@ -9331,6 +9336,16 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%str_gain"
+				}
+			}
+			"modifier_steal_vision"
+			{
+				"IsDebuff"		"1"
+				"Duration"		"%visionDuration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION"		"%visionReduction"
+					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"		"%visionReduction"
 				}
 			}
 		}
@@ -9685,10 +9700,15 @@
 				"var_type"				"FIELD_FLOAT"
 				"snatch_bonus_damage"			"300"
 			}
-			"01"
+			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"combo_bonus_damage"			"100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"snatch_vision_debuff"			"500"
 			}
 		}
 		
@@ -10345,7 +10365,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"speed"				"1050"
+				"speed"				"1000"
 			}
 		}
 		
@@ -10467,7 +10487,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"speed"				"1050"
+				"speed"				"1000"
 			}
 		}
 		
@@ -12710,7 +12730,7 @@
 			}
 	    	"modifier_fairy_magic_immunity"
 	    	{
-	    		"Duration"		"3.0"
+	    		"Duration"		"3.5"
 	    		"OnCreated"
 	    		{
 					"AttachEffect"
@@ -13101,7 +13121,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"500 600 700"
+				"damage"			"480 580 680"
 			}
 			"02"
 			{
@@ -13131,7 +13151,7 @@
 			"07"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"slow_amount"		"-30 -35 -40"
+				"slow_amount"		"-40 -45 -50"
 			}
 			"08"
 			{
@@ -13919,7 +13939,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"10"
+		"AbilityManaCost"				"13"
 
 		"precache"
 		{
@@ -13935,7 +13955,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"magic_immune_duration"				"3"
+				"magic_immune_duration"				"3.5"
 			}
 		}
 		
@@ -14527,12 +14547,12 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"spawn_number"		"3 3 3 3 3"
+				"spawn_number"		"4 4 4 4 4"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"140 170 200 230 260"
+				"damage"			"110 130 150 170 190"
 			}
 			"03"
 			{
@@ -14676,12 +14696,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"50 60 70 80 90"
+				"damage"				"70 80 90 100 110"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"0.4 0.8 1.2 1.6 2.0"
+				"duration"				"1.3 1.5 1.7 1.9 2.1"
 			}
 			"03"
 			{
@@ -15098,7 +15118,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"multiplier"		"130 140 150 160 170"
+				"multiplier"		"135 145 155 165 175"
 			}
 			"02"
 			{
@@ -15173,7 +15193,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"100"
+		"AbilityCooldown"				"120"
 		"AbilityCastPoint"				"0.3"
 
 		// Cost
@@ -23351,7 +23371,12 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"movespeed_modifier_enemy"			"-8 -16 -24 -32 -40"
-			}		
+			}
+			"10"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"cast_point"			"0.4"
+			}			
 		}
 		
 		"OnSpellStart"
@@ -27444,6 +27469,7 @@
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"		"1.5"
 					"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"		"3"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"300"
 				}
 			}
 		}
@@ -27920,7 +27946,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"180 120"
+		"AbilityCooldown"				"180 90"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -27932,6 +27958,11 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"duration"				"3"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"mana_regen"				"0 3"
 			}
 		}
 		
@@ -27999,6 +28030,15 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"15"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"15"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"15"
+				}
+			}
+			"modifier_nameless_forest_mana_regen"
+			{
+				"IsHidden"		"1"
+				"Passive"		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"		"%mana_regen"
 				}
 			}
 		}
@@ -28334,7 +28374,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"doppelganger_health"				"50 75 100 125 150"
+				"doppelganger_health"				"70 90 110 130 150"
 			}
 			"02"
 			{
@@ -28878,7 +28918,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cdr"			"60"
+				"cdr"			"90"
 			}
 			"02"
 			{
@@ -28894,6 +28934,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"stat_steal_duration"			"15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"pct_mana_regen"			"3"
 			}
 		}
 		

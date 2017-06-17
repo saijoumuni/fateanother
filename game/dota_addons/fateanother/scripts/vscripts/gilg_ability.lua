@@ -399,7 +399,7 @@ function OnEnumaStart(keys)
 				end
 			end
 			)
-			Timers:CreateTimer(enuma.fDistance / keys.Speed + 0.6, function()
+			Timers:CreateTimer(enuma.fDistance / keys.Speed + 0.2, function()   --
 				dummy:RemoveSelf()
 			end)
 		end
@@ -497,7 +497,7 @@ function OnMaxEnumaStart(keys)
 				end
 			end
 			)
-			Timers:CreateTimer(enuma.fDistance / keys.Speed + 0.65, function()
+			Timers:CreateTimer(enuma.fDistance / keys.Speed + 0.2, function()
 				dummy:RemoveSelf()
 			end)
 		end
