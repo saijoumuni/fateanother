@@ -29356,12 +29356,12 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_range_per_agi"		"7"
+				"bonus_range_per_agi"		"5"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_aoe_per_agi"		"2"
+				"bonus_aoe_per_agi"		"1"
 			}
 			"06"
 			{
