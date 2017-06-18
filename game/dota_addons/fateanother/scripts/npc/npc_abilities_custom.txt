@@ -5535,7 +5535,7 @@
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"arrow_damage"		"250"
+				"arrow_damage"		"150"
 			}
 			"03"
 			{
@@ -12929,7 +12929,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_ms"				"50"
+				"bonus_ms"				"15 20 25 30 35"
 			}
 			"03"
 			{
@@ -12939,12 +12939,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"mana_burn"				"10 20 30 40 50"
+				"mana_burn"				"30 40 50 60 70"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"extra_damage_taken"	"20"
+				"extra_damage_taken"	"25"
 			}
 			"06"
 			{
@@ -12996,13 +12996,13 @@
 				}
 			}
 
-			"modifier_double_edge_ms_tier1"
+			"modifier_double_edge_ms"
 			{
-				"Duration"		"5.0"
+				"Duration"		"10.0"
 				"IsHidden"		"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_ms_halved"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_ms"
 				}
 			}
 			"modifier_double_edge_ms_tier2"
@@ -13725,12 +13725,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"20 25 30 35 40"
+				"bonus_damage"			"18 21 24 27 30"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_allstat"			"6 12 18 24 30"
+				"bonus_allstat"			"8 16 24 32 40"
 			}
 			"04"
 			{
@@ -18876,7 +18876,7 @@
 			}
 			"modifier_exquisite_cadaver_demon"
 			{
-				"Duration"		"1.0"
+				"Duration"		"0.85"
 				"EffectName"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
 				"EffectAttachType"	"follow_origin"		
 				"OnDestroy"
@@ -19492,7 +19492,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"cast_delay"			"1.5"
+				"cast_delay"			"1.0"
 			}
 			"04"
 			{
@@ -22678,7 +22678,7 @@
 			"particle"					"particles/custom/tamamo/tamamo_soulstream_explosion_blue.vpcf"
 		}
 		
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.15"
 		"AbilityCooldown"				"5 4 3 2 1"
 		"AbilityManaCost"				"100"
 		"AbilityCastRange"				"1150"
@@ -22929,7 +22929,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"700"
 		"AbilityCastRangeBuffer"		"300"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"29"
 		"AbilityManaCost"				"400"
 		
@@ -22940,7 +22940,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"cast_delay"		"0.5"
+				"cast_delay"		"0.2"
 			}
 			"02"
 			{

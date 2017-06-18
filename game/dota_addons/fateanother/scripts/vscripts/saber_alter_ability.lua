@@ -198,11 +198,8 @@ function OnVortigernStart(keys)
 	local origin = caster:GetAbsOrigin()
 	local destination = origin + forward
 
-	if (destination.x == origin.x) and (destination.y == origin.y) then
-		caster:GiveMana(ability:GetManaCost(1))
-		ability:EndCooldown() 
-		SendErrorMessage(caster:GetPlayerOwnerID(), "#Cannot_Be_Cast_Now")
-		return
+	if (math.abs(destination.x - origin.x) < 0.01) and (math.abs(destination.y - origin.y) < 0.01) then
+		destination = caster:GetForwardVector() + caster:GetAbsOrigin()
 	end
 	
 	giveUnitDataDrivenModifier(keys.caster, keys.caster, "pause_sealdisabled", 0.8)

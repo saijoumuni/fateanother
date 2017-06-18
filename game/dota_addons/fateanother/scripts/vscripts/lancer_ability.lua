@@ -474,7 +474,7 @@ function OnGBAOEStart(keys)
 	local ability = keys.ability
 	local targetPoint = keys.target_points[1]
 	local radius = keys.Radius
-	local projectileSpeed = 2000
+	local projectileSpeed = 1900
 	local ply = caster:GetPlayerOwner()
 	local ascendCount = 0
 	local descendCount = 0
@@ -487,7 +487,7 @@ function OnGBAOEStart(keys)
 	EmitGlobalSound("Lancer.GaeBolg")
 	giveUnitDataDrivenModifier(caster, caster, "jump_pause", 0.8)
 	Timers:CreateTimer(0.8, function()
-		giveUnitDataDrivenModifier(caster, caster, "jump_pause_postdelay", 0.15)
+		giveUnitDataDrivenModifier(caster, caster, "jump_pause_postdelay", 0.3)
 	end)
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_gae_jump_throw_anim", {}) 
 
@@ -542,12 +542,24 @@ function OnGBAOEHit(keys, projectile)
 	local runeAbil = caster:FindAbilityByName("lancer_5th_rune_of_flame")
 	local healthDamagePct = runeAbil:GetLevelSpecialValueFor("ability_bonus_damage", runeAbil:GetLevel()-1)
 	
+	local modifierKnockback =
+	{
+		center_x = targetPoint.x,
+		center_y = targetPoint.y,
+		center_z = targetPoint.z,
+		duration = 0.1,
+		knockback_duration = 0.1,
+		knockback_distance = 100,
+		knockback_height = 0,
+	}
+
 	Timers:CreateTimer(0.15, function()
 		local targets = FindUnitsInRadius(caster:GetTeam(), targetPoint, nil, radius
 	            , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 		for k,v in pairs(targets) do
 	        DoDamage(caster, v, damage + v:GetHealth() * healthDamagePct/100, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	        v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 0.1})
+	        v:AddNewModifier(v, nil, "modifier_knockback", modifierKnockback )
 	    end
 	    projectile:SetAbsOrigin(targetPoint)
 	    local fire = ParticleManager:CreateParticle("particles/units/heroes/hero_warlock/warlock_rainofchaos_start_breakout_fallback_mid.vpcf", PATTACH_ABSORIGIN, projectile)

@@ -123,8 +123,8 @@ function OnDEStart(keys)
     local ability = keys.ability
     LancelotCheckCombo(keys.caster, keys.ability)
     ability:ApplyDataDrivenModifier(caster, caster, "modifier_double_edge", {})
-    ability:ApplyDataDrivenModifier(caster, caster, "modifier_double_edge_ms_tier1", {})
-    ability:ApplyDataDrivenModifier(caster, caster, "modifier_double_edge_ms_tier2", {})
+    ability:ApplyDataDrivenModifier(caster, caster, "modifier_double_edge_ms", {})
+    --ability:ApplyDataDrivenModifier(caster, caster, "modifier_double_edge_ms_tier2", {})
 end
 
 function OnDEAttack(keys)

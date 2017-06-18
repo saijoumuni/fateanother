@@ -273,7 +273,7 @@ function OnBelleStart(keys)
 	
 	if caster.IsRidingAcquired then keys.Damage = keys.Damage + 200 end 
 	giveUnitDataDrivenModifier(keys.caster, keys.caster, "jump_pause", 1.3)
-	Timers:CreateTimer(0.7, function()
+	Timers:CreateTimer(0.5, function()
 		EmitGlobalSound("Rider.Bellerophon") 
 	end)
 
