@@ -29024,7 +29024,7 @@
 		
 		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"0"
-		"AbilityManaCost"				"40"
+		"AbilityManaCost"				"10"
 		"LevelsBetweenUpgrades"				"1"
 
 		"precache"
@@ -29041,12 +29041,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"range"					"900 950 1000 1050 1100"
+				"range"					"900 975 1050 1125 1200"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_arrows"			"0 1 2 3 4"
+				"bonus_arrows"			"0 0 1 1 2"
 			}
 			"03"
 			{
@@ -29130,10 +29130,11 @@
 				"var_type"						"FIELD_FLOAT"
 				"attribute_bonus_duration"		"2"
 			}
-			"04"
+
+			"08"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"attribute_swap_duration"				"6"
+				"var_type"					"FIELD_INTEGER"
+				"detonate_stack"				"160"
 			}
 		}
 	}
@@ -29193,14 +29194,14 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"abilities/atalanta/crossing_arcadia"
-		"MaxLevel"						"5"
+		"MaxLevel"						"2"
+		"LevelsBetweenUpgrades"			"25"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityTextureName"			"custom/atalanta_crossing_arcadia"
 		
-		"AbilityCastPoint"				"0.3"
-		"AbilityCooldown"				"27"
-		"AbilityManaCost"				"400"
-		"LevelsBetweenUpgrades"			"2"
+		"AbilityCastPoint"				"0.15"
+		"AbilityCooldown"				"8"
+		"AbilityManaCost"				"200"
 
 		"precache"
 		{
@@ -29212,37 +29213,32 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"range"				"700 800 900 1000 1100"
+				"range"				"700 1000"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"jump_time"			"0.4"
+				"jump_time"			"0.15"
 			}
 			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"land_time"			"0.4"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"hang_time"			"0.6"
-			}
-			"05"
 			{
 				"var_type"			"FIELD_INTEGER"
 				"aoe"				"200"
 			}
-			"06"
+			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
 				"stun_duration"		"0.15"
 			}
-			"07"
+			"05"
 			{
 				"var_type"			"FIELD_INTEGER"
 				"leapback_range"	"500"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"jump_duration"		"0.5"
 			}
 		}
 	}
@@ -29255,7 +29251,7 @@
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"abilities/atalanta/last_spurt"
 		"MaxLevel"						"1"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityTextureName"			"custom/atalanta_last_spurt"
 
 		"AbilityCastPoint"				"0.0"
@@ -29313,7 +29309,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"arrows"				"3"
+				"arrows"				"5"
 			}
 		}
 	}
@@ -29330,8 +29326,8 @@
 		"AbilityTextureName"			"custom/atalanta_tauropolos"
 		
 		"AbilityCastPoint"				"0.6"
-		"AbilityCooldown"				"50"
-		"AbilityManaCost"				"800"
+		"AbilityCooldown"				"24"
+		"AbilityManaCost"				"400"
 		"LevelsBetweenUpgrades"			"2"
 
 		"precache"
@@ -29345,7 +29341,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"			"3 4 5 6 7"
+				"duration"			"7"
 			}
 			"02"
 			{
@@ -29355,7 +29351,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"cast_time_reduction"		"10 20 30 40 50"
+				"cast_time_reduction"		"12 19 26 33 40"
 			}
 			"04"
 			{
@@ -29366,6 +29362,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_aoe_per_agi"		"2"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"attribute_swap_duration"				"6"
 			}
 		}
 	}
@@ -29432,13 +29433,14 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"abilities/atalanta/phoebus_catastrophe_barrage"
-		"MaxLevel"						"1"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"						"5"
+		"LevelsBetweenUpgrades"			"2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityTextureName"			"custom/atalanta_phoebus_catastrophe"
 		
-		"AbilityCastPoint"				"1.4"
-		"AbilityCooldown"				"140"
-		"AbilityManaCost"				"300"
+		"AbilityCastPoint"				"0.8"
+		"AbilityCooldown"				"36"
+		"AbilityManaCost"				"800"
 
 		"precache"
 		{
@@ -29471,12 +29473,17 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"arrows"			"60"
+				"arrows"			"30 35 40 45 50"
 			}
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"delay"				"2.4"
+				"delay"				"2.9"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"cast_point"				"0.8"
 			}
 		}
 	}
@@ -29599,6 +29606,11 @@
 
 		"AbilitySpecial"
 		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"detonate_stack"				"160"
+			}
 		}
 	}
 
@@ -29683,6 +29695,21 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"extra_arrows"					"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"base_ms"					"20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"7"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_range"					"300"
 			}
 		}
 	}

@@ -143,7 +143,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
     local forwardVec = caster:GetForwardVector()
     local archer = Physics:Unit(caster)
 
-    local duration = self:GetSpecialValueFor("jump_time") + 0.1 --why +0.1? I do stupid shit like this in case people are unhappy with new Crossing Arcadia.
+    local duration = self:GetSpecialValueFor("jump_duration")
     local stunDuration = self:GetSpecialValueFor("stun_duration")
     local aoe = self:GetAOERadius()
     local effect = "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
@@ -172,6 +172,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
         rotateCounter = rotateCounter + 1
         return 0.03
     end)
+    giveUnitDataDrivenModifier(caster, caster, "jump_pause", 0.5)
 
 
     if caster.CrossingArcadiaPlusAcquired then

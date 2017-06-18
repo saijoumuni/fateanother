@@ -52,8 +52,8 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
 
     self:ShootAirArrows()
 
-    Timers:CreateTimer(2, function()
-        local screenFx = ParticleManager:CreateParticle("particles/custom/screen_green_splash.vpcf", PATTACH_EYES_FOLLOW, caster)
+    Timers:CreateTimer(self:GetSpecialValueFor("delay")-0.4, function()
+        --local screenFx = ParticleManager:CreateParticle("particles/custom/screen_green_splash.vpcf", PATTACH_EYES_FOLLOW, caster)
 
         local midpoint = (origin + position) / 2
         local sourceLocation = midpoint + Vector(0, 0, 1000)
@@ -85,7 +85,7 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
         end)
     end)
 
-    self:AfterSpell()
+    --self:AfterSpell()
 end
 
 function atalanta_phoebus_catastrophe_barrage:GetAbilityTextureName()

@@ -264,7 +264,6 @@ CannotReset = {
     "nursery_rhyme_story_for_somebodys_sake",
     "atalanta_golden_apple",
     "atalanta_last_spurt",
-    "atalanta_phoebus_catastrophe_barrage",
     "atalanta_phoebus_catastrophe_snipe",
     "caster_5th_sacrifice",
 }

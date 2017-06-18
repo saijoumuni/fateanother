@@ -17,6 +17,12 @@ function atalanta_tauropolos:OnSpellStart()
     caster:AddNewModifier(caster, self, "modifier_r_used", {
         duration = 6
     })
+    if caster.GoldenAppleAcquired and caster:FindAbilityByName("atalanta_golden_apple"):IsCooldownReady() then
+        caster:SwapAbilities("atalanta_tauropolos", "atalanta_golden_apple", false, true)
+        Timers:CreateTimer(self:GetSpecialValueFor("attribute_swap_duration"), function()
+            caster:SwapAbilities("atalanta_golden_apple", "atalanta_tauropolos", false, true)
+        end)
+    end
 end
 
 function atalanta_tauropolos:GetCastAnimation()

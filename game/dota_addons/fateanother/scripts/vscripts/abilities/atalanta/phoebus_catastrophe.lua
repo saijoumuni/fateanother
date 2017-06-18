@@ -66,9 +66,9 @@ function atalanta_phoebus_catastrophe_wrapper(ability)
         snipe:EndCooldown()
         snipe:StartCooldown(cooldown)
 
-        local barrage = caster:FindAbilityByName("atalanta_phoebus_catastrophe_barrage")
+        --[[local barrage = caster:FindAbilityByName("atalanta_phoebus_catastrophe_barrage")
         barrage:EndCooldown()
-        barrage:StartCooldown(cooldown)
+        barrage:StartCooldown(cooldown)]]
 
         local masterCombo = caster.MasterUnit2:FindAbilityByName("atalanta_phoebus_catastrophe_proxy")
         masterCombo:EndCooldown()

@@ -42,7 +42,10 @@ end
 
 WrapAttributes(atalanta_attribute_hunters_mark, "HuntersMarkAcquired")
 WrapAttributes(atalanta_attribute_golden_apple, "GoldenAppleAcquired")
-WrapAttributes(atalanta_attribute_crossing_arcadia_plus, "CrossingArcadiaPlusAcquired")
+
+WrapAttributes(atalanta_attribute_crossing_arcadia_plus, "CrossingArcadiaPlusAcquired", function(ability, hero)
+    hero:FindAbilityByName("atalanta_crossing_arcadia"):SetLevel(2)
+end)
 
 WrapAttributes(atalanta_attribute_arrows_of_the_big_dipper, "ArrowsOfTheBigDipperAcquired", function(ability, hero)
     hero:AddNewModifier(hero, nil, "modifier_arrows_of_the_big_dipper", {})
