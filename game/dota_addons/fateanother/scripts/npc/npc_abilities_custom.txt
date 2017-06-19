@@ -9307,7 +9307,7 @@
 			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"visionReduction"		"-500"
+				"set_vision"			"250"
 			}
 		}
 
@@ -9352,10 +9352,22 @@
 			{
 				"IsDebuff"		"1"
 				"Duration"		"%visionDuration"
-				"Properties"
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_BONUS_DAY_VISION"		"%visionReduction"
-					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"		"%visionReduction"
+					"RunScript"
+					{
+						"ScriptFile"	"ta_ability"
+						"Function"		"ReduceVision"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"ta_ability"
+						"Function"		"RevertVision"
+					}
 				}
 			}
 		}
@@ -9718,7 +9730,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"snatch_vision_debuff"			"500"
+				"snatch_vision_debuff"			"250"
 			}
 		}
 		
@@ -11605,6 +11617,16 @@
 				"var_type"				"FIELD_INTEGER"
 				"max_shield"			"160 320 480 640 800"
 			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"armor_duration"		"6.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"armor"					"50"
+			}
 		}
 		
 		"OnSpellStart"
@@ -11642,6 +11664,16 @@
 				}
 				"EffectName"	"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 				"EffectAttachType"	"follow_origin"
+			}
+			"modifier_argos_armor"
+			{
+				"IsDebuff"		"false"
+				"IsPurgable"	"false"
+				"Duration"      "%armor_duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				}
 			}
 		}
 	}
@@ -12513,7 +12545,7 @@
 	}
 
 	//=======================================
-	// Caster Attribute : Improve Territory Creation
+	// Caster Attribute : Improve Argos
 	//=======================================
 	"caster_5th_attribute_improve_argos"
 	{
@@ -12543,6 +12575,16 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"bonus_charge"		"100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"armor_duration"		"6.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"armor"					"50"
 			}
 		}
 		
@@ -24776,6 +24818,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"open_wound_stun_duration"		"0.6"	
 			}
+			"07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"silence_duration"		"3.0"	
+			}
 		}
 
 		"OnAbilityPhaseStart"
@@ -24797,6 +24844,7 @@
 				"Function"				"OnNSSStart"
 				"Damage"				"%initial_damage"
 				"StunDuration"			"%stun_duration"
+				"SilenceDuration"		"%silence_duration"
 				"ProcDamage"			"%open_wound_damage"
 				"ProcStunDuration"		"%open_wound_stun_duration"
 			}
@@ -25294,6 +25342,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"damage_per_stack_percentage"			"10"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"silence_duration"		"3.0"	
 			}
 		}
 		
@@ -27098,7 +27151,7 @@
 
 		"AbilityCooldown"				"38"
 		"AbilityManaCost"				"800"
-		"AbilityCastRange"				"2500"
+		//"AbilityCastRange"				"2500"
 		"AbilityCastPoint"				"0.5"
 
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
@@ -27154,6 +27207,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"second_impact_damage"		"600 775 950 1125 1300"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attribute_bonus_range"	"500"
 			}
 		}
 		"OnAbilityPhaseStart"

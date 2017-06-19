@@ -798,6 +798,7 @@ function OnArgosStart(keys)
 	if caster.IsArgosImproved then 
 		keys.MaxShield = keys.MaxShield + 150 
 		keys.ShieldAmount = keys.ShieldAmount + 100
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_argos_armor", {})
 	end
 
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_argos_shield", {})

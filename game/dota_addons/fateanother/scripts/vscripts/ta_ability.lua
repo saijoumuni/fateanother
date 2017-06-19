@@ -544,3 +544,22 @@ function OnShadowStrikeAcquired(keys)
 	local master = hero.MasterUnit
 	master:SetMana(master:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
 end
+
+function ReduceVision( keys )
+	local target = keys.target
+	local ability = keys.ability
+	local blind = ability:GetSpecialValueFor("set_vision")
+
+	target.ori_day_vision = target:GetBaseDayTimeVisionRange()
+	target.ori_night_vision = target:GetBaseNightTimeVisionRange()
+	print(target:GetBaseDayTimeVisionRange(),target:GetBaseNightTimeVisionRange())
+
+	target:SetDayTimeVisionRange(blind)
+	target:SetNightTimeVisionRange(blind)
+end
+
+function RevertVision( keys )
+	local target = keys.target
+	target:SetDayTimeVisionRange(target.ori_day_vision)
+	target:SetNightTimeVisionRange(target.ori_night_vision)
+end

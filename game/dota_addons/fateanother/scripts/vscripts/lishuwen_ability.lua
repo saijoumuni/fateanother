@@ -341,6 +341,10 @@ function OnNSSStart(keys)
 	end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_PURE, 0, keys.ability, false)
 	target:AddNewModifier(caster, target, "modifier_stunned", {Duration = keys.StunDuration})
+	
+	if caster.bIsCirculatoryShockAcquired then
+		target:AddNewModifier(caster, target, "modifier_silence", {Duration = keys.SilenceDuration})
+	end
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_no_second_strike_delay_indicator", {})
 	-- apply delay indicator
 
