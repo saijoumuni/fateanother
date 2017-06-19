@@ -416,7 +416,7 @@ function OnCloneStart(keys)
 	local illusionSpawnLoc = Vector(0,0,0)
 	
 	if dist > 300 then 
-		illusionSpawnLoc = target:GetAbsOrigin() + (caster:GetAbsOrigin() - target:GetAbsOrigin()):Normalized() * 300
+		illusionSpawnLoc = target:GetAbsOrigin() + (caster:GetAbsOrigin() - target:GetAbsOrigin()):Normalized() * 150
 	else
 		illusionSpawnLoc = target:GetAbsOrigin() + (caster:GetAbsOrigin() - target:GetAbsOrigin()):Normalized() * dist/2
 	end

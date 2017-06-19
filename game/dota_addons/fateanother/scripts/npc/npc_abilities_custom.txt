@@ -6157,6 +6157,16 @@
 				"var_type"			"FIELD_FLOAT"
 				"duration"				"2.0"
 			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"collide_duration"				"0.5"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"knockback"				"150"
+			}
 		}
 		
 		"OnSpellStart"
@@ -15733,7 +15743,7 @@
 		"AbilityTextureName"			"custom/diarmuid_warriors_charge"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 		"AOERadius"						"%radius"
-		"AnimationPlaybackRate" 		"1.7"
+		"AnimationPlaybackRate" 		"2.5"
 		
 		"precache"
 		{
@@ -15745,7 +15755,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"650"
 		"AbilityCastRangeBuffer"		"800"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -25685,7 +25695,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"12 24 36 48 60"
+				"bonus_aspd"		"10 20 30 40 50"
 			}
 			"03"
 			{
@@ -25695,7 +25705,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"			"3 4 5 6 7"
+				"duration"			"7"
 			}
 		}
 		
@@ -25724,7 +25734,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%stat_modifier"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_aspd"
 				}
 				"OnDestroy"
 				{
@@ -25740,7 +25750,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%stat_modifier"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_aspd"
 				}
 				
 				"OnDestroy"
@@ -25757,7 +25767,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%stat_modifier"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_aspd"
 				}
 				
 				"OnDestroy"
@@ -25835,7 +25845,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"silence_duration"		"0.5 0.75 1.0 1.25 1.5"
+				"silence_duration"		"0.8 1.0 1.2 1.4 1.6"
 			}
 		}
 		

@@ -187,6 +187,7 @@ function OnPurgeStart(keys)
 			end
 	        DoDamage(caster, v, targetDamage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	        giveUnitDataDrivenModifier(caster, v, "silenced", silenceDuration)
+	        giveUnitDataDrivenModifier(caster, v, "disarmed", silenceDuration)
 	    end
 
 	    EmitSoundOnLocationWithCaster(targetPoint, "Hero_Chen.TestOfFaith.Target", caster)		

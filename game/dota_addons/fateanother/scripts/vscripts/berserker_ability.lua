@@ -20,7 +20,8 @@ function OnFissureStart(keys)
 		bDeleteOnHit = false,
 		vVelocity = frontward * keys.Range
 	}
-	fiss.vSpawnOrigin = caster:GetAbsOrigin() 
+	fiss.vSpawnOrigin = caster:GetAbsOrigin() --global variable to be passed to FissureHit.... probably exploitable if someone refresh Q
+	caster.FissureOrigin = fiss.vSpawnOrigin 
 	projectile = ProjectileManager:CreateLinearProjectile(fiss)
 	BerCheckCombo(caster, keys.ability)
 end
@@ -36,6 +37,37 @@ function OnFissureHit(keys)
 
 	DoDamage(keys.caster, keys.target, keys.Damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	if not IsImmuneToSlow(target) then keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_fissure_strike_slow", {}) end
+
+	giveUnitDataDrivenModifier(keys.caster, keys.target, "pause_sealenabled", 0.01)
+
+    local pushTarget = Physics:Unit(target)
+    target:PreventDI()
+    target:SetPhysicsFriction(0)
+	local vectorC = (target:GetAbsOrigin() - caster.FissureOrigin) 
+	-- get the direction where target will be pushed back to
+	target:SetPhysicsVelocity(vectorC:Normalized() * 750)
+    target:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
+	local initialUnitOrigin = keys.target:GetAbsOrigin()
+	
+	target:OnPhysicsFrame(function(unit) -- pushback distance check
+		local unitOrigin = unit:GetAbsOrigin()
+		local diff = unitOrigin - initialUnitOrigin
+		local n_diff = diff:Normalized()
+		unit:SetPhysicsVelocity(unit:GetPhysicsVelocity():Length() * n_diff) -- track the movement of target being pushed back
+		if diff:Length() > 150 then -- if pushback distance is over 500, stop it
+			unit:PreventDI(false)
+			unit:SetPhysicsVelocity(Vector(0,0,0))
+			unit:OnPhysicsFrame(nil)
+			FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+		end
+	end)
+	
+	target:OnPreBounce(function(unit, normal) -- stop the pushback when unit hits wall
+		unit:SetBounceMultiplier(0)
+		unit:PreventDI(false)
+		unit:SetPhysicsVelocity(Vector(0,0,0))
+		giveUnitDataDrivenModifier(caster, target, "stunned", 0.5)
+	end)
 end
 
 function OnCourageStart(keys)
