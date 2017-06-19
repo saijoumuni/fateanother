@@ -96,7 +96,8 @@ revokes = {
 locks = {
     "modifier_purge",
     "locked",
-    "dragged"
+    "dragged",
+    "jump_pause_postlock"
 }
 
 

@@ -108,6 +108,8 @@ function OnDownStart(keys)
 	local range = keys.Range
 	local attackCount = keys.AttackCount
 	local counter = 1
+	local nHits = 4
+
 	if caster:HasModifier("modifier_hippogriff_ride_ascended") then 
 		ability:EndCooldown()
 		caster:GiveMana(ability:GetManaCost(1)) 
@@ -119,7 +121,7 @@ function OnDownStart(keys)
 	giveUnitDataDrivenModifier(caster, caster, "modifier_astolfo_disable_mstrength", 0.5)
 
 	Timers:CreateTimer(function()
-		if counter > 4 then return end
+		if counter > nHits then return end
 		local forwardVec = RotatePosition(Vector(0,0,0), QAngle(0,RandomFloat(12, -12),0), caster:GetForwardVector())
 		local spearProjectile = 
 		{
@@ -164,9 +166,13 @@ function OnDownHit(keys)
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_down_with_a_touch_slow", {})
 	end
 
-	if caster.bIsSanityAcquired then
+	if caster.bIsMStrengthAcquired then
 		--caster:PerformAttack(target, true, true, true, true, false)
 		caster:PerformAttack( target, true, true, true, true, false, false, false )
+	end
+
+	if caster.bIsSanityAcquired then
+		giveUnitDataDrivenModifier(caster, target, "disarmed", lockDuration)
 	end
 end
 
@@ -522,7 +528,7 @@ function OnDownAttackHit(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	giveUnitDataDrivenModifier(caster, target, "rooted", 0.4)
+	giveUnitDataDrivenModifier(caster, target, "rooted", 0.7)
 end
 
 function OnIAThink(keys)
@@ -584,6 +590,8 @@ function OnMStrengthAcquired(keys)
     hero:AddAbility("astolfo_monstrous_strength")
     hero:FindAbilityByName("astolfo_monstrous_strength"):SetLevel(1)
     hero:FindAbilityByName("astolfo_monstrous_strength"):SetHidden(true)
+
+
 end
 
 function OnIActionAcquired(keys)

@@ -27649,11 +27649,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"casa_radius"		"350"
-			}	
+			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"root_duration"		"0.4"
+				"root_duration"		"0.7"
 			}
 		}
 		
@@ -30277,6 +30277,14 @@
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"jump_pause_postlock"
+			{
+				"TextureName"	"faceless_void_time_lock"
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 			"round_pause"

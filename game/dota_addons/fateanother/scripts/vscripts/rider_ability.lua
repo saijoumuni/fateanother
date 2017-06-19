@@ -333,6 +333,7 @@ function OnBelleStart(keys)
 			FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 		end
 		caster:EmitSound("Misc.Crash")
+		giveUnitDataDrivenModifier(caster, caster, "jump_pause_postlock", dmgdelay + 0.3)
 	end)
 
 	-- this is when the damage actually applies(Put slam effect here)
