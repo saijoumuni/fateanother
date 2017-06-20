@@ -970,12 +970,17 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
             incomingDmg = incomingDmg * (1-reduction) 
         end
 
-        if incomingDmg > 300 then 
-            target.IsAvalonProc = true
-        else 
-            target.IsAvalonProc = false
+        if abil:GetAbilityName() == "false_assassin_tsubame_gaeshi" or abil:GetAbilityName() == "false_assassin_tsubame_mai" or abil:GetAbilityName() == "lancelot_tsubame_gaeshi" then
+            target.IsAvalonPenetrated = true
+        else
+            if incomingDmg > 300 then 
+                target.IsAvalonProc = true
+            else 
+                target.IsAvalonProc = false
+            end
+            dmg = 0
+            target.IsAvalonPenetrated = false
         end
-        dmg = 0
     end 
     -- check if target has Argos
     if not IsAbsorbed and target:HasModifier("modifier_argos_shield") then

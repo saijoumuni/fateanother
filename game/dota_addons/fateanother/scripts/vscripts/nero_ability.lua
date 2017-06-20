@@ -266,6 +266,17 @@ function OnTFACleave(keys)
 
 end
 
+
+function TPOnAttack(keys)
+	local caster = keys.caster
+	if caster:HasModifier("modifier_aestus_domus_aurea") and caster:HasModifier("modifier_tres_fontaine_ardent") and caster.IsGloryAcquired == true and math.random(100) <= caster:FindAbilityByName("nero_tres_fontaine_ardent"):GetSpecialValueFor("chance") then
+		local target = caster:GetAttackTarget()
+		caster:SetAbsOrigin(target:GetAbsOrigin() + Vector(RandomFloat(-100, 100),RandomFloat(-100, 100),RandomFloat(-100, 100) ))
+		ProjectileManager:ProjectileDodge(caster)		
+		FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
+	end
+end
+
 function OnRIStart(keys)
 	local caster = keys.caster
 	local ability = keys.ability

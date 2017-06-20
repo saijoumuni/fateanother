@@ -92,6 +92,21 @@ function OnPCAbilityUsed(keys)
 	end)
 end
 
+function OnStealAbilityStart(keys)
+	local caster = keys.caster
+	local ply = caster:GetPlayerOwner()
+	caster.bIsVisibleToEnemy = false
+	LoopOverPlayers(function(player, playerID, playerHero)
+		-- if enemy hero can see astolfo, set visibility to true
+		if playerHero:GetTeamNumber() ~= caster:GetTeamNumber() then
+			if playerHero:CanEntityBeSeenByMyTeam(caster) then
+				caster.bIsVisibleToEnemy = true
+				return
+			end
+		end
+	end)
+end
+
 function OnPCAttacked(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
@@ -376,8 +391,8 @@ function OnStealStart(keys)
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_steal_str_reduction", {})
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_steal_str_increase", {})
 
-
-	if caster:HasModifier("modifier_ambush") and caster.IsShadowStrikeAcquired then
+	print(caster.bIsVisibleToEnemy)
+	if (caster:HasModifier("modifier_ambush") or not caster.bIsVisibleToEnemy) and caster.IsShadowStrikeAcquired then
 		--print("Shadow Strike activated")
 		damage = damage + 300
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_steal_vision", {})
@@ -391,6 +406,16 @@ function OnZabCastStart(keys)
 	local smokeFx = ParticleManager:CreateParticleForTeam("particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_loadout.vpcf", PATTACH_CUSTOMORIGIN, target, caster:GetTeamNumber())
 	ParticleManager:SetParticleControl(smokeFx, 0, caster:GetAbsOrigin())
 	caster.LastActionTime = GameRules:GetGameTime()  -- Zab cast should be classified as an action that resets 2s timer for Presence Concealment.
+	caster.bIsVisibleToEnemy = false
+	LoopOverPlayers(function(player, playerID, playerHero)
+		-- if enemy hero can see astolfo, set visibility to true
+		if playerHero:GetTeamNumber() ~= caster:GetTeamNumber() then
+			if playerHero:CanEntityBeSeenByMyTeam(caster) then
+				caster.bIsVisibleToEnemy = true
+				return
+			end
+		end
+	end)
 end
 
 function OnZabStart(keys)
@@ -404,7 +429,10 @@ function OnZabStart(keys)
 		vSpawnOrigin = caster:GetAbsOrigin(),
 		iMoveSpeed = 950
 	}
-	if caster:HasModifier("modifier_ambush") then caster.IsShadowStrikeActivated = true end
+
+	print(caster.bIsVisibleToEnemy)
+	if (caster:HasModifier("modifier_ambush") or not caster.bIsVisibleToEnemy) then caster.IsShadowStrikeActivated = true end
+	--if caster:HasModifier("modifier_ambush") then caster.IsShadowStrikeActivated = true end
 
 	ProjectileManager:CreateTrackingProjectile(info) 
 	Timers:CreateTimer({
@@ -462,6 +490,8 @@ function OnZabHit(keys)
 		ParticleManager:ReleaseParticleIndex( shadowFx )
 		return nil
 	end)
+
+
 	if caster.IsShadowStrikeAcquired and caster.IsShadowStrikeActivated then 
 		keys.Damage = keys.Damage + 400 
 		caster.IsShadowStrikeActivated = false

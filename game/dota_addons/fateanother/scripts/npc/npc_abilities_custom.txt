@@ -9316,6 +9316,14 @@
 				"set_vision"			"250"
 			}
 		}
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"ta_ability"
+				"Function"		"OnStealAbilityStart"
+			}
+		}
 
 		"OnSpellStart"
 		{
@@ -20337,6 +20345,11 @@
 				"var_type"			"FIELD_INTEGER"
 				"duration"			"8"
 			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"30"
+			}
 		}
 		
 		"OnSpellStart"
@@ -20371,6 +20384,11 @@
 						"CleavePercent"		"%cleave_damage"
 						"CleaveRadius"		"%cleave_radius"
 						"CleaveEffect"		"particles/items_fx/battlefury_cleave.vpcf"
+					}
+					"RunScript"
+					{
+						"ScriptFile"		"nero_ability"
+						"Function"			"TPOnAttack"
 					}
 				}
 			}
@@ -20999,6 +21017,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"mr_reduction"					"5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"chance"			"30"
 			}
 		}
 		
@@ -28197,52 +28220,62 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"damage"				"21 22 23 24 25"
+				"damage_per_tick"	"40 50 60 70 80"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"default_stun_duration"				"0.5"
+				"dot_duration"		"2"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"cc_numbers"				"1 1 2 2 3"
+				"default_stun_duration"				"0.5"
 			}
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"stun_duration"				"0.5 0.55 0.6 0.65 0.7"
+				"cc_numbers"				"1 1 2 2 3"
 			}
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"silence_duration"				"0.3 0.4 0.5 0.6 0.7"
+				"stun_duration"				"0.5 0.55 0.6 0.65 0.7"
 			}
 			"06"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"revoke_duration"				"0.3 0.4 0.5 0.6 0.7"
+				"silence_duration"				"0.3 0.4 0.5 0.6 0.7"
 			}
 			"07"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"lock_duration"				"1 1.25 1.5 1.75 2"
+				"revoke_duration"				"0.3 0.4 0.5 0.6 0.7"
 			}
 			"08"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"root_duration"				"1 1.25 1.5 1.75 2"
+				"lock_duration"				"1 1.25 1.5 1.75 2"
 			}
 			"09"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"disarm_duration"				"2 2.5 3 3.5 4"
+				"root_duration"				"1 1.25 1.5 1.75 2"
 			}
 			"10"
 			{
 				"var_type"			"FIELD_FLOAT"
+				"disarm_duration"				"2 2.5 3 3.5 4"
+			}
+			"11"
+			{
+				"var_type"			"FIELD_FLOAT"
 				"revoke_cooldown"		"1.4"
+			}
+			"12"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage"			"320 400 480 560 640"
 			}
 		}
 		
@@ -28302,6 +28335,21 @@
 				"Duration"		"%revoke_cooldown"
 				"IsDebuff"		"1"
 				"IsHidden"		"1"
+			}
+			"modifier_white_queens_enigma_dot"
+			{
+				"Duration"		"%dot_duration"
+				"IsDebuff"		"1"
+				"ThinkInterval" 		"0.25"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"nursery_rhyme_ability"
+						"Function"				"OnEnimgaTick"
+						"Damage"				"%damage_per_tick"
+					}
+				}
 			}
 		}
 	}

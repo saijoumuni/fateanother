@@ -425,7 +425,8 @@ function AvalonOnTakeDamage(keys)
 	local damageTaken = keys.DamageTaken
 	local newCurrentHealth = caster:GetHealth()
 	local emitwhichsound = RandomInt(1, 2)
-
+	
+	if caster.IsAvalonPenetrated then return end
 
 	if not caster:HasModifier("pause_sealdisabled") and not caster:HasModifier("modifier_max_excalibur") and caster.IsAvalonProc == true and caster:GetTeam() ~= attacker:GetTeam() and caster.IsAvalonOnCooldown ~= true and (caster:GetAbsOrigin() - attacker:GetAbsOrigin()):Length2D() < 3000 then 
 		if emitwhichsound == 1 then attacker:EmitSound("Saber.Avalon_Counter1") else attacker:EmitSound("Saber.Avalon_Counter2") end

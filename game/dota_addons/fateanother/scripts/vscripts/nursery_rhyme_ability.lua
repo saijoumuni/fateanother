@@ -5,6 +5,7 @@ CCTable = {
 	"locked",
 	"rooted",
 	"disarmed",
+	"modifier_white_queens_enigma_dot",
 	-- below are Dota 2 base modifiers that I might have been using previously
 	"modifier_stunned",
 	"modifier_disarmed",
@@ -226,7 +227,10 @@ function OnEnigmaStart(keys)
         iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
         fExpireTime = GameRules:GetGameTime() + 2.0,
 		bDeleteOnHit = true,
-		vVelocity = caster:GetForwardVector() * 1500
+		vVelocity = caster:GetForwardVector() * 1500,
+		bProvidesVision = true,
+		iVisionTeamNumber = caster:GetTeamNumber(),
+		iVisionRadius = 300
 	}	
 
 	local projectile = ProjectileManager:CreateLinearProjectile(enigmaProjectile)
@@ -243,7 +247,6 @@ function OnEnigmaHit(keys)
 	local target = keys.target
 	local BaseStunDuration = keys.DefaultStunDuration
 	local NumOfCC = keys.CCNum
-	local damage = keys.Damage
 	local allEffects = {
 		"silenced",
 		"stunned",
@@ -283,7 +286,8 @@ function OnEnigmaHit(keys)
 	end
 
 	giveUnitDataDrivenModifier(caster, target, "stunned", BaseStunDuration)
-	DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_white_queens_enigma_dot", {})
+	--DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 
 	local iceFx = ParticleManager:CreateParticle( "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_model.vpcf", PATTACH_CUSTOMORIGIN, nil )
 	ParticleManager:SetParticleControl( iceFx, 0, target:GetAbsOrigin()+Vector(0,0,100) )
@@ -294,6 +298,10 @@ function OnEnigmaHit(keys)
 	end)
 	target:EmitSound("Hero_Tusk.IceShards")
 
+end
+
+function OnEnimgaTick(keys)
+	DoDamage(keys.caster, keys.target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 end
 
 function OnEnigmaLevelUp(keys)
@@ -356,6 +364,7 @@ function ChainLightning(keys, source, target, count, CC, bIsFirstItrn)
 				end  
 			end
 		end
+		print(CC)
 	end
 	--print(#CC)
 	-- reduce base damage by reduction amount if not first bounce, and apply CC
@@ -363,8 +372,13 @@ function ChainLightning(keys, source, target, count, CC, bIsFirstItrn)
 		keys.Damage = keys.Damage * (100-reduction)/100
 		damage = keys.Damage
 		for i=1, #CC do
-			--print("Applying " .. CC[i] .. " for " .. tostring(CCDurationTable[CC[i]]) .. " seconds")
-			giveUnitDataDrivenModifier(caster, target, CC[i], CCDurationTable[CC[i]])
+			if CC[i] == "modifier_white_queens_enigma_dot" then
+				print("Trying to apply modifier")
+				caster:FindAbilityByName("nursery_rhyme_white_queens_enigma"):ApplyDataDrivenModifier(caster, target, CC[i], {})
+			else
+				--print("Applying " .. CC[i] .. " for " .. tostring(CCDurationTable[CC[i]]) .. " seconds")
+				giveUnitDataDrivenModifier(caster, target, CC[i], CCDurationTable[CC[i]])
+			end
 		end
 	end
 
