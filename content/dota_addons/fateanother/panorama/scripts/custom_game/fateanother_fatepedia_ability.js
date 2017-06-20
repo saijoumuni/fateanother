@@ -74,7 +74,7 @@ var abilities = [
 	["jeanne_charisma", "jeanne_purge_the_unjust", "jeanne_gods_resolution", "jeanne_magic_resistance_ex", "jeanne_saint", "jeanne_luminosite_eternelle"],
 	["astolfo_hippogriff_vanish", "astolfo_down_with_a_touch", "astolfo_la_black_luna", "fate_empty1", "astolfo_casa_di_logistilla", "astolfo_hippogriff_raid"],
 	["nursery_rhyme_white_queens_enigma", "nursery_rhyme_the_plains_of_water", "nursery_rhyme_doppelganger", "nursery_rhyme_shapeshift", "nursery_rhyme_nameless_forest", "nursery_rhyme_queens_glass_game"],
-	["atalanta_celestial_arrow", "atalanta_calydonian_hunt", "atalanta_crossing_arcadia", "atalanta_last_spurt", "atalanta_priestess_of_the_hunt", "atalanta_tauropolos"],
+	["atalanta_celestial_arrow", "atalanta_calydonian_hunt", "atalanta_tauropolos", "atalanta_crossing_arcadia" , "atalanta_priestess_of_the_hunt", "atalanta_phoebus_catastrophe_barrage"],
 ]
 
 var attributes = [

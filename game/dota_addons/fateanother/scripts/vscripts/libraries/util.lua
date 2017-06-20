@@ -1035,8 +1035,9 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
             elseif dmg_type == DAMAGE_TYPE_MAGICAL then
                 damageToAllies = dmgtable.damage * (1-MR)
             end]]
-            damageToAllies = damageToAllies/#target.linkTable
-            dmgtable.damage = dmgtable.damage/#target.linkTable
+            damageToAllies = damageToAllies/#target.linkTable * (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1) --damage/person is now 100/60/43.3/35/30 after instead of 100/50/33.3/25/20
+            dmgtable.damage = dmgtable.damage/#target.linkTable * (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1)
+            print(damageToAllies, dmgtable.damage, (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1))
             -- Loop through linked heroes
             for i=1, #target.linkTable do
                 -- do ApplyDamage if it's primary target since the shield processing is already done

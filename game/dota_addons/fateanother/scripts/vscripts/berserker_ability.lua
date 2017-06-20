@@ -16,7 +16,7 @@ function OnFissureStart(keys)
         iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
         iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
         iUnitTargetType = DOTA_UNIT_TARGET_ALL,
-        fExpireTime = GameRules:GetGameTime() + 2.0,
+        fExpireTime = GameRules:GetGameTime() + 0.5,
 		bDeleteOnHit = false,
 		vVelocity = frontward * keys.Range
 	}
@@ -45,7 +45,7 @@ function OnFissureHit(keys)
     target:SetPhysicsFriction(0)
 	local vectorC = (target:GetAbsOrigin() - caster.FissureOrigin) 
 	-- get the direction where target will be pushed back to
-	target:SetPhysicsVelocity(vectorC:Normalized() * 750)
+	target:SetPhysicsVelocity(vectorC:Normalized() * 1500)
     target:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
 	local initialUnitOrigin = keys.target:GetAbsOrigin()
 	
@@ -54,7 +54,7 @@ function OnFissureHit(keys)
 		local diff = unitOrigin - initialUnitOrigin
 		local n_diff = diff:Normalized()
 		unit:SetPhysicsVelocity(unit:GetPhysicsVelocity():Length() * n_diff) -- track the movement of target being pushed back
-		if diff:Length() > 150 then -- if pushback distance is over 500, stop it
+		if diff:Length() > 400 then -- if pushback distance is over 400, stop it
 			unit:PreventDI(false)
 			unit:SetPhysicsVelocity(Vector(0,0,0))
 			unit:OnPhysicsFrame(nil)

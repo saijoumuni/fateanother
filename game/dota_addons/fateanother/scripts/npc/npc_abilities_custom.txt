@@ -6118,7 +6118,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
+		"AbilityCastRange"				"750"
 		"AbilityCastPoint"				"0.3"
 
 		// Time		
@@ -6145,7 +6145,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"range"				"750"
+				"range"				"1500"
 			}
 			"04"
 			{
@@ -6160,7 +6160,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"collide_duration"				"0.5"
+				"collide_duration"				"0.7"
 			}
 			"07"
 			{
@@ -11620,12 +11620,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"armor_duration"		"6.0"
+				"armor_duration"		"3.0"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"armor"					"50"
+				"armor"					"25"
 			}
 		}
 		
@@ -12579,12 +12579,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"armor_duration"		"6.0"
+				"armor_duration"		"3"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"armor"					"50"
+				"armor"					"25"
 			}
 		}
 		
@@ -29531,7 +29531,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"aoe"				"600"
+				"aoe"				"450"
 			}
 			"03"
 			{
