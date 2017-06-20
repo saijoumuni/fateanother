@@ -169,7 +169,7 @@ function OnBPStart(keys)
 	local ability = keys.ability
 	local ply = caster:GetPlayerOwner()
 	ParticleManager:DestroyParticle(caster.BPparticle, true)
-	if not caster:CanEntityBeSeenByMyTeam(target) or caster:GetRangeToUnit(target) > 3000 or caster:GetMana() < ability:GetManaCost(1) or not IsInSameRealm(caster:GetAbsOrigin(), target:GetAbsOrigin()) then 
+	if not caster:CanEntityBeSeenByMyTeam(target) or caster:GetRangeToUnit(target) > 4500 or caster:GetMana() < ability:GetManaCost(1) or not IsInSameRealm(caster:GetAbsOrigin(), target:GetAbsOrigin()) then 
 		Say(ply, "Broken Phantasm failed.", true)
 		return 
 	end
@@ -1052,7 +1052,7 @@ function OnHruntStart(keys)
 	local target = keys.target
 	local ply = caster:GetPlayerOwner()
 	ParticleManager:DestroyParticle(caster.hruntingCrosshead, true)
-	if not caster:CanEntityBeSeenByMyTeam(target) or caster:GetRangeToUnit(target) > 4000 or not IsInSameRealm(caster:GetAbsOrigin(), target:GetAbsOrigin()) then 
+	if not caster:CanEntityBeSeenByMyTeam(target) or not IsInSameRealm(caster:GetAbsOrigin(), target:GetAbsOrigin()) then 
 		Say(ply, "Hrunting failed.", true)
 		return 
 	end
