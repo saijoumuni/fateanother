@@ -5,8 +5,8 @@ function OnFissureStart(keys)
 	{
 		Ability = keys.ability,
         EffectName = "particles/custom/berserker/fissure_strike/shockwave.vpcf",
-        iMoveSpeed = keys.Range,
-        vSpawnOrigin = nil,
+        iMoveSpeed = keys.Speed,
+        vSpawnOrigin = caster:GetAbsOrigin(),
         fDistance = keys.Range,
         fStartRadius = keys.Width,
         fEndRadius = keys.Width,
@@ -18,10 +18,10 @@ function OnFissureStart(keys)
         iUnitTargetType = DOTA_UNIT_TARGET_ALL,
         fExpireTime = GameRules:GetGameTime() + 0.5,
 		bDeleteOnHit = false,
-		vVelocity = frontward * keys.Range
+		vVelocity = frontward * keys.Speed
 	}
-	fiss.vSpawnOrigin = caster:GetAbsOrigin() --global variable to be passed to FissureHit.... probably exploitable if someone refresh Q
-	caster.FissureOrigin = fiss.vSpawnOrigin 
+	caster.FissureOrigin  = caster:GetAbsOrigin()
+	caster.FissureTarget = keys.target_points[1]
 	projectile = ProjectileManager:CreateLinearProjectile(fiss)
 	BerCheckCombo(caster, keys.ability)
 end
@@ -43,7 +43,7 @@ function OnFissureHit(keys)
     local pushTarget = Physics:Unit(target)
     target:PreventDI()
     target:SetPhysicsFriction(0)
-	local vectorC = (target:GetAbsOrigin() - caster.FissureOrigin) 
+	local vectorC = (caster.FissureTarget - caster.FissureOrigin) --knockback in direction as fissure
 	-- get the direction where target will be pushed back to
 	target:SetPhysicsVelocity(vectorC:Normalized() * 1500)
     target:SetNavCollisionType(PHYSICS_NAV_BOUNCE)
@@ -66,7 +66,7 @@ function OnFissureHit(keys)
 		unit:SetBounceMultiplier(0)
 		unit:PreventDI(false)
 		unit:SetPhysicsVelocity(Vector(0,0,0))
-		giveUnitDataDrivenModifier(caster, target, "stunned", self:GetSpecialValueFor("collide_duration"))
+		giveUnitDataDrivenModifier(caster, target, "stunned",  caster:FindAbilityByName("berserker_5th_fissure_strike"):GetSpecialValueFor("collide_duration"))
 	end)
 end
 

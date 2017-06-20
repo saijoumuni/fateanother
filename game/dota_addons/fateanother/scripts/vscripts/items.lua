@@ -296,7 +296,26 @@ function WardFam(keys)
 	caster.ward:AddNewModifier(caster, caster, "modifier_invisible", {})
 	caster.ward:AddNewModifier(caster, caster, "modifier_item_ward_true_sight", {true_sight_range = keys.Radius, duration = keys.Duration})
     caster.ward:AddNewModifier(caster, caster, "modifier_kill", {duration = keys.Duration})
+    giveUnitDataDrivenModifier(caster.ward, caster.ward, "modifier_ward_dmg_reduce", {duration = keys.Duration})
     EmitSoundOnLocationForAllies(targetPoint,"DOTA_Item.ObserverWard.Activate",caster)
+end
+
+function WardOnTakeDamage(keys)
+	if keys.unit.dmgcooldown ~= true then
+		keys.unit.dmgcooldown = true
+		print("Took Dmg")
+		local dmgtable = {
+	        attacker = keys.attacker,
+	        victim = keys.unit,
+	        damage = 2,
+	        damage_type = DAMAGE_TYPE_PURE,
+	    }
+	    print(dmgtable.attacker:GetName(), dmgtable.victim:GetName(), dmgtable.damage)
+	    ApplyDamage(dmgtable)
+	    Timers:CreateTimer(0.05, function()
+			keys.unit.dmgcooldown = false
+		end)
+	end
 end
 
 function OnWardDeath(keys)
@@ -339,8 +358,9 @@ function BecomeWard(keys)
 
 
 	transform:AddNewModifier(hero, hero, "modifier_invisible", {})
-	transform:AddNewModifier(hero, hero, "modifier_item_ward_true_sight", {true_sight_range = 1600, duration = 105})
-	transform:AddNewModifier(hero, hero, "modifier_kill", {duration = 105})
+	transform:AddNewModifier(hero, hero, "modifier_item_ward_true_sight", {true_sight_range = 1250, duration = 60})
+	transform:AddNewModifier(hero, hero, "modifier_kill", {duration = 60})
+	giveUnitDataDrivenModifier(transform, transform, "modifier_ward_dmg_reduce", {duration = 60})
 	caster:EmitSound("DOTA_Item.ObserverWard.Activate")
 	Timers:CreateTimer({
 		endTime = 0.1,
@@ -713,9 +733,11 @@ function HealingScroll(keys)
 	local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 600
             , DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
 	for k,v in pairs(targets) do
-		ParticleManager:SetParticleControl(healFx, 1, v:GetAbsOrigin()) -- target effect location
-        v:Heal(500, caster)
-       	ability :ApplyDataDrivenModifier(caster, v, "modifier_healing_scroll", {})
+		if v:GetName() ~= "npc_dota_ward_base" then
+			ParticleManager:SetParticleControl(healFx, 1, v:GetAbsOrigin()) -- target effect location
+    	    v:Heal(500, caster)
+       		ability :ApplyDataDrivenModifier(caster, v, "modifier_healing_scroll", {})
+       	end
     end
 
    	Timers:CreateTimer(2.0, function()
