@@ -302,7 +302,7 @@ function OnEnigmaHit(keys)
 end
 
 function OnEnimgaTick(keys)
-	DoDamage(keys.caster, keys.target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+	DoDamage(keys.caster, keys.target, keys.Damage/8/100 * keys.target:GetMaxHealth(), DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 end
 
 function OnEnigmaLevelUp(keys)

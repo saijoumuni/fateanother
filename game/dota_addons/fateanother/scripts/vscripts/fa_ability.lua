@@ -504,7 +504,7 @@ function OnWBStart(keys)
 		end
 	end
 
-	local risingWindFx = ParticleManager:CreateParticle("particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	local risingWindFx = ParticleManager:CreateParticle("particles/custom/false_assassin/fa_thunder_clap.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 	-- Destroy particle after delay
 	Timers:CreateTimer( 2.0, function()
 			ParticleManager:DestroyParticle( risingWindFx, false )
