@@ -1,7 +1,14 @@
 function atalanta_phoebus_catastrophe_wrapper(ability)
     function ability:OnAbilityPhaseStart()
         local caster = self:GetCaster()
-        EmitGlobalSound("Atalanta.PhoebusCast")
+        --EmitGlobalSound("Atalanta.PhoebusCast")
+
+        local enemies = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 3500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, FIND_ANY_ORDER, false)
+        if #enemies == 0 then 
+            caster:EmitSound("Atalanta.PhoebusCast")  
+        else
+            EmitGlobalSound("Atalanta.PhoebusCast")
+        end
     
         local casterFX = ParticleManager:CreateParticle("particles/econ/items/monkey_king/arcana/death/mk_spring_arcana_death_ground_impact.vpcf", PATTACH_POINT_FOLLOW, caster)
         ParticleManager:SetParticleControl(casterFX, 0, caster:GetOrigin())
