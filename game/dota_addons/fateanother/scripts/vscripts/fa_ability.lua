@@ -595,7 +595,7 @@ function OnTGStart(keys)
 			    ParticleManager:SetParticleControl(slashIndex, 0, target:GetAbsOrigin())
 			    ParticleManager:SetParticleControl(slashIndex, 1, Vector(500,0,150))
 			    ParticleManager:SetParticleControl(slashIndex, 2, Vector(0.2,0,0))]]
-				local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+				local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 				for i=1, #targets do 
 					DoDamage(caster, targets[i], keys.Damage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false)
 					caster:PerformAttack(targets[i], true, true, true, true, false, false, false)
@@ -631,7 +631,7 @@ function OnTGStart(keys)
 			    ParticleManager:SetParticleControl(slashIndex, 0, target:GetAbsOrigin())
 			    ParticleManager:SetParticleControl(slashIndex, 1, Vector(500,0,150))
 			    ParticleManager:SetParticleControl(slashIndex, 2, Vector(0.2,0,0))]]
-				local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+				local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 				for i=1, #targets do 
 					DoDamage(caster, targets[i], keys.Damage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false)
 					caster:PerformAttack(targets[i], true, true, true, true, false, false, false)
@@ -667,7 +667,7 @@ function OnTGStart(keys)
 			    ParticleManager:SetParticleControl(slashIndex, 0, target:GetAbsOrigin())
 			    ParticleManager:SetParticleControl(slashIndex, 1, Vector(500,0,150))
 			    ParticleManager:SetParticleControl(slashIndex, 2, Vector(0.2,0,0))]]
-			    local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+			    local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, 200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 				for i=1, #targets do 
 					DoDamage(caster, targets[i], keys.LastDamage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false)
 					caster:PerformAttack(targets[i], true, true, true, true, false, false, false)
