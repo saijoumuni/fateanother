@@ -13,6 +13,11 @@ function OnMindsEyeAttacked(keys)
 	local ratio = keys.Ratio
 	local revokedRatio = keys.RatioRevoked
 
+	if caster:GetAttackTarget():GetName() == "npc_dota_ward_base" then
+		print("Attacking Ward")
+		return
+	end
+
 	if IsRevoked(target) then
 		DoDamage(caster, target, caster:GetAgility() * revokedRatio , DAMAGE_TYPE_PURE, 0, keys.ability, false)
 	else
