@@ -287,6 +287,7 @@ function OnEnigmaHit(keys)
 
 	giveUnitDataDrivenModifier(caster, target, "stunned", BaseStunDuration)
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_white_queens_enigma_dot", {})
+	SpawnAttachedVisionDummy(caster, target, 300, 2, false)
 	--DoDamage(caster, target, target:GetHealth()*damage/100, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 
 	local iceFx = ParticleManager:CreateParticle( "particles/units/heroes/hero_winter_wyvern/wyvern_cold_embrace_buff_model.vpcf", PATTACH_CUSTOMORIGIN, nil )
@@ -375,6 +376,7 @@ function ChainLightning(keys, source, target, count, CC, bIsFirstItrn)
 			if CC[i] == "modifier_white_queens_enigma_dot" then
 				print("Trying to apply modifier")
 				caster:FindAbilityByName("nursery_rhyme_white_queens_enigma"):ApplyDataDrivenModifier(caster, target, CC[i], {})
+				SpawnAttachedVisionDummy(caster, target, 300, 2, false)
 			else
 				--print("Applying " .. CC[i] .. " for " .. tostring(CCDurationTable[CC[i]]) .. " seconds")
 				giveUnitDataDrivenModifier(caster, target, CC[i], CCDurationTable[CC[i]])
