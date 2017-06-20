@@ -66,7 +66,7 @@ function OnFissureHit(keys)
 		unit:SetBounceMultiplier(0)
 		unit:PreventDI(false)
 		unit:SetPhysicsVelocity(Vector(0,0,0))
-		giveUnitDataDrivenModifier(caster, target, "stunned", 0.5)
+		giveUnitDataDrivenModifier(caster, target, "stunned", self:GetSpecialValueFor("collide_duration"))
 	end)
 end
 
