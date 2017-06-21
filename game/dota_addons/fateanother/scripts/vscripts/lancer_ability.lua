@@ -230,6 +230,10 @@ function OnIncinerateHit(keys)
 	local caster = keys.caster
 	local target = keys.target
 
+	if caster:GetAttackTarget():GetName() == "npc_dota_ward_base" then
+		print("Attacking Ward")
+		return
+	end
 
 	local currentStack = target:GetModifierStackCount("modifier_lancer_incinerate", keys.ability)
 
