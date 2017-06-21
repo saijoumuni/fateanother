@@ -176,6 +176,11 @@ function atalanta_celestial_arrow:ShootArrow(keys)
         caster:EmitSound(keys.Sound)
     end
 
+    --[[if keys.GlobalSound == true then
+        print("globalsnd")
+        EmitGlobalSound(keys.Sound)
+    end]]
+
     if not keys.NoShock then
         self:CreateShockRing(keys.Facing)
     end

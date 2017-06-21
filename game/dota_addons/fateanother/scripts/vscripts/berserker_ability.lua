@@ -260,7 +260,9 @@ function OnBerserkDamageTaken(keys)
 				if ability ~= nil then
 					local remainingCD = ability:GetCooldownTimeRemaining()
 					ability:EndCooldown()
-					ability:StartCooldown(remainingCD-1)
+					if (remainingCD-1) > 0 then
+						ability:StartCooldown(remainingCD-1)
+					end
 				else 
 					break
 				end

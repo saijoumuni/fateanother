@@ -69,6 +69,7 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
         for i=1,arrows do
             Timers:CreateTimer(0.2 + interval * i, function()
                 local point = RandomPointInCircle(position, aoe)
+                EmitGlobalSound("Ability.Powershot.Alt")
                 caster:ShootArrow({
                     Origin = sourceLocation,
                     Position = point,
@@ -80,10 +81,6 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
                 })
             end)
         end
-
-        Timers:CreateTimer(0.2 + interval * arrows, function()
-            ParticleManager:DestroyParticle(screenFx, false)
-        end)
     end)
 
     --self:AfterSpell()
