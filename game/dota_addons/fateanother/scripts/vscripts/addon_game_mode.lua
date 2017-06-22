@@ -703,6 +703,13 @@ function FateGameMode:OnPlayerChat(keys)
         Notifications:RightToTeamGold(hero:GetTeam(), "<font color='#FF5050'>" .. FindName(hero:GetName()) .. "</font> at <font color='#FFD700'>" .. hero:GetGold() .. "g</font> is requesting gold. Type <font color='#58ACFA'>-" .. plyID .. " (goldamount)</font> to send gold!", 5, nil, {color="rgb(255,255,255)", ["font-size"]="20px"}, false)
     end
 
+    local statID = string.match(text, "^-ss (%d+)")
+
+    if statID and PlayerResource:GetPlayer(tonumber(statID)) then
+        local herostat = PlayerResource:GetPlayer(tonumber(statID)):GetAssignedHero()
+        herostat.ServStat:printconsole()
+    end
+
     if text == "-ss" then
         hero.ServStat:printconsole()
     end
@@ -907,8 +914,9 @@ function FateGameMode:OnHeroInGame(hero)
     end
     --END
 
-    -- Initialize Servant Statistics
+    -- Initialize Servant Statistics, and related collection stuff
     hero.ServStat = ServantStatistics:initialise(hero)
+    giveUnitDataDrivenModifier(hero, hero, "modifier_damage_collection", {})
     -- END
 
     hero.CStock = 10
@@ -1445,7 +1453,7 @@ function FateGameMode:OnPlayerLevelUp(keys)
     local player = EntIndexToHScript(keys.player)
     local hero = player:GetAssignedHero()
     local level = keys.level
-
+    hero.ServStat:getLvl(hero)
     --fuck 7.0
     if level == 17 or level == 19 or level == 21 or level == 22 or level == 23 or level == 24 then
         hero:SetAbilityPoints(hero:GetAbilityPoints()+1)
@@ -2304,6 +2312,7 @@ function FateGameMode:InitializeRound()
 
             self:LoopOverPlayers(function(player, playerID, playerHero)
                 playerHero:RemoveModifierByName("round_pause")
+                playerHero.ServStat:roundNumber(self.nCurrentRound)
             end)
 
             FireGameEvent("show_center_message",msg)
@@ -2496,11 +2505,29 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
 
     -- check for win condition
     if self.nRadiantScore == VICTORY_CONDITION then
+        self:LoopOverPlayers(function(player, playerID, playerHero)
+            local hero = playerHero
+            if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
+                hero.ServStat:EndOfGame("Won")
+            else
+                hero.ServStat:EndOfGame("Lost")
+            end
+            hero.ServStat:printconsole()
+        end)
         Say(nil, "Radiant Victory!", false)
         GameRules:SetSafeToLeave( true )
         GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
         return
     elseif self.nDireScore == VICTORY_CONDITION then
+        self:LoopOverPlayers(function(player, playerID, playerHero)
+            local hero = playerHero
+            if hero:GetTeam() == DOTA_TEAM_BADGUYS then
+                hero.ServStat:EndOfGame("Won")
+            else
+                hero.ServStat:EndOfGame("Lost")
+            end
+            hero.ServStat:printconsole()
+        end)
         Say(nil, "Dire Victory!", false)
         GameRules:SetSafeToLeave( true )
         GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )

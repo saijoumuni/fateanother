@@ -902,11 +902,13 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
     local MR = target:GetMagicalArmorValue() 
     dmg_flag = bit.bor(dmg_flag, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION)
 
+    -- Records skill damage PRE-REDUCTION. For the rest, refer to OnHeroTakeDamage() below.
     if isLoop == false then
-        print("Before reductions", dmg)
+        --print("Before reductions", dmg)
         source.ServStat:doDamageBeforeReduction(dmg)
         target.ServStat:takeDamageBeforeReduction(dmg)
     end
+    -- END
 
     if dmg_type == DAMAGE_TYPE_MAGICAL then
         -- if target has Sun's Embrace modifier, reduce damage by MR before calculation
@@ -1055,19 +1057,19 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
                 if target.linkTable[i] == target then
                     --print("Damage dealt to primary target : " .. dmgtable.damage .. " dealt by " .. dmgtable.attacker:GetName())
                     ApplyDamage(dmgtable)
-                    if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
+                    --[[if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
                         print("Actual damage:", dmgtable.damage*(1-MR))
-                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
-                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
+                        --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
+                        --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
                     elseif dmgtable.damage_type == DAMAGE_TYPE_PHYSICAL then
                         print("Actual damage:", dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
-                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
-                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                        --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                        --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
                     else
                         print("Actual damage:", dmgtable.damage)
-                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
-                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
-                    end
+                        --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
+                        --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
+                    end]]
 
                 -- for other linked targets, we need DoDamage
                 else
@@ -1081,19 +1083,19 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
         else 
             dmgtable.victim = target
             ApplyDamage(dmgtable)
-            if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
+            --[[if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
                 print("Actual damage:", dmgtable.damage*(1-MR))
-                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
-                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
+                --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
+                --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
             elseif dmgtable.damage_type == DAMAGE_TYPE_PHYSICAL then
                 print("Actual damage:", dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
-                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
-                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
             else
                 print("Actual damage:", dmgtable.damage)
-                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
-                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
-            end
+                --dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
+                --dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
+            end]]
 
             --print(dmgtable.attacker:GetName() .. " dealt " .. dmgtable.damage .. " damage to " .. dmgtable.victim:GetName())
         end
@@ -1678,4 +1680,19 @@ function GetComboAvailability(hero)
         return -1
     end
     return combo:GetCooldownTimeRemaining()
+end
+
+--Function records EMPIRICAL damage and also PRE-REDUCTION right click damage, PRE-REDUCTION skill damage is handled at line 906 to 910.
+function OnHeroTakeDamage(keys)
+    local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
+    local attacker = keys.attacker
+    local damageTaken = keys.DamageTaken
+    if attacker:GetAttackTarget() == hero then
+        --print("Right click before armor reductions", damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
+        attacker.ServStat:doDamageBeforeReduction(damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
+        hero.ServStat:takeDamageBeforeReduction(damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
+    end
+    --print("Actual damage from KV:", damageTaken)
+    attacker.ServStat:doActualDamage(damageTaken)
+    hero.ServStat:takeActualDamage(damageTaken)
 end

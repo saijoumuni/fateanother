@@ -1,9 +1,9 @@
 ServantStatistics = {cScroll = 0, bScroll = 0, aScroll = 0, sScroll = 0, exScroll = 0, attr1 = 0, attr2 = 0, attr3 = 0, attr4 = 0, attr5 = 0, shard1 = 0, shard2 = 0, shard3 =0, 
-shard4 = 0, damageDealt = 0, damageTaken = 0, damageTakenBR = 0, damageDealtBR = 0, damageNullified = 0, ward = 0, familiar = 0, link = 0, goldWasted = 0, itemValue = 0, qseal = 0, wseal = 0, eseal = 0, rseal = 0, 
-kill = 0, tkill=0, death = 0, assist = 0, str = 0, agi = 0, int = 0, atk = 0, armor = 0, hpregen = 0, mpregen = 0, ms = 0}
+shard4 = 0, damageDealt = 0, damageTaken = 0, damageTakenBR = 0, damageDealtBR = 0, ward = 0, familiar = 0, link = 0, goldWasted = 0, itemValue = 0, qseal = 0, wseal = 0, eseal = 0, rseal = 0, 
+kill = 0, tkill=0, death = 0, assist = 0, str = 0, agi = 0, int = 0, atk = 0, armor = 0, hpregen = 0, mpregen = 0, ms = 0, lvl = 1, round = 0, winGame = "Ongoing"}
 
 function ServantStatistics:initialise(hero)
-  NameAndID = {heroName = hero:GetName(), steamId = PlayerResource:GetSteamID(hero:GetPlayerOwnerID())}
+  NameAndID = {heroName = PlayerResource:GetSelectedHeroName(hero:GetPlayerOwnerID()), playerName = PlayerResource:GetPlayerName(hero:GetPlayerOwnerID()), steamId = PlayerResource:GetSteamID(hero:GetPlayerOwnerID())}
   setmetatable(NameAndID, self)
   print("Initialize for:", hero:GetName(), PlayerResource:GetSteamID(hero:GetPlayerOwnerID()) )
   self.__index = self
@@ -167,10 +167,25 @@ function ServantStatistics:onAssist()
   self.assist = self.assist + 1
 end
 
+function ServantStatistics:getLvl(hero)
+  self.lvl = hero:GetLevel()
+end
+
+function ServantStatistics:roundNumber(x)
+  self.round = x
+end
+
+function ServantStatistics:EndOfGame(winloss)
+  self.winGame = winloss
+end
+
 function ServantStatistics:printconsole()
   print("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
   print("Hero Name:", self.heroName)
+  print("Player Name:", self.playerName)
   print("Steam ID:", self.steamId)
+  print("Hero Level:                                      ", self.lvl)
+  print("Round Number, Won Game?:                         ", self.round, self.winGame)
   print("K/D/A/TeamKill:                                  ", self.kill, self.death, self.assist, self.tkill)
   print("Gold Spent / Value of Items / Gold Wasted:       ", self.itemValue + self.goldWasted, self.itemValue, self.goldWasted)
   print("Actual Damage Dealt/Taken:                       ", self.damageDealt, self.damageTaken)

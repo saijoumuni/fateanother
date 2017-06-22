@@ -30241,6 +30241,22 @@
 					}
 				}
 			}
+			"modifier_damage_collection"
+			{
+				"Passive"                       "1"
+				"IsPurgable"					"0"
+				"IsHidden"                      "1"
+				"Attributes"					"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"    
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"libraries/util"
+						"Function"		"OnHeroTakeDamage"
+						"DamageTaken"	"%attack_damage"
+					}
+				}
+			}
 			"pause_sealenabled"
 			{
 				"TextureName"	"custom/stunned"
