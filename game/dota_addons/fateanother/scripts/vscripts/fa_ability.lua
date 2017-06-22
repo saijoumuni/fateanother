@@ -12,10 +12,12 @@ function OnMindsEyeAttacked(keys)
 	local ability = keys.ability
 	local ratio = keys.Ratio
 	local revokedRatio = keys.RatioRevoked
-
-	if caster:GetAttackTarget():GetName() == "npc_dota_ward_base" then
-		print("Attacking Ward")
-		return
+	
+	if caster:GetAttackTarget() ~= nil then
+		if caster:GetAttackTarget():GetName() == "npc_dota_ward_base" then
+			print("Attacking Ward")
+			return
+		end
 	end
 
 	if IsRevoked(target) then
