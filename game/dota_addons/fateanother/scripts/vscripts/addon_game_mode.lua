@@ -16,6 +16,7 @@ require('libraries/physics')
 require('libraries/attachments')
 --require('libraries/vector_target')
 require('hero_selection')
+require('libraries/servantstats')
 
 
 _G.IsPickPhase = true
@@ -81,7 +82,7 @@ SPAWN_POSITION_T4_TRIO = Vector(-888,1748,512)
 TRIO_RUMBLE_CENTER = Vector(2436,4132,1000)
 FFA_CENTER = Vector(368,3868,1000)
 mode = nil
-FATE_VERSION = "v1.19f"
+FATE_VERSION = "v1.21c"
 roundQuest = nil
 IsGameStarted = false
 
@@ -702,6 +703,10 @@ function FateGameMode:OnPlayerChat(keys)
         Notifications:RightToTeamGold(hero:GetTeam(), "<font color='#FF5050'>" .. FindName(hero:GetName()) .. "</font> at <font color='#FFD700'>" .. hero:GetGold() .. "g</font> is requesting gold. Type <font color='#58ACFA'>-" .. plyID .. " (goldamount)</font> to send gold!", 5, nil, {color="rgb(255,255,255)", ["font-size"]="20px"}, false)
     end
 
+    if text == "-ss" then
+        hero.ServStat:printconsole()
+    end
+
     local heroText = string.match(text, "^-pick (.+)")
     if heroText ~= nil then
         if GameRules:IsCheatMode() then
@@ -901,6 +906,10 @@ function FateGameMode:OnHeroInGame(hero)
         end
     end
     --END
+
+    -- Initialize Servant Statistics
+    hero.ServStat = ServantStatistics:initialise(hero)
+    -- END
 
     hero.CStock = 10
     hero.ShardAmount = 0
@@ -1218,6 +1227,8 @@ function FateGameMode:OnItemPurchased( keys )
     -- The cost of the item purchased
     local itemCost = keys.itemcost
 
+    print(itemCost)
+
     local hero = PlayerResource:GetPlayer(plyID):GetAssignedHero()
     CheckItemCombinationInStash(hero)
 
@@ -1227,6 +1238,7 @@ function FateGameMode:OnItemPurchased( keys )
         if itemName == "item_c_scroll" then
             if hero.CStock > 0 then
                 hero.CStock = hero.CStock - 1
+                hero.ServStat:trueWorth(tonumber(itemCost))
                 isPriceIncreased = false
             else
                 SendErrorMessage(plyID, "#Out_Of_Stock_C_Scroll")
@@ -1234,11 +1246,14 @@ function FateGameMode:OnItemPurchased( keys )
             end
         else
             isPriceIncreased = false
+            hero.ServStat:trueWorth(tonumber(itemCost))
         end
     end
 
     if isPriceIncreased then
         if PlayerResource:GetGold(plyID) >= itemCost * 0.5 then
+            hero.ServStat:wastedGold(tonumber(itemCost) * 0.5)
+            hero.ServStat:trueWorth(tonumber(itemCost))
             -- account for unreliable gold
             local unreliableGold = PlayerResource:GetUnreliableGold(plyID)
             hero:ModifyGold(-itemCost * 0.5, false, 0)
@@ -1523,9 +1538,13 @@ function FateGameMode:OnEntityKilled( keys )
 
         -- if TK occured, do nothing and announce it
         if killerEntity:GetTeam() == killedUnit:GetTeam() then
+            killerEntity.ServStat:onTeamKill()
+            killedUnit.ServStat:onDeath()
             --GameRules:SendCustomMessage("<font color='#FF5050'>" .. killerEntity.name .. "</font> has slain friendly Servant <font color='#FF5050'>" .. killedUnit.name .. "</font>!", 0, 0)
             CustomGameEventManager:Send_ServerToAllClients( "fate_hero_killed", {killer=killerEntity:entindex(), victim=killedUnit:entindex(), assists=nil } )
         else
+            killerEntity.ServStat:onKill()
+            killedUnit.ServStat:onDeath()
             -- Add to death count
             if killedUnit.DeathCount == nil then
                 killedUnit.DeathCount = 1
@@ -1585,6 +1604,7 @@ function FateGameMode:OnEntityKilled( keys )
                         local assister = PlayerResource:GetSelectedHeroEntity(attackerID)
                         if atker:GetTeam() == assister:GetTeam() and assister ~= killerEntity then
                             table.insert(assistTable, assister)
+                            assister.ServStat:onAssist()
                             assister:ModifyGold(300 , true, 0)
                             local goldPopupFx = ParticleManager:CreateParticleForPlayer("particles/custom/system/gold_popup.vpcf", PATTACH_CUSTOMORIGIN, nil, assister:GetPlayerOwner())
                             --local goldPopupFx = ParticleManager:CreateParticleForTeam("particles/custom/system/gold_popup.vpcf", PATTACH_CUSTOMORIGIN, nil, killerEntity:GetTeamNumber())

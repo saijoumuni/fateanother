@@ -230,6 +230,8 @@ function OnSeal1Start(keys)
 		return
 	end
 
+	hero.ServStat:useQSeal()
+
 	-- Set master 2's mana 
 	local master2 = hero.MasterUnit2
 	master2:SetMana(master2:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
@@ -305,7 +307,7 @@ function OnSeal2Start(keys)
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#Revoked_Error")
 		return
 	end
-
+	hero.ServStat:useWSeal()
 	-- pay mana cost
 	caster:SetMana(caster:GetMana()-2)
 	local master2 = hero.MasterUnit2
@@ -358,7 +360,7 @@ function OnSeal3Start(keys)
 	end
 
 	hero:EmitSound("DOTA_Item.UrnOfShadows.Activate")
-
+	hero.ServStat:useESeal()
 	-- Set master 2's mana 
 	local master2 = hero.MasterUnit2
 	master2:SetMana(master2:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
@@ -398,7 +400,7 @@ function OnSeal4Start(keys)
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#Revoked_Error")
 		return
 	end
-
+	hero.ServStat:useRSeal()
 	-- Set master 2's mana 
 	local master2 = hero.MasterUnit2
 	master2:SetMana(master2:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
@@ -679,7 +681,7 @@ function OnStrengthGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addStr()
 	hero:SetBaseStrength(hero:GetBaseStrength()+1) 
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -703,7 +705,7 @@ function OnAgilityGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addAgi()
 	hero:SetBaseAgility(hero:GetBaseAgility()+1) 
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -728,7 +730,7 @@ function OnIntelligenceGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addInt()
 	hero:SetBaseIntellect(hero:GetBaseIntellect()+1) 
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -752,7 +754,7 @@ function OnDamageGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addAtk()
 	local primaryStat = 0
 	local attr = hero:GetPrimaryAttribute() -- 0 strength / 1 agility / 2 intelligence
 	if attr == 0 then
@@ -792,7 +794,7 @@ function OnArmorGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addArmor()
 	hero:SetPhysicalArmorBaseValue(hero:GetPhysicalArmorBaseValue()+1.75) --actually this line is useless, appears to be dependent on scripts/npc/attributes.txt but I am too lazy to understand why
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -816,7 +818,7 @@ function OnHPRegenGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addHPregen()
 	hero:SetBaseHealthRegen(hero:GetBaseHealthRegen()+2.5) --down here attributes.txt is useless, and this line is working.
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -840,7 +842,7 @@ function OnManaRegenGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addMPregen()
 	hero:SetBaseManaRegen(hero:GetManaRegen()+1.3) --down here attributes.txt is useless, and this line is working.
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -864,7 +866,7 @@ function OnMovementSpeedGain(keys)
 			return
 		end
 	end 
-
+	hero.ServStat:addMS()
 	hero:SetBaseMoveSpeed(hero:GetBaseMoveSpeed()+5) 
 	hero:CalculateStatBonus()
 	-- Set master 1's mana 
@@ -881,6 +883,7 @@ function OnAvariceAcquired(keys)
 		return 
 	else 
 		hero.ShardAmount = hero.ShardAmount - 1
+		hero.ServStat:getS1()
 	end
 
 
@@ -920,6 +923,7 @@ function OnAMAcquired(keys)
 		return
 	else 
 		hero.ShardAmount = hero.ShardAmount - 1
+		hero.ServStat:getS2()
 	end
 
 	hero:AddItem(CreateItem("item_shard_of_anti_magic" , nil, nil)) 
@@ -938,6 +942,7 @@ function OnReplenishmentAcquired(keys)
 		return
 	else 
 		hero.ShardAmount = hero.ShardAmount - 1
+		hero.ServStat:getS3()
 	end
 	hero:AddItem(CreateItem("item_shard_of_replenishment" , nil, nil)) 
     local statTable = CreateTemporaryStatTable(hero)
@@ -956,6 +961,7 @@ function OnProsperityAcquired(keys)
 		return
 	else 
 		hero.ShardAmount = hero.ShardAmount - 1
+		hero.ServStat:getS4()
 	end
 
 	local master = hero.MasterUnit 

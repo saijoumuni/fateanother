@@ -287,10 +287,12 @@ end
 function WardFam(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
+	hero.ServStat:useWard()
 	local targetPoint = keys.target_points[1]
 	caster.ward = CreateUnitByName("ward_familiar", targetPoint, true, caster, caster, caster:GetTeamNumber())
 	caster.ward:AddNewModifier(caster, caster, "modifier_invisible", {})
@@ -326,11 +328,13 @@ end
 function ScoutFam(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
 	local pid = caster:GetPlayerID()
+	hero.ServStat:useFamiliar()
 	local scout = CreateUnitByName("scout_familiar", caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	scout:SetControllableByPlayer(pid, true)
 	keys.ability:ApplyDataDrivenModifier(caster, scout, "modifier_banished", {})
@@ -355,7 +359,8 @@ function BecomeWard(keys)
 		transform:RemoveSelf()
 		return
 	end
-
+	hero.ServStat:useWard()
+	hero.ServStat:trueWorth(800)
 
 	transform:AddNewModifier(hero, hero, "modifier_invisible", {})
 	transform:AddNewModifier(hero, hero, "modifier_item_ward_true_sight", {true_sight_range = 1250, duration = 60})
@@ -375,11 +380,14 @@ function SpiritLink(keys)
 	--print("Spirit Link Used")
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
+
 	local targets = keys.target_entities
+	hero.ServStat:useLink()
 	--local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 1000, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, FIND_CLOSEST, false)
 	local linkTargets = {}
 	caster:EmitSound("Hero_Warlock.FatalBonds" )
@@ -557,6 +565,7 @@ end
 function CScroll(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
@@ -571,7 +580,7 @@ function CScroll(keys)
 	if fire:IsFullyCastable() then
 		cdummy:CastAbilityOnTarget(keys.target, fire, pid)
 	end
-
+	hero.ServStat:useC()
 	caster:RemoveItem(keys.ability)
 
 	--[[Timers:CreateTimer(5.0, function()
@@ -605,10 +614,14 @@ end
 function BScroll(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
+
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
+
+	hero.ServStat:useB()
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_b_scroll", {})
 	caster.BShieldAmount = keys.ShieldAmount
 	caster:EmitSound("DOTA_Item.ArcaneBoots.Activate")
@@ -618,10 +631,14 @@ end
 function AScroll(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
+
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
+
+	hero.ServStat:useA()
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_a_scroll", {})
 	caster:EmitSound("Hero_Oracle.FatesEdict.Cast")
 end
@@ -630,11 +647,13 @@ end
 function SScroll(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
 	local target = keys.target
+	hero.ServStat:useS()
 	if IsSpellBlocked(keys.target) then return end
 
 	DoDamage(caster, target, 400, DAMAGE_TYPE_MAGICAL, 0, ability, false)
@@ -664,10 +683,12 @@ end
 function EXScroll(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
 	if caster:HasModifier("jump_pause_nosilence") then
 		RefundItem(caster, ability)
 		return
 	end
+	hero.ServStat:useEX()
 	local target = keys.target
 	if IsSpellBlocked(keys.target) then return end
 	local lightning = {

@@ -902,6 +902,12 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
     local MR = target:GetMagicalArmorValue() 
     dmg_flag = bit.bor(dmg_flag, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION)
 
+    if isLoop == false then
+        print("Before reductions", dmg)
+        source.ServStat:doDamageBeforeReduction(dmg)
+        target.ServStat:takeDamageBeforeReduction(dmg)
+    end
+
     if dmg_type == DAMAGE_TYPE_MAGICAL then
         -- if target has Sun's Embrace modifier, reduce damage by MR before calculation
         if target:HasModifier("modifier_suns_embrace_ally") then
@@ -1042,13 +1048,27 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
             end]]
             damageToAllies = damageToAllies/#target.linkTable * (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1) --damage/person is now 100/60/43.3/35/30 after instead of 100/50/33.3/25/20
             dmgtable.damage = dmgtable.damage/#target.linkTable * (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1)
-            print(damageToAllies, dmgtable.damage, (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1))
+            --print(damageToAllies, dmgtable.damage, (1 + 0.1 * #target.linkTable - (#target.linkTable == 1 and 1 or 0) * 0.1))
             -- Loop through linked heroes
             for i=1, #target.linkTable do
                 -- do ApplyDamage if it's primary target since the shield processing is already done
                 if target.linkTable[i] == target then
                     --print("Damage dealt to primary target : " .. dmgtable.damage .. " dealt by " .. dmgtable.attacker:GetName())
-                    ApplyDamage(dmgtable)                
+                    ApplyDamage(dmgtable)
+                    if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
+                        print("Actual damage:", dmgtable.damage*(1-MR))
+                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
+                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
+                    elseif dmgtable.damage_type == DAMAGE_TYPE_PHYSICAL then
+                        print("Actual damage:", dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                    else
+                        print("Actual damage:", dmgtable.damage)
+                        dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
+                        dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
+                    end
+
                 -- for other linked targets, we need DoDamage
                 else
                     if target.linkTable[i] ~= nil then 
@@ -1061,6 +1081,20 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
         else 
             dmgtable.victim = target
             ApplyDamage(dmgtable)
+            if dmgtable.damage_type == DAMAGE_TYPE_MAGICAL then
+                print("Actual damage:", dmgtable.damage*(1-MR))
+                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*(1-MR))
+                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*(1-MR))
+            elseif dmgtable.damage_type == DAMAGE_TYPE_PHYSICAL then
+                print("Actual damage:", dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage*GetPhysicalDamageReduction(dmgtable.victim:GetPhysicalArmorValue()))
+            else
+                print("Actual damage:", dmgtable.damage)
+                dmgtable.attacker.ServStat:doActualDamage(dmgtable.damage)
+                dmgtable.victim.ServStat:takeActualDamage(dmgtable.damage)
+            end
+
             --print(dmgtable.attacker:GetName() .. " dealt " .. dmgtable.damage .. " damage to " .. dmgtable.victim:GetName())
         end
         
