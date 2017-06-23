@@ -28,7 +28,16 @@ function CreateWind(keys)
 	ParticleManager:SetParticleControl( fxIndex, 3, caster:GetAbsOrigin() )
 	
 	caster.invisible_air_reach_target = false
-	caster.invisible_air_pos = caster:GetAbsOrigin()
+	--caster.invisible_air_pos = caster:GetAbsOrigin()
+
+	local dist = (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D()
+	
+	if dist > 250 then 
+		caster.invisible_air_pos = caster:GetAbsOrigin() + (target:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * 150
+	else
+		caster.invisible_air_pos = caster:GetAbsOrigin() + (target:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist * 0.6
+	end
+
 	
 	local invisAirCounter = 0
 	Timers:CreateTimer( function() 
@@ -62,7 +71,7 @@ function InvisibleAirPull(keys)
 	local target = keys.target
 	if IsSpellBlocked(target) -- Linken's
 		or target:IsMagicImmune() -- Magic immunity
-		or target:GetName() == "npc_dota_hero_bounty_hunter" and target.IsPFWAcquired -- Protection from Wind
+		--or target:GetName() == "npc_dota_hero_bounty_hunter" and target.IsPFWAcquired -- Protection from Wind
 	then
 		return
 	end
@@ -77,7 +86,7 @@ function InvisibleAirPull(keys)
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_invisible_air_target", {})
 
 
-	if target:GetName() == "npc_dota_hero_juggernaut" then keys.Damage = 0 end
+	--if target:GetName() == "npc_dota_hero_juggernaut" then keys.Damage = 0 end
 	DoDamage(caster, target , keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	if caster.bIsUpstreamAcquired then
 		caster:FindAbilityByName("saber_strike_air_upstream"):ApplyDataDrivenModifier(caster, caster, "modifier_strike_air_upstream_ready", {})
@@ -569,9 +578,9 @@ function StrikeAirPush(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	if (target:GetName() == "npc_dota_hero_bounty_hunter" and target.IsPFWAcquired) then return end
+	--if (target:GetName() == "npc_dota_hero_bounty_hunter" and target.IsPFWAcquired) then return end
 	local totalDamage = 650 + (keys.caster:FindAbilityByName("saber_caliburn"):GetLevel() + keys.caster:FindAbilityByName("saber_invisible_air"):GetLevel()) * 125
-	if target:GetName() == "npc_dota_hero_juggernaut" then totalDamage = 0 end
+	--if target:GetName() == "npc_dota_hero_juggernaut" then totalDamage = 0 end
 
 	DoDamage(keys.caster, keys.target, totalDamage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 	giveUnitDataDrivenModifier(keys.caster, keys.target, "pause_sealenabled", 0.5)
@@ -612,7 +621,7 @@ function OnUpstreamProc(keys)
 	local target = keys.target
 	local ability = keys.ability
 	if caster.UpstreamHitCooldown or caster.UpstreamProcCooldown then return end
-	if keys.target:GetName() == "npc_dota_hero_bounty_hunter" and keys.target.IsPFWAcquired then return end
+	--if keys.target:GetName() == "npc_dota_hero_bounty_hunter" and keys.target.IsPFWAcquired then return end
 	caster.UpstreamProcCooldown = true
 	Timers:CreateTimer(4.0, function()
 		caster.UpstreamProcCooldown = false
@@ -621,7 +630,7 @@ function OnUpstreamProc(keys)
 
 	-- apply knockup
 	local damage = caster:GetAttackDamage() * 1.3 + 150
-	if target:GetName() == "npc_dota_hero_juggernaut" then damage = 0 end
+	--if target:GetName() == "npc_dota_hero_juggernaut" then damage = 0 end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	ApplyAirborne(caster, target, 1.25)
 	local sound = RandomInt(1,2)
@@ -634,10 +643,10 @@ function OnUpstreamHit(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	if keys.target:GetName() == "npc_dota_hero_bounty_hunter" and keys.target.IsPFWAcquired then return end
+	--if keys.target:GetName() == "npc_dota_hero_bounty_hunter" and keys.target.IsPFWAcquired then return end
 	-- particle
 	local damage = caster:GetAttackDamage() * 1.3 + 150
-	if target:GetName() == "npc_dota_hero_juggernaut" then damage = 0 end
+	--if target:GetName() == "npc_dota_hero_juggernaut" then damage = 0 end
 	DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	ApplyAirborne(caster, target, 1.25)
 	caster:RemoveModifierByName("modifier_strike_air_upstream_ready")

@@ -1,6 +1,6 @@
 ServantStatistics = {cScroll = 0, bScroll = 0, aScroll = 0, sScroll = 0, exScroll = 0, attr1 = 0, attr2 = 0, attr3 = 0, attr4 = 0, attr5 = 0, shard1 = 0, shard2 = 0, shard3 =0, 
 shard4 = 0, damageDealt = 0, damageTaken = 0, damageTakenBR = 0, damageDealtBR = 0, ward = 0, familiar = 0, link = 0, goldWasted = 0, itemValue = 0, qseal = 0, wseal = 0, eseal = 0, rseal = 0, 
-kill = 0, tkill=0, death = 0, assist = 0, str = 0, agi = 0, int = 0, atk = 0, armor = 0, hpregen = 0, mpregen = 0, ms = 0, lvl = 1, round = 0, winGame = "Ongoing"}
+kill = 0, tkill=0, death = 0, assist = 0, str = 0, agi = 0, int = 0, atk = 0, armor = 0, hpregen = 0, mpregen = 0, ms = 0, lvl = 1, round = 0, winGame = "Ongoing", radiantWin = 0, direWin = 0}
 
 function ServantStatistics:initialise(hero)
   NameAndID = {heroName = PlayerResource:GetSelectedHeroName(hero:GetPlayerOwnerID()), playerName = PlayerResource:GetPlayerName(hero:GetPlayerOwnerID()), steamId = PlayerResource:GetSteamID(hero:GetPlayerOwnerID())}
@@ -179,23 +179,28 @@ function ServantStatistics:EndOfGame(winloss)
   self.winGame = winloss
 end
 
+function ServantStatistics:EndOfRound(radiant,dire)
+  self.radiantWin = radiant
+  self.direWin = dire
+end
+
 function ServantStatistics:printconsole()
   print("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
   print("Hero Name:", self.heroName)
   print("Player Name:", self.playerName)
   print("Steam ID:", self.steamId)
   print("Hero Level:                                      ", self.lvl)
-  print("Round Number, Won Game?:                         ", self.round, self.winGame)
-  print("K/D/A/TeamKill:                                  ", self.kill, self.death, self.assist, self.tkill)
-  print("Gold Spent / Value of Items / Gold Wasted:       ", self.itemValue + self.goldWasted, self.itemValue, self.goldWasted)
-  print("Actual Damage Dealt/Taken:                       ", self.damageDealt, self.damageTaken)
-  print("Before Reduction Damage Dealt/Taken:             ", self.damageDealtBR, self.damageTakenBR)
-  print("Q/W/E/R Seal:                                    ", self.qseal, self.wseal, self.eseal, self.rseal)
-  print("C/B/A/S/EX:                                      ", self.cScroll, self.bScroll, self.aScroll, self.sScroll, self.exScroll)
-  print("Ward/Familiar/Link:                              ", self.ward, self.familiar, self.link)
-  print("Str/Agi/Int/Atk/Armor/HPregen/MPregen/MS         ", self.str, self.agi, self.int, self.atk, self.armor, self.hpregen, self.mpregen, self.ms)
-  print("(W.I.P) Attributes taken:                        ", self.attr1, self.attr2, self.attr3, self.attr4, self.attr5)
-  print("Avarice/Anti-Magic/Replenishment/Prosperity:     ", self.shard1, self.shard2, self.shard3, self.shard4)
+  print("Round Number, GoodVsBad Score, Won Game?:        ", self.round.."\t\t"..self.radiantWin.."-"..self.direWin.."\t"..self.winGame)
+  print("K/D/A/TeamKill:                                  ", self.kill.."\t\t"..self.death.."\t\t"..self.assist.."\t\t"..self.tkill)
+  print("Gold Spent / Value of Items / Gold Wasted:       ", self.itemValue + self.goldWasted.."\t\t"..self.itemValue.."\t\t"..self.goldWasted)
+  print("Before Reduction Damage Dealt/Taken:             ", self.damageDealtBR.."\t\t"..self.damageTakenBR)
+  print("Actual Damage Dealt/Taken:                       ", self.damageDealt.."\t\t"..self.damageTaken)
+  print("Q/W/E/R Seal:                                    ", self.qseal.."\t\t"..self.wseal.."\t\t"..self.eseal.."\t\t"..self.rseal)
+  print("C/B/A/S/EX:                                      ", self.cScroll.."\t\t"..self.bScroll.."\t\t"..self.aScroll.."\t\t"..self.sScroll.."\t\t"..self.exScroll)
+  print("Ward/Familiar/Link:                              ", self.ward.."\t\t"..self.familiar.."\t\t"..self.link)
+  print("Str/Agi/Int/Atk/Armor/HPregen/MPregen/MS         ", self.str.."\t\t"..self.agi.."\t\t"..self.int.."\t\t"..self.atk.."\t\t"..self.armor.."\t\t"..self.hpregen.."\t\t"..self.mpregen.."\t\t"..self.ms)
+  print("(Work in Progress) Attributes taken:             ", self.attr1.."\t\t"..self.attr2.."\t\t"..self.attr3.."\t\t"..self.attr4.."\t\t"..self.attr5)
+  print("Avarice/Anti-Magic/Replenishment/Prosperity:     ", self.shard1.."\t\t"..self.shard2.."\t\t"..self.shard3.."\t\t"..self.shard4)
   print("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 end
 

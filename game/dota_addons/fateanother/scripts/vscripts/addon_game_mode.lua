@@ -2502,7 +2502,12 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
     mode:SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, self.nDireScore )
     mode:SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, self.nRadiantScore )
     self.nCurrentRound = self.nCurrentRound + 1
-
+    
+    self:LoopOverPlayers(function(player, playerID, playerHero)
+        local hero = playerHero
+        hero.ServStat:EndOfRound(self.nRadiantScore,self.nDireScore)
+    end)
+    
     -- check for win condition
     if self.nRadiantScore == VICTORY_CONDITION then
         self:LoopOverPlayers(function(player, playerID, playerHero)
