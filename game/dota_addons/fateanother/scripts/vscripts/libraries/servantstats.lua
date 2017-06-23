@@ -184,24 +184,32 @@ function ServantStatistics:EndOfRound(radiant,dire)
   self.direWin = dire
 end
 
+function SendChatToPanorama(string)
+    local table =
+    {
+        text = string
+    }
+    CustomGameEventManager:Send_ServerToAllClients( "player_chat_lua", table )
+end
+
 function ServantStatistics:printconsole()
-  print("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-  print("Hero Name:", self.heroName)
-  print("Player Name:", self.playerName)
-  print("Steam ID:", self.steamId)
-  print("Hero Level:                                      ", self.lvl)
-  print("Round Number, GoodVsBad Score, Won Game?:        ", self.round.."\t\t"..self.radiantWin.."-"..self.direWin.."\t"..self.winGame)
-  print("K/D/A/TeamKill:                                  ", self.kill.."\t\t"..self.death.."\t\t"..self.assist.."\t\t"..self.tkill)
-  print("Gold Spent / Value of Items / Gold Wasted:       ", self.itemValue + self.goldWasted.."\t\t"..self.itemValue.."\t\t"..self.goldWasted)
-  print("Before Reduction Damage Dealt/Taken:             ", self.damageDealtBR.."\t\t"..self.damageTakenBR)
-  print("Actual Damage Dealt/Taken:                       ", self.damageDealt.."\t\t"..self.damageTaken)
-  print("Q/W/E/R Seal:                                    ", self.qseal.."\t\t"..self.wseal.."\t\t"..self.eseal.."\t\t"..self.rseal)
-  print("C/B/A/S/EX:                                      ", self.cScroll.."\t\t"..self.bScroll.."\t\t"..self.aScroll.."\t\t"..self.sScroll.."\t\t"..self.exScroll)
-  print("Ward/Familiar/Link:                              ", self.ward.."\t\t"..self.familiar.."\t\t"..self.link)
-  print("Str/Agi/Int/Atk/Armor/HPregen/MPregen/MS         ", self.str.."\t\t"..self.agi.."\t\t"..self.int.."\t\t"..self.atk.."\t\t"..self.armor.."\t\t"..self.hpregen.."\t\t"..self.mpregen.."\t\t"..self.ms)
-  print("(Work in Progress) Attributes taken:             ", self.attr1.."\t\t"..self.attr2.."\t\t"..self.attr3.."\t\t"..self.attr4.."\t\t"..self.attr5)
-  print("Avarice/Anti-Magic/Replenishment/Prosperity:     ", self.shard1.."\t\t"..self.shard2.."\t\t"..self.shard3.."\t\t"..self.shard4)
-  print("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+  SendChatToPanorama("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+  SendChatToPanorama("Hero Name: "..tostring(self.heroName))
+  SendChatToPanorama("Player Name: "..tostring(self.playerName))
+  SendChatToPanorama("Steam ID: "..tostring(self.steamId))
+  SendChatToPanorama("Hero Level:                                      "..tostring(self.lvl))
+  SendChatToPanorama("Round Number, GoodVsBad Score, Won Game?:        "..tostring(self.round.."\t"..self.radiantWin.."-"..self.direWin.." "..self.winGame))
+  SendChatToPanorama("K/D/A/TeamKill:                                  "..tostring(self.kill.."\t"..self.death.."\t"..self.assist.."\t"..self.tkill))
+  SendChatToPanorama("Gold Spent / Value of Items / Gold Wasted:       "..tostring(self.itemValue + self.goldWasted.."\t"..self.itemValue.."\t"..self.goldWasted))
+  SendChatToPanorama("Before Reduction Damage Dealt/Taken:             "..tostring(self.damageDealtBR.."\t"..self.damageTakenBR))
+  SendChatToPanorama("Actual Damage Dealt/Taken:                       "..tostring(self.damageDealt.."\t"..self.damageTaken))
+  SendChatToPanorama("Q/W/E/R Seal:                                    "..tostring(self.qseal.."\t"..self.wseal.."\t"..self.eseal.."\t"..self.rseal))
+  SendChatToPanorama("C/B/A/S/EX:                                      "..tostring(self.cScroll.."\t"..self.bScroll.."\t"..self.aScroll.."\t"..self.sScroll.."\t"..self.exScroll))
+  SendChatToPanorama("Ward/Familiar/Link:                              "..tostring(self.ward.."\t"..self.familiar.."\t"..self.link))
+  SendChatToPanorama("Str/Agi/Int/Atk/Armor/HPregen/MPregen/MS         "..tostring(self.str.."\t"..self.agi.."\t"..self.int.."\t"..self.atk.."\t"..self.armor.."\t"..self.hpregen.."\t"..self.mpregen.."\t"..self.ms))
+  SendChatToPanorama("(Work in Progress) Attributes taken:             "..tostring(self.attr1.."\t"..self.attr2.."\t"..self.attr3.."\t"..self.attr4.."\t"..self.attr5))
+  SendChatToPanorama("Avarice/Anti-Magic/Replenishment/Prosperity:     "..tostring(self.shard1.."\t"..self.shard2.."\t"..self.shard3.."\t"..self.shard4))
+  SendChatToPanorama("------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 end
 
 -- local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
