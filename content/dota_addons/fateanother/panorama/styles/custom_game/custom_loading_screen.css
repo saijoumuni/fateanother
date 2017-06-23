@@ -15,7 +15,7 @@
 {
   horizontal-align: left;
   vertical-align: bottom;
-  margin-bottom: 150px;
+  margin-bottom: 250px;
   margin-left: 100px;
   flow-children: right;
 }
@@ -24,11 +24,29 @@
 {
   margin-bottom: -15px;
   vertical-align: center;
-  text-transform: uppercase;
-  font-size: 80px;
-  color: #000000;
-  text-shadow: 5px 5px 5px #cccccc, -5px -5px -5px #cccccc; 
+  font-size: 60px;
+  color: #cccccc;
+  text-shadow: 5px 5px 5px #000000, -5px -5px -5px #cccccc; 
 }
+
+#Text
+{
+  horizontal-align: left;
+  vertical-align: bottom;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  flow-children: right;
+}
+
+
+#MoreText
+{
+  margin-bottom: -15px;
+  vertical-align: center;
+  font-size: 30px;
+  color: #cccccc;
+}
+
 
 .SeqImg
 {
