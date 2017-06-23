@@ -904,9 +904,24 @@ function DoDamage(source, target , dmg, dmg_type, dmg_flag, abil, isLoop)
 
     -- Records skill damage PRE-REDUCTION. For the rest, refer to OnHeroTakeDamage() below.
     if isLoop == false then
+        if not source:IsHero() then --Account for neutral attacker
+            if IsValidEntity(source:GetPlayerOwner()) then
+                sourceHero = source:GetPlayerOwner():GetAssignedHero()
+            end
+        else
+            sourceHero = source
+        end
+
+        if not target:IsHero() then --Account for neutral target
+            if IsValidEntity(target:GetPlayerOwner()) then
+                targetHero = target:GetPlayerOwner():GetAssignedHero()
+            end
+        else
+            targetHero = target
+        end
         --print("Before reductions", dmg)
-        source.ServStat:doDamageBeforeReduction(dmg)
-        target.ServStat:takeDamageBeforeReduction(dmg)
+        sourceHero.ServStat:doDamageBeforeReduction(dmg)
+        targetHero.ServStat:takeDamageBeforeReduction(dmg)
     end
     -- END
 
@@ -1687,12 +1702,21 @@ function OnHeroTakeDamage(keys)
     local hero = keys.caster:GetPlayerOwner():GetAssignedHero()
     local attacker = keys.attacker
     local damageTaken = keys.DamageTaken
+
+    if not attacker:IsHero() then --Account neutral attackers
+        if IsValidEntity(attacker:GetPlayerOwner()) then
+            attackerHero = attacker:GetPlayerOwner():GetAssignedHero()
+        end
+    else
+        attackerHero = attacker
+    end
+
     if attacker:GetAttackTarget() == hero then
         --print("Right click before armor reductions", damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
-        attacker.ServStat:doDamageBeforeReduction(damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
+        attackerHero.ServStat:doDamageBeforeReduction(damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
         hero.ServStat:takeDamageBeforeReduction(damageTaken * 1/(1-GetPhysicalDamageReduction(hero:GetPhysicalArmorValue())))
     end
     --print("Actual damage from KV:", damageTaken)
-    attacker.ServStat:doActualDamage(damageTaken)
+    attackerHero.ServStat:doActualDamage(damageTaken)
     hero.ServStat:takeActualDamage(damageTaken)
 end
