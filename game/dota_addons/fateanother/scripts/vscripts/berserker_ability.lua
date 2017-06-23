@@ -622,6 +622,8 @@ function OnReincarnationDamageTaken(keys)
 		GainReincarnationRegenStack(caster, ability)
 	end
 
+	if caster.IsGodHandAcquired ~= true then return end -- To prevent reincanationdamagetaken from incrementing when GH is not taken.
+
 	if caster:HasModifier("modifier_berserk_self_buff") then 
 		caster.ReincarnationDamageTaken = caster.ReincarnationDamageTaken+damageTaken*3
 	else
