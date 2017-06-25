@@ -21,9 +21,9 @@ function OnCameraDistSubmitted()
 {
     var panel = $("#FateConfigCameraValue");
     var number = parseFloat(panel.text);
-    if (number > 1600)
+    if (number > 1900)
     {
-        number = 1600;
+        number = 1900;
     }
     GameUI.SetCameraDistance(number);
     panel.text = number.toString();

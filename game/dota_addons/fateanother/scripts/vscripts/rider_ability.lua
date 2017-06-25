@@ -357,7 +357,7 @@ function OnBelleStart(keys)
             , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 		for k,v in pairs(targets) do
 	        DoDamage(caster, v, keys.Damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-	        v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 2.0})
+	        v:AddNewModifier(caster, v, "modifier_stunned", {Duration = keys.StunDuration})
 	    end
 
 	    ScreenShake(caster:GetOrigin(), 7, 1.0, 2, 2000, 0, true)

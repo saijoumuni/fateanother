@@ -3276,7 +3276,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/saber_alter_vortigern"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
-		"AnimationPlaybackRate" 		"1.5"
+		"AnimationPlaybackRate" 		"0.2"
 		
 		"precache"
 		{
@@ -4349,6 +4349,7 @@
 				"Target"		"POINT"
 				"Radius"		"%radius"
 				"Damage"		"%damage"
+				"StunDuration"	"%stun_duration"
 			}
 			
 		}
@@ -6109,7 +6110,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/berserker_5th_fissure_strike"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
-		"AnimationPlaybackRate" 		"1.0"
+		"AnimationPlaybackRate" 		"2.0"
 		
 		"precache"
 		{
@@ -13159,7 +13160,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/lancelot_caliburn"
 		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK" // Change the animation from "ACT_DOTA_CAST_ABILITY_1" to match the timing of the ability
-		"AnimationPlaybackRate" 		"1.0"
+		"AnimationPlaybackRate" 		"1.5"
 		"AOERadius"						"%radius"
 		"precache"
 		{
@@ -29351,7 +29352,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"stun_duration"		"0.15"
+				"stun_duration"		"0"
 			}
 			"05"
 			{
@@ -29474,7 +29475,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"cast_time_reduction"		"12 19 26 33 40"
+				"cast_time_reduction"		"15 20 25 30 35"
 			}
 			"04"
 			{
@@ -29586,17 +29587,17 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"aoe"				"450"
+				"aoe"				"650"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"arrow_aoe"			"200"
+				"arrow_aoe"			"280"
 			}
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"arrows"			"30 35 40 45 50"
+				"arrows"			"32 39 46 53 60"
 			}
 			"05"
 			{
@@ -29806,7 +29807,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"10"
+		"AbilityManaCost"				"13"
 
 		"precache"
 		{

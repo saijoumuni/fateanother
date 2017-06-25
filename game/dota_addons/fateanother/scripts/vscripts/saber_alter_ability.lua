@@ -202,7 +202,7 @@ function OnVortigernStart(keys)
 		destination = caster:GetForwardVector() + caster:GetAbsOrigin()
 	end
 	
-	giveUnitDataDrivenModifier(keys.caster, keys.caster, "pause_sealdisabled", 0.8)
+	giveUnitDataDrivenModifier(keys.caster, keys.caster, "pause_sealdisabled", 0.98) -- Beam interval * 9 + 0.44
 	EmitGlobalSound("Saber_Alter.Vortigern")
 
 	local vortigernBeam =
@@ -274,7 +274,7 @@ function OnVortigernStart(keys)
 				end
 			)
 			
-			return 0.04
+			return 0.06
 		end
 	)
 end
@@ -292,7 +292,7 @@ function OnVortigernHit(keys)
 	end
 	if target.IsVortigernHit ~= true then
 		target.IsVortigernHit = true
-		Timers:CreateTimer(0.36, function() target.IsVortigernHit = false return end)
+		Timers:CreateTimer(0.54, function() target.IsVortigernHit = false return end)
 		DoDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 		target:AddNewModifier(caster, caster, "modifier_stunned", {Duration = keys.StunDuration})
 	end
