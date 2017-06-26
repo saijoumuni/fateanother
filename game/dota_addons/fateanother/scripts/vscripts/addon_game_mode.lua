@@ -697,12 +697,6 @@ function FateGameMode:OnPlayerChat(keys)
         end
     end
 
-    local rfcoord = string.match(text, "^-rfar (%d+)")
-
-    if rfcoord then
-        Convars:SetInt("r_farz", rfcoord)
-    end
-
     -- Asks team for gold
     if text == "-goldpls" then
         --GameRules:SendCustomMessage("<font color='#58ACFA'>" .. hero.name .. "</font> is requesting gold. Type <font color='#58ACFA'>-" .. plyID .. " (gold amount) </font>to help him out!" , hero:GetTeamNumber(), hero:GetPlayerOwnerID())
@@ -841,8 +835,8 @@ function FateGameMode:OnGameRulesStateChange(keys)
         self.bSeenWaitForPlayers = true
     elseif newState == DOTA_GAMERULES_STATE_INIT then 
     elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-	--SendToConsole("r_farz 5000")
-    Convars:SetInt("r_farz", 3300)
+	SendToConsole("r_farz 5000")
+    --Convars:SetInt("r_farz", 3300)
         Timers:CreateTimer(2, function()
             FateGameMode:OnAllPlayersLoaded()
         end)
