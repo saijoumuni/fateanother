@@ -255,10 +255,10 @@ function OnECStart(keys)
 		end
 	end
 
-	-- find jellyfishes and prepare them for secondary impact
+	-- find jellyfishes AND tentacles and prepare them for secondary impact
 	local allytargets = FindUnitsInRadius(caster:GetTeam(), targetPoint, nil, keys.Radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 	for k,v in pairs(allytargets) do
-		if v:GetUnitName() == "gille_oceanic_demon" then
+		if v:GetUnitName() == "gille_oceanic_demon" or v:GetUnitName() == "gille_tentacle_of_destruction" then
 			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_exquisite_cadaver_demon", {}) 
 		end
 	end
@@ -305,7 +305,7 @@ function ECExplode(keys, origin, bIsCorpse)
 	caster:EmitSound("Hero_ShadowDemon.Soul_Catcher.Cast")
 end
 
-function OnECDemonExplode(keys)
+function OnECDemonExplode(keys) --Now Tentacles explode too.
 	local demon = keys.target
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()

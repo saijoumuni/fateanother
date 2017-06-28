@@ -271,7 +271,7 @@ function OnDeargStart(keys)
 	DoDamage(caster, target, damage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false)
 	--print("Gae Dearg dealt " .. damage .. " damage to target")
 	if target:HasModifier("modifier_mark_of_mortality") then
-		local detonateDamage = target:GetMaxHealth() * 15/100
+		local detonateDamage = target:GetMaxHealth() * keys.ability:GetSpecialValueFor("mortality_pct")/100
 		DoDamage(caster, target, detonateDamage, DAMAGE_TYPE_PURE, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, keys.ability, false) 
 		target:RemoveModifierByName("modifier_mark_of_mortality")
 	end

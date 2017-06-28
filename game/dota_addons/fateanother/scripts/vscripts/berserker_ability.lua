@@ -462,7 +462,9 @@ function OnNineLanded(caster, ability)
 						DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 					end
 					giveUnitDataDrivenModifier(caster, v, "stunned", 0.5)
-					giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
+					if caster:GetName() ~= "npc_dota_hero_ember_spirit" then
+						giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
+					end
 					-- push enemies back
 					local pushback = Physics:Unit(v)
 					v:PreventDI()
@@ -507,7 +509,10 @@ function OnNineLanded(caster, ability)
 						DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 					end
 					giveUnitDataDrivenModifier(caster, v, "stunned", 0.5)
-					giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
+					if caster:GetName() ~= "npc_dota_hero_ember_spirit" then
+						print("9 revoke")
+						giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
+					end
 				end
 
 				ParticleManager:SetParticleControl(particle, 2, Vector(1,1,radius))

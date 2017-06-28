@@ -107,7 +107,8 @@ goesthruB = {"saber_avalon",
             "gilgamesh_gate_of_babylon",
             "false_assassin_quickdraw",
             "archer_5th_overedge",
-            "avenger_verg_avesta"
+            "avenger_verg_avesta",
+            "lancer_5th_wesen_gae_bolg"
 }
 
 cleansable = {
