@@ -835,7 +835,7 @@ function FateGameMode:OnGameRulesStateChange(keys)
         self.bSeenWaitForPlayers = true
     elseif newState == DOTA_GAMERULES_STATE_INIT then 
     elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-	SendToConsole("r_farz 5000")
+	--SendToConsole("r_farz 5000")
     --Convars:SetInt("r_farz", 3300)
         Timers:CreateTimer(2, function()
             FateGameMode:OnAllPlayersLoaded()
