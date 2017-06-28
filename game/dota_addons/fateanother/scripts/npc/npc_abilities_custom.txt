@@ -3276,7 +3276,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/saber_alter_vortigern"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
-		"AnimationPlaybackRate" 		"0.2"
+		"AnimationPlaybackRate" 		"1.5"
 		
 		"precache"
 		{
