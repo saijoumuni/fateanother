@@ -2705,7 +2705,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/saber_alter_unleashed_ferocity"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
-		"AnimationPlaybackRate" 		"0.5"
+		"AnimationPlaybackRate" 		"1.5"
 		"AOERadius"						"%radius"
 		
 		"precache"
@@ -3045,7 +3045,7 @@
 		"AbilityTextureName"			"custom/saber_alter_mana_burst"
 		"AOERadius"						"%radius"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
-		"AnimationPlaybackRate" 		"0.5"
+		"AnimationPlaybackRate" 		"1.5"
 		"precache"
 		{
 			"particle"		"particles/items2_fx/skadi_projectile.vpcf"
@@ -9957,7 +9957,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/gilgamesh_enkidu"
-		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_4"
 		"AnimationPlaybackRate" 		"1.0"
 
 
@@ -29613,6 +29613,16 @@
 			{
 				"var_type"			"FIELD_FLOAT"
 				"cast_point"				"0.8"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"slow"				"50"
+			}
+			"08"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"slow_duration"				"0.4"
 			}
 		}
 	}

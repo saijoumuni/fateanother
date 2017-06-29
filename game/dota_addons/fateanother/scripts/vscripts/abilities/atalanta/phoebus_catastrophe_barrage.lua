@@ -1,5 +1,6 @@
 atalanta_phoebus_catastrophe_barrage = class({})
 LinkLuaModifier("modifier_phoebus_catastrophe_cooldown", "abilities/atalanta/modifier_phoebus_catastrophe_cooldown", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_barrage_slow", "abilities/atalanta/modifier_barrage_slow", LUA_MODIFIER_MOTION_NONE)
 
 require("abilities/atalanta/phoebus_catastrophe")
 
@@ -49,7 +50,7 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
     local fixDuration = 3
     local interval = fixDuration / arrows
 
-    AddFOWViewer(caster:GetTeamNumber(), position, aoe, 2 + 0.2 + arrows * interval, false)
+    AddFOWViewer(caster:GetTeamNumber(), position, aoe, 3 + fixDuration, false)
 
     self:ShootAirArrows()
 
@@ -77,7 +78,8 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
                     Delay = 0.2,
                     DontUseArrow = true,
                     NoShock = true,
-		    DontCountArrow = true
+		    DontCountArrow = true,
+                    Slow = 0.4
                 })
             end)
         end

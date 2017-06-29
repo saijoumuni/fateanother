@@ -121,7 +121,7 @@ function atalanta_crossing_arcadia:ShootAoEArrow(keys)
         bProvidesVision = false,
         iMoveSpeed = velocity:Length(),
         iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION,
-	ExtraData = {keys.AoE or 0, keys.Stun or 0}
+	ExtraData = {keys.AoE or 0, keys.Slow or 0}
     }
     ProjectileManager:CreateTrackingProjectile(projectile)
 
@@ -144,7 +144,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
     local archer = Physics:Unit(caster)
 
     local duration = self:GetSpecialValueFor("jump_duration")
-    local stunDuration = self:GetSpecialValueFor("stun_duration")
+    --local stunDuration = self:GetSpecialValueFor("stun_duration")
     local aoe = self:GetAOERadius()
     local effect = "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
     local facing = caster:GetForwardVector() + Vector(0, 0, -2)
@@ -187,7 +187,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                Stun = stunDuration,
+                Stun = 0,
             })
         end)
 
@@ -201,7 +201,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                Stun = stunDuration,
+                Stun = 0,
                 DontUseArrow = true
             })
         end)
@@ -216,7 +216,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                Stun = stunDuration,
+                Stun = 0,
                 DontUseArrow = true
             })
         end)
@@ -235,7 +235,7 @@ function atalanta_crossing_arcadia:OnSpellStart()
                 Delay = 0.2,
                 Effect = effect,
                 Facing = facing,
-                Stun = stunDuration,
+                Stun = 0,
             })
         end)
         Timers:CreateTimer(duration, function()

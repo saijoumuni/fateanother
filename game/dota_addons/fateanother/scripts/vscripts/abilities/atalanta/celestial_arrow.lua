@@ -134,7 +134,7 @@ function atalanta_celestial_arrow:OnProjectileHit_ExtraData(target, location, da
     caster:ArrowHit(target, data["1"])
 end
 
-function atalanta_celestial_arrow:ArrowHit(target, stun)
+function atalanta_celestial_arrow:ArrowHit(target, slow)
     local caster = self:GetCaster()
 
     caster:AddHuntStack(target, 1)
@@ -156,8 +156,8 @@ function atalanta_celestial_arrow:ArrowHit(target, stun)
 
     DoDamage(caster, target, damage + huntDamage, DAMAGE_TYPE_PHYSICAL, 0, self, false)
 
-    if stun and stun > 0 then
-        target:AddNewModifier(caster, target, "modifier_stunned", {Duration = stun})
+    if slow and slow > 0 then
+        target:AddNewModifier(caster, target, "modifier_barrage_slow", {Duration = slow})
     end
 end
 
