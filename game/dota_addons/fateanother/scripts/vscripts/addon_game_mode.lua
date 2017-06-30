@@ -244,6 +244,8 @@ function Precache( context )
     PrecacheResource( "soundfile", "soundevents/soundevents_conquest.vsndevts", context )
 
     PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts", context)
+
+    PrecacheResource( "soundfile", "soundevents/voscripts/game_sounds_vo_drowranger.vsndevts", context )
  
     -- Items
     PrecacheItemByNameSync("item_apply_modifiers", context)

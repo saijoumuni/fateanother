@@ -496,12 +496,13 @@ function OnZabHit(keys)
 		keys.Damage = keys.Damage + 400 
 		caster.IsShadowStrikeActivated = false
 	end
-	DoDamage(keys.caster, keys.target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+
 	caster:Heal(keys.Damage/2, caster)
 	local targetLeftoverMana = math.max(target:GetMana()-keys.Damage/2,0)
 	local manaSap = target:GetMana() - targetLeftoverMana
 	caster:SetMana(caster:GetMana()+manaSap)
 	target:SetMana(targetLeftoverMana)
+	DoDamage(keys.caster, keys.target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 end
 
 AmbushUsed = false
