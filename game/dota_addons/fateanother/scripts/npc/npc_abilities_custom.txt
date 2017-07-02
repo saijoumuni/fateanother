@@ -1166,7 +1166,7 @@
 			}
 			"04"
 			{
-				"var_type"				"FIELD_INTEGER"
+				"var_type"				"FIELD_FLOAT"
 				"cast_time"				"1.75"
 			}
 		}
@@ -29591,6 +29591,7 @@
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_rings_gold.vpcf"
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_d_gold.vpcf"
 			"particle"					"particles/custom/screen_green_splash.vpcf"
+			"particle"					"particles/custom/atalanta/atalanta_crosshair.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 		}

@@ -998,6 +998,19 @@ function OnUBWBarrageConfineStart(keys)
 	local delay = keys.Delay
 	local ply = caster:GetPlayerOwner()
 
+	Timers:CreateTimer(delay-0.2, function() --this is for playing the particle
+		EmitGlobalSound("FA.Quickdraw")
+		for i=1,8 do
+			local swoosh = ParticleManager:CreateParticleForTeam("particles/custom/archer/ubw/confine_ring_trail.vpcf", PATTACH_CUSTOMORIGIN, nil, caster:GetTeamNumber())
+	   		ParticleManager:SetParticleControl( swoosh, 0, Vector(targetPoint.x + math.cos(i*0.8) * (radius-30), targetPoint.y + math.sin(i*0.8) * (radius-30), targetPoint.z + 400))
+	    	--ParticleManager:SetParticleControl( caster.barrageMarker, 1, Vector(0,0,300))
+	    	Timers:CreateTimer( 0.2, function()
+	        	ParticleManager:DestroyParticle( swoosh, false )
+	        	ParticleManager:ReleaseParticleIndex( swoosh )
+	    	end)
+		end
+	end)
+
 	Timers:CreateTimer(delay, function()
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_sword_barrage_confine", {})
 		for i=1,8 do
@@ -1036,7 +1049,7 @@ function OnUBWBarrageConfineStart(keys)
 		for k,v in pairs(targets) do
 	        DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
 	        v:AddNewModifier(caster, v, "modifier_stunned", {duration = 0.1})
-	        v:EmitSound("FA.Quickdraw")
+	        --v:EmitSound("FA.Quickdraw")
 	        if caster.IsProjectionImproved then 
 				giveUnitDataDrivenModifier(caster, v, "rb_sealdisabled", 3.0)
 				giveUnitDataDrivenModifier(caster, v, "locked",3.0)

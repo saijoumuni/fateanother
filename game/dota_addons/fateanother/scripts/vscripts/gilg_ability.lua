@@ -276,7 +276,7 @@ function OnGOBThink(keys)
 		else 
 			projectile.vSpawnOrigin = origin + rightvec*random1
 		end
-		projectile.vVelocity = frontward * 1200
+		projectile.vVelocity = frontward * 3000
 		ProjectileManager:CreateLinearProjectile(projectile)
 
 		ParticleManager:SetParticleControlEnt( caster.LatestGOBParticle, 0, caster.LatestGOB, PATTACH_ABSORIGIN, nil, caster.LatestGOB:GetAbsOrigin(), false )
