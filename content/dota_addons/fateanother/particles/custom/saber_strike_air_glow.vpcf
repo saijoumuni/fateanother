@@ -76,8 +76,8 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_fRadiusMin = 450.0
-			m_fRadiusMax = 450.0
+			m_fRadiusMin = 400.0
+			m_fRadiusMax = 400.0
 			m_vecDistanceBias = [ 1.0, 1.0, 0.0 ]
 			m_vecDistanceBiasAbs = [ 1.0, 0.0, 0.0 ]
 			m_nControlPointNumber = 3

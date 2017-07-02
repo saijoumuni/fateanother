@@ -1134,7 +1134,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"1200"
+		"AbilityCastRange"				"1600"
 		"AbilityCastPoint"				"0.3"
 
 		// Time		
@@ -1157,7 +1157,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"length"				"1200"
+				"length"				"1600"
 			}
 			"03"
 			{
@@ -29591,7 +29591,7 @@
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_rings_gold.vpcf"
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_d_gold.vpcf"
 			"particle"					"particles/custom/screen_green_splash.vpcf"
-			"particle"					"particles/custom/atalanta/atalanta_crosshair.vpcf"
+			"particle"					"particles/custom/atalanta/atalanta_barrage_marker.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 		}
@@ -29664,6 +29664,7 @@
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_d_gold.vpcf"
 			"particle"					"particles/custom/archer/archer_broken_phantasm/archer_broken_phantasm_crosshead.vpcf"
 			"particle"					"particles/custom/screen_green_splash.vpcf"
+			"particle"					"particles/custom/atalanta/atalanta_crosshair.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 		}
