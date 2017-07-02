@@ -65,6 +65,10 @@ function atalanta_phoebus_catastrophe_snipe:OnSpellStart()
     end)
 
     self:ShootAirArrows()
+    caster.snipeParticle = ParticleManager:CreateParticleForTeam("particles/custom/archer/archer_broken_phantasm/archer_broken_phantasm_crosshead.vpcf", PATTACH_OVERHEAD_FOLLOW, target, caster:GetTeamNumber())
+
+    ParticleManager:SetParticleControl( caster.snipeParticle, 0, target:GetAbsOrigin() + Vector(0,0,100)) 
+    ParticleManager:SetParticleControl( caster.snipeParticle, 1, target:GetAbsOrigin() + Vector(0,0,100)) 
 
     Timers:CreateTimer(2, function()
         local screenFx = ParticleManager:CreateParticle("particles/custom/screen_green_splash.vpcf", PATTACH_EYES_FOLLOW, caster)
@@ -84,7 +88,7 @@ function atalanta_phoebus_catastrophe_snipe:OnSpellStart()
                 local sameRealm = IsInSameRealm(target:GetOrigin(), position)
                 EmitGlobalSound("Ability.Powershot.Alt")
                 caster:ShootArrow({
-                    Origin = sourceLocation,
+                    Origin = sourceLocation+RandomVector(200),
                     Target = sameRealm and target or nil,
                     Position = (not sameRealm) and position or nil,
                     AoE = arrowAoE,
@@ -99,6 +103,7 @@ function atalanta_phoebus_catastrophe_snipe:OnSpellStart()
 
         Timers:CreateTimer(0.2 + 0.1 * arrows, function()
             ParticleManager:DestroyParticle(screenFx, false)
+            ParticleManager:DestroyParticle(caster.snipeParticle, true)
 
         dummy:RemoveSelf()
         end)

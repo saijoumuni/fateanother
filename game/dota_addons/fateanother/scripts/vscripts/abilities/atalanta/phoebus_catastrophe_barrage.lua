@@ -54,6 +54,14 @@ function atalanta_phoebus_catastrophe_barrage:OnSpellStart()
 
     self:ShootAirArrows()
 
+    caster.barrageMarker = ParticleManager:CreateParticleForTeam("particles/units/heroes/hero_gyrocopter/gyro_calldown_marker.vpcf", PATTACH_CUSTOMORIGIN, nil, caster:GetTeamNumber())
+    ParticleManager:SetParticleControl( caster.barrageMarker, 0, position)
+    ParticleManager:SetParticleControl( caster.barrageMarker, 1, Vector(300, 300, 300))
+    Timers:CreateTimer( 5, function()
+        ParticleManager:DestroyParticle( caster.barrageMarker, false )
+        ParticleManager:ReleaseParticleIndex( caster.barrageMarker )
+    end)
+
     Timers:CreateTimer(self:GetSpecialValueFor("delay")-0.4, function()
         --local screenFx = ParticleManager:CreateParticle("particles/custom/screen_green_splash.vpcf", PATTACH_EYES_FOLLOW, caster)
 

@@ -993,28 +993,56 @@ end
 function OnUBWBarrageConfineStart(keys)
 	local caster = keys.caster
 	local ability = keys.ability
-	local target = keys.target
+	local targetPoint = keys.target_points[1]
+	local radius = keys.Radius
+	local delay = keys.Delay
 	local ply = caster:GetPlayerOwner()
-	if caster.IsProjectionImproved then 
-		giveUnitDataDrivenModifier(caster, keys.target, "rb_sealdisabled", 3.0)
-		giveUnitDataDrivenModifier(caster, target, "locked",3.0)
-	end
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_sword_barrage_confine", {})
-	target:AddNewModifier(caster, target, "modifier_stunned", {duration = 0.1})
-	DoDamage(caster, target, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-	for i=1,8 do
-		local confineDummy = CreateUnitByName("ubw_sword_confine_dummy", Vector(target:GetAbsOrigin().x + math.cos(i*0.8) * 150, target:GetAbsOrigin().y + math.sin(i*0.8) * 150, -200)  , false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
-		confineDummy:FindAbilityByName("dummy_visible_unit_passive_no_fly"):SetLevel(1)
-		confineDummy:SetAbsOrigin(confineDummy:GetAbsOrigin() - Vector(0,0,-200)) 
-		confineDummy:SetForwardVector(Vector(0,0,-1))
-		Timers:CreateTimer(keys.TrapDuration, function()
-			if confineDummy:IsNull() == false then
-				confineDummy:RemoveSelf()
+
+	Timers:CreateTimer(delay, function()
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_sword_barrage_confine", {})
+		for i=1,8 do
+			local confineDummy = CreateUnitByName("ubw_sword_confine_dummy", Vector(targetPoint.x + math.cos(i*0.8) * (radius-30), targetPoint.y + math.sin(i*0.8) * (radius-30), 5000)  , false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
+			confineDummy:FindAbilityByName("dummy_visible_unit_passive_no_fly"):SetLevel(1)
+			confineDummy:SetForwardVector(Vector(0,0,-1))
+			
+			--[[local swordDummy = Physics:Unit(confineDummy)
+		    confineDummy:PreventDI()
+		    confineDummy:SetPhysicsFriction(0)
+		    confineDummy:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+		    confineDummy:FollowNavMesh(false)	
+		    confineDummy:SetAutoUnstuck(false)
+		    confineDummy:SetPhysicsVelocity(Vector(0,0,-3000))
+
+
+			Timers:CreateTimer({
+				endTime = 1,
+				callback = function()
+				confineDummy:PreventDI(false)
+				confineDummy:SetPhysicsVelocity(Vector(0,0,0))
+				confineDummy:SetAbsOrigin(confineDummy:GetAbsOrigin() - Vector(0,0,-200)) 
+			end})]]
+
+
+
+			confineDummy:SetAbsOrigin(confineDummy:GetAbsOrigin() - Vector(0,0,-200)) 
+			Timers:CreateTimer(keys.TrapDuration, function()
+				if confineDummy:IsNull() == false then
+					confineDummy:RemoveSelf()
+				end
+			end)
+		end
+		FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
+		local targets = FindUnitsInRadius(caster:GetTeam(), targetPoint, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+		for k,v in pairs(targets) do
+	        DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+	        v:AddNewModifier(caster, v, "modifier_stunned", {duration = 0.1})
+	        v:EmitSound("FA.Quickdraw")
+	        if caster.IsProjectionImproved then 
+				giveUnitDataDrivenModifier(caster, v, "rb_sealdisabled", 3.0)
+				giveUnitDataDrivenModifier(caster, v, "locked",3.0)
 			end
-		end)
-	end
-	FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
-	target:EmitSound("FA.Quickdraw")
+	    end
+	end)
 end
 
 function OnHruntCast(keys)

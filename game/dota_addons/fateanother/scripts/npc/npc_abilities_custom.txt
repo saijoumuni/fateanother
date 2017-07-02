@@ -2269,7 +2269,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"90.0"
+		"AbilityCooldown"				"100.0"
 
 
 		// Cost
@@ -2609,12 +2609,12 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"gae_bolg_ad_ratio"			"2.0"
+				"gae_bolg_ad_ratio"			"1.5"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"wesen_gae_bolg_ad_ratio"			"3.0"
+				"wesen_gae_bolg_ad_ratio"			"1.5"
 			}
 		}
 		
@@ -5338,15 +5338,15 @@
 		"MaxLevel"						"5"
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		//"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
 		"AbilityTextureName"			"custom/archer_5th_sword_barrage_confine"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
 		"AnimationPlaybackRate" 		"2.0"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"1500"
-		"AbilityCastRangeBuffer"		"0"
+		//"AbilityCastRangeBuffer"		"0"
 		"AbilityCooldown"				"9.0"
 		"AbilityManaCost"				"40 55 70 85 100"
 		
@@ -5368,6 +5368,16 @@
 				"var_type"				"FIELD_FLOAT"
 				"trap_duration"			"3.0"
 			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"150"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"delay"					"0.5"
+			}
 		}
 
 		"OnSpellStart"
@@ -5376,7 +5386,10 @@
 			{
 				"ScriptFile"		"archer_ability"
 				"Function"			"OnUBWBarrageConfineStart"
+				"Target"			"POINT"
 				"Damage"			"%damage"
+				"Radius"			"%radius"
+				"Delay"				"%delay"
 				"TrapDuration"		"%trap_duration"
 			}
 		}
@@ -29648,6 +29661,7 @@
 			"particle"					"particles/econ/items/monkey_king/arcana/death/mk_spring_arcana_death_ground_impact.vpcf"
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_rings_gold.vpcf"
 			"particle"					"particles/econ/items/rubick/rubick_force_gold_ambient/rubick_telekinesis_land_force_impact_d_gold.vpcf"
+			"particle"					"particles/custom/archer/archer_broken_phantasm/archer_broken_phantasm_crosshead.vpcf"
 			"particle"					"particles/custom/screen_green_splash.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
