@@ -5339,22 +5339,19 @@
 		"RequiredLevel"					"25"
 		"LevelsBetweenUpgrades"			"1"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		//"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
 		"AbilityTextureName"			"custom/archer_5th_sword_barrage_confine"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_3"
 		"AnimationPlaybackRate" 		"2.0"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"1500"
-		//"AbilityCastRangeBuffer"		"0"
 		"AbilityCooldown"				"9.0"
 		"AbilityManaCost"				"40 55 70 85 100"
 		
 		"precache"
 		{
 			"particle"				"particles/units/heroes/hero_dazzle/dazzle_weave_circle_trace.vpcf"
-			"particle"				"models/items/wraith_king/weapon_shattered/weapon_shattered.vmdl"
 			"particle"				"particles/custom/archer/ubw/confine_ring_trail.vpcf"
+			"particle"				"models/items/wraith_king/kings_spite_weapon/kings_spite_weapon.vmdl"
 		}
 
 		"AbilitySpecial"
@@ -9841,8 +9838,6 @@
 			"particle"		"particles/units/heroes/hero_luna/luna_lucent_beam.vpcf"
 			"particle"		"particles/custom/archer/archer_sword_barrage_impact_circle.vpcf"
 			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_model.vpcf"
-			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_modelcopy.vpcf"
-			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_modelcopycopy.vpcf"
 			"particle"		"particles/units/heroes/hero_gyrocopter/gyro_guided_missile_explosion.vpcf"
 			
 		}
@@ -10184,7 +10179,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"			"30 50 70 90 110"
+				"damage"			"15 25 35 45 55"
 			}
 			
 			"02"
@@ -10226,7 +10221,7 @@
 			"modifier_gob_thinker"
 			{
 				"Duration"			"%duration"
-	            "ThinkInterval"		"0.12"
+	            "ThinkInterval"		"0.06"
 	            "OnIntervalThink"
 	         	{
 					"RunScript"
@@ -10663,7 +10658,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"dmg_ratio"			"0.5"
+				"dmg_ratio"			"0.25"
 			}
 		}
 		

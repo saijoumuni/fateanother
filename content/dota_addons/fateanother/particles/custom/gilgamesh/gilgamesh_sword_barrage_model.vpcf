@@ -14,6 +14,7 @@
 		{
 			_class = "C_OP_Spin"
 			m_nSpinRateDegrees = 150
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RemapVelocityToVector"
@@ -28,7 +29,10 @@
 			m_ModelList = 
 			[
 				{
-					m_model = resource:"models/items/abaddon/weta_fractured_sword_of_eternity_weapon/weta_fractured_sword_of_eternity_weapon.vmdl"
+					m_model = resource:"models/items/siren/arms_of_the_captive_princess_weapon/arms_of_the_captive_princess_weapon.vmdl"
+				},
+				{
+					m_model = resource:"models/heroes/abaddon/weapon.vmdl"
 				},
 			]
 			VisibilityInputs = 
@@ -36,6 +40,7 @@
 				m_flInputMax = 0.0
 			}
 			m_bDisableShadows = true
+			m_hOverrideMaterial = resource:"materials/models/items/zuus/lightning_weapon/lightning_weapon_color.vmat"
 		},
 	]
 	m_Initializers = 
@@ -66,7 +71,7 @@
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 2
+			m_nParticlesToEmit = 1
 		},
 	]
 	m_controlPointConfigurations = 

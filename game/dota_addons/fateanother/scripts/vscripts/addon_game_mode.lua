@@ -82,7 +82,7 @@ SPAWN_POSITION_T4_TRIO = Vector(-888,1748,512)
 TRIO_RUMBLE_CENTER = Vector(2436,4132,1000)
 FFA_CENTER = Vector(368,3868,1000)
 mode = nil
-FATE_VERSION = "v1.21d"
+FATE_VERSION = "v1.21e"
 roundQuest = nil
 IsGameStarted = false
 
