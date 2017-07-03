@@ -6,13 +6,13 @@ function OnBarrageStart(keys)
 	local dot = keys.Damage
 
 	if caster.IsRainAcquired then
-		dot = dot + 5
+		dot = dot + 15
 	end
 
 	local rainCount = 0
 	caster:EmitSound("Archer.UBWAmbient")
     Timers:CreateTimer(function()
-		if rainCount == 15 then return end
+		if rainCount == 5 then return end
 	
 		-- Create sword particles
 		-- Main variables
@@ -67,7 +67,7 @@ function OnBarrageStart(keys)
 			end
 		)
 		rainCount = rainCount + 1
-      	return 0.15
+      	return 0.2
     end
     )
 end
@@ -104,7 +104,7 @@ function OnChainStart(keys)
 		local targetPoint = { target:GetAbsOrigin() }
 		local barrageKeys = {
 			target_points = targetPoint,
-			Damage = 25,
+			Damage = 75,
 			caster = caster,
 			Radius = 500,
 			ability = caster:FindAbilityByName("gilgamesh_sword_barrage_improved"),

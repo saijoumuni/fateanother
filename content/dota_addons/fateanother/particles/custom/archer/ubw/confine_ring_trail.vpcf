@@ -22,6 +22,15 @@
 			m_flOverbrightFactor = 3.0
 			m_bTintByFOW = true
 		},
+		{
+			_class = "C_OP_RenderModels"
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/items/abaddon/weta_fractured_sword_of_eternity_weapon/weta_fractured_sword_of_eternity_weapon.vmdl"
+				},
+			]
+		},
 	]
 	m_Operators = 
 	[
@@ -62,6 +71,15 @@
 			m_nFieldOutput = 7
 			m_flOutput = 0.0
 			m_flLerpTime = 0.125
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, -1500.0 ]
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = 180
+			m_fSpinRateStopTime = 0.1
 		},
 	]
 	m_Initializers = 
@@ -135,4 +153,5 @@
 			]
 		},
 	]
+	m_ConstantColor = [ 255, 255, 255, 0 ]
 }

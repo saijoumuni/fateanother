@@ -2630,8 +2630,9 @@
 		// General
 		//----------------------------------------------------------------
 		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/items/wraith_king/weapon_shattered/weapon_shattered.vmdl"
-		"ModelScale"				"2"
+		//"Model"						"models/items/wraith_king/weapon_shattered/weapon_shattered.vmdl"
+		"Model"						"models/items/wraith_king/kings_spite_weapon/kings_spite_weapon.vmdl"
+		"ModelScale"				"1.2"
 		"Level"						"0"
 		"HealthBarOffset"			"140"
 		

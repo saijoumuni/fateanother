@@ -1037,7 +1037,7 @@ function OnUBWBarrageConfineStart(keys)
 
 
 
-			confineDummy:SetAbsOrigin(confineDummy:GetAbsOrigin() - Vector(0,0,-200)) 
+			confineDummy:SetAbsOrigin(confineDummy:GetAbsOrigin() - Vector(0,0,-100)) 
 			Timers:CreateTimer(keys.TrapDuration, function()
 				if confineDummy:IsNull() == false then
 					confineDummy:RemoveSelf()
