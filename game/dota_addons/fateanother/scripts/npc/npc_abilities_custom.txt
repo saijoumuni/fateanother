@@ -5354,6 +5354,7 @@
 		{
 			"particle"				"particles/units/heroes/hero_dazzle/dazzle_weave_circle_trace.vpcf"
 			"particle"				"models/items/wraith_king/weapon_shattered/weapon_shattered.vmdl"
+			"particle"				"particles/custom/archer/ubw/confine_ring_trail.vpcf"
 		}
 
 		"AbilitySpecial"
@@ -9840,6 +9841,8 @@
 			"particle"		"particles/units/heroes/hero_luna/luna_lucent_beam.vpcf"
 			"particle"		"particles/custom/archer/archer_sword_barrage_impact_circle.vpcf"
 			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_model.vpcf"
+			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_modelcopy.vpcf"
+			"particle"		"particles/custom/gilgamesh/gilgamesh_sword_barrage_modelcopycopy.vpcf"
 			"particle"		"particles/units/heroes/hero_gyrocopter/gyro_guided_missile_explosion.vpcf"
 			
 		}
