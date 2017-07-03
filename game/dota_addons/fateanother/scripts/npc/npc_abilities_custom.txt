@@ -29533,7 +29533,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"range"				"2500"
+				"range"				"3000"
 			}
 			"02"
 			{
@@ -29553,7 +29553,7 @@
 			"05"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"snipe_arrows"		"10"
+				"snipe_arrows"		"11"
 			}
 			"06"
 			{
@@ -29674,7 +29674,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"range"				"2500"
+				"range"				"3000"
 			}
 			"02"
 			{
@@ -29684,7 +29684,7 @@
 			"03"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"arrows"			"10"
+				"arrows"			"11"
 			}
 			"04"
 			{
