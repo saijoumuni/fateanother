@@ -17233,7 +17233,7 @@
 			"06"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"infantry_bonus_damage"		"8 16 24 34 40"
+				"archer_bonus_damage"		"8 16 24 34 40"
 			}
 			"07"
 			{
@@ -17253,7 +17253,7 @@
 			"10"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"archer_bonus_damage"		"4 8 12 16 20"	
+				"infantry_bonus_damage"		"4 8 12 16 20"	
 			}
 			"11"
 			{

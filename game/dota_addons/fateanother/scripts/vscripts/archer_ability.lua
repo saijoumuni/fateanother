@@ -353,7 +353,8 @@ function OnUBWCastStart(keys)
 	Timers:CreateTimer({
 		endTime = castDelay,
 		callback = function()
-		if keys.caster:IsAlive() then 
+		if keys.caster:IsAlive() then
+			local newLocation = caster:GetAbsOrigin()
 		    caster.UBWLocator = CreateUnitByName("ping_sign2", caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 		    caster.UBWLocator:FindAbilityByName("ping_sign_passive"):SetLevel(1)
 		    caster.UBWLocator:AddNewModifier(caster, caster, "modifier_kill", {duration = 12.5})
@@ -366,7 +367,7 @@ function OnUBWCastStart(keys)
 			end
 
 			local entranceFlashParticle = ParticleManager:CreateParticle("particles/custom/archer/ubw/entrance_flash.vpcf", PATTACH_ABSORIGIN, caster)
-			ParticleManager:SetParticleControl(entranceFlashParticle, 0, casterLocation)
+			ParticleManager:SetParticleControl(entranceFlashParticle, 0, newLocation)
 			ParticleManager:CreateParticle("particles/custom/archer/ubw/exit_flash.vpcf", PATTACH_ABSORIGIN, caster)
 		end
 	end

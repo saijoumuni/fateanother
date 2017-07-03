@@ -1008,9 +1008,9 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20.0"
-		"AttackDamageMax"			"20.0"
-		"AttackRate"				"1.35"
+		"AttackDamageMin"			"8.0"
+		"AttackDamageMax"			"8.0"
+		"AttackRate"				"1.0"
 		"AttackAnimationPoint"		"0.5"
 		"AttackAcquisitionRange"	"2000"
 		"AttackRange"				"120"
@@ -1100,10 +1100,10 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"8.0"
-		"AttackDamageMax"			"8.0"
+		"AttackDamageMin"			"20.0"
+		"AttackDamageMax"			"20.0"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1.0"
+		"AttackRate"				"1.35"
 		"AttackAnimationPoint"		"0.5"
 		"AttackAcquisitionRange"	"2000"
 		"AttackRange"				"900"

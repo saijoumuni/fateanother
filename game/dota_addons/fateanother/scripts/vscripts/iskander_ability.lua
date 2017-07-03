@@ -488,7 +488,7 @@ function OnAOTKCastStart(keys)
 	Timers:CreateTimer(function()
 		if infantrySpawnCounter == 10 then return end
 		local soldier = CreateUnitByName("iskander_infantry", firstRowPos + Vector(0,infantrySpawnCounter*100,0), true, nil, nil, caster:GetTeamNumber())
-		soldier:AddNewModifier(caster, nil, "modifier_phased", {})
+		--soldier:AddNewModifier(caster, nil, "modifier_phased", {})
 		soldier:SetOwner(caster)
 		table.insert(caster.AOTKSoldiers, soldier)
 		caster.AOTKSoldierCount = caster.AOTKSoldierCount + 1
@@ -502,7 +502,7 @@ function OnAOTKCastStart(keys)
 	Timers:CreateTimer(0.99, function()
 		if archerSpawnCounter1 == 5 then return end
 		local soldier = CreateUnitByName("iskander_archer", aotkCenter + Vector(800, 600 - archerSpawnCounter1*100, 0), true, nil, nil, caster:GetTeamNumber())
-		soldier:AddNewModifier(caster, nil, "modifier_phased", {})
+		--soldier:AddNewModifier(caster, nil, "modifier_phased", {})
 		soldier:SetOwner(caster)
 		table.insert(caster.AOTKSoldiers, soldier)
 		caster.AOTKSoldierCount = caster.AOTKSoldierCount + 1
@@ -516,7 +516,7 @@ function OnAOTKCastStart(keys)
 	Timers:CreateTimer(1.49, function()
 		if archerSpawnCounter2 == 5 then return end
 		local soldier = CreateUnitByName("iskander_archer", aotkCenter + Vector(800, -600 + archerSpawnCounter2*100, 0), true, nil, nil, caster:GetTeamNumber())
-		soldier:AddNewModifier(caster, nil, "modifier_phased", {})
+		--soldier:AddNewModifier(caster, nil, "modifier_phased", {})
 		soldier:SetOwner(caster)
 		table.insert(caster.AOTKSoldiers, soldier)
 		caster.AOTKSoldierCount = caster.AOTKSoldierCount + 1
@@ -840,7 +840,7 @@ function OnCavalrySummon(keys)
 		local soldier = CreateUnitByName("iskander_cavalry", targetPoint + Vector(200, -200 + i*100), true, nil, nil, caster:GetTeamNumber())
 		--soldier:SetBaseMaxHealth(soldier:GetHealth() + ) 
 
-		soldier:AddNewModifier(caster, nil, "modifier_phased", {})
+		--soldier:AddNewModifier(caster, nil, "modifier_phased", {})
 		soldier:SetOwner(caster)
 		table.insert(caster.AOTKSoldiers, soldier)
 		--table.insert(caster.AOTKCavalryTable, soldier)
@@ -864,7 +864,7 @@ function OnMageSummon(keys)
 	caster:EmitSound("Hero_Silencer.Curse.Cast")
 	for i=0,5 do
 		local soldier = CreateUnitByName("iskander_mage", targetPoint + Vector(200, -200 + i*100), true, nil, nil, caster:GetTeamNumber())
-		soldier:AddNewModifier(caster, nil, "modifier_phased", {})
+		--soldier:AddNewModifier(caster, nil, "modifier_phased", {})
 		soldier:SetOwner(caster)
 		table.insert(caster.AOTKSoldiers, soldier)
 		caster.AOTKSoldierCount = caster.AOTKSoldierCount + 1

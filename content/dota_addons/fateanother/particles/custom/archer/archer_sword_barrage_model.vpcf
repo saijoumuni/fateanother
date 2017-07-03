@@ -41,6 +41,15 @@
 				{
 					m_model = resource:"models/items/legion_commander/single_legioncommander_raysword/single_legioncommander_raysword.vmdl"
 				},
+				{
+					m_model = resource:"models/items/skywrath_mage/guiding_lights_weapon2/guiding_lights_weapon2.vmdl"
+				},
+				{
+					m_model = resource:"models/items/abaddon/mark_of_the_mistral_fiend_weapon/mark_of_the_mistral_fiend_weapon.vmdl"
+				},
+				{
+					m_model = resource:"models/items/ember_spirit/mentor_high_plains_weapon/mentor_high_plains_weapon.vmdl"
+				},
 			]
 			m_hOverrideMaterial = resource:"materials/models/items/zuus/lightning_weapon/lightning_weapon_color.vmat"
 			VisibilityInputs = 
