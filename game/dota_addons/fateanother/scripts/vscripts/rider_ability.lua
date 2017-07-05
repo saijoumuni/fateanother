@@ -124,16 +124,18 @@ function OnBloodfortStart(keys)
 		local targets = FindUnitsInRadius(caster:GetTeam(), initCasterPoint, nil, radius
             , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 		for k,v in pairs(targets) do
-	        DoDamage(caster, v, keys.Damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
-	        if not IsImmuneToSlow(v) then ability:ApplyDataDrivenModifier(caster,v, "modifier_bloodfort_slow", {}) end
-	        caster:Heal(keys.AbsorbAmount, caster)
-			if caster.IsSealAcquired then  
-				forcemove.UnitIndex = v:entindex()
-				ExecuteOrderFromTable(forcemove) 
-				Timers:CreateTimer(0.2, function()
-					v:Stop()
-				end)
-				ability:ApplyDataDrivenModifier(caster,v, "modifier_bloodfort_seal", {})
+			if v:GetName() ~= "npc_dota_ward_base" then
+		        DoDamage(caster, v, keys.Damage , DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+		        if not IsImmuneToSlow(v) then ability:ApplyDataDrivenModifier(caster,v, "modifier_bloodfort_slow", {}) end
+		        caster:Heal(keys.AbsorbAmount, caster)
+				if caster.IsSealAcquired then  
+					forcemove.UnitIndex = v:entindex()
+					ExecuteOrderFromTable(forcemove) 
+					Timers:CreateTimer(0.2, function()
+						v:Stop()
+					end)
+					ability:ApplyDataDrivenModifier(caster,v, "modifier_bloodfort_seal", {})
+				end
 			end
 	    end
 		bloodfortCount = bloodfortCount + 1

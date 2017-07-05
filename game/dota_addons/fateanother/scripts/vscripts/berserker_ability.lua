@@ -456,28 +456,30 @@ function OnNineLanded(caster, ability)
 				end 
 				local lasthitTargets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, lasthitradius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 1, false)
 				for k,v in pairs(lasthitTargets) do
-					if caster.IsProjectionImproved then 
-						DoDamage(caster, v, damage + v:GetHealth() * 0.05, DAMAGE_TYPE_MAGICAL, 0, ability, false)
-					else
-						DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+					if v:GetName() ~= "npc_dota_ward_base" then
+						if caster.IsProjectionImproved then 
+							DoDamage(caster, v, damage + v:GetHealth() * 0.05, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+						else
+							DoDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0, ability, false)
+						end
+						giveUnitDataDrivenModifier(caster, v, "stunned", 0.5)
+						if caster:GetName() ~= "npc_dota_hero_ember_spirit" then
+							giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
+						end
+						-- push enemies back
+						local pushback = Physics:Unit(v)
+						v:PreventDI()
+						v:SetPhysicsFriction(0)
+						v:SetPhysicsVelocity((v:GetAbsOrigin() - casterInitOrigin):Normalized() * 300)
+						v:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+						v:FollowNavMesh(false)
+						Timers:CreateTimer(0.5, function()  
+							v:PreventDI(false)
+							v:SetPhysicsVelocity(Vector(0,0,0))
+							v:OnPhysicsFrame(nil)
+							FindClearSpaceForUnit(v, v:GetAbsOrigin(), true)
+						end)
 					end
-					giveUnitDataDrivenModifier(caster, v, "stunned", 0.5)
-					if caster:GetName() ~= "npc_dota_hero_ember_spirit" then
-						giveUnitDataDrivenModifier(caster, v, "revoked", 0.5)
-					end
-					-- push enemies back
-					local pushback = Physics:Unit(v)
-					v:PreventDI()
-					v:SetPhysicsFriction(0)
-					v:SetPhysicsVelocity((v:GetAbsOrigin() - casterInitOrigin):Normalized() * 300)
-					v:SetNavCollisionType(PHYSICS_NAV_NOTHING)
-					v:FollowNavMesh(false)
-					Timers:CreateTimer(0.5, function()  
-						v:PreventDI(false)
-						v:SetPhysicsVelocity(Vector(0,0,0))
-						v:OnPhysicsFrame(nil)
-						FindClearSpaceForUnit(v, v:GetAbsOrigin(), true)
-					end)
 				end
 
 				if caster:GetName() == "npc_dota_hero_doom_bringer" then

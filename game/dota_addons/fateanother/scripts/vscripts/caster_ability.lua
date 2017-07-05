@@ -959,21 +959,23 @@ function OnFirewallStart(keys)
 
     local targets = FindUnitsInRadius(caster:GetTeam(), casterPos, nil, keys.Radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false) 
     for k,v in pairs(targets) do
-    	DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
+    	if v:GetName() ~= "npc_dota_ward_base" then
+	    	DoDamage(caster, v, keys.Damage, DAMAGE_TYPE_MAGICAL, 0, keys.ability, false)
 
-		giveUnitDataDrivenModifier(caster, v, "drag_pause", 0.5)
-		local pushback = Physics:Unit(v)
-		v:PreventDI()
-		v:SetPhysicsFriction(0)
-		v:SetPhysicsVelocity((v:GetAbsOrigin() - casterPos):Normalized() * keys.Pushback * 2)
-		v:SetNavCollisionType(PHYSICS_NAV_NOTHING)
-		v:FollowNavMesh(false)
-		Timers:CreateTimer(0.5, function()  
-			print("kill it")
-			v:PreventDI(false)
-			v:SetPhysicsVelocity(Vector(0,0,0))
-			v:OnPhysicsFrame(nil)
-		return end) 
+			giveUnitDataDrivenModifier(caster, v, "drag_pause", 0.5)
+			local pushback = Physics:Unit(v)
+			v:PreventDI()
+			v:SetPhysicsFriction(0)
+			v:SetPhysicsVelocity((v:GetAbsOrigin() - casterPos):Normalized() * keys.Pushback * 2)
+			v:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+			v:FollowNavMesh(false)
+			Timers:CreateTimer(0.5, function()  
+				print("kill it")
+				v:PreventDI(false)
+				v:SetPhysicsVelocity(Vector(0,0,0))
+				v:OnPhysicsFrame(nil)
+			return end)
+		end
 	end
 end
 

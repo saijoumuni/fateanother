@@ -2598,7 +2598,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"10"
+		"AbilityManaCost"				"12"
 
 		"precache"
 		{
@@ -2609,12 +2609,12 @@
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"gae_bolg_ad_ratio"			"1.5"
+				"gae_bolg_ad_ratio"			"2"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"wesen_gae_bolg_ad_ratio"			"1.5"
+				"wesen_gae_bolg_ad_ratio"			"2"
 			}
 		}
 		
@@ -14694,7 +14694,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage"		"130 150 170 190 210"
+				"damage"		"110 130 150 170 190"
 			}
 			"02"
 			{
@@ -20371,7 +20371,7 @@
 			"05"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"chance"			"30"
+				"chance"			"50"
 			}
 		}
 		
@@ -20650,7 +20650,7 @@
 			}
 			"modifier_aestus_domus_aurea_debuff_attribute"
 			{
-				"Duration"		"1.1"
+				"Duration"		"2.5"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsDebuff"		"1"
 				"Properties"
