@@ -23074,6 +23074,14 @@
 		"precache"						
 		{
 		}
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"tamamo_ability"
+				"Function"				"OnMantraCast"
+			}
+		}
 		
 		"OnSpellStart"
 		{

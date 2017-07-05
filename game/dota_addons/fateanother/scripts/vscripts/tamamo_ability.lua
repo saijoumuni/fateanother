@@ -508,6 +508,15 @@ function OnSGDestroy(keys)
 	local target = keys.target
 	local ability = keys.ability
 	target:StopSound("Hero_Visage.GraveChill.Target")
+end
+
+function OnMantraCast(keys)
+	local caster = keys.caster
+	local target = keys.target 
+	if target:GetName() == "npc_dota_ward_base" then
+		caster:Interrupt()
+		return
+	end
 end 
 
 function OnMantraStart(keys)

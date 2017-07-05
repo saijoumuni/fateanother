@@ -298,6 +298,10 @@ function OnNSSCastStart(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
+	if target:GetName() == "npc_dota_ward_base" then
+		caster:Interrupt()
+		return
+	end
     local windupFx = ParticleManager:CreateParticle( "particles/custom/lishuwen/lishuwen_no_second_strike_windup.vpcf", PATTACH_ABSORIGIN, caster )
     ParticleManager:SetParticleControl( windupFx, 0, caster:GetAbsOrigin())
     ParticleManager:SetParticleControl( windupFx, 3, caster:GetAbsOrigin())
