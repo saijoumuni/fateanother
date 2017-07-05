@@ -269,9 +269,23 @@ function OnBelleStart(keys)
 	local dmgdelay = dist * 0.000416
 	
 	-- Attach particle
-	local belleFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_1.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster )
-	ParticleManager:SetParticleControlEnt( belleFxIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
-	ParticleManager:SetParticleControlEnt( belleFxIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
+	if caster.AltPart.bell1 == 1 then
+		local belleFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_1_alternate.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster )
+		ParticleManager:SetParticleControlEnt( belleFxIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
+		ParticleManager:SetParticleControlEnt( belleFxIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
+		Timers:CreateTimer(1.3+dmgdelay, function()
+			ParticleManager:DestroyParticle( belleFxIndex, false )
+			ParticleManager:ReleaseParticleIndex( belleFxIndex )
+		end)
+	else
+		local belleFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_1.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster )
+		ParticleManager:SetParticleControlEnt( belleFxIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
+		ParticleManager:SetParticleControlEnt( belleFxIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
+		Timers:CreateTimer(1.3+dmgdelay, function()
+			ParticleManager:DestroyParticle( belleFxIndex, false )
+			ParticleManager:ReleaseParticleIndex( belleFxIndex )
+		end)
+	end
 	
 	if caster.IsRidingAcquired then keys.Damage = keys.Damage + 200 end 
 	giveUnitDataDrivenModifier(keys.caster, keys.caster, "jump_pause", 1.3)
@@ -340,10 +354,6 @@ function OnBelleStart(keys)
 
 	-- this is when the damage actually applies(Put slam effect here)
 	Timers:CreateTimer(1.3+dmgdelay, function()
-
-		-- Destroy particles
-		ParticleManager:DestroyParticle( belleFxIndex, false )
-		ParticleManager:ReleaseParticleIndex( belleFxIndex )
 		
 		-- Crete particle
 		local belleImpactFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_1_impact.vpcf", PATTACH_ABSORIGIN, caster )

@@ -17,6 +17,7 @@ require('libraries/attachments')
 --require('libraries/vector_target')
 require('hero_selection')
 require('libraries/servantstats')
+require('libraries/alternateparticle')
 
 
 _G.IsPickPhase = true
@@ -633,6 +634,8 @@ function FateGameMode:OnPlayerChat(keys)
         DoRoll(plyID, 100)
     end
 
+    hero.AltPart:Switch(text)
+
     local rollText = string.match(text, "^-roll (%d+)")
     if rollText ~= nil then
         local rollAmount = tonumber(rollText)
@@ -916,6 +919,9 @@ function FateGameMode:OnHeroInGame(hero)
         end
     end
     --END
+
+    -- Initialize Alternate Particles.
+    hero.AltPart = AlternateParticle:initialise(hero)
 
     -- Initialize Servant Statistics, and related collection stuff
     hero.ServStat = ServantStatistics:initialise(hero)

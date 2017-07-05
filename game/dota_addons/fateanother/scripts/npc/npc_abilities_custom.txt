@@ -4293,6 +4293,7 @@
 		"precache"
 		{
 			"particle"				"particles/custom/rider/rider_bellerophon_1.vpcf"
+			"particle"				"particles/custom/rider/rider_bellerophon_1_alternate.vpcf"
 			"particle"				"particles/custom/rider/rider_bellerophon_1_impact.vpcf"
 		}
 		
@@ -21044,7 +21045,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"chance"			"30"
+				"chance"			"50"
 			}
 		}
 		
