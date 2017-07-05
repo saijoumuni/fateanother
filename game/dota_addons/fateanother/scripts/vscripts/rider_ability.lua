@@ -142,7 +142,7 @@ function OnBloodfortStart(keys)
 	)
 	
 	-- Create Particle
-	local sphereFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bloodfort_andromeda_sphere.vpcf", PATTACH_CUSTOMORIGIN, caster )
+	local sphereFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_spirit.vpcf", PATTACH_CUSTOMORIGIN, caster )
 	ParticleManager:SetParticleControl( sphereFxIndex, 0, caster:GetAbsOrigin() )
 	ParticleManager:SetParticleControl( sphereFxIndex, 1, Vector( radius, radius, radius ) )
 	ParticleManager:SetParticleControl( sphereFxIndex, 6, Vector( radius, radius, radius ) )

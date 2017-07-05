@@ -4087,7 +4087,7 @@
 		
 		"precache"
 		{
-			"particle"					"particles/custom/rider/rider_bloodfort_andromeda_sphere.vpcf"
+			"particle"					"particles/custom/rider/rider_spirit.vpcf"
 			"particle"					"particles/units/heroes/hero_warlock/warlock_upheaval.vpcf"
 		}
 		
@@ -20125,7 +20125,7 @@
 		"precache"
 		{
 			"particle"			"particles/units/heroes/hero_lion/lion_spell_finger_of_death_fire.vpcf"
-			"particle"			"particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+			"particle"			"particles/custom/nero/nero_scorched_earth.vpcf"
 			"particle"			"particles/custom/archer/archer_overedge_slash.vpcf"
 			"particle"			"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
 			"particle"			"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
@@ -20223,7 +20223,7 @@
 				{
 					"AttachEffect"
 					{
-						"EffectName"		"particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+						"EffectName"		"particles/custom/nero/nero_scorched_earth.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"CASTER"
 						"ControlPoints"
@@ -20342,7 +20342,7 @@
 		"precache"
 		{
 			"particle"		"particles/items_fx/battlefury_cleave.vpcf"
-			"particle"		"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+			"particle"		"particles/custom/nero/nero_tres_fonte.vpcf"
 			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
 		}
 		
@@ -20393,7 +20393,7 @@
 		{	
 			"modifier_tres_fontaine_ardent"
 			{
-				"EffectName"		"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+				"EffectName"		"particles/custom/nero/nero_tres_fonte.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"Duration"			"%duration"
 				"Properties"
@@ -20470,7 +20470,7 @@
 		"precache"						
 		{
 			"particle"			"particles/custom/archer/archer_overedge_slash.vpcf"
-			"particle"			"particles/units/heroes/hero_legion_commander/legion_duel_start_text_burst_flare.vpcf"
+			"particle"			"particles/custom/nero/nero_scorched_earth_child_embers_rosa.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
 		}
 		
@@ -20544,7 +20544,7 @@
 			"particle"			"particles/custom/nero/nero_domus_ring_energy.vpcf"
 			"particle"			"particles/custom/nero/nero_domus_ray.vpcf"
 			"particle"			"models/particle/legion_duel_banner.vmdl"
-			"particle"			"particles/items2_fx/radiance_owner.vpcf"
+			"particle"			"particles/custom/nero/nero_radiance_owner.vpcf"
 			"particle"			"particles/units/heroes/hero_phoenix/phoenix_supernova_radiance.vpcf"
 			"particle"			"particles/custom/nero/nero_domus_ring_border.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
@@ -20607,7 +20607,7 @@
 			{
 				"Duration"		"%duration"
 				"IsHidden"		"1"
-				"EffectName"			"particles/items2_fx/radiance_owner.vpcf"
+				"EffectName"			"particles/custom/nero/nero_radiance_owner.vpcf"
 				"EffectAttachType"		"follow_origin"
 				"RunScript"
 				{
