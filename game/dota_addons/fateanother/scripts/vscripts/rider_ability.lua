@@ -269,7 +269,7 @@ function OnBelleStart(keys)
 	local dmgdelay = dist * 0.000416
 	
 	-- Attach particle
-	if caster.AltPart.bell1 == 1 then
+	if caster.AltPart.r == 1 then
 		local belleFxIndex = ParticleManager:CreateParticle( "particles/custom/rider/rider_bellerophon_1_alternate.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster )
 		ParticleManager:SetParticleControlEnt( belleFxIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )
 		ParticleManager:SetParticleControlEnt( belleFxIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", origin, true )

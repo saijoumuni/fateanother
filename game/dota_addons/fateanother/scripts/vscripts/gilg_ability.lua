@@ -253,6 +253,10 @@ function OnGOBThink(keys)
 	local frontward = unit:GetForwardVector()
 	local casterFrontWard = caster:GetForwardVector()
 	local toggleAbil = caster:FindAbilityByName("gilgamesh_gate_of_babylon_toggle")
+	if not caster:IsAlive() then
+		unit:RemoveModifierByName("modifier_gob_thinker")
+		return
+	end
 	if caster.IsSumerAcquired and unit == caster.LatestGOB then
 		origin = caster:GetAbsOrigin()
 		frontward = caster:GetForwardVector()
@@ -262,7 +266,7 @@ function OnGOBThink(keys)
 		--ParticleManager:SetParticleControlOrientation(caster.LatestGOBParticle, 0, Vector(1,0,0), Vector(0.5,1,0.5), Vector(1,0.5,0.5))
 	end
 
-	if not caster.IsSumerAcquired or not caster:IsAlive() or (caster.IsSumerAcquired and toggleAbil:GetToggleState()) then
+	if caster:IsAlive() and (not caster.IsSumerAcquired or (caster.IsSumerAcquired and toggleAbil:GetToggleState())) then
 		local projectile = unit.GOBProjectile
 		local leftvec = Vector(-frontward.y, frontward.x, 0)
 		local rightvec = Vector(frontward.y, -frontward.x, 0)

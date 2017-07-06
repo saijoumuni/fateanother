@@ -14204,9 +14204,10 @@
 		{
 			"model"					"models/lancelot/lancelot_f16.vmdl"
 			"particle"				"particles/custom/archer/archer_sword_barrage_impact_circle.vpcf"
+			"particle"				"particles/custom/lancelot/lancelot_nuke_impact_circle.vpcf"
 			"particle"				"particles/units/heroes/hero_gyrocopter/gyro_calldown_explosion_second.vpcf"
 			"particle"				"particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_calldown_first.vpcf"
-			"particle"				"particles/units/heroes/hero_gyrocopter/gyro_calldown_marker.vpcf"
+			"particle"				"particles/custom/lancelot/lancelot_nuke_calldown_marker_c.vpcf"
 			"particle"				"particles/units/heroes/hero_lina/lina_spell_light_strike_array_explosion.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		}

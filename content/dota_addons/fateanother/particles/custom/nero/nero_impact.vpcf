@@ -7,7 +7,7 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/custom/saber_avalon_impact_raise.vpcf"
+			m_ChildRef = resource:"particles/custom/nero/nero_impact_raise.vpcf"
 		},
 	]
 	m_bShouldSort = false

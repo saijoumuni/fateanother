@@ -2281,6 +2281,8 @@ function FateGameMode:InitializeRound()
         local hero = playerHero
 
         ResetAbilities(hero)
+        ResetItems(hero)
+        
         hero:RemoveModifierByName("round_pause")
         giveUnitDataDrivenModifier(hero, hero, "round_pause", PRE_ROUND_DURATION) -- Pause all heroes
         hero:SetGold(0, false)
@@ -2500,12 +2502,7 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
         local pHero = playerHero
         -- radiant = 2(equivalent to 0)
         -- dire = 3(equivalent to 1)
-        for i=0, 14 do -- this for loop refreshes item cooldowns on round end.
-            local item = pHero:GetItemInSlot(i) 
-            if item ~= nil then
-                item:EndCooldown()
-            end
-        end
+
         if pHero:GetTeam() - 2 ~= winnerEventData.winnerTeam and winnerEventData.winnerTeam ~= 2 then
             pHero.MasterUnit:GiveMana(1)
             pHero.MasterUnit2:SetMana(pHero.MasterUnit:GetMana())
