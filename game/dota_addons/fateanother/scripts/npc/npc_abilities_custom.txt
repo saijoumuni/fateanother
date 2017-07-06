@@ -16604,7 +16604,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"18"
+		"AbilityManaCost"				"17"
 
 		"precache"
 		{
@@ -19593,12 +19593,12 @@
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"blood_duration"			"20.0"
+				"blood_duration"			"12.0"
 			}		
 			"06"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"damage_per_sec"			"5"
+				"damage_per_sec"			"10"
 			}
 		}
 		
@@ -19624,7 +19624,7 @@
 			{
 		        "EffectName"    "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
 		        "EffectAttachType"  "follow_origin"
-				"Duration"		"20"
+				"Duration"		"12"
 				"IsDebuff"		"1"
 				"ThinkInterval"		"1.0"
 				"OnIntervalThink"
@@ -21650,7 +21650,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"500"
+				"radius"				"550"
 			}
 		}
 		
@@ -25387,7 +25387,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"11"
+		"AbilityManaCost"				"13"
 
 		"precache"
 		{
@@ -25485,7 +25485,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"12"
+		"AbilityManaCost"				"10"
 
 		"precache"
 		{
@@ -27713,7 +27713,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"14"
+		"AbilityManaCost"				"16"
 
 		"precache"
 		{

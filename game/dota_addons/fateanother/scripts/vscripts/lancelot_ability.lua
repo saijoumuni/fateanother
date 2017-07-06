@@ -471,7 +471,7 @@ function OnNukeStart(keys)
             if not v:IsMagicImmune() then v:AddNewModifier(caster, v, "modifier_stunned", {Duration = 0.75}) end
         end
         -- particle
-        if caster.AltPart.combo == 1 then
+        if caster.AltPart.combo == 0 then
             local barrageImpact1 = ParticleManager:CreateParticle( "particles/custom/lancelot/lancelot_nuke_impact_circle.vpcf", PATTACH_CUSTOMORIGIN, nil )
             ParticleManager:SetParticleControl( barrageImpact1, 0, targetPoint+barrageVec1)
             ParticleManager:SetParticleControl( barrageImpact1, 1, Vector(300, 300, 300))
