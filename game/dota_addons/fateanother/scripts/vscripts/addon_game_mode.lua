@@ -1371,7 +1371,8 @@ local spellBooks = {
     "nero_imperial_privilege",
     "nero_close_spellbook",
     "tamamo_armed_up",
-    "tamamo_close_spellbook"
+    "tamamo_close_spellbook",
+    "lancelot_arms_mastership" -- Not a spellbook but it is an empty ability when attribute is NOT taken that can trigger amaterasu heals and mark of mortality.
 }
 -- An ability was used by a player
 function FateGameMode:OnAbilityUsed(keys)
@@ -1389,7 +1390,6 @@ function FateGameMode:OnAbilityUsed(keys)
             end
         end)
     end
-
     -- Check whether ability is an item active or not
     if not string.match(abilityname,"item") then
         -- Check if hero is affected by Amaterasu
@@ -1406,6 +1406,9 @@ function FateGameMode:OnAbilityUsed(keys)
 
         -- Check if a hero with Martial Arts is nearby
         if hero:HasModifier("modifier_martial_arts_aura_enemy") then
+            for i=1, #spellBooks do
+                if abilityname == spellBooks[i] then return end
+            end
             local targets = FindUnitsInRadius(hero:GetTeam(), hero:GetOrigin(), nil, 1500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
             for k,v in pairs(targets) do
                 if v:HasAbility("lishuwen_martial_arts") then

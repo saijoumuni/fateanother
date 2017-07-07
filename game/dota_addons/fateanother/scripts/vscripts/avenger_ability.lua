@@ -332,6 +332,11 @@ function OnTFStart(keys)
 	local caster = keys.caster
 	local ply = caster:GetPlayerOwner()
 	local newMana = caster:GetMana() + 300
+	for i=0,15 do
+		if caster:GetAbilityByIndex(i) then
+			print(caster:GetAbilityByIndex(i):GetName())
+		end
+	end
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_true_form", {}) 
 	AvengerCheckCombo(keys.caster, keys.ability)
 	--local a1 = caster:GetAbilityByIndex(0)
@@ -339,10 +344,13 @@ function OnTFStart(keys)
     caster:SwapAbilities("avenger_murderous_instinct", "avenger_unlimited_remains", false, true) 
     caster:SetMana(newMana)
     if caster.IsBloodMarkAcquired then 
-    	caster:SwapAbilities("fate_empty1", "avenger_blood_mark", false, true) 
+    	caster:SwapAbilities("avenger_true_form", "avenger_blood_mark", false, true)
+    	caster:SwapAbilities("fate_empty1", "avenger_demon_core", false, true)
+    else
+    	caster:SwapAbilities("fate_empty1", "avenger_true_form", true, true)
+    	caster:SwapAbilities("avenger_true_form", "avenger_demon_core", false, true)
     end
     caster:SwapAbilities("avenger_tawrich_zarich", "avenger_vengeance_mark", false, true) 
-    caster:SwapAbilities("avenger_true_form", "avenger_demon_core", false, true)
     caster.OriginalModel = "models/avenger/trueform/trueform.vmdl"
     caster:SetModel("models/avenger/trueform/trueform.vmdl")
     caster:SetOriginalModel("models/avenger/trueform/trueform.vmdl")
@@ -364,10 +372,18 @@ function OnTFEnd(keys)
     caster:SwapAbilities("avenger_murderous_instinct", "avenger_unlimited_remains", true, false) 
     local a2 = caster:GetAbilityByIndex(1):GetAbilityName()
     caster:SwapAbilities("avenger_tawrich_zarich", a2, true, false) 
-    if caster.IsBloodMarkAcquired then 
-    	caster:SwapAbilities("fate_empty1", "avenger_blood_mark", true, false) 
+    --[[if caster.IsBloodMarkAcquired then 
+    	caster:SwapAbilities("avenger_true_form", "avenger_blood_mark", true, false) 
     end
-    caster:SwapAbilities("avenger_true_form", "avenger_demon_core", true, false)
+    caster:SwapAbilities("fate_empty1", "avenger_demon_core", true, false)]]
+
+    if caster.IsBloodMarkAcquired then 
+    	caster:SwapAbilities("avenger_true_form", "avenger_blood_mark", true, false) 
+    	caster:SwapAbilities("fate_empty1", "avenger_demon_core", true, false)
+    else
+    	caster:SwapAbilities("avenger_true_form", "avenger_demon_core", true, false)
+    	caster:SwapAbilities("fate_empty1", "avenger_true_form", true, true)   	
+    end
     local demoncore = caster:FindAbilityByName("avenger_demon_core")
     if demoncore:GetToggleState() then
     	demoncore:ToggleAbility()
