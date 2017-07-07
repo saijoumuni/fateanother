@@ -1088,7 +1088,7 @@
 		
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"9999"
-		"AbilityManaCost"				"13"
+		"AbilityManaCost"				"10"
 
 		"precache"
 		{
@@ -5571,7 +5571,6 @@
 				"Function"		"OnRainStart"
 				"Damage"		"%arrow_damage"
 			}
-			
 		}
 
 		"OnProjectileHitUnit"
@@ -5593,6 +5592,16 @@
 			{
 				"IsDebuff"	"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			}
+			"modifier_arrow_rain_anim"
+			{
+				"Duration"	"1.0"
+				"IsHidden"	"0"
+				"OverrideAnimation"     "ACT_DOTA_CAST_ABILITY_2"			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE"		"3"
+				}
 			}
 		}
 	}	
@@ -19636,6 +19645,14 @@
 						"DPS"			"%damage_per_sec"
 					}
 				}
+				"OnRespawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"gille_ability"
+						"Function"		"RemoveAllPoisons"
+					}
+				}
 			}
 			"modifier_gigantic_horror_freeze"
 			{
@@ -20119,8 +20136,8 @@
 		"AnimationPlaybackRate" 		"1.0"
 
 
-		"AbilityChannelTime"			"2.0"		
-		"AbilityCastPoint"				"0.05"
+		"AbilityChannelTime"			"1.5"		
+		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"10 8.5 6 4.5 3"
 		"AbilityManaCost"				"100"
 		
@@ -20248,15 +20265,6 @@
 					{
 						"ScriptFile"		"nero_ability"
 						"Function"			"OnGBStrike"
-					}
-					"RemoveModifier"
-					{
-						"ModifierName"		"modifier_gladiusanus_blauserum"
-	    				"Target"
- 						{
- 							"Center"	"CASTER"
- 							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
- 						}
 					}
 				}
 				"OnDestroy"
@@ -20441,7 +20449,7 @@
 		// Ability stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1050"
-		"AbilityCastRangeBuffer"		"0"
+		"AbilityCastRangeBuffer"		"300"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"21"
 		"AbilityManaCost"				"400"

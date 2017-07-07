@@ -967,3 +967,12 @@ function OnAbyssConnection2Acquired(keys)
     local master = hero.MasterUnit
     master:SetMana(master:GetMana() - keys.ability:GetManaCost(keys.ability:GetLevel()))
 end
+
+
+function RemoveAllPoisons(keys) -- so people don't respawn with poison DoT debuff modifiers
+	local caster = keys.caster
+    LoopOverHeroes(function(hero)
+    	hero:RemoveModifierByName("modifier_contaminate")
+    	hero:RemoveModifierByName("modifier_gille_combo")
+    end)
+end

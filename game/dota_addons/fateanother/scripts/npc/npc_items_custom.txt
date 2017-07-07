@@ -2404,6 +2404,14 @@
 						"Target"	"TARGET"
 					}
 				}
+				"OnRespawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"gille_ability"
+						"Function"		"RemoveAllPoisons"
+					}
+				}
 			}
 		}
 	}
