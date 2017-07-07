@@ -2535,6 +2535,7 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
             hero.ServStat:printconsole()
         end)
         Say(nil, "Radiant Victory!", false)
+        my_http_post()
         GameRules:SetSafeToLeave( true )
         GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
         return
@@ -2549,6 +2550,7 @@ function FateGameMode:FinishRound(IsTimeOut, winner)
             hero.ServStat:printconsole()
         end)
         Say(nil, "Dire Victory!", false)
+        my_http_post()
         GameRules:SetSafeToLeave( true )
         GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
         return
@@ -2725,4 +2727,27 @@ end
 function FateGameMode:MakeDraw()
     print("draw")
     self:FinishRound(false,2)
+end
+
+function my_http_post()
+    SendChatToPanorama("Work in Progress")
+    local matchData = {}
+    LoopOverPlayers(function(player, playerID, playerHero)
+        local hero = playerHero
+        local playerData = {GetSystemDate(), GetSystemTime(), GetMapName(), math.ceil(GameRules:GetGameTime()), hero.ServStat.playerName, hero.ServStat.steamId, hero.ServStat.heroName, hero.ServStat.lvl,
+        hero.ServStat.round, hero.ServStat.radiantWin, hero.ServStat.direWin, hero.ServStat.winGame, hero.ServStat.kill, hero.ServStat.death, 
+        hero.ServStat.assist, hero.ServStat.tkill, hero.ServStat.itemValue + hero.ServStat.goldWasted, hero.ServStat.itemValue, hero.ServStat.goldWasted,
+        hero.ServStat.damageDealt, hero.ServStat.damageDealtBR, hero.ServStat.damageTaken, hero.ServStat.damageTakenBR, hero.ServStat.qseal, hero.ServStat.wseal,
+        hero.ServStat.eseal, hero.ServStat.rseal, hero.ServStat.cScroll, hero.ServStat.bScroll, hero.ServStat.aScroll, hero.ServStat.sScroll, hero.ServStat.exScroll,
+        hero.ServStat.ward, hero.ServStat.familiar, hero.ServStat.link, hero.ServStat.str, hero.ServStat.agi, hero.ServStat.int, hero.ServStat.atk, hero.ServStat.armor, 
+        hero.ServStat.hpregen, hero.ServStat.mpregen, hero.ServStat.ms, hero.ServStat.shard1, hero.ServStat.shard2, hero.ServStat.shard3, hero.ServStat.shard4}
+        table.insert(matchData, playerData)
+    end)
+    --[[for k,v in pairs(matchData) do
+        for a,b in pairs(v) do
+            SendChatToPanorama(b)
+        end
+    end]]
+    --json encode
+    --http post
 end
