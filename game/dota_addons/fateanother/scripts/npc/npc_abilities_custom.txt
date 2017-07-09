@@ -30566,7 +30566,7 @@
 		"AbilityTextureName"			"custom/obs_ward"
 		"MaxLevel"						"1"
 		"AbilityCooldown"				"0"
-		"AbilityGoldCost"				"800"
+		"AbilityGoldCost"				"1200"
 		
 		"OnSpellStart"
 		{

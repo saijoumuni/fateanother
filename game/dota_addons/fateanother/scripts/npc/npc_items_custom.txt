@@ -872,9 +872,9 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
-		"ItemStockMax"					"10"
-		"ItemStockInitial"				"5"
-		"ItemStockTime"					"30.0"
+		"ItemStockMax"					"8"
+		"ItemStockInitial"				"4"
+		"ItemStockTime"					"25.0"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES"
 	    "AbilitySpecial"
 		{

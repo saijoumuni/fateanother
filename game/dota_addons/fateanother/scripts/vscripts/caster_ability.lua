@@ -1297,23 +1297,28 @@ function OnHGPStart(keys)
 	local descendTime = ascendTime+0.75
 	if caster.IsHGImproved then keys.Damage = keys.Damage + caster:GetIntellect()*ATTRIBUTE_HG_INT_MULTIPLIER end
 
-	-- Set master's combo cooldown
-	local masterCombo = caster.MasterUnit2:FindAbilityByName(keys.ability:GetAbilityName())
-	masterCombo:EndCooldown()
-	masterCombo:StartCooldown(keys.ability:GetCooldown(1))
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_hecatic_graea_powered_cooldown", {duration = ability:GetCooldown(ability:GetLevel())})
-	
-	if caster.IsHGImproved then
-		barrageRadius = barrageRadius + 300
-		maxBolt = 13
-	end 
-
 	if GridNav:IsBlocked(targetPoint) or not GridNav:IsTraversable(targetPoint) then
 		keys.ability:EndCooldown() 
 		caster:GiveMana(800) 
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#Cannot_Travel")
 		return 
 	end 
+
+	-- Set master's combo cooldown
+	local masterCombo = caster.MasterUnit2:FindAbilityByName(keys.ability:GetAbilityName())
+	masterCombo:EndCooldown()
+	masterCombo:StartCooldown(keys.ability:GetCooldown(1))
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_hecatic_graea_powered_cooldown", {duration = ability:GetCooldown(ability:GetLevel())})
+
+	local HGAbility = caster:FindAbilityByName("caster_5th_hecatic_graea")
+	local HGCooldown = HGAbility:GetCooldown(HGAbility:GetLevel())
+	HGAbility:StartCooldown(HGCooldown)
+	
+	if caster.IsHGImproved then
+		barrageRadius = barrageRadius + 300
+		maxBolt = 13
+	end 
+
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_hecatic_graea_anim", {}) 
 	giveUnitDataDrivenModifier(caster, caster, "jump_pause", descendTime)
 	local diff = (targetPoint - caster:GetAbsOrigin()) * 1/travelTime

@@ -355,12 +355,12 @@ function BecomeWard(keys)
 		or wardPos.y < -2000
 	then
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#Invalid_Location")
-		hero:ModifyGold(800, true , 0)
+		hero:ModifyGold(1200, true , 0)
 		transform:RemoveSelf()
 		return
 	end
 	hero.ServStat:useWard()
-	hero.ServStat:trueWorth(800)
+	hero.ServStat:trueWorth(1200)
 
 	transform:AddNewModifier(hero, hero, "modifier_invisible", {})
 	transform:AddNewModifier(hero, hero, "modifier_item_ward_true_sight", {true_sight_range = 1250, duration = 60})

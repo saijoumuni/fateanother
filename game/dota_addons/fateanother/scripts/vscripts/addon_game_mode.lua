@@ -71,8 +71,8 @@ XP_BOUNTY_PER_LEVEL_TABLE = {}
 PRE_ROUND_DURATION = 6
 PRESENCE_ALERT_DURATION = 60
 ROUND_DURATION = 120
-FIRST_BLESSING_PERIOD = 300
-BLESSING_PERIOD = 600
+FIRST_BLESSING_PERIOD = 360
+BLESSING_PERIOD = 480
 BLESSING_MANA_REWARD = 15
 SPAWN_POSITION_RADIANT_DM = Vector(-1551, 5704, 300)
 SPAWN_POSITION_DIRE_DM = Vector(3012, -1224, 300)
@@ -83,7 +83,7 @@ SPAWN_POSITION_T4_TRIO = Vector(-888,1748,512)
 TRIO_RUMBLE_CENTER = Vector(2436,4132,1000)
 FFA_CENTER = Vector(368,3868,1000)
 mode = nil
-FATE_VERSION = "v1.21e"
+FATE_VERSION = "v1.21f"
 roundQuest = nil
 IsGameStarted = false
 
@@ -104,7 +104,7 @@ end
 _G.XP_PER_LEVEL_TABLE[MAX_LEVEL-1] = _G.XP_PER_LEVEL_TABLE[MAX_LEVEL-2] + 2400
 
 for i=1, MAX_LEVEL do
-    BOUNTY_PER_LEVEL_TABLE[i] = 1025 + i * 75
+    BOUNTY_PER_LEVEL_TABLE[i] = 1050 + i * 50
 end
 
 XP_BOUNTY_PER_LEVEL_TABLE[1] = 80
@@ -396,7 +396,7 @@ function FateGameMode:OnGameInProgress()
         if _G.GameMap == "fate_elim_6v6" then
             self.nCurrentRound = 1
             self:InitializeRound() -- Start the game after forcing a pick for every player
-            BLESSING_PERIOD = 600
+            BLESSING_PERIOD = 480
         elseif _G.GameMap == "fate_ffa" then
             BLESSING_PERIOD = 300
             SHARD_DROP_PERIOD = 180
@@ -646,11 +646,20 @@ function FateGameMode:OnPlayerChat(keys)
 
     -- Sends a message to request gold
     local pID, goldAmt = string.match(text, "^-(%d%d?) (%d+)")
+
+    if pID == nil and goldAmt == nil then
+        local pID2 = string.match(text, "^-(%d%d?)") -- these 5 lines give a default 300 gold to teammate if gold amount not specified.
+        if pID2 ~= nil then
+            pID = pID2
+            goldAmt = 300
+        end
+    end
+
     if pID ~= nil and goldAmt ~= nil then
         --if GameRules:IsCheatMode() then
         --SendChatToPanorama("player " .. plyID .. " is trying to send " .. goldAmt .. " gold to player " .. pID)
         --end
-        if PlayerResource:GetReliableGold(plyID) > tonumber(goldAmt) and plyID ~= tonumber(pID) and PlayerResource:GetTeam(plyID) == PlayerResource:GetTeam(tonumber(pID)) then
+        if PlayerResource:GetReliableGold(plyID) >= tonumber(goldAmt) and plyID ~= tonumber(pID) and PlayerResource:GetTeam(plyID) == PlayerResource:GetTeam(tonumber(pID)) and tonumber(goldAmt) > 0 then
             local targetHero = PlayerResource:GetPlayer(tonumber(pID)):GetAssignedHero()
             hero:ModifyGold(-tonumber(goldAmt), true , 0)
             targetHero:ModifyGold(tonumber(goldAmt), true, 0)
@@ -2385,13 +2394,13 @@ function FateGameMode:InitializeRound()
             -- if remaining players are equal
             if nRadiantAlive == nDireAlive then
                 -- Default Radiant Win
-                if self.nRadiantScore < self.nDireScore then
+                if self.nRadiantScore < self.nDireScore and nRadiantAlive == 6 then
                     self:FinishRound(true,3)
                 -- Default Dire Win
-                elseif self.nRadiantScore > self.nDireScore then
+                elseif self.nRadiantScore > self.nDireScore and nRadiantAlive == 6 then
                     self:FinishRound(true,4)
                 -- Draw
-                elseif self.nRadiantScore == self.nDireScore then
+                elseif self.nRadiantScore == self.nDireScore or nRadiantAlive <= 5 then
                     self:FinishRound(true, 2)
                 end
             -- if remaining players are not equal
