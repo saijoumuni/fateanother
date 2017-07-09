@@ -644,14 +644,19 @@ function FateGameMode:OnPlayerChat(keys)
         end
     end
 
-    -- Sends a message to request gold
+    -- Sets default gold sent when -1 is typed. By default, hero.defaultSendGold is 300.
+    local newDefaultGold = string.match(text, "^-set (%d+)")
+    if newDefaultGold ~= nil then
+        hero.defaultSendGold = newDefaultGold
+    end
+
     local pID, goldAmt = string.match(text, "^-(%d%d?) (%d+)")
 
     if pID == nil and goldAmt == nil then
-        local pID2 = string.match(text, "^-(%d%d?)") -- these 5 lines give a default 300 gold to teammate if gold amount not specified.
+        local pID2 = string.match(text, "^-(%d%d?)") -- these 5 lines give a default 300/(whatever you set) gold to teammate if gold amount not specified.
         if pID2 ~= nil then
             pID = pID2
-            goldAmt = 300
+            goldAmt = hero.defaultSendGold
         end
     end
 
@@ -937,6 +942,7 @@ function FateGameMode:OnHeroInGame(hero)
     giveUnitDataDrivenModifier(hero, hero, "modifier_damage_collection", {})
     -- END
 
+    hero.defaultSendGold = 300
     hero.CStock = 10
     hero.ShardAmount = 0
 
