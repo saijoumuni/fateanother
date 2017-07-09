@@ -537,7 +537,7 @@
 	   	"ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"40"
+	    "AbilityCooldown"				"30"
 	    "precache"
 	    {
 	    	"particle"		"particles/units/heroes/hero_omniknight/omniknight_purification_g.vpcf"
@@ -804,7 +804,7 @@
 	    "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"60"
+	    "AbilityCooldown"				"45"
 	    "precache"
 	    {
 	    	"particle"		"particles/items2_fx/mask_of_madness.vpcf"
@@ -946,7 +946,7 @@
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	    "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	    "AbilityCooldown"				"45.0"
+	    "AbilityCooldown"				"40.0"
 	    "AbilityCastRange"				"1000"
 	    "AbilityCastAnimation" 			"ACT_DOTA_ITEM_PICKUP"
 
@@ -1140,7 +1140,7 @@
 	    "ItemPermanent" "0"
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"60"
+	    "AbilityCooldown"				"40"
 	    "precache"
 	    {
 	    	"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_g.vpcf"
@@ -1231,7 +1231,7 @@
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	    "AbilityCastAnimation" 			"ACT_DOTA_ITEM_PICKUP"
-	    "AbilityCooldown"				"30"
+	    "AbilityCooldown"				"23"
 	    "AbilityCastRange"				"20000"
 		"precache"
 		{
@@ -1296,7 +1296,7 @@
 		"AbilityCastAnimation" 			"ACT_DOTA_ITEM_PICKUP"
 
 	    "AbilityCastRange"				"1000"
-	    "AbilityCooldown"				"10"
+	    "AbilityCooldown"				"9"
 	    "AbilityDamage"					"100"
 	    "precache"
 	    {
@@ -1369,7 +1369,7 @@
 	    "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_ALWAYS"
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"30"
+	    "AbilityCooldown"				"27"
 	    "precache"
 	    {
 			"particle"			"particles/custom/item/item_b_scroll_shield.vpcf"
@@ -1385,7 +1385,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"					"20"
+				"duration"					"17"
 			}
 		}
 	    "OnSpellStart"
@@ -1415,7 +1415,7 @@
 			    		"Target"			"CASTER"
 			    	}
 				}
-	    		"Duration" "20.0"
+	    		"Duration" "17.0"
 	    	}
 	    }
 	}
@@ -1460,7 +1460,7 @@
 	    "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_ALWAYS"
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"30"
+	    "AbilityCooldown"				"27"
 	    "precache"
 	    {
 	    	"particle"		"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
@@ -1482,7 +1482,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"					"10"
+				"duration"					"9"
 			}
 		}
 	    "OnSpellStart"
@@ -1499,7 +1499,7 @@
 	    {
 	    	"modifier_a_scroll"
 	    	{
-	    		"Duration"		"10.0"
+	    		"Duration"		"9.0"
 	    			"TextureName" "custom/a_scroll"
 				"EffectName" 	"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
 				"OnCreated"
@@ -2281,7 +2281,7 @@
 
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityCooldown"				"0.0"
+	    "AbilityCooldown"				"1.0"
 	    //"AbilityCastRange"				"1000"
 	    "precache"
 	    {

@@ -18454,6 +18454,11 @@
 			{
 				"var_type"			"FIELD_INTEGER"
 				"radius"			"1000"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mr_bonus"			"100"
 			}	
 		}
 		
@@ -18517,6 +18522,10 @@
 				{
 					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%mr_bonus"
 				}
 			}
 			"modifier_selfish_debuff_aura"
