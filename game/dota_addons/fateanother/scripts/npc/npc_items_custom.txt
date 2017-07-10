@@ -1231,7 +1231,7 @@
 
 	    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	    "AbilityCastAnimation" 			"ACT_DOTA_ITEM_PICKUP"
-	    "AbilityCooldown"				"23"
+	    "AbilityCooldown"				"27"
 	    "AbilityCastRange"				"20000"
 		"precache"
 		{

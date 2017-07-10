@@ -454,7 +454,7 @@ function OnLaPucelleTakeDamage(keys)
 	local originalScale = caster:GetModelScale()
 
 	if caster:GetHealth() == 0 and caster:GetStrength() >= 19.1 and caster:GetAgility() >= 19.1 and caster:GetIntellect() >= 19.1 and ability:IsCooldownReady() and IsRevivePossible(caster) then
-		if _G.GameMap == "fate_elim_6v6" and IsTeamWiped(caster) then
+		if (_G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7") and IsTeamWiped(caster) then
 			return
 		else
 			caster:SetHealth(caster:GetMaxHealth())
@@ -520,7 +520,7 @@ function OnLaPucelleDeath(keys)
 
 	if _G.CurrentGameState == "FATE_ROUND_ONGOING" or _G.CurrentGameState == "FATE_PRE_GAME" then
 		caster:Kill(ability, PlayerResource:GetSelectedHeroEntity(caster.LaPucelleKiller:GetPlayerID()) )
-		if _G.GameMap == "fate_elim_6v6" and not IsTeamWiped(caster) then
+		if (_G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7") and not IsTeamWiped(caster) then
 			GameRules:SendCustomMessage("#la_pucelle_alert_2", 0, 0)
 		end
 	end

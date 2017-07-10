@@ -83,7 +83,7 @@ SPAWN_POSITION_T4_TRIO = Vector(-888,1748,512)
 TRIO_RUMBLE_CENTER = Vector(2436,4132,1000)
 FFA_CENTER = Vector(368,3868,1000)
 mode = nil
-FATE_VERSION = "v1.21f"
+FATE_VERSION = "v1.22"
 roundQuest = nil
 IsGameStarted = false
 
@@ -186,6 +186,7 @@ gameState = {
 }
 
 gameMaps = {
+    "fate_elim_7v7",
     "fate_elim_6v6",
     "fate_ffa",
     "fate_trio_rumble_3v3v3v3"
@@ -334,7 +335,7 @@ function FateGameMode:OnAllPlayersLoaded()
     local maxval = voteResultTable[1]
     local maxkey = 1
     local votePool = nil
-    if _G.GameMap == "fate_elim_6v6" then
+    if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
         votePool = voteResults_DM
         maxkey = voteResults_DM[1]
     elseif _G.GameMap == "fate_trio_rumble_3v3v3v3" then
@@ -393,7 +394,7 @@ function FateGameMode:OnGameInProgress()
        -- Set a think function for timer
         local CENTER_POSITION = Vector(0,0,0)
         local SHARD_DROP_PERIOD = 0
-        if _G.GameMap == "fate_elim_6v6" then
+        if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
             self.nCurrentRound = 1
             self:InitializeRound() -- Start the game after forcing a pick for every player
             BLESSING_PERIOD = 480
@@ -470,7 +471,7 @@ function FateGameMode:OnGameInProgress()
     if _G.GameMap == "fate_ffa" then
         dummyLevel = 1
         dummyLoc = FFA_CENTER
-    elseif _G.GameMap == "fate_elim_6v6" then
+    elseif _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
         bIsDummyNeeded = false
     elseif _G.GameMap == "fate_trio_rumble_3v3v3v3" then
         dummyLevel = 2
@@ -963,7 +964,7 @@ function FateGameMode:OnHeroInGame(hero)
             end
         end
         --print("Respawn location registered : " .. hero.RespawnPos.x .. " BY " .. hero:GetName() )
-        if _G.GameMap == "fate_elim_6v6" then
+        if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
             local index
             if team == 2 then
                 index = team2HeroesSpawned
@@ -1047,7 +1048,7 @@ function FateGameMode:OnHeroInGame(hero)
     hero.name = heroName
     GameRules:SendCustomMessage("Servant <font color='#58ACFA'>" .. heroName .. "</font> has been summoned.", 0, 0)
 
-    if _G.GameMap == "fate_elim_6v6" then
+    if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
         if self.nCurrentRound == 0 then
             giveUnitDataDrivenModifier(hero, hero, "round_pause", 70)
         elseif self.nCurrentRound >= 1 then
@@ -1589,7 +1590,7 @@ function FateGameMode:OnEntityKilled( keys )
             -- Add to kill count if victim is Ruler
             if killedUnit:GetName() == "npc_dota_hero_mirana" and killedUnit.IsSaintImproved then
                 --print("killed ruler with attribute. current kills: " .. killerEntity:GetKills() .. ". adding 2 extra kills...")
-                if _G.GameMap == "fate_elim_6v6" then
+                if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
                     killerEntity:IncrementKills(1)
                     killerEntity:IncrementKills(1)
                 end
@@ -1697,7 +1698,7 @@ function FateGameMode:OnEntityKilled( keys )
                 GameRules:SetSafeToLeave( true )
                 GameRules:SetGameWinner( killerEntity:GetTeam() )
             end
-        elseif _G.GameMap == "fate_elim_6v6" then
+        elseif _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
             if killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS and killedUnit:IsRealHero() then
                 self.nRadiantDead = self.nRadiantDead + 1
             else
@@ -1844,9 +1845,9 @@ function FateGameMode:InitGameMode()
 
     -- Find out which map we are using
     _G.GameMap = GetMapName()
-    if _G.GameMap == "fate_elim_6v6" then
-        GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 6)
-        GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 6)
+    if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
+        GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 7)
+        GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 7)
         GameRules:SetHeroRespawnEnabled(false)
         GameRules:SetGoldPerTick(0)
         GameRules:SetStartingGold(0)    
@@ -2395,18 +2396,18 @@ function FateGameMode:InitializeRound()
                 end
             end)
 
-            if nRadiantAlive > 6 then nRadiantAlive = 6 end
-            if nDireAlive > 6 then nDireAlive = 6 end
+            if nRadiantAlive > 7 then nRadiantAlive = 7 end
+            if nDireAlive > 7 then nDireAlive = 7 end
             -- if remaining players are equal
             if nRadiantAlive == nDireAlive then
                 -- Default Radiant Win
-                if self.nRadiantScore < self.nDireScore and nRadiantAlive == 6 then
+                if self.nRadiantScore < self.nDireScore and nRadiantAlive == 7 then
                     self:FinishRound(true,3)
                 -- Default Dire Win
-                elseif self.nRadiantScore > self.nDireScore and nRadiantAlive == 6 then
+                elseif self.nRadiantScore > self.nDireScore and nRadiantAlive == 7 then
                     self:FinishRound(true,4)
                 -- Draw
-                elseif self.nRadiantScore == self.nDireScore or nRadiantAlive <= 5 then
+                elseif self.nRadiantScore == self.nDireScore or nRadiantAlive <= 6 then
                     self:FinishRound(true, 2)
                 end
             -- if remaining players are not equal
@@ -2645,6 +2646,10 @@ function GetRespawnPos(playerHero, currentRound, index)
 
     local row = index % 2
     local column = math.floor(index / 2)
+    if index == 6 then -- for 7th player
+        row = 2
+        column = 1
+    end
     local offset = vRow * row + vColumn * column
 
     local team = playerHero:GetTeam()
@@ -2654,7 +2659,7 @@ function GetRespawnPos(playerHero, currentRound, index)
 end
 
 function FateGameMode:LoopOverPlayers(callback, withDummy)
-    for i=0, 11 do
+    for i=0, 13 do
         local playerID = i
         local player = PlayerResource:GetPlayer(i)
         local playerHero = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -2695,7 +2700,7 @@ function FateGameMode:CaptureGameMode()
         mode:SetTopBarTeamValuesOverride ( USE_CUSTOM_TOP_BAR_VALUES )
         self:OnFirstPlayerLoaded()
 
-        if _G.GameMap == "fate_elim_6v6" then
+        if _G.GameMap == "fate_elim_6v6" or _G.GameMap == "fate_elim_7v7" then
             mode:SetTopBarTeamValuesOverride ( USE_CUSTOM_TOP_BAR_VALUES )
         end
     end
